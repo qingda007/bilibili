@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上传视频</title>
+    <link rel="stylesheet" href="css/upload/upload.css" type="text/css">
+    <script>
+        function upload() {
+            var files = document.getElementById('upload-btn').files; //files是文件选择框选择的文件对象数组
+            if(files.length == 0) return;
+
+            var form = new FormData(),
+                url = 'http://localhost:8888/user/upload', //服务器上传地址
+                file = files[0];
+            form.append('file', file);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("post", url, true);
+
+            //上传进度事件
+            xhr.upload.addEventListener("progress", function(result) {
+                if (result.lengthComputable) {
+                    //上传进度
+                    var percent = (result.loaded / result.total * 100).toFixed(2);
+                }
+            }, false);
+
+            xhr.addEventListener("readystatechange", function() {
+                var result = xhr;
+                if (result.status != 200) { //error
+                    console.log('上传失败', result.status, result.statusText, result.response);
+                }
+                else if (result.readyState == 4) { //finished
+                    console.log('上传成功', result);
+                }
+            });
+            xhr.send(form); //开始上传
+        };
+    </script>
+</head>
+<body>
+<div id=app>
+    <div class=upload-container>
+        <div id="homeDrop">
+            <div class="upload-icon"></div>
+            <div class="upload-tips">拖拽视频到此处也可上传</div>
+            <div class="upload-btn">
+                <input id="upload-btn" onclick="upload()" type="file" id="video">
+                <div class="upload-btn-title">上传视频</div>
+            </div>
+            <div class="video-jam">
+                <p class="video-jam-pretext">当前审核队列</p>
+                <p class="video-jam-state" style="background-color: rgb(255, 189, 45);">繁忙</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

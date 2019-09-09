@@ -1,0 +1,101 @@
+#app {
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+}
+.upload-container {
+    max-width: 850px;
+    padding: 0 10px;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+    font-size: 0;
+    font-family: PingFangSC-Regular,Microsoft YaHei,Arial,Helvetica,sans-serif;
+    text-align: center;
+}
+#homeDrop {
+    padding-top: 66px;
+    width: 100%;
+    max-width: 830px;
+    height: 284px;
+    margin: 0 auto;
+    position: relative;
+}
+#homeDrop .upload-icon {
+    height: 40px;
+    width: 40px;
+    background-size: 100%;
+    margin: 0 auto;
+    background-image: url("../../images/upload/upload-logo.png");
+}
+#homeDrop .upload-tips {
+    font-size: 13px;
+    color: #999;
+    text-align: center;
+    margin-top: 6px;
+}
+#homeDrop .upload-btn {
+    position: relative;
+    margin: 30px auto 0;
+    width: 200px;
+    height: 44px;
+    cursor: pointer;
+    background: #00a1d6;
+    border-radius: 4px;
+    -webkit-transition: background-color .3s ease;
+    transition: background-color .3s ease;
+    white-space: nowrap;
+    font-size: 0;
+}
+#homeDrop .upload-btn #upload-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+#homeDrop .upload-btn .upload-btn-title {
+    font-size: 16px;
+    color: #fff;
+    line-height: 44px;
+}
+#homeDrop .video-jam {
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 8px 0 0;
+    position: relative;
+    font-family: PingFangSC-Regular,Microsoft YaHei,Arial,Helvetica,sans-serif;
+}
+#homeDrop .video-jam .video-jam-pretext {
+    font-size: 13px;
+    color: #999;
+    text-align: center;
+    line-height: 20px;
+}
+#homeDrop .video-jam .video-jam-state {
+    text-align: center;
+    margin-left: 8px;
+    border-radius: 2px;
+    font-size: 12px;
+    color: #fff;
+    padding: 0 8px;
+    line-height: 20px;
+}
+input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer
+}

@@ -111,7 +111,7 @@ body{
 
 }
 #tv{
-    background: url("../images/login/bilibili-tv.png");
+    background: url("/images/login/bilibili-tv.png");
     width: 20px;
     height: 20px;
     background-size: 100%;
@@ -135,7 +135,7 @@ body{
     height: 42px;
 }
 #ph{
-    background: url("../images/login/phonemini.png");
+    background: url("/images/login/phonemini.png");
     width: 20px;
     height: 20px;
     background-size: 100%;
@@ -237,7 +237,7 @@ body{
     height: 70px;
     left: 160px;
     top: 10px;
-    background: url("../images/login/tvsmile.png") no-repeat;
+    background: url("/images/login/tvsmile.png") no-repeat;
 
 }
 .qrcode-login .qrcode-con .qrcode-box{
@@ -250,7 +250,7 @@ body{
 .qrcode-login .qrcode-footer{
     width: 480px;
     height: 155px;
-    background: url("../images/login/qrcodegirl.png") 0 -7px no-repeat;
+    background: url("/images/login/qrcodegirl.png") 0 -7px no-repeat;
 }
 .qrcode-login .qrcode-footer .status-txt {
     padding-top: 20px;
@@ -388,7 +388,7 @@ input[type="checkbox" i] {
     display: inline-block;
     width: 21px;
     height: 21px;
-    background: url("../images/login/weiboqq.png");
+    background: url("/images/login/weiboqq.png");
     vertical-align: middle;
     margin-right: 5px;
 }
