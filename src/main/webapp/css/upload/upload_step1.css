@@ -1,15 +1,13 @@
 #app {
-    text-rendering: optimizelegibility;
-    -webkit-font-smoothing: antialiased;
+
 }
-.upload-container {
+.upload-step1-container {
     max-width: 850px;
     padding: 0 10px;
     margin: 0 auto;
     position: relative;
     box-sizing: border-box;
     font-size: 0;
-    font-family: PingFangSC-Regular,Microsoft YaHei,Arial,Helvetica,sans-serif;
     text-align: center;
 }
 #homeDrop {
@@ -99,3 +97,32 @@ input {
     filter: alpha(opacity=0);
     cursor: pointer
 }
+#progress-container{
+    height: 12px;
+    width: 325px;
+    margin: 0 auto;
+}
+#progress-container #progress {
+    height: 10px;
+    width: 300px;
+    background: #262626;
+    border-radius: 20px;
+    float: left;
+}
+
+#progress-container #progress #progress-length{
+    height: 10px;
+    width: 0px;
+    background-color: #00a0d8;
+    overflow: visible;
+    border-radius: 20px;
+}
+#progress-container #progress-value {
+    width: 20px;
+    height: 10px;
+    float: right;
+    font-size: 12px;
+    line-height: 9px;
+}
+
+.hide{display:none;}
