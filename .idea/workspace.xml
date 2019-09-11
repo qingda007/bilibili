@@ -7,7 +7,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7aca6b94-fc4d-481a-9510-57a802155177" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/entity/Status.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/entity/Video.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/entity/VideoTag.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/StatusMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/StatusMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/VideoMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/VideoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/VideoTagMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/VideoTagMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/StatusService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/StatusServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/UploadService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/UploadServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/VideoService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/VideoTagService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/VideoTagServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/zhuye.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/zhuye.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,17 +91,17 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\webapp\css\upload" />
+      <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\webapp\css" />
+      <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\webapp\images\upload" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp\images\User" />
       <recent name="C:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp\css\User" />
       <recent name="C:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp" />
       <recent name="D:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp" />
       <recent name="D:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp\images" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\webapp\css\upload" />
-      <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\webapp\css" />
-      <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\webapp\images\upload" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -290,7 +306,8 @@
     <MESSAGE value="增加了main css文件夹，和与服务器数据库的连接配置。" />
     <MESSAGE value="增加了main 的images,css文件夹，和与服务器数据库的连接配置。" />
     <MESSAGE value="增加了用户个人中心界面，哔哩哔哩主界面。" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加了用户个人中心界面，哔哩哔哩主界面。" />
+    <MESSAGE value="完善用户个人中心静态界面——个人信息部分" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善用户个人中心静态界面——个人信息部分" />
   </component>
   <component name="masterDetails">
     <states>
