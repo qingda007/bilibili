@@ -6,7 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7aca6b94-fc4d-481a-9510-57a802155177" name="Default Changelist" comment="增加了main css文件夹，和与服务器数据库的连接配置。">
+    <list default="true" id="7aca6b94-fc4d-481a-9510-57a802155177" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -60,7 +60,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -76,11 +76,11 @@
       <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\webapp\images\upload" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp" />
       <recent name="D:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp\images" />
       <recent name="D:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp\css" />
       <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\webapp" />
       <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\resources" />
-      <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\webapp\js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -237,7 +237,7 @@
       <workItem from="1568027162388" duration="3571000" />
       <workItem from="1568039908627" duration="897000" />
       <workItem from="1568075549799" duration="9681000" />
-      <workItem from="1568180459105" duration="1530000" />
+      <workItem from="1568180459105" duration="2433000" />
     </task>
     <task id="LOCAL-00001" summary="增加了可能会用到的各种文件夹，和与服务器数据库的连接配置。">
       <created>1567940668564</created>
@@ -246,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567940668564</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="增加了main 的images,css文件夹，和与服务器数据库的连接配置。">
+      <created>1568182579256</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1568182579256</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +273,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="增加了可能会用到的各种文件夹，和与服务器数据库的连接配置。" />
     <MESSAGE value="增加了main css文件夹，和与服务器数据库的连接配置。" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加了main css文件夹，和与服务器数据库的连接配置。" />
+    <MESSAGE value="增加了main 的images,css文件夹，和与服务器数据库的连接配置。" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加了main 的images,css文件夹，和与服务器数据库的连接配置。" />
   </component>
   <component name="masterDetails">
     <states>
