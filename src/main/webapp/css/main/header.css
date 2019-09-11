@@ -1969,3 +1969,29 @@ var {
 .el-button:hover{
 	background-color: #00b5e5!important;
 }
+.icon-6 {
+	background-position: -23px -272px;
+}
+/*个人中心-账号安全*/
+.res-box {
+	position: relative;
+	width: 100%;
+	height: 300px;
+	background-color: #00a7de;
+}
+.safe-logo {
+	position: relative;
+	width: 400px;
+	height: 220px;
+	margin: 0 auto;
+}
+.safe-logo.safe {
+	background: url(//s1.hdslb.com/bfs/static/security/static/img/logo_safe.792b6bf.png) no-repeat;
+}
+.nav-list {
+	padding: 0 20px;
+}
+.nav-list li{
+	min-height: 80px;
+
+}
