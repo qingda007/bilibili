@@ -9,6 +9,7 @@
     <list default="true" id="7aca6b94-fc4d-481a-9510-57a802155177" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/main/head.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/main/head.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/css/main/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/main/header.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -246,7 +247,8 @@
       <workItem from="1568075549799" duration="9681000" />
       <workItem from="1568180459105" duration="2433000" />
       <workItem from="1568186307213" duration="1164000" />
-      <workItem from="1568201111514" duration="4234000" />
+      <workItem from="1568201111514" duration="4686000" />
+      <workItem from="1568208807851" duration="6420000" />
     </task>
     <task id="LOCAL-00001" summary="增加了可能会用到的各种文件夹，和与服务器数据库的连接配置。">
       <created>1567940668564</created>
@@ -276,7 +278,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568192880233</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="用户个人中心界面——账户安全设计">
+      <created>1568205613281</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1568205613281</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,7 +311,8 @@
     <MESSAGE value="增加了用户个人中心界面，哔哩哔哩主界面。" />
     <MESSAGE value="完善用户个人中心静态界面——个人信息部分" />
     <MESSAGE value="修改主界面的一个小错（少了个/div）" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改主界面的一个小错（少了个/div）" />
+    <MESSAGE value="用户个人中心界面——账户安全设计" />
+    <option name="LAST_COMMIT_MESSAGE" value="用户个人中心界面——账户安全设计" />
   </component>
   <component name="masterDetails">
     <states>
