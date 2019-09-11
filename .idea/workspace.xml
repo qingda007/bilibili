@@ -8,6 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7aca6b94-fc4d-481a-9510-57a802155177" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/main/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/main/header.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,6 +43,11 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="userSettingsFile" value="D:\Program Files\apache-maven-3.6.1\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="jdkForImporter" value="1.8" />
@@ -60,14 +67,14 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/images/User" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -76,11 +83,11 @@
       <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\webapp\images\upload" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp\images\User" />
+      <recent name="C:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp\css\User" />
+      <recent name="C:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp" />
       <recent name="D:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp" />
       <recent name="D:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp\images" />
-      <recent name="D:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp\css" />
-      <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\webapp" />
-      <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -238,6 +245,8 @@
       <workItem from="1568039908627" duration="897000" />
       <workItem from="1568075549799" duration="9681000" />
       <workItem from="1568180459105" duration="2433000" />
+      <workItem from="1568186307213" duration="1164000" />
+      <workItem from="1568201111514" duration="4234000" />
     </task>
     <task id="LOCAL-00001" summary="增加了可能会用到的各种文件夹，和与服务器数据库的连接配置。">
       <created>1567940668564</created>
@@ -253,7 +262,21 @@
       <option name="project" value="LOCAL" />
       <updated>1568182579256</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="增加了用户个人中心界面，哔哩哔哩主界面。">
+      <created>1568183468588</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1568183468588</updated>
+    </task>
+    <task id="LOCAL-00004" summary="修改主界面的一个小错（少了个/div）">
+      <created>1568192880233</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1568192880233</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,7 +287,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -274,7 +299,10 @@
     <MESSAGE value="增加了可能会用到的各种文件夹，和与服务器数据库的连接配置。" />
     <MESSAGE value="增加了main css文件夹，和与服务器数据库的连接配置。" />
     <MESSAGE value="增加了main 的images,css文件夹，和与服务器数据库的连接配置。" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加了main 的images,css文件夹，和与服务器数据库的连接配置。" />
+    <MESSAGE value="增加了用户个人中心界面，哔哩哔哩主界面。" />
+    <MESSAGE value="完善用户个人中心静态界面——个人信息部分" />
+    <MESSAGE value="修改主界面的一个小错（少了个/div）" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改主界面的一个小错（少了个/div）" />
   </component>
   <component name="masterDetails">
     <states>

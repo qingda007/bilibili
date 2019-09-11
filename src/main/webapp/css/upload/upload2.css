@@ -1,0 +1,188 @@
+#app{
+    box-sizing: border-box;
+}
+.upload-step2-container {
+    max-width: 850px;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+    padding: 5px 0;
+}
+.file-list-container .file-title {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.file-title h1{
+    font-size: 20px;
+    color: #222;
+    margin-right: 10px;
+    list-style-type: none;
+    display:inline-block;
+}
+.file-title p {
+    font-size: 12px;
+    color: #666;
+    display:inline-block;
+}
+
+.file-list-wrp .file-list-item {
+    display: flex;
+    align-items: center;
+    user-select: none;
+    padding: 24px 0;
+}
+.file-list-item .file-list-item-icon {
+    width: 36px;
+    height: 24px;
+    margin-right: 24px;
+    background: url("../../images/upload/camera-icon.png") no-repeat;
+    background-size: 100% 100%;
+    cursor: move;
+}
+.file-list-item-icon span{
+    text-align: center;
+    display: inline-block;
+    width: 27px;
+    font-size: 12px;
+    line-height: 24px;
+}
+.file-list-item .file-list-item-wrp {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+.file-list-item-wrp .item-status-wrp p {
+    font-size: 14px;
+    color: #222;
+    line-height: 32px;
+}
+
+#item-upload-progress{
+    width: 325px;
+    float: left;
+}
+.upload-status-intro {
+    font-size: 12px;
+    color: #99a2aa;
+    padding: 6px 0 4px;
+    display: inline-block;
+}
+.upload-step2-container .upload-btn {
+    position: relative;
+    width: 80px;
+    height: 30px;
+    margin-bottom: 50px;
+    cursor: pointer;
+    background: #00a1d6;
+    border-radius: 4px;
+    transition: background-color .3s ease;
+    white-space: nowrap;
+}
+.upload-step2-container .upload-btn #upload-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+.upload-step2-container .upload-btn .upload-btn-title {
+    font-size: 15px;
+    color: #fff;
+    line-height: 29px;
+    text-align: center;
+}
+.basic-info h1{
+    font-size: 20px;
+    color: #222;
+    margin-right: 10px;
+    list-style-type: none;
+}
+.select-cover{
+
+}
+.select-cover h3{
+    font-size: 16px;
+    color: #101010;
+    line-height: 21px;
+    font-weight: 400;
+    display:inline-block;
+}
+.select-cover p {
+    font-size: 12px;
+    color: #6d757a;
+    line-height: 21px;
+    margin-left: 6px;
+    display:inline-block;
+}
+
+.cover-preview{
+    width: 200px;
+    height: 126px;
+    cursor: pointer;
+    margin-top: 24px;
+    margin-right: 44px;
+    margin-bottom: 10px;
+    position: relative;
+}
+.cover-preview .cover-preview-default {
+    height: 126px;
+    line-height: 126px;
+    text-align: center;
+    border: 1px dashed #99a2aa;
+    border-radius: 4px;
+    position: relative;
+}
+.cover-preview-default img {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+.cover-preview-default .cover-upload-tip {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    width: 60px;
+    line-height: 22px;
+    border-radius: 4px 0 4px 0;
+    background: #999;
+}
+.cover-preview input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 0;
+    z-index: 10;
+    cursor: pointer;
+}
+.section-title-container {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+}
+.section-title-deg {
+    color: #fc403c;
+    font-size: 18px;
+    line-height: 18px;
+    height: 18px;
+}
+.section-title-content-main {
+    font-size: 16px;
+    color: #101010;
+    line-height: 21px;
+    font-weight: 400;
+}
+
+.type-select-box {
+    position: relative;
+    user-select: none;
+}
