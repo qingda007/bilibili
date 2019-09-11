@@ -1,0 +1,337 @@
+.bili-header {
+	font: 12px 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif;
+	position: relative;
+	z-index: 10000;
+	background: #fff;
+	margin: 0;
+	padding: 0;
+}
+
+.bili-wrapper {
+	width: 980px;
+	margin: 0px auto;
+}
+.nav-menu {
+	position: relative;
+	z-index: 200;
+	height: 42px;
+	color: #222;
+}
+
+.bili-header .nav-menu .blur-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-position: center -10px;
+	background-repeat: no-repeat;
+	filter: blur(4px);
+}
+
+.bili-header .nav-menu .nav-mask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: hsla(0, 0%, 100%, .4);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+}
+
+.bili-header .clearfix::before {
+	content: "";
+	display: table;
+}
+
+.bili-header .clearfix::after {
+	clear: both;
+	overflow: hidden;
+}
+
+.bili-header .nav-wraper {
+	min-width: 980px;
+}
+
+.bili-header ul {
+	list-style: none;
+}
+
+.bili-header .fl {
+	float: left;
+	display: inline;
+}
+
+.bili-header .fr {
+	float: right;
+	display: inline;
+}
+
+.nav-item {
+	float: left;
+	text-align: center;
+	line-height: 42px;
+	height: 42px;
+	position: relative;
+	background-color: hsla(0, 0%, 100%, 0);
+}
+
+.nav-item.home {
+	margin-left: -10px;
+	padding-left: 12px;
+}
+
+.t {
+	color: #222;
+	height: 100%;
+	display: block;
+	padding: 0 7px;
+	padding-left: 7px;
+}
+
+.nav-menu a:hover {
+	color: #222;
+	cursor: pointer;
+	background-color: hsla(0, 0%, 100%, .5);
+}
+
+.nav-menu .nav-con .profile-info a:hover {
+	background-color: hsla(0, 0%, 100%, 0);
+}
+
+.manga {
+	position: relative;
+}
+
+.up-load {
+	position: relative;
+	width: 68px;
+	height: 42px;
+	margin-left: 8px;
+}
+
+.nav-menu .up-load a:hover {
+	color: #FFFFFF;
+	background-color: #FB7299;
+}
+
+.profile-info {
+	width: 46px;
+}
+
+.u-link {
+	display: block;
+	width: 100%;
+	height: 46px;
+	line-height: 42px;
+	text-align: center;
+	font-size: 14px;
+	color: #fff;
+	background-color: #F45A8D;
+	border-radius: 0 0 6px 6px;
+	z-index: 400;
+}
+
+.profile-info .i-face {
+	position: absolute;
+	z-index: 20;
+	width: 32px;
+	height: 32px;
+	left: 0;
+	top: 0;
+	transition: .3s;
+}
+
+.profile-info .i-face .face {
+	border: 0 solid #fff;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
+.profile-info .i-face .pendant {
+	position: absolute;
+	width: 84px;
+	height: 84px;
+	left: -11px;
+	bottom: -3px;
+	visibility: hidden;
+	transition-delay: 0s;
+}
+
+.i_menu_login {
+	background: #fff;
+	left: 50%;
+	width: 260px;
+	width: 320px;
+	margin-left: -160px;
+	padding: 12px;
+	text-align: left;
+	line-height: normal;
+	border: 1px solid #e5e9ef;
+}
+
+.bili-header .i_menu_login .img {
+	width: 320px;
+	height: 200px;
+	margin: 12px 0;
+	overflow: hidden;
+	position: relative;
+	background: url(../../images/main/danmu.png) no-repeat 50%;
+}
+
+.bili-header .i_menu_login .img img {
+	width: 320px;
+	height: 200px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.bili-header fieldset,
+.bili-header img {
+	border: none;
+	vertical-align: middle;
+}
+
+.bili-header .i_menu_login .login-btn {
+	display: block;
+	height: 43px;
+	line-height: 43px;
+	text-align: center;
+	background: #00a1d6;
+	border-radius: 4px;
+	font-size: 14px;
+	color: #fff;
+}
+
+.bili-header .i_menu_login a.login-btn:hover {
+	background: #00a1d6;
+}
+
+.bili-header .i_menu_login .reg {
+	margin-top: 8px;
+	text-align: center;
+	font-size: 12px;
+	color: #282828;
+}
+
+.bili-header .nav-search-box {
+	position: relative;
+	float: right;
+	margin: 6px 12px 0 0;
+}
+
+.bili-header .nav-search {
+	position: absolute;
+	right: 0;
+	width: 32px;
+	transition: all 0.2s;
+}
+
+.bili-header .nav-search #nav_searchform {
+	display: block;
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	padding: 0 30px 0 8px;
+}
+
+.bili-header .nav-search .nav-search-keyword {
+	color: #999;
+	font-size: 12px;
+	overflow: hidden;
+	width: 100%;
+	height: 28px;
+	line-height: 28px;
+	border: none;
+	box-shadow: none;
+	background-color: transparent;
+	opacity: 0;
+	transition: all 0.2s;
+}
+
+.bili-header .showSearch.nav-search .nav-search-submit {
+	color: #999;
+	font-size: 18px;
+	top: 5px;
+	right: 7px;
+}
+
+.bili-header .nav-search .nav-search-submit {
+	position: absolute;
+	top: 4px;
+	right: 5px;
+	cursor: pointer;
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-size: 22px;
+	color: #999;
+	background: none;
+	transition: all 0.2s;
+}
+
+.bili-header .i_menu_login .reg a {
+	color: #00a1d6;
+}
+
+.primary-menu .nav-menu .sub-nav {
+	display: none;
+	position: absolute;
+	left: 0;
+	overflow: hidden;
+	top: 44px;
+	background: #fff;
+	border: 1px solid\9;
+	border-top: 0;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, .16);
+	border-radius: 0 0 4px 4px;
+	z-index: 2;
+}
+
+.nav-menu li:hover .sub-nav {
+	display: block;
+}
+
+.primary-menu .nav-menu .sub-nav li {
+	position: relative;
+	font-size: 12px;
+	line-height: 20px;
+	min-width: 120px;
+	height: auto;
+	overflow: hidden;
+	text-align: left;
+	transition: all .2s;
+}
+
+.primary-menu .nav-menu .sub-nav li>a {
+	display: block;
+	padding: 5px 15px 5px 25px;
+	margin-right: 10px;
+	background: url(../../images/main/icons2.png) no-repeat 12px -1613px;
+	white-space: nowrap;
+	transition: all .2s;
+	overflow: hidden;
+	position: relative;
+	left: 0;
+	color: #222;
+}
+
+.primary-menu .nav-menu .sub-nav li>a span {
+	position: relative;
+}
+
+.primary-menu .nav-menu .sub-nav li:hover>a {
+	left: 5px;
+}
+
+.primary-menu .nav-menu .sub-nav li:hover {
+	background-color: #e5e9ef;
+}
+
+.primary-menu .nav-menu .sub-nav:not(.square-wrap) li:hover>a span::after {
+	right: -21px;
+	opacity: 1;
+}
+
