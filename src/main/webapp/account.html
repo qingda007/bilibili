@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</title>
+		<link rel="stylesheet" href="css/main/bass.css" />
+		<link rel="stylesheet" href="css/main/header.css" />
+		<link rel="stylesheet" href="css/main/iconfont.css" />
+		<script type="text/javascript" src="js/jquery-3.4.1.min.js" ></script>
+		<script>
+			var menu_li=$("div.el-radio-group el-radio-button");
+			$menu_li.click(function(){
+				$(this).addClass("is-active");
+				$(this).siblings().removeClass("is-active");
+			})
+		</script>
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="bili-header">
+				<div class="nav-menu">
+					<div class="nav-mask"></div>
+					<div class="bili-wrapper clearfix nav-wraper">
+						<div class="nav-con fl">
+							<ul>
+								<li class="nav-item home">
+									<a class="t">
+										<i class="iconfont icon-bilibili" style="color: #00A1D6;"></i> 主站
+									</a>
+								</li>
+								<li class="nav-item mbili">
+									<a class="t">音频</a>
+								</li>
+								<li class="nav-item game">
+									<a class="t">游戏中心</a>
+								</li>
+								<li class="nav-item live">
+									<a class="t">直播</a>
+								</li>
+								<li class="nav-item buy">
+									<a class="t">会员购</a>
+								</li>
+								<li class="nav-item manga">
+									<a class="t">漫画</a>
+								</li>
+								<li class="nav-item loc-menu">
+									<a class="t">BW</a>
+								</li>
+								<li class="nav-item loc-menu">
+									<a class="t">70年</a>
+								</li>
+								<li class="nav-item moblie">
+									<a class="t">
+										<i class="iconfont icon-contextphone" style="color: #00A1D6;"></i>下载APP
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="up-load fr">
+							<a class="u-link">投稿</a>
+						</div>
+						<div class="nav-con fr">
+							<ul class="fr">
+								<li class="nav-item profile-info">
+									<a class="t">
+										<i class="i-face">
+											<img src="images/main/akari.jpg" class="face">
+											<img class="pendant" />
+										</i>
+									</a>
+									<div id="i-login" class="i_menu i_menu_login" style="display: none;">
+										<p class="tip">登录后你可以：</p>
+										<div class="img">
+											<img id="d1" src="images/main/danmu1.png" />
+											<img id="d2" src="images/main/danmu1.png" style="left: 320px;" />
+										</div>
+										<a class="login-btn">登录</a>
+										<p class="reg">首次使用？
+											<a>点我去注册</a>
+										</p>
+									</div>
+								</li>
+								
+								<li class="nav-item">
+									<a class="t">
+										大会员
+									</a>
+								</li>
+								
+								<li class="nav-item">
+									<a class="t">
+										消息
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a class="t">
+										动态
+									</a>
+								</li>
+								
+								
+								<li class="nav-item">
+									<a class="t">
+										稍后再看
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="t">
+										收藏
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="t">
+										历史
+									</a>
+								</li>
+							</ul>
+							<div class="nav-search-box">
+								<div class="nav-search showSearch-media"style="right: 0px;">
+									<form id="nav_searchform">
+										<input type="text" class="nav-search-keyword"value="sssssssssssssssssss"/>
+										<button type="submit"class="iconfont icon-sousuo nav-search-submit">
+											
+										</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="top-banner">
+				<img src="images/main/rl_top.png" />
+			</div>
+			<div class="security_content">
+				<div class="security-left">
+					<span class="security-title">个人中心</span>
+					<ul class="security-ul">
+						<li class="security-list">
+							<i class="security-icon icon-3"></i>
+							<span class="security-nav-name">我的信息</span>
+						</li>
+					</ul>
+				</div>
+				<div class="security-right">
+					<div class="security-right-title">
+						<span class="security-right-title-icon"></span>
+						<span class="security-right-title-text">我的信息</span>
+					</div>
+					<div class="user-setting-warp">
+						<div class="face-tool">
+							<div class="tool-container">
+								<a>
+									<div class="tool-change-face">
+										<span>更改头像</span>
+									</div>
+								</a>
+								<div class="tool-face-box">
+									<img class="tool-user-face" src="images/main/akari.jpg" />
+								</div>
+							</div>
+						</div>
+						<div>
+							<form class="el-form clearfix">
+								<div class="el-form-item user-nick-name">
+									<label class="el-form-item__label">昵称：</label>
+									<div class="el-form-item__content">
+										<div class="el-input">
+											<input class="el-input__inner" type="text"autocomplete="off" placeholder="你的昵称"value="用户昵称(暂定)"/>
+										</div>
+									</div>
+								</div>
+								<div class="el-form-item user-nick-rel-name">
+									<label class="el-form-item__label">用户名：</label>
+									<div class="el-form-item__content">
+										<span class="">注：这里填入用户id</span>
+									</div>
+								</div>
+								<div class="el-form-item user-my-sex">
+									<label class="el-form-item__label">性别：</label>
+									<div class="el-form-item__content">
+										<div class="el-radio-group">
+											<label class="el-radio-button is-active">
+												<input type="radio" class="el-radio-button__orig-radio" value="男">
+												<span class="el-radio-button__inner">男</span>
+											</label>
+											<label class="el-radio-button ">
+												<input type="radio" class="el-radio-button__orig-radio" value="女">
+												<span class="el-radio-button__inner">女</span>
+											</label>
+											<label class="el-radio-button">
+												<input type="radio" class="el-radio-button__orig-radio" value="保密">
+												<span class="el-radio-button__inner">保密</span>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="el-form-item user-my-sex">
+									<label class="el-form-item__label">出生日期：</label>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+</html>
