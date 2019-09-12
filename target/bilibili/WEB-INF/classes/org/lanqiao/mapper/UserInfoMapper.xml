@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lanqiao.mapper.UserInfoMapper" >
-  <resultMap id="BaseResultMap" type="org.lanqiao.entity.UserInfo" >
+  <resultMap id="UserInfoResultMap" type="org.lanqiao.entity.UserInfo" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="user_passw" property="userPassw" jdbcType="VARCHAR" />
@@ -15,32 +15,14 @@
     <result column="user_coin" property="userCoin" jdbcType="INTEGER" />
     <result column="user_role" property="userRole" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    user_id, user_name, user_passw, user_email, user_birthday, user_sex, user_regtime, 
-    user_tele, user_type, user_picadress, user_coin, user_role
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from user_info
-    where user_id = #{userId,jdbcType=INTEGER}
-  </select>
+  <insert id="insertUser" parameterType="org.lanqiao.entity.UserInfo" >
+    insert into user_info (user_name, user_passw,user_email,user_tele) values (#{userName,jdbcType=VARCHAR},#{userPassw,jdbcType=VARCHAR},#{userEmail,jdbcType=VARCHAR},#{userTele,jdbcType=VARCHAR})
+  </insert>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user_info
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.lanqiao.entity.UserInfo" >
-    insert into user_info (user_id, user_name, user_passw, 
-      user_email, user_birthday, user_sex, 
-      user_regtime, user_tele, user_type, 
-      user_picadress, user_coin, user_role
-      )
-    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPassw,jdbcType=VARCHAR}, 
-      #{userEmail,jdbcType=VARCHAR}, #{userBirthday,jdbcType=DATE}, #{userSex,jdbcType=VARCHAR}, 
-      #{userRegtime,jdbcType=TIMESTAMP}, #{userTele,jdbcType=VARCHAR}, #{userType,jdbcType=VARCHAR}, 
-      #{userPicadress,jdbcType=VARCHAR}, #{userCoin,jdbcType=INTEGER}, #{userRole,jdbcType=VARCHAR}
-      )
-  </insert>
+
   <insert id="insertSelective" parameterType="org.lanqiao.entity.UserInfo" >
     insert into user_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -157,21 +139,6 @@
         user_role = #{userRole,jdbcType=VARCHAR},
       </if>
     </set>
-    where user_id = #{userId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.UserInfo" >
-    update user_info
-    set user_name = #{userName,jdbcType=VARCHAR},
-      user_passw = #{userPassw,jdbcType=VARCHAR},
-      user_email = #{userEmail,jdbcType=VARCHAR},
-      user_birthday = #{userBirthday,jdbcType=DATE},
-      user_sex = #{userSex,jdbcType=VARCHAR},
-      user_regtime = #{userRegtime,jdbcType=TIMESTAMP},
-      user_tele = #{userTele,jdbcType=VARCHAR},
-      user_type = #{userType,jdbcType=VARCHAR},
-      user_picadress = #{userPicadress,jdbcType=VARCHAR},
-      user_coin = #{userCoin,jdbcType=INTEGER},
-      user_role = #{userRole,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
 </mapper>

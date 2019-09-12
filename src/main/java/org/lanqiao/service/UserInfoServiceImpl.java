@@ -8,7 +8,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserInfoServiceImpl implements UserInfoService{
     @Autowired
-    UserInfoMapper userInfoMapper;
+    private UserInfoMapper userInfoMapper;
+
+    @Override
+    public int insertUser(UserInfo userInfo) {
+        return userInfoMapper.insertUser(userInfo);
+    }
     @Override
     public UserInfo selectByPrimaryKey(Integer id) {
 return userInfoMapper.selectByPrimaryKey(id);

@@ -122,4 +122,22 @@ public class UserInfo {
     public void setUserRole(String userRole) {
         this.userRole = userRole == null ? null : userRole.trim();
     }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userPassw='" + userPassw + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userBirthday=" + userBirthday +
+                ", userSex='" + userSex + '\'' +
+                ", userRegtime=" + userRegtime +
+                ", userTele='" + userTele + '\'' +
+                ", userType='" + userType + '\'' +
+                ", userPicadress='" + userPicadress + '\'' +
+                ", userCoin=" + userCoin +
+                ", userRole='" + userRole + '\'' +
+                '}';
+    }
 }
