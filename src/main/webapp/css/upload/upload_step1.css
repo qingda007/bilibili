@@ -1,7 +1,8 @@
 #app {
 
 }
-.upload-step1-container {
+#upload-step1-container {
+    display: none;
     max-width: 850px;
     padding: 0 10px;
     margin: 0 auto;
@@ -31,7 +32,7 @@
     text-align: center;
     margin-top: 6px;
 }
-#homeDrop .upload-btn {
+#homeDrop .upload-btn-container {
     position: relative;
     margin: 30px auto 0;
     width: 200px;
@@ -44,7 +45,7 @@
     white-space: nowrap;
     font-size: 0;
 }
-#homeDrop .upload-btn #upload-btn {
+#homeDrop .upload-btn-container .upload-btn {
     position: absolute;
     top: 0;
     left: 0;
@@ -52,7 +53,7 @@
     height: 100%;
     z-index: 100;
 }
-#homeDrop .upload-btn .upload-btn-title {
+#homeDrop .upload-btn-container .upload-btn-title {
     font-size: 16px;
     color: #fff;
     line-height: 44px;
@@ -88,7 +89,7 @@
     padding: 0 8px;
     line-height: 20px;
 }
-input {
+.upload-btn-container input {
     position: absolute;
     font-size: 100px;
     right: 0;
@@ -97,33 +98,6 @@ input {
     filter: alpha(opacity=0);
     cursor: pointer
 }
-#progress-container{
-    height: 12px;
-    width: 325px;
-    margin: 0 auto;
-}
-#progress-container #progress {
-    height: 10px;
-    width: 300px;
-    background: #4a688a;
-    border-radius: 20px;
-    float: left;
-}
 
-#progress-container #progress #progress-length{
-    height: 10px;
-    width: 0px;
-    background-color: #43ce5b;
-    overflow: visible;
-    border-radius: 20px;
-}
-#progress-container #progress-value {
-    width: 20px;
-    height: 10px;
-    float: right;
-    font-size: 12px;
-    line-height: 9px;
-    display: inline-block;
-}
 
 .hide{display:none;}
