@@ -54,20 +54,21 @@
 			<!--enableSelectByExample="false" enableUpdateByExample="false">-->
 			<!--<property name="useActualColumnNames" value="true" />-->
 		<!--</table>-->
-		<table tableName="users" domainObjectName="Users"
-			enableCountByExample="false" enableDeleteByExample="false"
-			enableSelectByExample="false" enableUpdateByExample="false">
-			<property name="useActualColumnNames" value="true" />
-		</table>
-<!--		<table tableName="orderitem" domainObjectName="OrderItem"-->
+
+<!--		<table tableName="video" domainObjectName="Video"-->
 <!--			enableCountByExample="false" enableDeleteByExample="false"-->
 <!--			enableSelectByExample="false" enableUpdateByExample="false">-->
 <!--			<property name="useActualColumnNames" value="false" />-->
 <!--		</table>-->
-		<!--<table tableName="classes" domainObjectName="Classes"-->
-			<!--enableCountByExample="false" enableDeleteByExample="false"-->
-			<!--enableSelectByExample="false" enableUpdateByExample="false">-->
-			<!--<property name="useActualColumnNames" value="true" />-->
-		<!--</table>-->
+<!--		<table tableName="video_tag" domainObjectName="VideoTag"-->
+<!--			   enableCountByExample="false" enableDeleteByExample="false"-->
+<!--			   enableSelectByExample="false" enableUpdateByExample="false">-->
+<!--			<property name="useActualColumnNames" value="false" />-->
+<!--		</table>-->
+<!--		<table tableName="status" domainObjectName="Status"-->
+<!--			   enableCountByExample="false" enableDeleteByExample="false"-->
+<!--			   enableSelectByExample="false" enableUpdateByExample="false">-->
+<!--			<property name="useActualColumnNames" value="false" />-->
+<!--		</table>-->
 	</context>
 </generatorConfiguration>

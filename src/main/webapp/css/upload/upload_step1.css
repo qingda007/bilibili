@@ -105,7 +105,7 @@ input {
 #progress-container #progress {
     height: 10px;
     width: 300px;
-    background: #262626;
+    background: #4a688a;
     border-radius: 20px;
     float: left;
 }
@@ -113,7 +113,7 @@ input {
 #progress-container #progress #progress-length{
     height: 10px;
     width: 0px;
-    background-color: #00a0d8;
+    background-color: #43ce5b;
     overflow: visible;
     border-radius: 20px;
 }
@@ -123,6 +123,7 @@ input {
     float: right;
     font-size: 12px;
     line-height: 9px;
+    display: inline-block;
 }
 
 .hide{display:none;}

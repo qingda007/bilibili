@@ -9,27 +9,32 @@ import java.util.UUID;
 
 public class Upload {
     public String upload(MultipartFile file, String path, HttpServletRequest request) throws IOException {
-        String filePath = request.getSession().getServletContext().getRealPath("/") + path;
-        // 获取原始图片的扩展名
+        String rootPath = request.getSession().getServletContext().getRealPath("/") + path;
+        // 获取原始图片的名字和扩展名
         String originalFilename = file.getOriginalFilename();
         // 生成文件新的名字
-        //String newFileName = originalFilename;
-        String newFileName = UUID.randomUUID() + originalFilename;
+        String newFileName = UUID.randomUUID().toString().replaceAll("-", "") + originalFilename;
         // 封装上传文件位置的全路径
-        File targetFile = new File(filePath, newFileName);
+        File targetFile = new File(rootPath, newFileName);
+        if( !targetFile.getParentFile().exists()) {
+            // 如果目标文件所在的目录不存在，则创建父目录
+            targetFile.getParentFile().mkdirs();
+        }
         file.transferTo(targetFile);
         return path + "/" + newFileName;
     }
     public String upload(MultipartFile file, String path, String fileName, HttpServletRequest request) throws IOException {
-        String filePath = request.getSession().getServletContext().getRealPath("/") + path;
+        String rootPath = request.getSession().getServletContext().getRealPath("/") + path;
         // 获取原始图片的扩展名
         String originalFilename = file.getOriginalFilename();
         // 生成文件新的名字
-        //String newFileName = originalFilename;
-       // String newFileName = UUID.randomUUID() + originalFilename;
         String newFileName = fileName + originalFilename.substring(originalFilename.lastIndexOf("."));
         // 封装上传文件位置的全路径
-        File targetFile = new File(filePath, newFileName);
+        File targetFile = new File(rootPath, newFileName);
+        if( !targetFile.getParentFile().exists()) {
+            // 如果目标文件所在的目录不存在，则创建父目录
+            targetFile.getParentFile().mkdirs();
+        }
         file.transferTo(targetFile);
         return path + "/" + newFileName;
     }
