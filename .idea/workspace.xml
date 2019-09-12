@@ -6,7 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7aca6b94-fc4d-481a-9510-57a802155177" name="Default Changelist" comment="" />
+    <list default="true" id="7aca6b94-fc4d-481a-9510-57a802155177" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +72,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -244,7 +246,7 @@
       <workItem from="1568186307213" duration="1164000" />
       <workItem from="1568201111514" duration="4686000" />
       <workItem from="1568208807851" duration="7931000" />
-      <workItem from="1568255981228" duration="1024000" />
+      <workItem from="1568255981228" duration="2125000" />
     </task>
     <task id="LOCAL-00001" summary="增加了可能会用到的各种文件夹，和与服务器数据库的连接配置。">
       <created>1567940668564</created>
@@ -288,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568215451023</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="用户个人中心界面——账户安全设计(完成)">
+      <created>1568257120774</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1568257120774</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
