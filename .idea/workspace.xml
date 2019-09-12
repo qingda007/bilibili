@@ -8,7 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7aca6b94-fc4d-481a-9510-57a802155177" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/video.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/video.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -249,7 +248,8 @@
       <workItem from="1568208807851" duration="7931000" />
       <workItem from="1568255981228" duration="2534000" />
       <workItem from="1568270280197" duration="6643000" />
-      <workItem from="1568277618898" duration="6542000" />
+      <workItem from="1568277618898" duration="6802000" />
+      <workItem from="1568287018112" duration="168000" />
     </task>
     <task id="LOCAL-00001" summary="增加了可能会用到的各种文件夹，和与服务器数据库的连接配置。">
       <created>1567940668564</created>
@@ -314,7 +314,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568283205991</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="video.html界面的动态效果加强(2)">
+      <created>1568284407155</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1568284407155</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -373,7 +380,8 @@
     <MESSAGE value="用户个人中心界面——账户安全设计" />
     <MESSAGE value="用户个人中心界面——账户安全设计(完成)" />
     <MESSAGE value="video.html界面的动态效果加强" />
-    <option name="LAST_COMMIT_MESSAGE" value="video.html界面的动态效果加强" />
+    <MESSAGE value="video.html界面的动态效果加强(2)" />
+    <option name="LAST_COMMIT_MESSAGE" value="video.html界面的动态效果加强(2)" />
   </component>
   <component name="masterDetails">
     <states>
