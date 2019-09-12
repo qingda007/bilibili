@@ -8,6 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7aca6b94-fc4d-481a-9510-57a802155177" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/main/iconfont.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/main/iconfont.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/player.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/player.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/video.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/video.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +68,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/images/User" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/css/main" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -75,17 +78,17 @@
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\webapp\css\upload" />
-      <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\webapp\css" />
-      <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\webapp\images\upload" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp\css\main" />
       <recent name="C:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp\images\User" />
       <recent name="C:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp\css\User" />
       <recent name="C:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp" />
       <recent name="D:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp" />
-      <recent name="D:\Users\Administrator\IdeaProjects\bilibili\src\main\webapp\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\webapp\css\upload" />
+      <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\webapp\css" />
+      <recent name="C:\Users\Shinelon\IdeaProjects\bilibili\src\main\webapp\images\upload" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -100,8 +103,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat8543">
-    <configuration name="Tomcat8543" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat8543" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.43">
+    <configuration name="Tomcat 8.5.43" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.43" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER" value="false" />
       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
       <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
@@ -217,7 +220,7 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Tomcat Server.Tomcat8543" />
+      <item itemvalue="Tomcat Server.Tomcat 8.5.43" />
       <item itemvalue="Tomcat Server.up.html" />
     </list>
     <recent_temporary>
@@ -246,7 +249,9 @@
       <workItem from="1568186307213" duration="1164000" />
       <workItem from="1568201111514" duration="4686000" />
       <workItem from="1568208807851" duration="7931000" />
-      <workItem from="1568255981228" duration="2125000" />
+      <workItem from="1568255981228" duration="2534000" />
+      <workItem from="1568270280197" duration="6643000" />
+      <workItem from="1568277618898" duration="5276000" />
     </task>
     <task id="LOCAL-00001" summary="增加了可能会用到的各种文件夹，和与服务器数据库的连接配置。">
       <created>1567940668564</created>
@@ -297,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568257120774</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="用户个人中心界面——账户安全设计(完成)">
+      <created>1568258340194</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1568258340194</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
