@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/upload/upload_step1.css" type="text/css">
+    <link rel="stylesheet" href="css/upload/upload2.css" type="text/css">
+    <script src="js/upload/upload.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div id=app>
+        <div class="upload-step2-container">
+            <div class="file-title">
+                <h1>文件上传</h1>
+                <p>（单次最多允许上传100p视频，推荐采用mp4、flv格式，可有效缩短审核转码耗时）</p>
+            </div>
+            <div class="file-list-wrp">
+                <div>
+                    <div class="file-list-item">
+                        <div class="file-list-item-icon"><span>P1</span></div>
+                        <div class="file-list-item-wrp">
+                            <div class="item-status-wrp">
+                                <p class="item-title">911Mothers_2010W-480p</p>
+                            </div>
+                            <div id="item-upload-progress">
+                                <div id="progress-container">
+                                    <div id="progress">
+                                        <div id="progress-length"></div>
+                                    </div>
+                                    <div id="progress-value">0%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="upload-btn">
+                <input type="file" id="upload-btn" onchange="upload()">
+                <div class="upload-btn-title">上传视频</div>
+            </div>
+            <div class="basic-info"><h1>基本信息</h1></div>
+            <div class="select-cover">
+                <h3>视频封面设置</h3>
+                <p>（格式jpeg、png，文件大小≤5MB，建议尺寸≥1146*717，最低尺寸≥960*600）</p>
+            </div>
+            <div class="cover-preview">
+                <div class="cover-preview-default">
+                    <img id="cover" src="images/upload/small-tv-logo.png" alt="bili_tv">
+                    <span class="cover-upload-tip">上传封面</span>
+                </div>
+                <input type="file" id="upload-video-pic" onchange="uploadVideoPic()" accept="image/jpeg, image/jpg, image/png">
+            </div>
+            <div class="section-title-container">
+                <p class="section-title-deg">*</p>
+                <h3 class="section-title-content-main">分区</h3>
+            </div>
+            选择系：
+            <select id="department" onchange="change(this)">
+                <option>动画</option>
+                <option>番剧</option>
+                <option>国创</option>
+            </select>
+            选择专业：
+            <select id="professional"></select>
+            <div class="type-select-box">
+               <ul>
+                   <li>
+                       音乐分区
+                       <ul>
+                           <li>下拉菜单</li>
+                       </ul>
+                   </li>
+               </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
