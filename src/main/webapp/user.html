@@ -6,7 +6,7 @@
     <link href="css/user/user.css" rel="stylesheet">
     <script src="js/jquery-3.4.1.min.js" rel="script"></script>
     <script>
-        $(document).ready(function () {
+        $(function () {
             //导航动态
             $("#nav-collect").click(function () {
                 $(".col-1").css("display","none");
@@ -79,7 +79,47 @@
                 $(".be-cursor").css("width","84px");
                 $(".i-pin-empty").css("background-image","url(images/dbz-hint-33.png)");
             })
-
+            //后端
+            $.ajax({
+                url:"http://localhost:8888/getUserInfo",
+                type:"post",
+                data:{"id":2},
+                datatype:"json",
+                success:function (data) {
+                    console.log(data);
+                    $("#h-gender").before("<span id=\"h-name\">"+data.userName+"</span>");
+                    $(".h-ava").prepend("<img src=\""+data.userPicadress+"\" id=\"h-avatar\">");
+                    $("#fav-name").append("<span class=\"fav-up-name\">创建者："+data.userName+"</span>\n")
+                }
+            })
+            $.ajax({
+                url:"http://localhost:8888/getFansCount",
+                type:"post",
+                data:{"userId":1},
+                datatype:"json",
+                success:function (data) {
+                    $(".n-gz").append("<p id=\"n-gz\" class=\"n-data-v spacing-attention\">"+data+"</p>");
+                }
+            })
+            $.ajax({
+                url:"http://localhost:8888/getBeFansCount",
+                type:"post",
+                data:{"fansId":1},
+                datatype:"json",
+                success:function (data) {
+                    $(".n-fs").append("<p id=\"n-fs\" class=\"n-data-v spacing-fans\">"+data+"</p>");
+                }
+            })
+            $.ajax({
+                url:"http://localhost:8888/getCollectionVideo",
+                type:"post",
+                data:{"userId":1},
+                datatype:"json",
+                success:function (data) {
+                    console.log(data);
+                    $(".favinfo-cover").append("<img src=\""+data[1].video.videoPic+"\">\n");
+                }
+            })
         })
     </script>
 </head>
@@ -152,13 +192,11 @@
                 <div class="h-user">
                     <div class="h-info">
                         <div class="h-ava">
-                            <img src="images/user/head.webp" id="h-avatar">
                             <a target="_blank" class="avatar-cover">更换头像</a>
                             <span title="年度大会员"class="user-vip"></span>
                         </div>
                         <div class="h-basic">
                             <div>
-                                <span id="h-name">xlsily</span>
                                 <span id="h-gender" class="male icon"></span>
                                 <a class="h-lvl"></a>
                                 <a class="h-viptype">年度大会员</a>
@@ -229,11 +267,9 @@
                 <div class="n-static">
                     <a class="n-data n-gz">
                         <p class="n-data-k">关注数</p>
-                        <p id="n-gz" class="n-data-v spacing-attention">32</p>
                     </a>
                     <a class="n-data n-fs">
                         <p class="n-data-k">粉丝数</p>
-                        <p id="n-fs" class="n-data-v spacing-fans">1</p>
                     </a>
                 </div>
             </div>
@@ -421,12 +457,10 @@
                     <div class="favlistinfo">
                         <div class="favinfo-box">
                             <a class="favinfo-cover">
-                                <img src="images/user/test.png">
                             </a>
                             <div class="favinfo-details">
                                 <a class="fav-name">默认收藏夹</a>
-                                <div class="fav-meta">
-                                    <span class="fav-up-name">创建者：xlsily</span>
+                                <div class="fav-meta" id="fav-name">
                                 </div>
                                 <div class="fav-meta">
                                     <span>124个内容</span>
