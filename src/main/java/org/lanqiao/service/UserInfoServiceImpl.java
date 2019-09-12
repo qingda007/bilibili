@@ -14,4 +14,8 @@ public class UserInfoServiceImpl implements UserInfoService{
     public int insertUser(UserInfo userInfo) {
         return userInfoMapper.insertUser(userInfo);
     }
+    @Override
+    public UserInfo selectByPrimaryKey(Integer id) {
+return userInfoMapper.selectByPrimaryKey(id);
+    }
 }
