@@ -906,24 +906,26 @@
             cursor: pointer;
         }
     </style>
-<%--    <script>--%>
+    <script>
 
-<%--        $(function () {--%>
-<%--            $.ajax({--%>
-<%--                url:"http://localhost:8888/video/videoInfo",--%>
-<%--                data:{"userId":${video.uderId}},--%>
-<%--                type:"post",--%>
-<%--                datatype:"json",--%>
-<%--                success:function (data) {--%>
-<%--                    alert(data);--%>
+        $(function () {
+            $.ajax({
+                url:"/video/Msg",
+                data:{
+                    "videoId":${video.videoId},
+                    "pageNo":${p.pageNum}
+                },
+                type:"post",
+                datatype:"json",
+                success:function (data) {
+                    alert(data);
+                }
 
-<%--                }--%>
 
+            })
+        })
 
-<%--            })--%>
-<%--        })--%>
-
-<%--    </script>--%>
+    </script>
 </head>
 <body>
 <!--顶部导航-->
@@ -1094,103 +1096,41 @@
                             </div>
                             <!--评论信息-->
                             <div class="comment-list">
-                                <div class="list-item reply-wrap ">
-                                    <!--用户头像-->
-                                    <div class="user-face">
-                                        <img src="/images/video/akari.jpg">
-                                    </div>
-                                    <!--评论内容-->
-                                    <div class="con">
-                                        <!--用户名-->
-                                        <div class="user">
-                                            <span class="name">狸猫浣太子</span>
+                                <c:forEach var="comment" items="${p.list}">
+                                    <div class="list-item reply-wrap ">
+                                        <!--用户头像-->
+                                        <div class="user-face">
+                                            <img src="${comment.userPicadress}">
                                         </div>
-                                        <!--内容-->
-                                        <p class="text">我家坐车几分钟就是视美基地，当时我很小的时候就看着视美的动画过来。觉得视美真的是我的童年。<br>而现在我长大了许些，我又喜欢上了叶不羞，喜欢上了荣耀，喜欢上了全职。我觉得能看到视美做全职的动画真的很开心。我也期待视美把全职做好！做出我心中的那个。<br><br>最后说一句：这个渲染好好看(｀・ω・´)</p>
-                                        <!--信息-->
-                                        <div class="info">
-                                            <span class="time">2016-07-29 18:44</span>
-                                            <span class="like">
+                                        <!--评论内容-->
+                                        <div class="con">
+                                            <!--用户名-->
+                                            <div class="user">
+                                                <span class="name">${comment.userName}</span>
+                                            </div>
+                                            <!--内容-->
+                                            <p class="text">${comment.comment}</p>
+                                            <!--信息-->
+                                            <div class="info">
+                                                <span class="time"><fmt:formatDate pattern="yyyy-MM-dd" value="${comment.sendTime}"></fmt:formatDate></span>
+                                                <span class="like">
                                                 <i></i>
                                                 <span>322</span>
                                             </span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="list-item reply-wrap ">
-                                    <!--用户头像-->
-                                    <div class="user-face">
-                                        <img src="/images/video/akari.jpg">
-                                    </div>
-                                    <!--评论内容-->
-                                    <div class="con">
-                                        <!--用户名-->
-                                        <div class="user">
-                                            <span class="name">狸猫浣太子</span>
-                                        </div>
-                                        <!--内容-->
-                                        <p class="text">我家坐车几分钟就是视美基地，当时我很小的时候就看着视美的动画过来。觉得视美真的是我的童年。<br>而现在我长大了许些，我又喜欢上了叶不羞，喜欢上了荣耀，喜欢上了全职。我觉得能看到视美做全职的动画真的很开心。我也期待视美把全职做好！做出我心中的那个。<br><br>最后说一句：这个渲染好好看(｀・ω・´)</p>
-                                        <!--信息-->
-                                        <div class="info">
-                                            <span class="time">2016-07-29 18:44</span>
-                                            <span class="like">
-                                                <i></i>
-                                                <span>322</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-item reply-wrap ">
-                                    <!--用户头像-->
-                                    <div class="user-face">
-                                        <img src="/images/video/akari.jpg">
-                                    </div>
-                                    <!--评论内容-->
-                                    <div class="con">
-                                        <!--用户名-->
-                                        <div class="user">
-                                            <span class="name">狸猫浣太子</span>
-                                        </div>
-                                        <!--内容-->
-                                        <p class="text">我家坐车几分钟就是视美基地，当时我很小的时候就看着视美的动画过来。觉得视美真的是我的童年。<br>而现在我长大了许些，我又喜欢上了叶不羞，喜欢上了荣耀，喜欢上了全职。我觉得能看到视美做全职的动画真的很开心。我也期待视美把全职做好！做出我心中的那个。<br><br>最后说一句：这个渲染好好看(｀・ω・´)</p>
-                                        <!--信息-->
-                                        <div class="info">
-                                            <span class="time">2016-07-29 18:44</span>
-                                            <span class="like">
-                                                <i></i>
-                                                <span>322</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-item reply-wrap ">
-                                    <!--用户头像-->
-                                    <div class="user-face">
-                                        <img src="/images/video/akari.jpg">
-                                    </div>
-                                    <!--评论内容-->
-                                    <div class="con">
-                                        <!--用户名-->
-                                        <div class="user">
-                                            <span class="name">狸猫浣太子</span>
-                                        </div>
-                                        <!--内容-->
-                                        <p class="text">我家坐车几分钟就是视美基地，当时我很小的时候就看着视美的动画过来。觉得视美真的是我的童年。<br>而现在我长大了许些，我又喜欢上了叶不羞，喜欢上了荣耀，喜欢上了全职。我觉得能看到视美做全职的动画真的很开心。我也期待视美把全职做好！做出我心中的那个。<br><br>最后说一句：这个渲染好好看(｀・ω・´)</p>
-                                        <!--信息-->
-                                        <div class="info">
-                                            <span class="time">2016-07-29 18:44</span>
-                                            <span class="like">
-                                                <i></i>
-                                                <span>322</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
+
+                                </c:forEach>
+
 
                             </div>
                             <!--分页-->
-                            <div class="bottom-page"></div>
+                            <div class="bottom-page">
+                                <pager:page pageNo="${pageInfo.pageNum}" totalRecord="${pageInfo.total}" pageSize="${pageInfo.pageSize}" url="/video/Msg"></pager:page>
+                            </div>
                             <!--输入框-->
+                            <form action="/video/insert" method="post">
                             <div class="comment-send no-login">
                                 <div class="user-face">
                                     <img class="user-head" src="/images/video/akari.jpg">
@@ -1211,6 +1151,7 @@
                                     <span class="text">表情</span>
                                 </div>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
