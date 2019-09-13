@@ -48,8 +48,7 @@
                             <div class="progress-value" id="progress-value"></div>
                         </div>
                     </div>
-                    <video controls="controls" id="get-video-time" oncanplaythrough="myFunction(ele)" ></video>
-                    <span id="getDuration"></span>
+                    <video controls="controls" id="get-video-time" ></video>
                 </div>
             </div>
         </div>
@@ -88,9 +87,9 @@
         </div>
         <div class="content-title-container">
             <div class="input-box-instance">
-                <input type="text" id="upload-video-title" maxlength="80" placeholder="请输入稿件标题" class="input-box-val">
+                <input type="text" id="upload-video-title" oninput="countWord()" maxlength="80" placeholder="请输入稿件标题" class="input-box-val">
             </div>
-            <p class="input-box-max-tip">14/80</p>
+            <p class="input-box-max-tip">0/80</p>
         </div>
         <br>
         <div class="section-title-container">
@@ -100,7 +99,7 @@
         </div>
         <div class="content-title-container">
             <div class="input-box-instance">
-                <input type="text" id="upload-video-tag" maxlength="80" placeholder="按回车键Enter创建标签" class="input-box-val">
+                <input type="text" id="upload-video-tag" maxlength="80" placeholder="用空格隔开多个标签" class="input-box-val">
             </div>
         </div>
         <br>

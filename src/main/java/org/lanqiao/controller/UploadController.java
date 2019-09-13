@@ -33,7 +33,7 @@ public class UploadController {
     @RequestMapping(value = "/upload")
     public String upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws IOException {
         // 保存图片的路径，图片上传成功后，将路径保存到数据库
-        String filePath = "E:/upload";
+        String filePath = "/upload/video";
         String newPath = new Upload().upload(file, filePath, request);
         request.getSession(true).setAttribute("videoPath", newPath);
         return newPath;
@@ -42,7 +42,7 @@ public class UploadController {
     @RequestMapping(value = "/uploadVideoPic")
     public String uploadVideoPic(@RequestParam("cover") MultipartFile file, HttpServletRequest request) throws IOException {
         // 保存图片的路径，图片上传成功后，将路径保存到数据库
-        String filePath = "E:/upload";
+        String filePath = "/upload/cover";
         String newPath = new Upload().upload(file, filePath, request);
         request.getSession(true).setAttribute("picPath", newPath);
         return newPath;
