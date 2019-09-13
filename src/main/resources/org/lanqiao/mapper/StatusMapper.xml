@@ -24,6 +24,12 @@
     from status
     where status_alias1 = #{type1}
   </select>
+  <select id="selectIdByType" resultType="java.lang.String" parameterType="org.lanqiao.entity.Status" >
+    select
+    status_id
+    from status
+    where status_alias1 = #{statusAlias1} and status_alias2 = #{statusAlias2}
+  </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from status

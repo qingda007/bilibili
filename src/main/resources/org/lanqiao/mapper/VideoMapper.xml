@@ -133,6 +133,9 @@
         #{isReview,jdbcType=VARCHAR},
       </if>
     </trim>
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="videoId">
+      select LAST_INSERT_ID() as videoId
+    </selectKey>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Video" >
     update video

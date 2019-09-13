@@ -1,6 +1,7 @@
 package org.lanqiao.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Video {
     private Integer videoId;

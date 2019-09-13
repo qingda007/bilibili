@@ -9,7 +9,8 @@ import java.util.UUID;
 
 public class Upload {
     public String upload(MultipartFile file, String path, HttpServletRequest request) throws IOException {
-        String rootPath = request.getSession().getServletContext().getRealPath("/") + path;
+      //  String rootPath = request.getSession().getServletContext().getRealPath("/") + path;
+        String rootPath = path;
         // 获取原始图片的名字和扩展名
         String originalFilename = file.getOriginalFilename();
         // 生成文件新的名字
@@ -21,10 +22,12 @@ public class Upload {
             targetFile.getParentFile().mkdirs();
         }
         file.transferTo(targetFile);
-        return path + "/" + newFileName;
+      //  return path + "/" + newFileName;
+        return targetFile.getAbsolutePath();
     }
     public String upload(MultipartFile file, String path, String fileName, HttpServletRequest request) throws IOException {
-        String rootPath = request.getSession().getServletContext().getRealPath("/") + path;
+      //  String rootPath = request.getSession().getServletContext().getRealPath("/") + path;
+        String rootPath = path;
         // 获取原始图片的扩展名
         String originalFilename = file.getOriginalFilename();
         // 生成文件新的名字
@@ -36,6 +39,7 @@ public class Upload {
             targetFile.getParentFile().mkdirs();
         }
         file.transferTo(targetFile);
-        return path + "/" + newFileName;
+       // return path + "/" + newFileName;
+        return targetFile.getAbsolutePath();
     }
 }

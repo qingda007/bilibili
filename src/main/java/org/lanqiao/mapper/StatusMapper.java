@@ -10,6 +10,8 @@ public interface StatusMapper {
     List<String> selectAllType1();
     //查找一级分区对应的二级分区
     List<String> selectType2ByType1(String type1);
+    //查找一二级分区对应的statusId
+    String selectIdByType(Status status);
 
     int deleteByPrimaryKey(String statusId);
 

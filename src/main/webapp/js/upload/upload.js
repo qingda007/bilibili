@@ -1,9 +1,4 @@
-function myFunction(ele) {
-    var hour = parseInt((ele.duration)/3600);
-    var minute = parseInt((ele.duration%3600)/60);
-    var second = Math.ceil(ele.duration%60);
-    document.getElementById("getDuration").innerHTML="这段视频的时长为："+hour+"小时，"+minute+"分，"+second+"秒";
-}
+
 function upload() {
     var files = document.getElementById('upload-btn').files; //files是文件选择框选择的文件对象数组
     if(files.length == 0){
@@ -127,18 +122,45 @@ function getType2(type1) {
     });
 }
 
+//提交video的所有信息
 function submitVideoInfo() {
-    $("#upload-step2-container").css("display", "none");
-    $("#upload-step3-container").css("display","block");
-    alert($("#upload-video-pic").val());
-    $.ajax({
-        url : 'http://localhost:8888/video/getType2ByType1',//后台数据地址
-        data : {videoPic:$("#upload-video-pic").val()},//请求type1的数据
-        success : function(result){
-            $.each(result , function(i , item){
-                var obj=document.getElementById('video_type_2');
-                obj.add(new Option(item,item));
-            })
+    var videoTitle = document.getElementById('upload-video-title').value;
+    var videoDesc = document.getElementById('upload-video-desc').value;
+    var videoTag = document.getElementById("upload-video-tag").value;
+    var type1 = $('#video_type_1 option:selected').text();//选中的文本
+    var type2 = $('#video_type_2 option:selected').text();//选中的文本
+    if($('#upload-video-pic').val().length==0){
+        $('html,body').animate({scrollTop:$('.select-cover').offset().top}, 400);
+        alert("您还未选择视频封面");
+    }
+    else if(videoTitle.length==0){
+        $('#upload-video-title').style.border="1px solid red";
+        $('html,body').animate({scrollTop:$('#video_type_2').offset().top}, 400);
+        alert("标题不能为空");
+    }
+    else {
+        if(videoDesc.length==0){
+            videoDesc="暂无简介";
         }
-    });
+        $.ajax({
+            url : 'http://localhost:8888/video/uploadVideoInfo',//后台数据地址
+            data : {
+                userId : 1,
+                videoTitle: videoTitle,
+                videoDesc: videoDesc,
+                statusAlias1: type1,
+                statusAlias2: type2,
+                tags: videoTag
+            },//请求type1的数据
+            success : function(data){
+                // $("#upload-step2-container").css("display", "none");
+                // $("#upload-step3-container").css("display","block");
+            }
+        });
+    }
+}
+
+function countWord() {
+    var number = $('#upload-video-title').val().length;
+    $('.input-box-max-tip').html(number+"/80");
 }

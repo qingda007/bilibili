@@ -1,5 +1,6 @@
 package org.lanqiao.service;
 
+import org.lanqiao.entity.Status;
 import org.lanqiao.mapper.StatusMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,5 +17,9 @@ public class StatusServiceImpl implements StatusService {
     @Override
     public List<String> selectAllType1() {
         return statusMapper.selectAllType1();
+    }
+    @Override
+    public String selectIdByType(Status status){
+        return statusMapper.selectIdByType(status);
     }
 }
