@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.UserInfoMapper" >
+  <resultMap id="UserInfoResultMap" type="org.lanqiao.entity.UserInfo" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_passw" property="userPassw" jdbcType="VARCHAR" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="user_birthday" property="userBirthday" jdbcType="DATE" />
+    <result column="user_sex" property="userSex" jdbcType="VARCHAR" />
+    <result column="user_regtime" property="userRegtime" jdbcType="TIMESTAMP" />
+    <result column="user_tele" property="userTele" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="VARCHAR" />
+    <result column="user_picadress" property="userPicadress" jdbcType="VARCHAR" />
+    <result column="user_coin" property="userCoin" jdbcType="INTEGER" />
+    <result column="user_role" property="userRole" jdbcType="VARCHAR" />
+    <association property="videoComment" resultMap="VideoCommentResultMap"></association>
+  </resultMap>
+  <resultMap id="VideoCommentResultMap" type="org.lanqiao.entity.VideoComment" >
+    <id column="com_id" property="comId" jdbcType="INTEGER" />
+    <result column="video_id" property="videoId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+    <result column="send_time" property="sendTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_id, user_name, user_passw, user_email, user_birthday, user_sex, user_regtime, 
+    user_tele, user_type, user_picadress, user_coin, user_role
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="UserInfoResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_info
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.UserInfo" >
+    insert into user_info (user_id, user_name, user_passw, 
+      user_email, user_birthday, user_sex, 
+      user_regtime, user_tele, user_type, 
+      user_picadress, user_coin, user_role
+      )
+    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPassw,jdbcType=VARCHAR}, 
+      #{userEmail,jdbcType=VARCHAR}, #{userBirthday,jdbcType=DATE}, #{userSex,jdbcType=VARCHAR}, 
+      #{userRegtime,jdbcType=TIMESTAMP}, #{userTele,jdbcType=VARCHAR}, #{userType,jdbcType=VARCHAR}, 
+      #{userPicadress,jdbcType=VARCHAR}, #{userCoin,jdbcType=INTEGER}, #{userRole,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.UserInfo" >
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="userPassw != null" >
+        user_passw,
+      </if>
+      <if test="userEmail != null" >
+        user_email,
+      </if>
+      <if test="userBirthday != null" >
+        user_birthday,
+      </if>
+      <if test="userSex != null" >
+        user_sex,
+      </if>
+      <if test="userRegtime != null" >
+        user_regtime,
+      </if>
+      <if test="userTele != null" >
+        user_tele,
+      </if>
+      <if test="userType != null" >
+        user_type,
+      </if>
+      <if test="userPicadress != null" >
+        user_picadress,
+      </if>
+      <if test="userCoin != null" >
+        user_coin,
+      </if>
+      <if test="userRole != null" >
+        user_role,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassw != null" >
+        #{userPassw,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userBirthday != null" >
+        #{userBirthday,jdbcType=DATE},
+      </if>
+      <if test="userSex != null" >
+        #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="userRegtime != null" >
+        #{userRegtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userTele != null" >
+        #{userTele,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="userPicadress != null" >
+        #{userPicadress,jdbcType=VARCHAR},
+      </if>
+      <if test="userCoin != null" >
+        #{userCoin,jdbcType=INTEGER},
+      </if>
+      <if test="userRole != null" >
+        #{userRole,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.UserInfo" >
+    update user_info
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassw != null" >
+        user_passw = #{userPassw,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        user_email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userBirthday != null" >
+        user_birthday = #{userBirthday,jdbcType=DATE},
+      </if>
+      <if test="userSex != null" >
+        user_sex = #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="userRegtime != null" >
+        user_regtime = #{userRegtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userTele != null" >
+        user_tele = #{userTele,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="userPicadress != null" >
+        user_picadress = #{userPicadress,jdbcType=VARCHAR},
+      </if>
+      <if test="userCoin != null" >
+        user_coin = #{userCoin,jdbcType=INTEGER},
+      </if>
+      <if test="userRole != null" >
+        user_role = #{userRole,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.UserInfo" >
+    update user_info
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_passw = #{userPassw,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      user_birthday = #{userBirthday,jdbcType=DATE},
+      user_sex = #{userSex,jdbcType=VARCHAR},
+      user_regtime = #{userRegtime,jdbcType=TIMESTAMP},
+      user_tele = #{userTele,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=VARCHAR},
+      user_picadress = #{userPicadress,jdbcType=VARCHAR},
+      user_coin = #{userCoin,jdbcType=INTEGER},
+      user_role = #{userRole,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>
