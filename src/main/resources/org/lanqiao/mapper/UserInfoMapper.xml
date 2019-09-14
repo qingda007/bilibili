@@ -20,7 +20,7 @@
     insert into user_info (user_name, user_passw,user_email,user_tele) values (#{userName,jdbcType=VARCHAR},#{userPassw,jdbcType=VARCHAR},#{userEmail,jdbcType=VARCHAR},#{userTele,jdbcType=VARCHAR})
   </insert>
 <!--  登录的方法-->
-  <select id="findByUsername" resultMap="org.lanqiao.entity.UserInfo">
+  <select id="findByUsername" resultType="org.lanqiao.entity.UserInfo">
     select * from user_info where user_name=#{userName}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
