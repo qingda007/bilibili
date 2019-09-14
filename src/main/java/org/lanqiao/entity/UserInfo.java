@@ -1,7 +1,10 @@
 package org.lanqiao.entity;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.Date;
 
+@Repository
 public class UserInfo {
     private Integer userId;
 

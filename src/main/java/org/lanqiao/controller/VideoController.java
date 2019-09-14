@@ -1,6 +1,6 @@
 package org.lanqiao.controller;
 
-import org.lanqiao.entity.User;
+
 import org.lanqiao.entity.Video;
 import org.lanqiao.service.VideoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
