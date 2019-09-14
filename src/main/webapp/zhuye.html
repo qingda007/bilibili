@@ -1151,16 +1151,20 @@
 						left1 = 320;
 					}
 					if(left2 == -320) {
+
 						left2 = 320;
 					}
-					left1 -= 10;
-					left2 -= 10;
+
 					$('#d1').animate({
 						left: left1 + 'px'
 					});
+
 					$('#d2').animate({
 						left: left2 + 'px'
 					});
+					left1 -= 10;
+					left2 -= 10;
+
 				}
 				$("img[class='face']").hover(function() {
 					$("#i-login").fadeIn();
