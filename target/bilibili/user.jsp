@@ -3,6 +3,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://page.lanqiao.org/tag" prefix="pager" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -19,6 +20,18 @@
     <link href="css/user/user.css" rel="stylesheet">
     <script src="js/jquery-3.4.1.min.js" rel="script"></script>
     <script>
+        //总数
+        var num=0;
+        //每页数
+        var per_page=2;
+        //当前页
+        var cur_page=1;
+        //总页
+        var last_page=0;
+
+        var item_num=0;
+        var _list=[];
+
         $(function () {
             //导航动态
             $("#nav-collect").click(function () {
@@ -129,14 +142,73 @@
                     $(".n-fs").append("<p id=\"n-fs\" class=\"n-data-v spacing-fans\">"+data+"</p>");
                 }
             })
+
             $.ajax({
                 url: "http://localhost:8888/getVideoUpload",
                 type: "post",
                 data: {"userId": 2},
                 datatype: "json",
                 success: function (data) {
-                    alert(data);
                     console.log(data);
+                    //总数
+                    num=data.length;
+                    //总页
+                    last_page=Math.ceil(num/per_page);
+                    _list=data;
+                    if(last_page==1){
+                        page(num);
+                    }else{
+                        page(per_page);
+                    }
+                }
+            })
+            function page(item) {
+                $(".submit-video").empty();
+                for(var i=0;i<item;i++) {
+                    $(".submit-video").prepend("<li class=\"small-item\">\n" +
+                        "                                    <a class=\"cover-normal\">\n" +
+                        "                                        <img src=\""+_list[item_num].videoPic+"\"alt=\"测试专用AR-15\">\n" +
+                        "                                        <span class=\"lenth\">08:30</span>\n" +
+                        "                                        <div class=\"meta-mask\">\n" +
+                        "                                            <div class=\"meta-info\">\n" +
+                        "                                                <p class=\"view\">播放："+_list[item_num].playNum+"</p>\n" +
+                        "                                                <p class=\"favorite\">收藏："+_list[item_num].collectionNum+"</p>\n" +
+                        "                                                <p class=\"author\">UP"+_list[item_num].userId+"</p>\n" +
+                        "                                                <p class=\"pubdate\">投稿时间："+_list[item_num].upTime+"\" pattern=\"yyyy-MM-dd\"/></p>\n" +
+                        "                                            </div>\n" +
+                        "                                        </div>\n" +
+                        "                                    </a>\n" +
+                        "                                    <a class=\"title\">"+_list[item_num++].videoTitle+"</a>\n" +
+                        "                                    <div class=\"meta pubdate\">收藏于:</div>\n" +
+                        "                                    <div class=\"be-dropdown video-edit\">\n" +
+                        "                                        <div class=\"be-dropdown-tigger\">\n" +
+                        "                                            <i class=\"icon icon-ic-more\"></i>\n" +
+                        "                                        </div>\n" +
+                        "                                    </div>\n" +
+                        "                                </li>")
+                }
+            }
+            $("#last").click(function () {
+                     cur_page--;
+                    item_num=(cur_page-1)*per_page;
+                    page(per_page);
+            })
+            $("#next").click(function () {
+                cur_page++;
+                item_num=(cur_page-1)*per_page;
+                if(num-item_num<per_page) {
+                    page(num-item_num);
+                }else {
+                    page(per_page);
+                }
+            })
+            $("#sure").click(function () {
+                cur_page=$("#pagesize").val();
+                item_num=(cur_page-1)*per_page;
+                if(num-item_num<per_page) {
+                    page(num-item_num);
+                }else {
+                    page(per_page);
                 }
             })
         })
@@ -596,7 +668,21 @@
                             <div class="breadcrumb">
                                 <p class="item">我的视频</p>
                             </div>
-                            <div class="submit-video"></div>
+                            <div class="submit-video">
+
+                            </div>
+                            <ul class="be-page">
+                                <li class="be-page-item be-page-prev be-page-disabled" id="last"><a>上一页</a></li>
+                                <li class="be-page-item be-page-active"><a>1</a></li>
+                                <li class="be-page-item"><a>2</a></li>
+                                <li class="be-page-item"><a>3</a></li>
+                                <li class="be-page-item-jump-next"></li>
+                                <li class="be-page-item"><a>7</a></li>
+                                <li class="be-page-item be-page-next" id="next"><a>下一页</a></li>
+                                <span class="be-page-total">共7页</span>
+                                <span class="be-page-option">跳至<input type="text"id="pagesize">页</span>
+                                <input id="sure" type="button">
+                            </ul>
                         </div>
                     </div>
                 </div>

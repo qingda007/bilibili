@@ -7,53 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d33027fa-a9f2-4325-ab9d-46bace963481" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/userInfo.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/zhuye.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/bilibili/userInfo.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/bilibili/zhuye.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml~origin_master" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/VideoCollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/VideoCollectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/VideoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/VideoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/entity/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/entity/UserInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/UserInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/UserInfoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/UserInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/UserInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/UserInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/UserInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/user.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/bilibili/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/META-INF/bilibili.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/META-INF/bilibili.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/RegisterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/UploadController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/UserInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/UserInfoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/VideoCollectionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/VideoCollectionController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/VideoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/VideoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/entity/UserInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/entity/UserInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/UserInfoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/UserInfoMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/UserInfoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/UserInfoService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/UserInfoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/UserInfoServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/bilibili/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/bilibili/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/bilibili.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/bilibili.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/RegisterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/UploadController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/UserInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/UserInfoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/VideoCollectionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/VideoCollectionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/css/main/iconfont.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/css/main/iconfont.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/zhuye.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/zhuye.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/VideoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/VideoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/entity/UserInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/entity/UserInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/UserInfoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/UserInfoMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/service/UserInfoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/UserInfoService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/service/UserInfoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/UserInfoServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/UserInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/UserInfoMapper.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -213,8 +174,17 @@
       <workItem from="1568335376972" duration="9031000" />
       <workItem from="1568382972597" duration="7658000" />
       <workItem from="1568434747210" duration="12201000" />
-      <workItem from="1568451748426" duration="1427000" />
+      <workItem from="1568451748426" duration="1754000" />
+      <workItem from="1568456765248" duration="11427000" />
     </task>
+    <task id="LOCAL-00001" summary="用户自己上传视频">
+      <created>1568454716632</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1568454716632</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,7 +205,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="上传视频" />
-    <option name="LAST_COMMIT_MESSAGE" value="上传视频" />
+    <MESSAGE value="用户自己上传视频" />
+    <option name="LAST_COMMIT_MESSAGE" value="用户自己上传视频" />
   </component>
   <component name="masterDetails">
     <states>

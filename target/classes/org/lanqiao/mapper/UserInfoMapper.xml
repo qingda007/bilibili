@@ -14,6 +14,7 @@
     <result column="user_picadress" property="userPicadress" jdbcType="VARCHAR" />
     <result column="user_coin" property="userCoin" jdbcType="INTEGER" />
     <result column="user_role" property="userRole" jdbcType="VARCHAR" />
+
   </resultMap>
 
   <select id="selectByPrimaryKey" resultMap="UserInfoResultMap" parameterType="java.lang.Integer">
