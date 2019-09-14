@@ -10,10 +10,24 @@ public class UserInfoServiceImpl implements UserInfoService{
     @Autowired
     private UserInfoMapper userInfoMapper;
 
+    //注册业务
     @Override
-    public int insertUser(UserInfo userInfo) {
-        return userInfoMapper.insertUser(userInfo);
+    public UserInfo registerUser(UserInfo userInfo) {
+        userInfoMapper.registerUser(userInfo);
+        return userInfo;
     }
+
+
+    //登录业务
+    @Override
+    public UserInfo checkLogin(String userName, String userPassw) {
+        UserInfo userInfo = userInfoMapper.findByUsername(userName);
+        if(userInfo != null && userInfo.getUserPassw().equals(userPassw)){
+            return userInfo;
+        }
+        return null;
+    }
+
     @Override
     public UserInfo selectByPrimaryKey(Integer id) {
 return userInfoMapper.selectByPrimaryKey(id);

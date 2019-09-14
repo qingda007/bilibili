@@ -605,6 +605,7 @@ input,textarea{
     cursor: pointer;
 }
 .i-pin-empty{
+    /*background-image: url("../images/dbz-hint-33.png");*/
     background-repeat: no-repeat;
     background-position:250px bottom;
 }
