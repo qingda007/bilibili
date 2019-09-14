@@ -1,25 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="bilibili:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1589018-61f5-426e-b36e-7773ee6baa48" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/bilibili.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+    <list default="true" id="60ba25c1-d7f4-417c-8ecd-da1c679dad7e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/VideoCollectionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/VideoCollectionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/VideoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/VideoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/entity/VideoCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/entity/VideoCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/UserInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/UserInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/VideoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/VideoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/UserInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/UserInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/UserInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/UserInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/VideoCollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/VideoCollectionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/VideoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/VideoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/VideoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/VideoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/UserInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/UserInfoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/VideoCollectionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/VideoCollectionMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/VideoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/VideoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/user/user.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/user/user.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/mybatis.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/mybatis.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/RegisterController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/UserInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/UserInfoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/VideoCollectionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/VideoCollectionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/VideoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/VideoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/entity/UserInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/entity/UserInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/entity/VideoCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/entity/VideoCollection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/UserInfoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/UserInfoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/UserInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/UserInfoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/VideoCollectionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/VideoCollectionMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/UserInfoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/UserInfoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/UserInfoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/UserInfoServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/VideoCollectionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/VideoCollectionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/VideoCollectionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/VideoCollectionServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/lib/mysql-connector-java-5.1.10.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/css/user/user.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/css/user/user.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/UserInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/UserInfoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/VideoCollectionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/VideoCollectionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/VideoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/VideoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/entity/UserInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/entity/UserInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/entity/VideoCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/entity/VideoCollection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/UserInfoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/UserInfoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/UserInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/UserInfoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/VideoCollectionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/VideoCollectionMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/service/UserInfoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/UserInfoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/service/UserInfoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/UserInfoServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/service/VideoCollectionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/VideoCollectionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/service/VideoCollectionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/VideoCollectionServiceImpl.class" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Jsp File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -34,30 +99,9 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="210" />
-    <option name="width" value="1585" />
-    <option name="height" value="1075" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-    </panes>
+  <component name="ProjectId" id="1Qjxuef4lLv1uBdyu8g4Azcxwmd" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -65,7 +109,13 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="org.lanqiao.service" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -79,62 +129,115 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 8.5.43" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.43" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
+      <deployment>
+        <artifact name="bilibili:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_bilibili_2" />
+        <option name="HTTP_PORT" value="8888" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="64373" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="bilibili:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f1589018-61f5-426e-b36e-7773ee6baa48" name="Default Changelist" comment="" />
+      <changelist id="60ba25c1-d7f4-417c-8ecd-da1c679dad7e" name="Default Changelist" comment="" />
       <created>1568289834412</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568289834412</updated>
       <workItem from="1568289838530" duration="273000" />
+      <workItem from="1568298058692" duration="236000" />
+      <workItem from="1568335376972" duration="9031000" />
+      <workItem from="1568382972597" duration="7658000" />
+      <workItem from="1568434747210" duration="12201000" />
     </task>
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="273000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <layout>
-      <window_info id="Designer" />
-      <window_info id="Image Layers" />
-      <window_info id="Capture Tool" />
-      <window_info id="UI Designer" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info id="Web" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20241287" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Spring" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Java Enterprise" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" weight="0.3286119" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Bean Validation" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="masterDetails">
     <states>

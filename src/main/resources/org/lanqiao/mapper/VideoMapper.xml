@@ -17,10 +17,18 @@
     <result column="class_type" property="classType" jdbcType="VARCHAR" />
     <result column="is_review" property="isReview" jdbcType="VARCHAR" />
   </resultMap>
+
+
   <sql id="Base_Column_List" >
     video_id, user_id, video_title, video_pic, video_desc, video_url, up_time, video_time, 
     play_num, like_num, collection_num, coin_num, class_type, is_review
   </sql>
+
+  <select id="selectVideoUpload" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select *
+    from video
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

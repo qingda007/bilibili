@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class VideoCollection {
     private Integer collectId;
-
     private Video video;
 
     private Integer userId;
