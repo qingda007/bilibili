@@ -1,7 +1,9 @@
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8"%>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Title</title>
     <base href="/">
     <script src="js/jquery-3.4.1.js"></script>
@@ -116,47 +118,49 @@
             </div>
             <div class="line">
             </div>
-            <div class="login-right">
-                <div class="form-login">
-                    <div class="input-box">
-                        <ul style="list-style-type:none">
-                            <li class=" item status-box">
-                                <input type="text" placeholder="你的手机号码/邮箱" maxlength="50" autocomplete="off">
-                                <span class="status"></span>
-                                <div class="text">
-                                    <p class="tips"></p>
-                                </div>
-                            </li>
-                            <li class="item status-box">
-                                <input type="password" placeholder="密码" id="login-passwd" >
-                                <span class="status"></span>
-                                <div class="text clearfix"></div>
-                            </li>
-                            <li class="remember">
-                                <label >
-                                    <input type="checkbox" class="move">记住我
-                                    <span>不是自己的电脑上不要勾选此项</span>
-                                    <a target="_blank" class="forget-password">忘记密码？</a>
-                                    <a target="_blank" class="not-checkout">无法验证</a>
-                                </label>
+            <form action="${pageContext.request.contextPath}/user/checkLogin" method="post">
+                <div class="login-right">
+                    <div class="form-login">
+                        <div class="input-box">
+                            <ul style="list-style-type:none">
+                                <li class=" item status-box">
+                                    <input type="text" placeholder="你的手机号码/邮箱" id="userName" name="userName" maxlength="50" autocomplete="off">
+                                    <span class="status"></span>
+                                    <div class="text">
+                                        <p class="tips"></p>
+                                    </div>
+                                </li>
+                                <li class="item status-box">
+                                    <input type="password" placeholder="密码"  id="userPassw" name="userPassw">
+                                    <span class="status"></span>
+                                    <div class="text clearfix"></div>
+                                </li>
+                                <li class="remember">
+                                    <label >
+                                        <input type="checkbox" class="move">记住我
+                                        <span>不是自己的电脑上不要勾选此项</span>
+                                        <a target="_blank" class="forget-password">忘记密码？</a>
+                                        <a target="_blank" class="not-checkout">无法验证</a>
+                                    </label>
 
-                            </li>
-                            <li class="btn-box">
-                                <a class="btn btn-login" >登录</a>
-                                <a class="btn btn-reg" href="register.jsp">注册</a>
-                            </li>
-                            <li class="sns">
-                                <a class="btn weibo" style="color: #717171">
-                                    微博账号登陆
-                                </a>
-                                <a class="btn qq" style="color: #717171">
-                                    QQ账号登陆
-                                </a>
-                            </li>
-                        </ul>
+                                </li>
+                                <li class="btn-box">
+                                    <input type="submit" id="submit" class="btn btn-login"  value="登录">
+                                    <a class="btn btn-reg" onclick="window.location.href='/user/regist'">注册</a>
+                                </li>
+                                <li class="sns">
+                                    <a class="btn weibo" style="color: #717171">
+                                        微博账号登陆
+                                    </a>
+                                    <a class="btn qq" style="color: #717171">
+                                        QQ账号登陆
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
         <!--            用户协议部分-->
         <p data-v-3e357e28>登录即代表你同意

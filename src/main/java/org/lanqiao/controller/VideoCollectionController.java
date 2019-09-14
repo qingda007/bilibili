@@ -21,7 +21,6 @@ import java.util.List;
 public class VideoCollectionController {
     @Autowired
     VideoCollectionService videoCollectionService;
-    VideoService videoService;
     @RequestMapping("/index")
     public ModelAndView getAll(@RequestParam(value = "pageNo", defaultValue = "1") int pageNum) {
         PageHelper.startPage(pageNum, 5);

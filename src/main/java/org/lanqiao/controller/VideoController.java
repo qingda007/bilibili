@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-@RequestMapping("/video")
+@RequestMapping("video")
 public class VideoController {
     @Autowired
     VideoServiceImpl videoService;
@@ -23,7 +23,5 @@ public class VideoController {
         Video video=videoService.selectVideoInfo(videoId);
         return new ModelAndView("player","video",video);
     }
-
-
 
 }
