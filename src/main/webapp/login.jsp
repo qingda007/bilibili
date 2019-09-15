@@ -7,7 +7,38 @@
     <title>Title</title>
     <base href="/">
     <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/login/jigsaw.js"></script>
     <link href="css/login/login.css" rel="stylesheet">
+    <link href="css/login/jigsaw.css" rel="stylesheet">
+    <style>
+        .container {
+            width: 310px;
+            height: 360px;
+            margin: 100px auto;
+        }
+        input {
+            display: block;
+            width: 290px;
+            line-height: 40px;
+            margin: 10px 0;
+            padding: 0 10px;
+            outline: none;
+            border:1px solid #c8cccf;
+            border-radius: 4px;
+            color:#6a6f77;
+        }
+        #msg {
+            width: 100%;
+            line-height: 40px;
+            font-size: 14px;
+            text-align: center;
+        }
+        a:link,a:visited,a:hover,a:active {
+            margin-left: 100px;
+            color: #0366D6;
+        }
+
+    </style>
 </head>
 <body>
 <div id="login-app">
@@ -95,26 +126,40 @@
         <div class="login-box">
             <!--  左边二维码部分登录部分 -->
             <div class="login-left">
-                <div class="qrcode-login">
-                    <div class="qrcode-con">
-                        <i class="tv-icon"></i>
-                        <div class="qrcode-box">
-                            <div>
-                                <img src="images/login/qrcode.png" style="display: block;">
-                            </div>
-                        </div>
+                <!--  左边二维码部分登录部分 -->
+                    <div class="container">
+                        <div id="captcha" style="position: relative"></div>
+                        <div id="msg"></div>
                     </div>
-                    <div class="qrcode-footer">
-                        <p class="status-txt">扫描二维码登录</p>
-                        <p class="app-link">请使用
-                            <a>哔哩哔哩客户端</a>
-                            <br>
-                            扫码登录
-                            <br>
-                            或扫码下载APP
-                        </p>
-                    </div>
-                </div>
+                    <script>
+                        jigsaw.init(document.getElementById('captcha'),function () {
+                            document.getElementById('msg').innerHTML = '验证通过！';
+                            $("#submit").attr("disabled",false).css("background-color","#00a1d6").css("color","#fff");
+                        },function () {
+                            document.getElementById('msg').innerHTML = '验证失败！'
+                            $("#submit").attr("disabled",true).css("background-color","#f5f5f5")
+                        });
+                    </script>
+<%--                <div class="qrcode-login">--%>
+<%--                    <div class="qrcode-con">--%>
+<%--                        <i class="tv-icon"></i>--%>
+<%--                        <div class="qrcode-box">--%>
+<%--                            <div>--%>
+<%--                                <img src="images/login/qrcode.png" style="display: block;">--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="qrcode-footer">--%>
+<%--                        <p class="status-txt">扫描二维码登录</p>--%>
+<%--                        <p class="app-link">请使用--%>
+<%--                            <a>哔哩哔哩客户端</a>--%>
+<%--                            <br>--%>
+<%--                            扫码登录--%>
+<%--                            <br>--%>
+<%--                            或扫码下载APP--%>
+<%--                        </p>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
             </div>
             <div class="line">
             </div>
@@ -145,7 +190,7 @@
 
                                 </li>
                                 <li class="btn-box">
-                                    <input type="submit" id="submit" class="btn btn-login"  value="登录">
+                                    <input type="submit" id="submit" disabled="disabled" class="btn btn-login"  value="登录">
                                     <a class="btn btn-reg" onclick="window.location.href='/user/regist'">注册</a>
                                 </li>
                                 <li class="sns">

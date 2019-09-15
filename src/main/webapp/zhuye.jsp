@@ -10,7 +10,199 @@
     <link rel="stylesheet" href="css/main/header.css" />
     <link rel="stylesheet" href="css/main/iconfont.css" />
     <link rel="stylesheet" href="css/main/head.css" />
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        $(function () {
+            var imgCount = 5;
+            var index = 1;
+            var intervalId;
+            var buttonSpan = $('.trig')[0].children; //htmlCollection 集合
+            //自动轮播功能 使用定时器
+            autoNextPage();
+            autoNextScroll();
 
+            function autoNextPage() {
+                intervalId = setInterval(function() {
+                    nextPage(true);
+                }, 3000);
+            }
+            //当鼠标移入 停止轮播
+            $('.panel').hover(function() {
+                console.log('hah');
+                clearInterval(intervalId);
+            }, function() { // 当鼠标移出，开始轮播
+                autoNextPage();
+            });
+            //
+
+            //小圆点的相应功能 事件委托
+            clickButtons();
+
+            function clickButtons() {
+                var length = buttonSpan.length;
+                for(var i = 0; i < length; i++) {
+                    buttonSpan[i].onclick = function() {
+                        $(buttonSpan[index - 1]).removeClass('on');
+                        if($(this).attr('index') == 1) {
+                            index = 5;
+                        } else {
+                            index = $(this).attr('index') - 1;
+                        }
+                        nextPage(true);
+                    };
+                }
+            }
+
+            function nextPage(next) {
+                var targetLeft = 0;
+                //当前的圆点去掉on样式
+                $(buttonSpan[index - 1]).removeClass('on');
+                if(next) { //往后走
+                    if(index == 5) { //到最后一张，直接跳到第一张
+                        targetLeft = 0;
+                        index = 1;
+                    } else {
+                        index++;
+                        targetLeft = -440 * (index - 1);
+                    }
+
+                } else { //往前走
+                    if(index == 1) { //在第一张，直接跳到第五张
+                        index = 5;
+                        targetLeft = -440 * (imgCount - 1);
+                    } else {
+                        index--;
+                        targetLeft = -440 * (index - 1);
+                    }
+
+                }
+                $('.carousel-module .panel .pic').animate({
+                    left: targetLeft + 'px'
+                });
+                //更新后的圆点加上样式
+                $(buttonSpan[index - 1]).addClass('on');
+
+            }
+            /*-------/
+             *
+             */
+
+
+            $("#close").click(function() {
+                $("#fixed-app-download").detach();
+            })
+            var $menu_li = $(".bili-tab-item");
+            $menu_li.click(function() {
+                //1.将点击的li高亮
+                $(this).addClass("on");
+                //并去掉其他的高亮
+                $(this).siblings().removeClass("on");
+
+                //点击第1个li 显示第1个div  点击第2个li 显示第2个div
+                //首先获得点击了第几个li
+                var clickedLiIndex = $menu_li.index(this);
+                $("div.tab-box>div").eq(clickedLiIndex).show();
+                $("div.tab-box>div").eq(clickedLiIndex).siblings().hide();
+            })
+            var left1 = 0;
+            var left2 = 320;
+            autoNextScroll()
+            function autoNextScroll() {
+                intervalId = setInterval(function() {
+                    scroll1(true);
+                }, 100);
+            }
+
+            function scroll1(next) {
+
+                if(left1 == -320) {
+                    left1 = 320;
+                }
+                if(left2 == -320) {
+
+                    left2 = 320;
+                }
+
+                $('#d1').animate({
+                    left: left1 + 'px'
+                });
+
+                $('#d2').animate({
+                    left: left2 + 'px'
+                });
+                left1 -= 10;
+                left2 -= 10;
+
+            }
+            $("img[class='face']").hover(function() {
+                $("#i-login").fadeIn();
+
+            }, function() {
+                $("#i-login").hover(function() {
+                    $("#i-login").fadeIn();
+                }, function() {
+                    $("#i-login").fadeOut();
+                })
+            })
+
+            //从登录界面登录成功后，跳到主界面并给vm.user.uid赋值
+            vm.user.uid=2;
+            var id=vm.user.uid;
+            if(id!=null){
+                $.ajax({
+                    url:"http://localhost:8888/getUserInfo",
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        "id":id,
+                    },
+                    success:function(data){
+                        var img=data.userPicadress;
+                        $("#face").attr("src",img);
+                        $("#i-login").remove();
+                        $("#fixed-app-download").remove();
+
+                        if (data.userTele!=null){
+                            $("#s1").text("已绑定");
+                        }else {
+                            $("#s1").text("未绑定");
+                        }
+                        if (data.userEmail!=null){
+                            $("#s2").text("已绑定");
+                        }else {
+                            $("#s2").text("未绑定");
+                        }
+                        //vue
+                        vm.user.uname=data.userName;
+                        vm.user.coin=data.userCoin;
+                    },
+
+                });
+                $("#nipi").hover(function () {
+                    $(this).addClass("on");
+                    $("div.profile-m").show();
+                },function () {
+                    $(this).removeClass("on");
+                    $("div.profile-m").hide();
+                });
+                $(".tips").siblings().hover(function () {
+                    $(this).siblings().show();
+                },function () {
+                    $(this).siblings().hide();
+                });
+                $("a.logout").click(function () {
+                    vm.user.uid=null;
+                    location.reload();
+                });//登录退出按钮
+            }else{
+                $("#face").attr("src","images/main/akari.jpg");
+                $("div.profile-m").remove();
+                $("li.nipi").remove();
+            }
+        })
+
+    </script>
+    <script src="js/jquery-3.4.1.js"></script>
 </head>
 
 <body>
@@ -60,11 +252,11 @@
                 </div>
                 <div class="nav-con fr">
                     <ul class="fr">
-                        <li class="nav-item profile-info">
+                        <li id="nipi" class="nav-item profile-info" >
                             <a class="t">
                                 <i class="i-face">
-                                    <img src="images/main/akari.jpg" class="face">
-                                    <img class="pendant" />
+                                    <img id="face" class="face">
+                                    <img class="pendant"  />
                                 </i>
                             </a>
                             <div id="i-login" class="i_menu i_menu_login" style="display: none;">
