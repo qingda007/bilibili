@@ -41,11 +41,46 @@ function upload() {
         }
         else if (result.readyState == 4) { //finished
             console.log('上传成功', result);
+            $(".other-cover-tip").html("正在为您截取可选封面");
+            $.ajax({
+                url : 'http://localhost:8888/video/getCover',//后台数据地址
+                type : "post",
+                dataType: "text",
+                success : function(data){
+                        getCover(data);
+                    }
+            });
         }
     });
     xhr.send(form); //开始上传
 }
+var isSelectCover = false;
+function getCover(data) {
+    $(".other-cover-tip").html("可选择以下封面(默认自动选择第一张)：");
+    $(".cover").find("img").each(function(i,v){
+        var src = data + (i+1) +".jpg";
+        $(this).attr("src",src);
+        $(this).css({
+            "width" : "128px",
+            "height" : "96px",
+            "top" : "0"
+        });
+    });
+    if(!isSelectCover){
+        $("#cover").css({
+            "width" : "168px",
+            "height" : "126px",
+            "top" : "0"
+        });
+        $("#cover").attr("src",data + "1.jpg");  //显示图片
+    }
+}
+function addCover(e) {
+    $("#cover").attr("src",e.src);  //显示图片
+}
+
 function uploadVideoPic(){
+    isSelectCover = true;
     var files = document.getElementById('upload-video-pic').files; //files是文件选择框选择的文件对象数组
     if(files.length == 0) return;
 
@@ -80,6 +115,11 @@ function uploadVideoPic(){
     var freader = new FileReader();
     freader.readAsDataURL(file);
     freader.onload = function(e) {
+        $("#cover").css({
+            "width" : "168px",
+            "height" : "126px",
+            "top" : "0"
+        });
         $("#cover").attr("src",e.target.result);  //显示图片
     }
 }
@@ -126,17 +166,15 @@ function getType2(type1) {
 function submitVideoInfo() {
     var videoTitle = document.getElementById('upload-video-title').value;
     var videoDesc = document.getElementById('upload-video-desc').value;
+    var videoPic = document.getElementById('cover').src;
     var videoTag = document.getElementById("upload-video-tag").value;
     var type1 = $('#video_type_1 option:selected').text();//选中的文本
     var type2 = $('#video_type_2 option:selected').text();//选中的文本
-    if($('#upload-video-pic').val().length==0){
-        $('html,body').animate({scrollTop:$('.select-cover').offset().top}, 400);
-        alert("您还未选择视频封面");
-    }
-    else if(videoTitle.length==0){
-        $('#upload-video-title').style.border="1px solid red";
+    if(videoTitle.length==0){
         $('html,body').animate({scrollTop:$('#video_type_2').offset().top}, 400);
-        alert("标题不能为空");
+    }
+    else if(videoTag.length==0){
+        $('html,body').animate({scrollTop:$('#upload-video-title').offset().top}, 400);
     }
     else {
         if(videoDesc.length==0){
@@ -147,6 +185,7 @@ function submitVideoInfo() {
             data : {
                 userId : 1,
                 videoTitle: videoTitle,
+                videoPic: videoPic,
                 videoDesc: videoDesc,
                 statusAlias1: type1,
                 statusAlias2: type2,

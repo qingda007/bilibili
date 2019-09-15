@@ -1,7 +1,14 @@
-<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: gosick39
+  Date: 2019/9/14
+  Time: 18:37
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>上传视频</title>
     <link rel="stylesheet" href="css/upload/upload_step1.css" type="text/css">
     <link rel="stylesheet" href="css/upload/upload_step2.css" type="text/css">
@@ -65,23 +72,23 @@
             <div class="cover-preview-default">
                 <img id="cover" src="images/upload/small-tv-logo.png" alt="bili_tv">
                 <span class="cover-upload-tip">上传封面</span>
+                <input type="file" id="upload-video-pic" onchange="uploadVideoPic()" accept="image/jpeg, image/jpg, image/png">
             </div>
             <div class="other-cover">
-                <div class="other-cover-tip">可选择以下封面：</div>
+                <div class="other-cover-tip">&ensp;</div>
                 <div class="cover">
-                    <img src="images/upload/small-tv-logo.png" alt="bili_tv">
+                    <img class="cover-img" onclick="addCover(this)" src="images/upload/small-tv-logo.png" alt="bili_tv">
                 </div>
                 <div class="cover">
-                    <img src="images/upload/small-tv-logo.png" alt="bili_tv">
+                    <img class="cover-img" onclick="addCover(this)" src="images/upload/small-tv-logo.png" alt="bili_tv">
                 </div>
                 <div class="cover">
-                    <img src="images/upload/small-tv-logo.png" alt="bili_tv">
+                    <img class="cover-img" onclick="addCover(this)" src="images/upload/small-tv-logo.png" alt="bili_tv">
                 </div>
                 <div class="cover">
-                    <img src="images/upload/small-tv-logo.png" alt="bili_tv">
+                    <img class="cover-img" onclick="addCover(this)" src="images/upload/small-tv-logo.png" alt="bili_tv">
                 </div>
             </div>
-            <input type="file" id="upload-video-pic" onchange="uploadVideoPic()" accept="image/jpeg, image/jpg, image/png">
         </div>
         <br>
         <div class="section-title-container">

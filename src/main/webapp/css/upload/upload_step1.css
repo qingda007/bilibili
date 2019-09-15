@@ -2,6 +2,7 @@
 
 }
 #upload-step1-container {
+    display: none;
     max-width: 850px;
     padding: 0 10px;
     margin: 0 auto;
@@ -88,9 +89,8 @@
     padding: 0 8px;
     line-height: 20px;
 }
-.upload-btn-container input {
+#homeDrop .upload-btn-container input {
     position: absolute;
-    font-size: 100px;
     right: 0;
     top: 0;
     opacity: 0;

@@ -15,6 +15,18 @@ public class ReadVideo {
      * @param videoPath 视频路径
      * @return
      */
+    public long readVideoSecond(String videoPath){
+        File file = new File(videoPath);
+        Encoder encoder = new Encoder();
+        long sum = 0;
+        try {
+            MultimediaInfo m = encoder.getInfo(file);
+            sum = m.getDuration()/1000; //时长sum单位：秒
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sum;
+    }
     public Date readVideo(String videoPath) {
         String durationStr = "";
         File file = new File(videoPath); //videoPath传入值（"D:\\666.mp4"）
