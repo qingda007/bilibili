@@ -14,9 +14,13 @@
     <result column="user_picadress" property="userPicadress" jdbcType="VARCHAR" />
     <result column="user_coin" property="userCoin" jdbcType="INTEGER" />
     <result column="user_role" property="userRole" jdbcType="VARCHAR" />
+
   </resultMap>
-<!--  注册的方法-->
-  <insert id="registerUser"  parameterType="org.lanqiao.entity.UserInfo" >
+
+  <select id="selectByPrimaryKey" resultMap="UserInfoResultMap" parameterType="java.lang.Integer">
+    select * from user_info where user_id=#{userId}
+  </select>
+  <insert id="insertUser" parameterType="org.lanqiao.entity.UserInfo" >
     insert into user_info (user_name, user_passw,user_email,user_tele) values (#{userName,jdbcType=VARCHAR},#{userPassw,jdbcType=VARCHAR},#{userEmail,jdbcType=VARCHAR},#{userTele,jdbcType=VARCHAR})
   </insert>
 <!--  登录的方法-->

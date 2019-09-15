@@ -3,7 +3,7 @@
 <mapper namespace="org.lanqiao.mapper.VideoCollectionMapper" >
   <resultMap id="CollectionResultMap" type="org.lanqiao.entity.VideoCollection" >
     <id column="collect_id" property="collectId" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="collect_time" property="collectTime" jdbcType="DATE" />
     <association property="video" javaType="org.lanqiao.entity.Video">
       <id column="video_id" property="videoId" jdbcType="INTEGER" />
@@ -23,8 +23,8 @@
   </resultMap>
   <select id="getVideoCollection" resultMap="CollectionResultMap" parameterType="java.lang.Integer" >
     select *
-    from video_collection c,video v
-    where c.user_id = #{userId,jdbcType=INTEGER} and c.video_id=v.video_id
+    from video_collection c,video v,user_info u
+    where c.user_id = #{userId,jdbcType=INTEGER} and c.video_id=v.video_id and v.user_id=u.user_id
   </select>
   <select id="selectByPrimaryKey" resultMap="CollectionResultMap" parameterType="java.lang.Integer" >
     select *

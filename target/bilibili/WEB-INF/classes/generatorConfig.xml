@@ -54,16 +54,16 @@
 			<!--enableSelectByExample="false" enableUpdateByExample="false">-->
 			<!--<property name="useActualColumnNames" value="true" />-->
 		<!--</table>-->
-		<table tableName="video" domainObjectName="Video"
+		<table tableName="user_info" domainObjectName="UserInfo"
 			enableCountByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" enableUpdateByExample="false">
 			<property name="useActualColumnNames" value="false" />
 		</table>
-		<table tableName="video_collection" domainObjectName="VideoCollection"
-			enableCountByExample="false" enableDeleteByExample="false"
-			enableSelectByExample="false" enableUpdateByExample="false">
-			<property name="useActualColumnNames" value="false" />
-		</table>
+<!--		<table tableName="orderitem" domainObjectName="OrderItem"-->
+<!--			enableCountByExample="false" enableDeleteByExample="false"-->
+<!--			enableSelectByExample="false" enableUpdateByExample="false">-->
+<!--			<property name="useActualColumnNames" value="false" />-->
+<!--		</table>-->
 		<!--<table tableName="classes" domainObjectName="Classes"-->
 			<!--enableCountByExample="false" enableDeleteByExample="false"-->
 			<!--enableSelectByExample="false" enableUpdateByExample="false">-->

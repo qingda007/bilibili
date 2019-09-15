@@ -1,7 +1,9 @@
 package org.lanqiao.service;
 
 import org.lanqiao.entity.UserInfo;
+import org.lanqiao.entity.Video;
 
+import java.util.List;
 
 
 public interface UserInfoService {
@@ -11,4 +13,5 @@ public interface UserInfoService {
     UserInfo checkLogin(String userName,String userPassw);
 
     UserInfo selectByPrimaryKey(Integer id);
+    public List<Video> selectVideoUpload(Integer userId);
 }

@@ -1,3 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://page.lanqiao.org/tag" prefix="pager" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -14,12 +20,30 @@
     <link href="css/user/user.css" rel="stylesheet">
     <script src="js/jquery-3.4.1.min.js" rel="script"></script>
     <script>
+        //总数
+        var num=0;
+        //每页数
+        var per_page=2;
+        //当前页
+        var cur_page=1;
+        //总页
+        var last_page=0;
+
+        var item_num=0;
+        var _list=[];
+
         $(function () {
             //导航动态
             $("#nav-collect").click(function () {
                 $(".col-1").css("display","none");
                 $(".col-2").css("display","none");
                 $(".col-full").css("display","block");
+            });
+            $("#nav-album").click(function () {
+                $(".col-1").css("display", "none");
+                $(".col-2").css("display", "none");
+                $(".col-full").css("display", "none");
+                $(".col-3").css("display", "block");
             });
             $("#nav-home").click(function () {
                 $(".col-1").css("display","block");
@@ -118,35 +142,73 @@
                     $(".n-fs").append("<p id=\"n-fs\" class=\"n-data-v spacing-fans\">"+data+"</p>");
                 }
             })
+
             $.ajax({
-                url:"http://localhost:8888/getCollectionVideo",
-                type:"post",
-                data:{"userId":1},
-                datatype:"json",
-                success:function (data) {
+                url: "http://localhost:8888/getVideoUpload",
+                type: "post",
+                data: {"userId": 2},
+                datatype: "json",
+                success: function (data) {
                     console.log(data);
-                    $(".favinfo-cover").append("<img src=\""+data[1].video.videoPic+"\">\n");
-                    $li=("<li class=\"small-item\">\n" +
-                        "                                <a class=\"cover-normal\">\n" +
-                        "                                    <img src=\"images/user/test.png\"alt=\"测试专用AR-15\">\n" +
-                        "                                    <span class=\"lenth\">08:30</span>\n" +
-                        "                                    <div class=\"meta-mask\">\n" +
-                        "                                        <div class=\"meta-info\">\n" +
-                        "                                            <p class=\"view\">播放：151.8万</p>\n" +
-                        "                                            <p class=\"favorite\">收藏：10万</p>\n" +
-                        "                                            <p class=\"author\">UP:啊啊</p>\n" +
-                        "                                            <p class=\"pubdate\">投稿时间：4-23</p>\n" +
+                    //总数
+                    num=data.length;
+                    //总页
+                    last_page=Math.ceil(num/per_page);
+                    _list=data;
+                    if(last_page==1){
+                        page(num);
+                    }else{
+                        page(per_page);
+                    }
+                }
+            })
+            function page(item) {
+                $(".submit-video").empty();
+                for(var i=0;i<item;i++) {
+                    $(".submit-video").prepend("<li class=\"small-item\">\n" +
+                        "                                    <a class=\"cover-normal\">\n" +
+                        "                                        <img src=\""+_list[item_num].videoPic+"\"alt=\"测试专用AR-15\">\n" +
+                        "                                        <span class=\"lenth\">08:30</span>\n" +
+                        "                                        <div class=\"meta-mask\">\n" +
+                        "                                            <div class=\"meta-info\">\n" +
+                        "                                                <p class=\"view\">播放："+_list[item_num].playNum+"</p>\n" +
+                        "                                                <p class=\"favorite\">收藏："+_list[item_num].collectionNum+"</p>\n" +
+                        "                                                <p class=\"author\">UP"+_list[item_num].userId+"</p>\n" +
+                        "                                                <p class=\"pubdate\">投稿时间："+_list[item_num].upTime+"\" pattern=\"yyyy-MM-dd\"/></p>\n" +
+                        "                                            </div>\n" +
+                        "                                        </div>\n" +
+                        "                                    </a>\n" +
+                        "                                    <a class=\"title\">"+_list[item_num++].videoTitle+"</a>\n" +
+                        "                                    <div class=\"meta pubdate\">收藏于:</div>\n" +
+                        "                                    <div class=\"be-dropdown video-edit\">\n" +
+                        "                                        <div class=\"be-dropdown-tigger\">\n" +
+                        "                                            <i class=\"icon icon-ic-more\"></i>\n" +
                         "                                        </div>\n" +
                         "                                    </div>\n" +
-                        "                                </a>\n" +
-                        "                                <a class=\"title\">测试专用AR-15</a>\n" +
-                        "                                <div class=\"meta pubdate\">收藏于：4-29</div>\n" +
-                        "                                <div class=\"be-dropdown video-edit\">\n" +
-                        "                                    <div class=\"be-dropdown-tigger\">\n" +
-                        "                                        <i class=\"icon icon-ic-more\"></i>\n" +
-                        "                                    </div>\n" +
-                        "                                </div>\n" +
-                        "                            </li>");
+                        "                                </li>")
+                }
+            }
+            $("#last").click(function () {
+                     cur_page--;
+                    item_num=(cur_page-1)*per_page;
+                    page(per_page);
+            })
+            $("#next").click(function () {
+                cur_page++;
+                item_num=(cur_page-1)*per_page;
+                if(num-item_num<per_page) {
+                    page(num-item_num);
+                }else {
+                    page(per_page);
+                }
+            })
+            $("#sure").click(function () {
+                cur_page=$("#pagesize").val();
+                item_num=(cur_page-1)*per_page;
+                if(num-item_num<per_page) {
+                    page(num-item_num);
+                }else {
+                    page(per_page);
                 }
             })
         })
@@ -444,7 +506,7 @@
                                     <div class="cur">
                                         <span class="icon iconfont"></span>
                                         <a class="text text-router">默认收藏夹</a>
-                                        <span class="num">124</span>
+                                        <span class="num">${pageInfo.total}</span>
                                         <div class="be-dropdown">
                                             <div class="be-dropdown-tigger">
                                                 <i class="icon icon-ic-more"></i>
@@ -486,13 +548,14 @@
                         <div class="favlistinfo">
                             <div class="favinfo-box">
                                 <a class="favinfo-cover">
+                                    <img src="${pageInfo.list.get(0).video.videoPic}">
                                 </a>
                                 <div class="favinfo-details">
                                     <a class="fav-name">默认收藏夹</a>
                                     <div class="fav-meta" id="fav-name">
                                     </div>
                                     <div class="fav-meta">
-                                        <span>124个内容</span>
+                                        <span>${pageInfo.total}个内容</span>
                                         <span class="dot">·</span>
                                         <span>公开</span>
                                     </div>
@@ -534,427 +597,31 @@
                         </div>
                         <div class="fav-content section">
                             <ul class="fav-video-list">
+                                <c:forEach var="videoCollection" items="${pageInfo.list}">
                                 <li class="small-item">
                                     <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
+                                        <img src="${videoCollection.video.videoPic}"alt="测试专用AR-15">
                                         <span class="lenth">08:30</span>
                                         <div class="meta-mask">
                                             <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
+                                                <p class="view">播放：${videoCollection.video.playNum}</p>
+                                                <p class="favorite">收藏：${videoCollection.video.collectionNum}</p>
+                                                <p class="author">UP:${videoCollection.userId}</p>
+                                                <p class="pubdate">投稿时间：<fmt:formatDate value="${videoCollection.video.upTime}" pattern="yyyy-MM-dd"/></p>
                                             </div>
                                         </div>
                                     </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
+                                    <a class="title">${videoCollection.video.videoTitle}</a>
+                                    <div class="meta pubdate">收藏于：<fmt:formatDate value="${videoCollection.collectTime}" pattern="yyyy-MM-dd"/> </div>
                                     <div class="be-dropdown video-edit">
                                         <div class="be-dropdown-tigger">
                                             <i class="icon icon-ic-more"></i>
                                         </div>
                                     </div>
                                 </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="images/user/test.png"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：151.8万</p>
-                                                <p class="favorite">收藏：10万</p>
-                                                <p class="author">UP:啊啊</p>
-                                                <p class="pubdate">投稿时间：4-23</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">测试专用AR-15</a>
-                                    <div class="meta pubdate">收藏于：4-29</div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
+                                </c:forEach>
                             </ul>
+
                             <ul class="be-page">
                                 <li class="be-page-item be-page-prev be-page-disabled"><a>上一页</a></li>
                                 <li class="be-page-item be-page-active"><a>1</a></li>
@@ -970,7 +637,56 @@
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="col-3">
+                <div class="col-3-cover">
+                    <div class="sidenav">
+                        <div class="containlist">
+                            <div class="list-container">
+                                <ul class="contribution-list">
+                                    <li class="contribution-item now">
+                                        <a class="text text-router-link">视频</a>
+                                        <span class="num">0</span>
+                                    </li>
+                                    <li class="contribution-item">
+                                        <a class="text">音频</a>
+                                        <span class="num">0</span>
+                                    </li>
+                                    <li class="contribution-item">
+                                        <a class="text">专栏</a>
+                                        <span class="num">0</span>
+                                    </li>
+                                    <li class="contribution-item">
+                                        <a class="text">相簿</a>
+                                        <span class="num">0</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-content">
+                        <div class="row page-head">
+                            <div class="breadcrumb">
+                                <p class="item">我的视频</p>
+                            </div>
+                            <div class="submit-video">
+
+                            </div>
+                            <ul class="be-page">
+                                <li class="be-page-item be-page-prev be-page-disabled" id="last"><a>上一页</a></li>
+                                <li class="be-page-item be-page-active"><a>1</a></li>
+                                <li class="be-page-item"><a>2</a></li>
+                                <li class="be-page-item"><a>3</a></li>
+                                <li class="be-page-item-jump-next"></li>
+                                <li class="be-page-item"><a>7</a></li>
+                                <li class="be-page-item be-page-next" id="next"><a>下一页</a></li>
+                                <span class="be-page-total">共7页</span>
+                                <span class="be-page-option">跳至<input type="text"id="pagesize">页</span>
+                                <input id="sure" type="button">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
 </div>
 </div>
