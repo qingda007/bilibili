@@ -12,21 +12,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 
-@Controller
+@RestController
 public class VideoCollectionController {
     @Autowired
     VideoCollectionService videoCollectionService;
-    @RequestMapping("/index")
-    public ModelAndView getAll(@RequestParam(value = "pageNo", defaultValue = "1") int pageNum) {
-        PageHelper.startPage(pageNum, 5);
-        List<VideoCollection> videoCollectionList = videoCollectionService.getVideoCollection(2);
-        PageInfo<VideoCollection> p = new PageInfo<VideoCollection>(videoCollectionList);
-        return new ModelAndView("user", "pageInfo", p);
+    @RequestMapping("/getVideoCollection")
+    public List<VideoCollection> getVideoCollection(Integer userId){
+        return videoCollectionService.getVideoCollection(userId);
     }
-
 }

@@ -5,7 +5,7 @@ import java.util.Date;
 public class Video {
     private Integer videoId;
 
-    private Integer userId;
+    private UserInfo userInfo;
 
     private String videoTitle;
 
@@ -39,12 +39,12 @@ public class Video {
         this.videoId = videoId;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public UserInfo getUserInfo() {
+        return userInfo;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
     }
 
     public String getVideoTitle() {
@@ -147,7 +147,7 @@ public class Video {
     public String toString() {
         return "Video{" +
                 "videoId=" + videoId +
-                ", userId=" + userId +
+                ", userInfo=" + userInfo +
                 ", videoTitle='" + videoTitle + '\'' +
                 ", videoPic='" + videoPic + '\'' +
                 ", videoDesc='" + videoDesc + '\'' +
