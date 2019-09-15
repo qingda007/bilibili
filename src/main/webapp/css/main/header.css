@@ -34,15 +34,13 @@
 	background-color: hsla(0, 0%, 100%, .4);
 	box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
 }
-
-.bili-header .clearfix::before {
-	content: "";
-	display: table;
+.bili-header .clearfix::after, .bili-header.clearfix::before {
+    content: "";
+    display: table;
 }
-
 .bili-header .clearfix::after {
-	clear: both;
-	overflow: hidden;
+    clear: both;
+    overflow: hidden;
 }
 
 .bili-header .nav-wraper {
@@ -128,7 +126,7 @@
 	z-index: 400;
 }
 
-.profile-info .i-face {
+.bili-header .profile-info .i-face {
 	position: absolute;
 	z-index: 20;
 	width: 32px;
@@ -137,15 +135,22 @@
 	top: 0;
 	transition: .3s;
 }
-
-.profile-info .i-face .face {
+.bili-header .profile-info.on .i-face{
+	left:-15px;
+	top:15px;
+	height: 64px;
+	width: 64px;
+}
+.bili-header .profile-info .i-face .face {
 	border: 0 solid #fff;
 	width: 100%;
 	height: 100%;
 	border-radius: 50%;
 }
-
-.profile-info .i-face .pendant {
+.bili-header .profile-info.on .i-face .face{
+	border: 2px solid #fff;
+}
+.bili-header .profile-info .i-face .pendant {
 	position: absolute;
 	width: 84px;
 	height: 84px;
@@ -183,7 +188,157 @@
 	top: 0;
 	left: 0;
 }
+.bili-header .nav-menu .dd-bubble {
+	position: absolute;
+	z-index: 1;
+}
+.bili-header .profile-m {
+	left: 50%;
+	margin-left: -130px;
+	width: 260px;
+	padding: 50px 0 0;
+	top: 42px;
+	background: #fff;
+	box-shadow: 0 2px 4px rgba(0,0,0,.16);
+	border-radius: 0 0 4px 4px;
+	line-height: normal;
+}
+.bili-header .profile-m .header-uname {
+	padding-bottom: 15px;
+}
+.bili-header .profile-m .header-uname b {
+	display: block;
+	margin-bottom: 8px;
+}
+.bili-header .profile-m .big-vip-red {
+	color: #fb7299 !important;
+}
+.bili-header .profile-m .header-u-info a {
+	color: #222;
+}
+.bili-header .profile-m .header-uname .vip-type span {
+	padding: 2px 3px;
+	background: #fb7299;
+	color: #fff !important;
+	border-radius: 3px;
+}
+.bili-header .profile-m .btns-profile {
+	position: relative;
+	margin: 0 20px;
+}
+.bili-header .profile-m .header-u-info a {
+	color: #222;
+}
+.bili-header .profile-m .btns-profile .coin .bi {
+	background-position: -343px -471px;
+	margin-right: 2px;
+	position: relative;
+	z-index: 2;
+}
+.bili-header .profile-m .btns-profile .bili-icon {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	vertical-align: middle;
+	background-repeat: no-repeat;
+}
+.bili-header .bili-icon {
+	display: inline-block;
+	background-image: url("../../images/main/icons.png");
+}
+.bili-header .profile-m .btns-profile .num {
+	vertical-align: middle;
+	display: inline-block;
+	transition: 2s;
+}
+.bili-header .profile-m .btns-profile .ver {
+	position: relative;
+}
+.bili-header .profile-m .btns-profile .ver a {
+	display: block;
+}
+.bili-header .profile-m .btns-profile .phone.verified .bili-icon {
+	background-position: -343px -599px;
+}
+.bili-header .profile-m .btns-profile .email.verified .bili-icon {
+	background-position: -343px -534px;
+}
+.profile-m .member-menu li a:hover .bili-icon.b-icon-p-member {
+    background-position: -601px -1046px;
+}
+.bili-header .profile-m .member-menu li a .bili-icon.b-icon-p-member {
+    background-position: -536px -1046px;
+}
+.email {
+	margin-right: 10px;
+}
+.bili-header .profile-m .btns-profile .ver .tips {
+	display: none;
+	padding: 0 6px;
+	height: 20px;
+	line-height: 20px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	position: absolute;
+	right: 30px;
+	top: -2px;
+	white-space: nowrap;
+	background-color: #fff;
+	color: #222;
+	z-index: 10;
+}
+.bili-header .profile-m .btns-profile .ver:hover .tips {
+	display: block;
+}
+.bili-header .profile-m .btns-profile .ver .tips::after {
+	content: "";
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	background: url("../../images/main/气泡箭头.png");
+	right: -8px;
+	top: 6px;
+}
 
+.bili-header .profile-m .member-menu {
+    border-top: 1px solid #e5e9ef;
+    padding: 10px 20px 40px;
+
+}
+.bili-header .profile-m .member-menu ul {
+    width: 240px;
+    clear: both;
+    zoom: 1;
+}
+.member-menu  li {
+    width: 100px;
+    margin-right: 20px;
+    position: relative;
+}
+.bili-header .profile-m .member-menu li a {
+    white-space: nowrap;
+    color: #222;
+    text-align: left;
+    margin: 0 auto;
+    display: block;
+    padding: 5px 0;
+    line-height: 16px;
+}
+.bili-header .profile-m .member-menu li a:hover .bili-icon.b-icon-p-account {
+    background-position: -536px -407px;
+}
+.bili-header .profile-m .member-menu li a .bili-icon.b-icon-p-account {
+    background-position: -472px -407px;
+}
+.bili-header .profile-m .member-menu li a .bili-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    vertical-align: top;
+}
+.bili-header .profile-m .member-menu li a:hover {
+    color: #00a1d6;
+}
 .bili-header fieldset,
 .bili-header img {
 	border: none;
@@ -331,7 +486,24 @@
 	opacity: 1;
 }
 
-
+.profile-m .member-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background-color: #f4f5f7;
+    border-radius: 0 0 4px 4px;
+}
+.profile-m .member-bottom .logout {
+    float: right;
+    padding-right: 20px;
+    color: #222;
+}
+.profile-m .member-bottom .logout:hover {
+    color: #00a1d6;
+}
 /*-----------------------------*/
 
 .top-banner {
@@ -1623,6 +1795,7 @@ var {
 
 .security-ul {
 	border-bottom: 1px solid #e1e2e5;
+    cursor: default;
 }
 
 .security-list {
@@ -1630,7 +1803,10 @@ var {
 	height: 48px;
 	line-height: 48px;
 }
-
+.security-list:hover {
+    background: #e1e4ea;
+    cursor: pointer;
+}
 .security-icon {
 	vertical-align: middle;
 	display: inline-block;
@@ -1875,31 +2051,209 @@ var {
 .is-active{
 	background-color: #22a1d6 !important;
     border-color: #22a1d6 !important;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
 }
 .user-my-sex .el-radio-button__inner {
+	cursor: pointer;
     margin-right: 20px;
     padding: 5px 8px;
     border: 1px solid #bfcbd9;
     border-radius: 5px !important;
     background: #f4f4f4;
     color: #717171;
+	font-size: 14px;
 }
-.el-radio-button__inner {
-    white-space: nowrap;
-    background: #fff;
-    border: 1px solid #bfcbd9;
-    border-left: 0;
-    color: #1f2d3d;
-    -webkit-appearance: none;
-    text-align: center;
-    box-sizing: border-box;
-    outline: 0;
-    margin: 0;
-        margin-right: 0px;
-    cursor: pointer;
-    transition: all .3s cubic-bezier(.645,.045,.355,1);
-    padding: 10px 15px;
+.el-date-editor.el-input {
+	width: 193px;
+}
+ .el-input {
+	 position: relative;
+	 font-size: 14px;
+ }
+ .el-input, .el-input__inner {
+	 width: 100%;
+	 display: inline-block;
+ }
+ .el-date-editor {
+	 position: relative;
+	 display: inline-block;
+ }
+.el-input__icon {
+	position: absolute;
+	width: 35px;
+	height: 100%;
+	right: 0;
+	top: 0;
+	text-align: center;
+	color: #bfcbd9;
+	transition: all .3s;
+}
+.user-my-date .el-input__inner {
+	height: 30px;
+	color: #b7b7b7;
+}
+ .el-input__icon+.el-input__inner {
+	 padding-right: 35px;
+ }
+ .el-input__inner {
+	 -webkit-appearance: none;
+	 -moz-appearance: none;
+	 appearance: none;
+	 background-color: #fff;
+	 background-image: none;
+	 border-radius: 4px;
+	 border: 1px solid #bfcbd9;
+	 box-sizing: border-box;
+	 color: #1f2d3d;
+	 font-size: inherit;
+	 height: 36px;
+	 line-height: 1;
+	 outline: 0;
+	 padding: 3px 10px;
+	 transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+ }
+.user-setting-warp .padding-dom {
+	width: 789px;
+	height: 39px;
+	border-bottom: 1px solid #e5e9ef;
+	margin-bottom: 40px;
+}
+.user-my-btn-warp {
+	float: left;
+	width: 789px;
+	height: 36px;
+	position: relative;
+}
+.el-button{
+	position: absolute;
+	top:50%;
+	left: 50%;
+	color: #FFFFFF;
+	background: #00a1d6!important;
+	text-align: center;
+	white-space: nowrap;
+	margin: 0;
+	padding: 10px 15px;
+	border-radius: 4px;
+	display: inline-block;
+	line-height: 1;
+	cursor: pointer;
+	border: 1px solid #c4c4c4;
+	width: 110px;
+	font-size: 14px;
+}
+.el-button:hover{
+	background-color: #00b5e5!important;
+}
+.icon-6 {
+	background-position: -23px -272px;
+}
+/*个人中心-账号安全*/
+.res-box {
+	position: relative;
+	width: 100%;
+	height: 300px;
+
+}
+.safe-logo {
+	position: relative;
+	width: 400px;
+	height: 220px;
+	margin: 0 auto;
+}
+.safe-logo.safe {
+	background: url(//s1.hdslb.com/bfs/static/security/static/img/logo_safe.792b6bf.png) no-repeat;
+}
+.nav-list {
+	padding: 0 20px;
+    cursor:default;
+}
+.nav-list li{
+    width: 100%;
+	min-height: 80px;
+	border-top: 1px solid #e5e9ef;
+}
+.nav-list li .list-title {
+    width: 45%;
+	padding: 30px 10px 30px 20px;
+}
+.nav-list li .nav-container > div {
+	float: left;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.list-title .list-title-text {
+	min-height: 20px;
+	position: relative;
+	padding-left: 28px;
+}
+.nav-list li .list-title .list-title-text span {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 1px;
+    left: 0;
+}
+.nav-list li .list-title .list-title-text .normal{
+    background: url("../../images/main/黄色感叹号.png");
+}
+.nav-list li .list-title .list-title-text .safe {
+    background: url("../../images/main/safe.png") no-repeat;
+}
+.nav-list li .list-title .list-title-text p {
+    line-height: 20px;
     font-size: 14px;
-    border-radius: 0;
+    color: #222;
+}
+.nav-list li .list-description {
+    width: 35%;
+    padding: 30px 10px;
+}
+.nav-list li .list-description p {
+    min-height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    color: #6d757a;
+}
+.nav-list li .list-link {
+    width: 20%;
+    padding: 30px 10px 30px 20px;
+}
+.nav-list a {
+    color: #00a1d6;
+    text-decoration: none;
+    font-size: 12px;
+
+}
+.security-list-jump{
+    width: 150px;
+    height: 43px;
+    border-top: 1px solid #e1e2e5;
+    border-bottom: 1px solid #e1e2e5;
+    position: relative;
+}
+.security-list-jump:hover {
+    background: #e1e4ea;
+    cursor: pointer;
+}
+.security-list-link-jump {
+    display: block;
+    height: 100%;
+    color: #222;
+    font-size: 16px;
+    text-align: center;
+    line-height: 43px;
+}
+.security-list-jump-icon {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: url("../../images/main/icons3.png");
+    background-position: -26px -731px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 14px;
 }

@@ -143,4 +143,24 @@ public class Video {
     public void setIsReview(String isReview) {
         this.isReview = isReview == null ? null : isReview.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Video{" +
+                "videoId=" + videoId +
+                ", userId=" + userId +
+                ", videoTitle='" + videoTitle + '\'' +
+                ", videoPic='" + videoPic + '\'' +
+                ", videoDesc='" + videoDesc + '\'' +
+                ", videoUrl='" + videoUrl + '\'' +
+                ", upTime=" + upTime +
+                ", videoTime=" + videoTime +
+                ", playNum=" + playNum +
+                ", likeNum=" + likeNum +
+                ", collectionNum=" + collectionNum +
+                ", coinNum=" + coinNum +
+                ", classType='" + classType + '\'' +
+                ", isReview='" + isReview + '\'' +
+                '}';
+    }
 }

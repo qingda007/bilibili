@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.VideoTagMapper" >
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.VideoTag" >
+    <id column="video_id" property="videoId" jdbcType="INTEGER" />
+    <result column="tag_name" property="tagName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    video_id, tag_name
+  </sql>
+  <select id="selectByPrimaryKey" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select 
+    video_id
+    from video_tag
+    where tag_name = #{tagName}
+  </select>
+  <delete id="delete" parameterType="org.lanqiao.entity.VideoTag" >
+    delete from video_tag
+    where video_id = #{videoId} and tag_name = #{tagName}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.VideoTag" >
+    insert into video_tag (video_id, tag_name)
+    values (#{videoId,jdbcType=INTEGER}, #{tagName,jdbcType=VARCHAR})
+  </insert>
+</mapper>
