@@ -28,4 +28,8 @@ return userInfoService.selectByPrimaryKey(id);
     public List<Video> GetVideoUpload(Integer userId) {
         return videoService.selectVideoUpload(userId);
     }
+    @RequestMapping("/userCountNum")
+    public int CountNum(String userType) {
+        return userInfoService.selectCountUserNum(userType);
+    }
 }

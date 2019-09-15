@@ -144,7 +144,18 @@
                     $("#i-login").fadeOut();
                 })
             })
+//  在线人数
+            var str={"userType":'u88'};
+            $.ajax({
+                url:"http://localhost:8888/userCountNum",
+                type:"post",
+                dataType:"application/json; charset=utf-8",
+                data:str,
+                success:function (data) {
+                    alert(data);
+                },
 
+            });
             //从登录界面登录成功后，跳到主界面并给vm.user.uid赋值
             vm.user.uid=2;
             var id=vm.user.uid;

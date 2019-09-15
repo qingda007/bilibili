@@ -39,4 +39,9 @@ return userInfoMapper.selectByPrimaryKey(id);
     public List<Video> selectVideoUpload(Integer userId) {
         return userInfoMapper.selectVideoUpload(userId);
     }
+
+    @Override
+    public int selectCountUserNum(String userType) {
+        return userInfoMapper.selectCountUserNum(userType);
+    }
 }
