@@ -1,7 +1,11 @@
 package org.lanqiao.entity;
 
+import org.hibernate.validator.constraints.Email;
+import org.springframework.stereotype.Repository;
+
 import java.util.Date;
 
+@Repository
 public class UserInfo {
     private Integer userId;
 
@@ -26,16 +30,6 @@ public class UserInfo {
     private Integer userCoin;
 
     private String userRole;
-
-    private VideoComment videoComment;
-
-    public VideoComment getVideoComment() {
-        return videoComment;
-    }
-
-    public void setVideoComment(VideoComment videoComment) {
-        this.videoComment = videoComment;
-    }
 
     public Integer getUserId() {
         return userId;
@@ -148,7 +142,6 @@ public class UserInfo {
                 ", userPicadress='" + userPicadress + '\'' +
                 ", userCoin=" + userCoin +
                 ", userRole='" + userRole + '\'' +
-                ", videoComment=" + videoComment +
                 '}';
     }
 }

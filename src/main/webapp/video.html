@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>播放</title>
+
+    <link rel="stylesheet" href="css/main/iconfont.css" />
 <!--    顶部导航-->
     <style>
         /*全局*/
@@ -139,45 +141,53 @@
 
         /*搜索框*/
         .nav-search{
-            width: 420px;
-            height: 54px;
+
             float: right;
-            padding-right: 60px;
+            margin: 5px 60px 0 0;
+
         }
         .showSearch{
-            width: 420px;
+            width: 350px;
             height: 34px;
-            margin-top: 8px;
             border-radius: 2px;
             background-color: #f4f4f4;
             border: 1px solid #e7e7e7;
+            right: 20px;
+        }
+        .nav-search-keyword, .nav-search-submit:focus{
+            outline: none;
         }
         .nav-search-keyword{
             height: 32px;
             line-height: 32px;
-            width: 420px;
+            width: 92%;
             opacity: 1;
             color: #999;
-            font-size: 12px;
+            font-size: 14px;
             overflow: hidden;
             border: none;
             box-shadow: none;
             background-color: transparent;
             transition: all 0.2s;
-
+            float: left;
+            padding-left: 8px;
         }
         .nav-search-submit {
+            float: left;
             top: 7px;
             color: #999;
             font-size: 18px;
             right: 7px;
-            position: absolute;
+            position: relative;
             cursor: pointer;
             margin: 0;
             padding: 0;
             border: none;
             background: none;
             transition: all 0.2s;
+        }
+        .nav-search-submit:hover{
+            color: #00a0d8;
         }
 
         /*=================*/
@@ -264,7 +274,18 @@
         display: inline-block;
         white-space: nowrap;
         color: #505050;
+        font-size: 14px;
         position: relative;
+    }
+    .ops span:hover {
+        color: #00A1D6!important;
+    }
+    .ops span i{
+        font-size: 20px;
+        vertical-align: top;
+        margin-right: 6px;
+        width: 20px;
+        height: 20px;
     }
     .appeal-text {
         float: right;
@@ -612,6 +633,25 @@
             white-space: nowrap;
             vertical-align: top;
         }
+        .up-info .u-info .name .message{
+            margin-left: 12px;
+            font-size: 12px;
+            color: #505050;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .up-info .u-info .name .message i{
+            color: #999;
+            font-size: 16px;
+            margin-right: 4px;
+            height: 16px;
+            width: 16px;
+            vertical-align: text-bottom;
+        }
+        .up-info .u-info .name .message:hover i {
+
+            color: #00a1d6;
+        }
         #v_upinfo .u-info .desc {
             max-width: 360px;
         }
@@ -649,6 +689,11 @@
             justify-content: center;
             cursor: pointer;
         }
+        .up-info .btn-panel .not-follow{
+            background-color: #00a1d6;
+            color: #FFFFFF;
+            width: 156px;
+        }
         .up-info .btn-panel .not-follow i {
             width: 16px;
             height: 16px;
@@ -664,8 +709,211 @@
             min-height: 46px;
             background: #f4f4f4;
         }
-    </style>
+        .bui-collapse-wrap {
+            width: 100%;
+        }
+        .bui-collapse-wrap .bui-collapse-header {
+            position: relative;
+            height: 46px;
+            width: 100%;
+            background: #f4f4f4;
+            color: #222;
+            border-radius: 2px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+        .bui-collapse-wrap .bui-collapse-header .bui-collapse-arrow {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            vertical-align: middle;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            height: 14px;
+            position: absolute;
+            right: 14px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            color: #505050;
+        }
+        .bui-collapse-wrap .bui-collapse-header .bui-collapse-arrow span {
+            font-size: 12px;
+        }
+        .player-auxiliary-filter {
+            width: 90px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            position: relative;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            z-index: 2;
+            background: #f4f5f7;
+            height: 46px;
+            line-height: 46px;
+            border: none;
+            border-radius: 2px;
+            padding: 0 10px 0 16px;
+            zoom: 1;
+        }
+        .player-auxiliary-filter span{
+            font-size: 16px;
+            color: #222;
+        }
+        .player-auxiliary-wraplist {
+            display: block;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .player-auxiliary-danmaku {
+            overflow: hidden;
+        }
+        .player-auxiliary-danmaku .player-auxiliary-danmaku-function {
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            zoom: 1;
 
+        }
+        .player-auxiliary-danmaku .player-auxiliary-danmaku-function [class*="player-auxiliary-danmaku-btn-"] {
+            float: left;
+            font-size: 12px;
+            color: #6d757a;
+            background: #fff;
+            height: 32px;
+            border: 0;
+            padding: 0 6px;
+            padding-right: 6px;
+            padding-left: 6px;
+            line-height: 32px;
+            cursor: pointer;
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .player-auxiliary-danmaku-btn-time {
+            width: 60px;
+            text-align: left;
+            padding-left: 16px;
+            padding-right: 0;
+        }
+        .player-auxiliary-danmaku .player-auxiliary-danmaku-function .player-auxiliary-danmaku-btn-time {
+            width: 60px;
+            text-align: left;
+            padding-left: 16px;
+            padding-right: 0;
+            margin-right: 0px;
+        }
+        .player-auxiliary-danmaku-btn-danmaku {
+            width: 170px;
+            text-align: left;
+        }
+        .player-auxiliary-danmaku-btn-date{
+             width: 78px;
+             text-align: left;
+         }
+        .player-auxiliary-danmaku-contaner {
+            height: 100%;
+            overflow-y:scroll;
+        }
+        .player-auxiliary-bscrollbar {
+            position: relative;
+        }
+        .bpui-selectable {
+            position: relative;
+
+        }
+        .player-auxiliary-danmaku-list .danmaku-info-row {
+
+            line-height: 24px;
+            height: 24px;
+            font-size: 12px;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            color: #6d757a;
+            background-color: #FFFFFF;
+
+        }
+        .player-auxiliary-danmaku-list .danmaku-info-row span {
+
+            vertical-align: top;
+            padding: 0 6px;
+            padding-left: 6px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+
+        }
+        .player-auxiliary-danmaku-list .danmaku-info-row span.danmaku-info-time {
+
+            width: 60px;
+            position: relative;
+            text-align: left;
+            overflow: hidden;
+            padding-left: 16px;
+
+        }
+        .player-auxiliary-danmaku-list .danmaku-info-row span.danmaku-info-danmaku {
+
+            color: #222;
+            width: 145px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+
+        }
+        .player-auxiliary-danmaku-list .danmaku-info-row span.danmaku-info-date {
+
+            width: 88px;
+            white-space: nowrap;
+            overflow: hidden;
+
+        }
+    </style>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        $(function () {
+            var flag0=1;
+            $(".bui-collapse-header").click(function () {
+                $(".bui-collapse-body").toggle();
+                if(flag0==1){
+                    $("#danmu-btn").text('展开');
+                    flag0=0;
+                }else{
+
+                    $("#danmu-btn").text('收起');
+                    flag0=1;
+                }
+            });
+            var flag1=0;
+            $(".ops span").click(function () {
+                if(!flag1){
+                    $(this).css("color","#00A1D6");
+                    flag1=1;
+                }else{
+                    $(this).css("color","#505050");
+                    flag1=0;
+
+                }
+            })
+        })
+    </script>
 </head>
 <body>
 <!--顶部导航-->
@@ -673,7 +921,7 @@
     <div class="nav-wrapper">
         <div class="nav-con fl">
             <ul>
-                <li class="logo"><img src="images/logo.PNG" rel="logo" width="80px" height="42px"></li>
+                <li class="logo"><img src="images/video/logo.PNG" rel="logo" width="80px" height="42px"></li>
                 <li class="nav-item home">主站</li>
                 <li class="nav-item mbili">音频</li>
                 <li class="nav-item game">游戏中心</li>
@@ -682,7 +930,10 @@
                 <li class="nav-item manga">漫画</li>
                 <li class="nav-item loc-menu">BW</li>
                 <li class="nav-item loc-menu">70年</li>
-                <li class="nav-item mobile">下载APP</li>
+                <li class="nav-item mobile">
+                    <i class="iconfont icon-contextphone" style="color: deepskyblue"></i>
+                    下载APP
+                </li>
             </ul>
         </div>
         <div class="up-load fr">
@@ -691,7 +942,7 @@
         <div class="nav-con fr">
             <ul>
                 <li class="nav-item profile-info">
-                    <img src="images/akari.jpg" width="32px" height="32px">
+                    <img src="images/video/akari.jpg" width="32px" height="32px">
                 </li>
                 <li class="nav-item ">
                     <a href="" class="t">动态</a>
@@ -701,10 +952,11 @@
                 </li>
             </ul>
         </div>
-        <div class="nav-search">
+        <div class="nav-search" >
             <div class="nav-search showSearch" >
                 <input type="text" class="nav-search-keyword">
-                <button type="submit" class="header-icon-general_search nav-search-submit">
+                <button type="submit" class="header-icon-general_search nav-search-submit iconfont icon-sousuo">
+
                 </button>
             </div>
         </div>
@@ -744,10 +996,14 @@
 <!--点赞、硬币-->
             <div id="arc_toolbar_report" class="video-toolbar">
                 <div class="ops">
-                    <span title="点赞数" class="like">12</span>
-                    <span title="硬币数" class="coin">636</span>
-                    <span title="收藏数" class="collect">2045</span>
-                    <span title="分享" class="share">955</span>
+                    <span title="点赞数" class="like">
+                        <i class="iconfont icon-dianzan-copy"></i>12
+                    </span>
+                    <span title="硬币数" class="coin">
+                        <i class="iconfont icon-toubi"></i>636
+                    </span>
+                    <span title="收藏数" class="collect"><i class="iconfont icon-shoucang"></i>2045</span>
+                    <span title="分享" class="share"><i class="iconfont icon-zhuanfa"></i>955</span>
                 </div>
                 <div class="appeal-text">稿件投诉</div>
             </div>
@@ -932,13 +1188,16 @@
             <div id="v_upinfo" class="up-info">
 <!--头像-->
                 <div class="u-face">
-                    <img src="images/akari.jpg" width="48" height="48" class="up-face">
+                    <img src="images/video/akari.jpg" width="48" height="48" class="up-face">
                 </div>
 <!--信息-->
                 <div class="u-info">
 <!--名字-->
                     <div class="name" style="line-height:20px;height:20px;">
                         <a href="" target="_blank" class="username">千夏Simple</a>
+                        <a class="message">
+                            <i class="iconfont icon-xinfeng"></i>发消息
+                        </a>
                     </div>
 <!--标签-->
                     <div title="标签" class="desc">
@@ -950,8 +1209,12 @@
                 <div class="btn-panel">
                     <div class="default-btn follow-btn b-gz not-follow">
                         <span class="">
-                            <i class="van-icon-general_addto_s"></i>关注
+                            <i class="van-icon-general_addto_s"></i>+ 关注
                             <span>1.2万</span>
+                        </span>
+                        <span class=""style="display: none">
+                            <i class="van-icon-general_addto_s"></i>已关注
+
                         </span>
                     </div>
                 </div>
@@ -960,7 +1223,216 @@
             <div id="danmukuBox" class="danmaku-box" style="height: auto">
                 <div class="danmaku-wrap">
                     <div id="playerAuxiliary" class="player-auxiliary">
-
+                        <div class="bui-collapse-wrap">
+                            <div class="bui-collapse-header">
+                                <div class="bui-collapse-arrow">
+                                    <span id="danmu-btn">收起</span>
+                                </div>
+                                <div class="player-auxiliary-filter">
+                                    <span>弹幕列表</span>
+                                </div>
+                            </div>
+                            <div class="bui-collapse-body">
+                                <div class="player-auxiliary-wraplist">
+                                    <div class="player-auxiliary-filter-wrap player-auxiliary-danmaku"style="height: 288px;">
+                                        <div class="clearfix"></div>
+                                        <div class="player-auxiliary-danmaku-function">
+                                            <div class="player-auxiliary-danmaku-btn-time">时间</div>
+                                            <div class="player-auxiliary-danmaku-btn-danmaku">
+                                                 弹幕内容（
+                                                <span>1000</span>
+                                                ）
+                                            </div>
+                                            <div class="player-auxiliary-danmaku-btn-date">发送时间</div>
+                                        </div>
+                                        <div class="player-auxiliary-danmaku-contaner player-auxiliary-bscrollbar">
+                                            <ul class="player-auxiliary-danmaku-list bpui-component bpui-undefined bpui-selectable">
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                                <li class="danmaku-info-row">
+                                                    <span class="danmaku-info-time">02.03s</span>
+                                                    <span class="danmaku-info-danmaku">66</span>
+                                                    <span class="danmaku-info-date">09-09 20:58</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
