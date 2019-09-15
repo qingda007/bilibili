@@ -4,13 +4,13 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
     <title>哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</title>
     <link rel="stylesheet" href="css/main/bass.css" />
     <link rel="stylesheet" href="css/main/header.css" />
     <link rel="stylesheet" href="css/main/iconfont.css" />
     <link rel="stylesheet" href="css/main/head.css" />
-
+    <script src="js/jquery-3.4.1.js"></script>
 </head>
 
 <body>
@@ -98,7 +98,7 @@
         <div id="banner_link" class="head-banner report-scroll-module" style="background-image: url(images/main/header.png);" scrollshow="true">
             <div class="head-content bili-wrapper">
                 <div class="search">
-                    <form class="searchform">
+                    <form class="searchform" >
                         <input class="search-keyword" type="text" />
                         <button class="search-submit"></button>
                     </form>
