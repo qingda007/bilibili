@@ -30,6 +30,7 @@
         var last_page=0;
 
         var item_num=0;
+
         var _list=[];
 
         $(function () {
@@ -164,7 +165,7 @@
             })
             function page(item) {
                 $(".submit-video").empty();
-                for(var i=0;i<item;i++) {
+                for(var i=0;i<item;i++,item_num++) {
                     $(".submit-video").prepend("<li class=\"small-item\">\n" +
                         "                                    <a class=\"cover-normal\">\n" +
                         "                                        <img src=\""+_list[item_num].videoPic+"\"alt=\"测试专用AR-15\">\n" +
@@ -178,7 +179,7 @@
                         "                                            </div>\n" +
                         "                                        </div>\n" +
                         "                                    </a>\n" +
-                        "                                    <a class=\"title\">"+_list[item_num++].videoTitle+"</a>\n" +
+                        "                                    <a class=\"title\">"+_list[item_num].videoTitle+"</a>\n" +
                         "                                    <div class=\"meta pubdate\">收藏于:</div>\n" +
                         "                                    <div class=\"be-dropdown video-edit\">\n" +
                         "                                        <div class=\"be-dropdown-tigger\">\n" +

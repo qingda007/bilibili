@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</title>
+    <base href="/">
     <link rel="stylesheet" href="css/main/bass.css" />
     <link rel="stylesheet" href="css/main/header.css" />
     <link rel="stylesheet" href="css/main/iconfont.css" />
@@ -146,8 +147,11 @@
             })
 
             //从登录界面登录成功后，跳到主界面并给vm.user.uid赋值
+
             vm.user.uid=2;
-            var id=vm.user.uid;
+
+            // var id=vm.user.uid;
+            var id=userInfo.userId;
             if(id!=null){
                 $.ajax({
                     url:"http://localhost:8888/getUserInfo",
