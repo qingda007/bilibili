@@ -34,7 +34,8 @@
             }, function() { // 当鼠标移出，开始轮播
                 autoNextPage();
             });
-            //
+
+
 
             //小圆点的相应功能 事件委托
             clickButtons();
@@ -145,17 +146,18 @@
                     $("#i-login").fadeOut();
                 })
             });
+
             //  在线人数
             var str={"userType":'u87'};
-            $.ajax({
-                url:"http://localhost:8888/liveUserNum",
-                type:"post",
-                dataTyoe:"application/json; charset=utf-8",
-                data:str,
-                success:function (data) {
-                    vNum.Num=data;
-                },
 
+                $.ajax({
+                    url:"http://localhost:8888/liveUserNum",
+                    type:"post",
+                    dataType:"application/json; charset=utf-8",
+                    data:str,
+                    success:function (data) {
+                        vNum.Num=data;
+                    },
             });
             //从登录界面登录成功后，跳到主界面并给vm.user.uid赋值
             var id=vm.user.uid=2;
@@ -210,6 +212,23 @@
                 $("div.profile-m").remove();
                 $("li.nipi").remove();
             }
+            //跳转界面
+            $("a.account").click(function () {
+                $.ajax({
+                    url:"/toUser",
+                    dataType:"json",
+                    data:{"id":id},
+                    type:"post",
+                    success:function (data) {
+                        alert("成功");
+                        window.location.href="http://localhost:8888/user";
+                    },
+                    error:function(){
+                        alert("失败");
+                    }
+                })
+            })
+
 
 
         })
