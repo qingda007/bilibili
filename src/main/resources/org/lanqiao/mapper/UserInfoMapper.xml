@@ -15,6 +15,7 @@
     <result column="user_coin" property="userCoin" jdbcType="INTEGER" />
     <result column="user_role" property="userRole" jdbcType="VARCHAR" />
     <association property="video" resultMap="VideoResultMap"></association>
+    <association property="videoDanmu" resultMap="VideoDanmuResultMap"></association>
   </resultMap>
   <resultMap id="VideoResultMap" type="org.lanqiao.entity.Video" >
   <id column="video_id" property="videoId" jdbcType="INTEGER" />
@@ -30,6 +31,13 @@
   <result column="coin_num" property="coinNum" jdbcType="INTEGER" />
   <result column="class_type" property="classType" jdbcType="VARCHAR" />
   <result column="is_review" property="isReview" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="VideoDanmuResultMap" type="org.lanqiao.entity.VideoDanmu" >
+    <id column="danmu_id" property="danmuId" jdbcType="INTEGER" />
+    <result column="video_id" property="videoId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="danmu" property="danmu" jdbcType="VARCHAR" />
+    <result column="sent_time" property="sentTime" jdbcType="TIMESTAMP" />
   </resultMap>
 
   <select id="selectByPrimaryKey" resultMap="UserInfoResultMap" parameterType="java.lang.Integer">

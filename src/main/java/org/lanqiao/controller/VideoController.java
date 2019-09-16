@@ -45,10 +45,14 @@ public class VideoController {
         return videoService.selectUpInfo(videoId);
     }
 
-    @RequestMapping("/insert")
-    public String insertMsg(VideoComment videoComment){
-        videoCommmentService.insertMsg(videoComment);
-        return "redirect:index";
+    @RequestMapping("/insertComment")
+    public int insertMsg(VideoComment videoComment){
+       return videoCommmentService.insertMsg(videoComment);
+    }
+
+    @RequestMapping("/insertDanmu")
+    public int insertDanmu(VideoDanmu videoDanmu){
+        return videoDanmuService.insertSelective(videoDanmu);
     }
 
     @RequestMapping("/commentCount")

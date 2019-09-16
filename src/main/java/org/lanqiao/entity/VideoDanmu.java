@@ -3,15 +3,25 @@ package org.lanqiao.entity;
 import java.util.Date;
 
 public class VideoDanmu {
+    private UserInfo userInfo;
+
     private Integer danmuId;
 
     private Integer videoId;
 
-    private String userName;
+    private int userId;
 
     private String danmu;
 
     private Date sentTime;
+
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
+    }
 
     public Integer getDanmuId() {
         return danmuId;
@@ -29,12 +39,12 @@ public class VideoDanmu {
         this.videoId = videoId;
     }
 
-    public String getUserName() {
-        return userName;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getDanmu() {
@@ -56,9 +66,10 @@ public class VideoDanmu {
     @Override
     public String toString() {
         return "VideoDanmu{" +
-                "danmuId=" + danmuId +
+                "userInfo=" + userInfo +
+                ", danmuId=" + danmuId +
                 ", videoId=" + videoId +
-                ", userName='" + userName + '\'' +
+                ", userId=" + userId +
                 ", danmu='" + danmu + '\'' +
                 ", sentTime=" + sentTime +
                 '}';

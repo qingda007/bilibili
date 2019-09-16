@@ -7,6 +7,9 @@ import java.util.Date;
 @Repository
 public class UserInfo {
     private Video video;
+
+    private VideoDanmu videoDanmu;
+
     private Integer userId;
 
     private String userName;
@@ -30,6 +33,14 @@ public class UserInfo {
     private Integer userCoin;
 
     private String userRole;
+
+    public VideoDanmu getVideoDanmu() {
+        return videoDanmu;
+    }
+
+    public void setVideoDanmu(VideoDanmu videoDanmu) {
+        this.videoDanmu = videoDanmu;
+    }
 
     public Video getVideo() {
         return video;
@@ -139,6 +150,7 @@ public class UserInfo {
     public String toString() {
         return "UserInfo{" +
                 "video=" + video +
+                ", videoDanmu=" + videoDanmu +
                 ", userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", userPassw='" + userPassw + '\'' +
