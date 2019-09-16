@@ -11,6 +11,8 @@ public interface UserInfoService {
     UserInfo registerUser(UserInfo userInfo);
     //用户登录
     UserInfo checkLogin(String userName,String userPassw);
+    //登陆时改变激活状态
+    UserInfo updateStatus(String userName);
 
     UserInfo selectByPrimaryKey(Integer id);
     public List<Video> selectVideoUpload(Integer userId);
