@@ -192,7 +192,7 @@
 	position: absolute;
 	z-index: 1;
 }
-.bili-header .profile-m {
+.profile-m {
 	left: 50%;
 	margin-left: -130px;
 	width: 260px;
@@ -203,76 +203,76 @@
 	border-radius: 0 0 4px 4px;
 	line-height: normal;
 }
-.bili-header .profile-m .header-uname {
+.profile-m .header-uname {
 	padding-bottom: 15px;
 }
-.bili-header .profile-m .header-uname b {
+.profile-m .header-uname b {
 	display: block;
 	margin-bottom: 8px;
 }
-.bili-header .profile-m .big-vip-red {
+.profile-m .big-vip-red {
 	color: #fb7299 !important;
 }
-.bili-header .profile-m .header-u-info a {
+.profile-m .header-u-info a {
 	color: #222;
 }
-.bili-header .profile-m .header-uname .vip-type span {
+.profile-m .header-uname .vip-type span {
 	padding: 2px 3px;
 	background: #fb7299;
 	color: #fff !important;
 	border-radius: 3px;
 }
-.bili-header .profile-m .btns-profile {
+.profile-m .btns-profile {
 	position: relative;
 	margin: 0 20px;
 }
 .bili-header .profile-m .header-u-info a {
 	color: #222;
 }
-.bili-header .profile-m .btns-profile .coin .bi {
+.profile-m .btns-profile .coin .bi {
 	background-position: -343px -471px;
 	margin-right: 2px;
 	position: relative;
 	z-index: 2;
 }
-.bili-header .profile-m .btns-profile .bili-icon {
+.profile-m .btns-profile .bili-icon {
 	display: inline-block;
 	width: 18px;
 	height: 18px;
 	vertical-align: middle;
 	background-repeat: no-repeat;
 }
-.bili-header .bili-icon {
+.bili-icon {
 	display: inline-block;
 	background-image: url("../../images/main/icons.png");
 }
-.bili-header .profile-m .btns-profile .num {
+.profile-m .btns-profile .num {
 	vertical-align: middle;
 	display: inline-block;
 	transition: 2s;
 }
-.bili-header .profile-m .btns-profile .ver {
+.profile-m .btns-profile .ver {
 	position: relative;
 }
-.bili-header .profile-m .btns-profile .ver a {
+.profile-m .btns-profile .ver a {
 	display: block;
 }
-.bili-header .profile-m .btns-profile .phone.verified .bili-icon {
+.profile-m .btns-profile .phone.verified .bili-icon {
 	background-position: -343px -599px;
 }
-.bili-header .profile-m .btns-profile .email.verified .bili-icon {
+.profile-m .btns-profile .email.verified .bili-icon {
 	background-position: -343px -534px;
 }
-.profile-m .member-menu li a:hover .bili-icon.b-icon-p-member {
+.member-menu li a:hover .bili-icon.b-icon-p-member {
     background-position: -601px -1046px;
 }
-.bili-header .profile-m .member-menu li a .bili-icon.b-icon-p-member {
+.profile-m .member-menu li a .bili-icon.b-icon-p-member {
     background-position: -536px -1046px;
 }
 .email {
 	margin-right: 10px;
 }
-.bili-header .profile-m .btns-profile .ver .tips {
+.profile-m .btns-profile .ver .tips {
 	display: none;
 	padding: 0 6px;
 	height: 20px;
@@ -287,10 +287,10 @@
 	color: #222;
 	z-index: 10;
 }
-.bili-header .profile-m .btns-profile .ver:hover .tips {
+.profile-m .btns-profile .ver:hover .tips {
 	display: block;
 }
-.bili-header .profile-m .btns-profile .ver .tips::after {
+.profile-m .btns-profile .ver .tips::after {
 	content: "";
 	position: absolute;
 	width: 8px;
@@ -300,12 +300,12 @@
 	top: 6px;
 }
 
-.bili-header .profile-m .member-menu {
+.profile-m .member-menu {
     border-top: 1px solid #e5e9ef;
     padding: 10px 20px 40px;
 
 }
-.bili-header .profile-m .member-menu ul {
+.profile-m .member-menu ul {
     width: 240px;
     clear: both;
     zoom: 1;
@@ -315,7 +315,7 @@
     margin-right: 20px;
     position: relative;
 }
-.bili-header .profile-m .member-menu li a {
+.profile-m .member-menu li a {
     white-space: nowrap;
     color: #222;
     text-align: left;
@@ -324,19 +324,19 @@
     padding: 5px 0;
     line-height: 16px;
 }
-.bili-header .profile-m .member-menu li a:hover .bili-icon.b-icon-p-account {
+.profile-m .member-menu li a:hover .bili-icon.b-icon-p-account {
     background-position: -536px -407px;
 }
-.bili-header .profile-m .member-menu li a .bili-icon.b-icon-p-account {
+.profile-m .member-menu li a .bili-icon.b-icon-p-account {
     background-position: -472px -407px;
 }
-.bili-header .profile-m .member-menu li a .bili-icon {
+.profile-m .member-menu li a .bili-icon {
     width: 16px;
     height: 16px;
     margin-right: 10px;
     vertical-align: top;
 }
-.bili-header .profile-m .member-menu li a:hover {
+.profile-m .member-menu li a:hover {
     color: #00a1d6;
 }
 .bili-header fieldset,

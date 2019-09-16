@@ -29,4 +29,7 @@ public interface UserInfoMapper {
     int updateByPrimaryKeySelective(UserInfo record);
 
     int updateByPrimaryKey(UserInfo record);
+
+    int selectCountUserNum(String userType);
+    //记录在线人数
 }

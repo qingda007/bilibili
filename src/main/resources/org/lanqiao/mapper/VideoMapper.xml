@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lanqiao.mapper.VideoMapper" >
-  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Video" >
+  <resultMap id="VideoResultMap" type="org.lanqiao.entity.Video" >
     <id column="video_id" property="videoId" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="video_title" property="videoTitle" jdbcType="VARCHAR" />
     <result column="video_pic" property="videoPic" jdbcType="VARCHAR" />
     <result column="video_desc" property="videoDesc" jdbcType="VARCHAR" />
@@ -16,20 +15,40 @@
     <result column="coin_num" property="coinNum" jdbcType="INTEGER" />
     <result column="class_type" property="classType" jdbcType="VARCHAR" />
     <result column="is_review" property="isReview" jdbcType="VARCHAR" />
+    <association property="userInfo" resultMap="UserInfoResultMap"></association>
   </resultMap>
-
+  <resultMap id="UserInfoResultMap" type="org.lanqiao.entity.UserInfo" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_passw" property="userPassw" jdbcType="VARCHAR" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="user_birthday" property="userBirthday" jdbcType="DATE" />
+    <result column="user_sex" property="userSex" jdbcType="VARCHAR" />
+    <result column="user_regtime" property="userRegtime" jdbcType="TIMESTAMP" />
+    <result column="user_tele" property="userTele" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="VARCHAR" />
+    <result column="user_picadress" property="userPicadress" jdbcType="VARCHAR" />
+    <result column="user_coin" property="userCoin" jdbcType="INTEGER" />
+    <result column="user_role" property="userRole" jdbcType="VARCHAR" />
+  </resultMap>
 
   <sql id="Base_Column_List" >
     video_id, user_id, video_title, video_pic, video_desc, video_url, up_time, video_time, 
     play_num, like_num, collection_num, coin_num, class_type, is_review
   </sql>
 
-  <select id="selectVideoUpload" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  <select id="selectUpInfo" resultMap="VideoResultMap" parameterType="java.lang.Integer">
     select *
-    from video
-    where user_id = #{userId,jdbcType=INTEGER}
+    from video v,user_info u
+    where v.user_id=u.user_id and v.video_id = #{videoId}
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+
+  <select id="selectVideoUpload" resultMap="VideoResultMap" parameterType="java.lang.Integer">
+    select *
+    from video v,user_info u
+    where v.user_id = #{userId,jdbcType=INTEGER} and u.user_id=v.user_id
+  </select>
+  <select id="selectByPrimaryKey" resultMap="VideoResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from video

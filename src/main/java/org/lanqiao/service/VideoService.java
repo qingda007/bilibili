@@ -8,4 +8,6 @@ public interface VideoService {
     public Video selectVideoInfo(Integer videoId);
 
     public List<Video> selectVideoUpload(Integer userId);
+
+    public Video selectUpInfo(Integer videoId);
 }
