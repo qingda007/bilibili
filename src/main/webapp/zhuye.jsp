@@ -212,7 +212,7 @@
                 $("div.profile-m").remove();
                 $("li.nipi").remove();
             }
-            //跳转界面
+            //跳转用户中心界面
             $("a.account").click(function () {
                 $.ajax({
                     url:"/toUser",
@@ -298,7 +298,7 @@
                                 </div>
                                 <a class="login-btn">登录</a>
                                 <p class="reg">首次使用？
-                                    <a>点我去注册</a>
+                                    <a href="/user/toRegister">点我去注册</a>
                                 </p>
                             </div>
                             <div class="profile-m dd-bubble"style="display: none">
