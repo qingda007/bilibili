@@ -6,7 +6,6 @@ import org.lanqiao.entity.VideoDanmu;
 import org.lanqiao.service.VideoCommmentServiceImpl;
 import org.lanqiao.service.VideoDanmuService;
 import org.lanqiao.service.VideoServiceImpl;
-import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
