@@ -715,6 +715,12 @@
             color: #FFFFFF;
             width: 156px;
         }
+        .up-info .btn-panel .following {
+            color: #999;
+            border: 1px solid #e7e7e7;
+            background: #e7e7e7;
+            width: 123px;
+        }
         .up-info .btn-panel .not-follow i {
             width: 16px;
             height: 16px;
@@ -1142,23 +1148,27 @@
         }
 
         .video-bottom-info {
-            font-size: 12px;
-            height: 16px;
-            line-height: 12px;
-            color: #505050;
-            margin-right: 12px;
-            width: 188px;
-            background-color: #00FFFF;
+            width: 300px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
             position: relative;
-            top: 10px;
+            height: 30px;
+            line-height: 30px;
+            background: #f4f4f4;
+            color: #999;
+            border-radius: 2px;
         }
 
         .video-bottom-danmu-root {
             height: 34px;
-            width: 354px;
+            width: 300px;
             float: right;
             right: 0px;
-            top: 5px;
+            top: 0px;
             position: absolute;
         }
         /*弹幕按钮*/
@@ -1171,6 +1181,14 @@
             margin-right: 11px;
             cursor: pointer;
         }
+        .off .bui-body{
+            background-color: #757575;
+        }
+        .off .bui-dot{
+            color: #757575;
+            left: 2px;
+        }
+
 
         .bui-body {
             margin: 0;
@@ -1228,6 +1246,50 @@
             line-height: 50px;
             float: left;
 
+        }
+        /*发送弹幕文本框*/
+        .s_btn{
+            z-index: 13;
+            height: 30px;
+            width: 60px;
+            min-width: 60px;
+            line-height: 30px;
+            text-align: center;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            border-radius: 0 2px 2px 0;
+            background-color: #00a1d6;
+            color: #fff;
+        }
+        .s_txt{
+            color: #212121;
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            border: 0;
+            height: 30px;
+            line-height: 30px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            z-index: 12;
+            padding: 0 5px;
+            background: none;
+            font-size: 12px;
+            min-width: 115px;
+            width: 100%;
+        }
+        .s_box{
+            width: 200px;
+            border-radius: 2px 0 0 2px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            border: 1px solid #e7e7e7;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
         }
     </style>
     <script src="/js/jquery-3.4.1.js"></script>
@@ -1606,7 +1668,7 @@
                         </video>
 <%--                        <video src="${video.videoUrl}" width="638px" height="381px"></video>--%>
                         <!--                弹幕窗口-->
-                        <div class="dm">
+                        <div class="dm" style="display: none">
                             <div class="dm_show" id="danmushow">
                                 <div>这是一条弹幕</div>
                                 <div>这也是</div>
@@ -1647,10 +1709,14 @@
             <!--       按钮和弹幕发送     -->
             <div class="video-bottom">
                 <div class="video-bottom-info">
-                   <input type="text" class="s_txt" width="188px" height="32px"><input type="button" id="s_btn" class="s_btn" width="52px" height="32px" value="发送">
+                    <div class="s_box">
+                        <input type="text" placeholder="发个弹幕见证当下" class="s_txt" width="188px" height="32px">
+                    </div>
+
+                    <div  id="s_btn" class="s_btn" >发送</div>
                 </div>
                 <div class="video-bottom-danmu-root">
-                    <div class="danmu-trigger">
+                    <div class="danmu-trigger off">
 								<span class="bui-body">
 									<span class="bui-dot">
 										<span >弹</span>
@@ -1821,7 +1887,10 @@
                             <i class="van-icon-general_addto_s"></i>+关注
                             <span>1.2万</span>
                         </span>
-                        <span class="quxiao" style="display: none">
+
+                    </div>
+                    <div class="default-btn follow-btn b-gz following" style="display: none">
+                        <span class="quxiao">
                             <i class="van-icon-general_addto_s"></i>已关注
                         </span>
                     </div>
@@ -1873,16 +1942,9 @@
 </body>
 </html>
 <script>
-    var flag=0;
-    $("#guanzhu").click(function () {
-        if (flag){
-            $(".guanzhu").style.display=='none';
-            $(".quxiao").style.display=='block';
-        }
-        if ($(".guanzhu").style.display=='none'&&$(".quxiao").style.display=='block'){
-            $(".guanzhu").style.display=='block';
-            $(".quxiao").style.display=='none';
-        }
+    $(".btn-panel div").click(function () {
+       $(this).hide();
+       $(this).siblings().show();
     })
 </script>
 <!--按钮-->
@@ -2045,18 +2107,14 @@
 <script>
     $(function () {
         //弹幕开关按钮
-        var flag=1;
+        var flag=0;
         $(".danmu-trigger").click(function(){
             if(!flag){
-                $(".bui-body").css("background","#00A1D6");
-                $(".bui-dot").css("color","#00A1D6");
-                $(".bui-dot").css("left","12px");
+                $("div.danmu-trigger").addClass("off");
                 $(".dm").fadeIn();
                 flag=1;
             }else{
-                $(".bui-body").css("background","#757575");
-                $(".bui-dot").css("color","#757575");
-                $(".bui-dot").css("left","2px");
+                $("div.danmu-trigger").removeClass("off");
                 $(".dm").fadeOut();
                 flag=0;
             }
