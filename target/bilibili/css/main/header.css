@@ -34,15 +34,13 @@
 	background-color: hsla(0, 0%, 100%, .4);
 	box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
 }
-
-.bili-header .clearfix::before {
-	content: "";
-	display: table;
+.bili-header .clearfix::after, .bili-header.clearfix::before {
+    content: "";
+    display: table;
 }
-
 .bili-header .clearfix::after {
-	clear: both;
-	overflow: hidden;
+    clear: both;
+    overflow: hidden;
 }
 
 .bili-header .nav-wraper {
@@ -128,7 +126,7 @@
 	z-index: 400;
 }
 
-.profile-info .i-face {
+.bili-header .profile-info .i-face {
 	position: absolute;
 	z-index: 20;
 	width: 32px;
@@ -137,15 +135,22 @@
 	top: 0;
 	transition: .3s;
 }
-
-.profile-info .i-face .face {
+.bili-header .profile-info.on .i-face{
+	left:-15px;
+	top:15px;
+	height: 64px;
+	width: 64px;
+}
+.bili-header .profile-info .i-face .face {
 	border: 0 solid #fff;
 	width: 100%;
 	height: 100%;
 	border-radius: 50%;
 }
-
-.profile-info .i-face .pendant {
+.bili-header .profile-info.on .i-face .face{
+	border: 2px solid #fff;
+}
+.bili-header .profile-info .i-face .pendant {
 	position: absolute;
 	width: 84px;
 	height: 84px;
@@ -183,7 +188,157 @@
 	top: 0;
 	left: 0;
 }
+.bili-header .nav-menu .dd-bubble {
+	position: absolute;
+	z-index: 1;
+}
+.bili-header .profile-m {
+	left: 50%;
+	margin-left: -130px;
+	width: 260px;
+	padding: 50px 0 0;
+	top: 42px;
+	background: #fff;
+	box-shadow: 0 2px 4px rgba(0,0,0,.16);
+	border-radius: 0 0 4px 4px;
+	line-height: normal;
+}
+.bili-header .profile-m .header-uname {
+	padding-bottom: 15px;
+}
+.bili-header .profile-m .header-uname b {
+	display: block;
+	margin-bottom: 8px;
+}
+.bili-header .profile-m .big-vip-red {
+	color: #fb7299 !important;
+}
+.bili-header .profile-m .header-u-info a {
+	color: #222;
+}
+.bili-header .profile-m .header-uname .vip-type span {
+	padding: 2px 3px;
+	background: #fb7299;
+	color: #fff !important;
+	border-radius: 3px;
+}
+.bili-header .profile-m .btns-profile {
+	position: relative;
+	margin: 0 20px;
+}
+.bili-header .profile-m .header-u-info a {
+	color: #222;
+}
+.bili-header .profile-m .btns-profile .coin .bi {
+	background-position: -343px -471px;
+	margin-right: 2px;
+	position: relative;
+	z-index: 2;
+}
+.bili-header .profile-m .btns-profile .bili-icon {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	vertical-align: middle;
+	background-repeat: no-repeat;
+}
+.bili-header .bili-icon {
+	display: inline-block;
+	background-image: url("../../images/main/icons.png");
+}
+.bili-header .profile-m .btns-profile .num {
+	vertical-align: middle;
+	display: inline-block;
+	transition: 2s;
+}
+.bili-header .profile-m .btns-profile .ver {
+	position: relative;
+}
+.bili-header .profile-m .btns-profile .ver a {
+	display: block;
+}
+.bili-header .profile-m .btns-profile .phone.verified .bili-icon {
+	background-position: -343px -599px;
+}
+.bili-header .profile-m .btns-profile .email.verified .bili-icon {
+	background-position: -343px -534px;
+}
+.profile-m .member-menu li a:hover .bili-icon.b-icon-p-member {
+    background-position: -601px -1046px;
+}
+.bili-header .profile-m .member-menu li a .bili-icon.b-icon-p-member {
+    background-position: -536px -1046px;
+}
+.email {
+	margin-right: 10px;
+}
+.bili-header .profile-m .btns-profile .ver .tips {
+	display: none;
+	padding: 0 6px;
+	height: 20px;
+	line-height: 20px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	position: absolute;
+	right: 30px;
+	top: -2px;
+	white-space: nowrap;
+	background-color: #fff;
+	color: #222;
+	z-index: 10;
+}
+.bili-header .profile-m .btns-profile .ver:hover .tips {
+	display: block;
+}
+.bili-header .profile-m .btns-profile .ver .tips::after {
+	content: "";
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	background: url("../../images/main/气泡箭头.png");
+	right: -8px;
+	top: 6px;
+}
 
+.bili-header .profile-m .member-menu {
+    border-top: 1px solid #e5e9ef;
+    padding: 10px 20px 40px;
+
+}
+.bili-header .profile-m .member-menu ul {
+    width: 240px;
+    clear: both;
+    zoom: 1;
+}
+.member-menu  li {
+    width: 100px;
+    margin-right: 20px;
+    position: relative;
+}
+.bili-header .profile-m .member-menu li a {
+    white-space: nowrap;
+    color: #222;
+    text-align: left;
+    margin: 0 auto;
+    display: block;
+    padding: 5px 0;
+    line-height: 16px;
+}
+.bili-header .profile-m .member-menu li a:hover .bili-icon.b-icon-p-account {
+    background-position: -536px -407px;
+}
+.bili-header .profile-m .member-menu li a .bili-icon.b-icon-p-account {
+    background-position: -472px -407px;
+}
+.bili-header .profile-m .member-menu li a .bili-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    vertical-align: top;
+}
+.bili-header .profile-m .member-menu li a:hover {
+    color: #00a1d6;
+}
 .bili-header fieldset,
 .bili-header img {
 	border: none;
@@ -331,7 +486,24 @@
 	opacity: 1;
 }
 
-
+.profile-m .member-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background-color: #f4f5f7;
+    border-radius: 0 0 4px 4px;
+}
+.profile-m .member-bottom .logout {
+    float: right;
+    padding-right: 20px;
+    color: #222;
+}
+.profile-m .member-bottom .logout:hover {
+    color: #00a1d6;
+}
 /*-----------------------------*/
 
 .top-banner {

@@ -6,7 +6,6 @@ import org.lanqiao.entity.VideoDanmu;
 import org.lanqiao.service.VideoCommmentServiceImpl;
 import org.lanqiao.service.VideoDanmuService;
 import org.lanqiao.service.VideoServiceImpl;
-import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,10 +44,14 @@ public class VideoController {
         return videoService.selectUpInfo(videoId);
     }
 
-    @RequestMapping("/insert")
-    public String insertMsg(VideoComment videoComment){
-        videoCommmentService.insertMsg(videoComment);
-        return "redirect:index";
+    @RequestMapping("/insertComment")
+    public int insertMsg(VideoComment videoComment){
+       return videoCommmentService.insertMsg(videoComment);
+    }
+
+    @RequestMapping("/insertDanmu")
+    public int insertDanmu(VideoDanmu videoDanmu){
+        return videoDanmuService.insertSelective(videoDanmu);
     }
 
     @RequestMapping("/commentCount")

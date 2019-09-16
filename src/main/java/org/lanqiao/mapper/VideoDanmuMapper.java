@@ -17,6 +17,7 @@ public interface VideoDanmuMapper {
     int updateByPrimaryKeySelective(VideoDanmu record);
 
     int updateByPrimaryKey(VideoDanmu record);
+
     List<VideoDanmu> selectAllDanmu(Integer videoId);
 
     int selectDanmuCount(Integer videoId);

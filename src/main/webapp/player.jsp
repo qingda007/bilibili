@@ -12,6 +12,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        .w-e-text-container{
+            height: 70px !important;
+        }
+    </style>
+    <link href="/css/player/wangEditor.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main/iconfont.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -154,39 +160,44 @@
 
         /*搜索框*/
         .nav-search{
-            width: 420px;
-            height: 54px;
+
             float: right;
-            padding-right: 60px;
+            margin: 5px 60px 0 0;
+
         }
         .showSearch{
-            width: 420px;
+            width: 350px;
             height: 34px;
-            margin-top: 8px;
             border-radius: 2px;
             background-color: #f4f4f4;
             border: 1px solid #e7e7e7;
+            right: 20px;
+        }
+        .nav-search-keyword, .nav-search-submit:focus{
+            outline: none;
         }
         .nav-search-keyword{
             height: 32px;
             line-height: 32px;
-            width: 420px;
+            width: 92%;
             opacity: 1;
             color: #999;
-            font-size: 12px;
+            font-size: 14px;
             overflow: hidden;
             border: none;
             box-shadow: none;
             background-color: transparent;
             transition: all 0.2s;
-
+            float: left;
+            padding-left: 8px;
         }
         .nav-search-submit {
+            float: left;
             top: 7px;
             color: #999;
             font-size: 18px;
             right: 7px;
-            position: absolute;
+            position: relative;
             cursor: pointer;
             margin: 0;
             padding: 0;
@@ -1220,6 +1231,7 @@
         }
     </style>
     <script src="/js/jquery-3.4.1.js"></script>
+    <script src="/js/player/wangEditor.min.js"></script>
     <script>
         $(function () {
             var flag0=1;
@@ -1248,7 +1260,6 @@
     <script>
 
         $(function () {
-
             //视频信息
             $.ajax({
                 url:"/video/videoInfo",
@@ -1280,17 +1291,66 @@
 
             });
 
+            function showComment(){
+                //评论和评论人信息
+                $.ajax({
+                    url:"/video/commentInfo",
+                    data:{
+                        "videoId":1
+                    },
+                    type: "post",
+                    datatype: "json",
+                    success:function (data1) {
+                        for (var i=0;i<data1.length;i++){
+                            $(".comment-list").prepend(" <div class=\"list-item reply-wrap \">\n" +
+                                "                                        <div class=\"user-face\">\n" +
+                                "                                            <img src=\""+data1[i].userInfo.userPicadress+"\">\n" +
+                                "                                        </div>\n" +
+                                "                                        <div class=\"con\">\n" +
+                                "                                            <div class=\"user\">\n" +
+                                "                                                <span class=\"name\">"+data1[i].userInfo.userName+"</span>\n" +
+                                "                                            </div>\n" +
+                                "                                            <p class=\"text\">"+data1[i].comment+"</p>\n" +
+                                "                                            <div class=\"info\">\n" +
+                                "                                                <span class=\"time\">"+data1[i].sendTime+"</span>\n" +
+                                "                                            </div>\n" +
+                                "                                        </div>\n" +
+                                "                                    </div>")
+                        }
+                    }
+                });
+            }
+            function showDanmu(){
+                //弹幕信息
+                $.ajax({
+                    url:"/video/danmuInfo",
+                    data:{
+                        "videoId":1
+                    },
+                    type: "post",
+                    datatype: "json",
+                    success:function (data2) {
+                        for (var j=0;j<data2.length;j++){
+                            $("#danmusss").prepend("<li class=\"danmaku-info-row\">\n" +
+                                "                                                         <span class=\"danmaku-info-time\">"+data2[j].userInfo.userName+"</span>"+
+                                "                                                        <span class=\"danmaku-info-danmaku\">"+data2[j].danmu+"</span>\n" +
+                                "                                                        <span class=\"danmaku-info-date\">"+data2[j].sentTime+"</span>\n" +
+                                "                                                    </li>")
+                        }
+                    }
+                });
+            }
             //评论和评论人信息
             $.ajax({
                 url:"/video/commentInfo",
                 data:{
-                    "videoId":1,
+                    "videoId":1
                 },
                 type: "post",
                 datatype: "json",
                 success:function (data1) {
                     for (var i=0;i<data1.length;i++){
-                        $(".comment-list").append(" <div class=\"list-item reply-wrap \">\n" +
+                        $(".comment-list").prepend(" <div class=\"list-item reply-wrap \">\n" +
                             "                                        <div class=\"user-face\">\n" +
                             "                                            <img src=\""+data1[i].userInfo.userPicadress+"\">\n" +
                             "                                        </div>\n" +
@@ -1318,14 +1378,16 @@
                 datatype: "json",
                 success:function (data2) {
                     for (var j=0;j<data2.length;j++){
-                        $("#danmusss").prepend(" <li class=\"danmaku-info-row\">\n" +
-                            "<span class=\"danmaku-info-time\">02.03s</span>"+
+                        $("#danmusss").prepend("<li class=\"danmaku-info-row\">\n" +
+                            "                                                         <span class=\"danmaku-info-time\">"+data2[j].userInfo.userName+"</span>"+
                             "                                                        <span class=\"danmaku-info-danmaku\">"+data2[j].danmu+"</span>\n" +
                             "                                                        <span class=\"danmaku-info-date\">"+data2[j].sentTime+"</span>\n" +
-                            "                                                    </li>")
+                            "                                                    </li>");
+                        $("#danmushow").append("<div>"+data2[j].danmu+"<div>")
                     }
                 }
             });
+
             //up主信息
             $.ajax({
                 url:"/video/upInfo",
@@ -1335,7 +1397,7 @@
                 type:"post",
                 datatype:"json",
                 success:function (data3) {
-                    $("#upface").prepend("<img src=\""+data3.userInfo.userPicadress+"\" width=\"48\" height=\"48\" class=\"up-face\">")
+                    $("#upface").prepend("<img src=\""+data3.userInfo.userPicadress+"\" width=\"48\" height=\"48\" class=\"up-face\">");
                     $("#upname").prepend("<a href=\"\" target=\"_blank\" class=\"username\">"+data3.userInfo.userName+"</a>")
                 }
             });
@@ -1349,7 +1411,7 @@
                 type:"post",
                 datatype:"json",
                 success:function (data4) {
-                    $("#commentcount").prepend("<span class=\"b-head results\">"+data4+"</span>")
+                    $("#commentNum").text(data4);
                 }
             });
 
@@ -1362,16 +1424,106 @@
                 type:"post",
                 datatype:"json",
                 success:function (data5) {
-                    $("#videodata").append("<span title=\"弹幕数\" class=\"view-dm\">"+data5+"弹幕</span>")
+                    $("#videodata").append("<span title=\"弹幕数\" class=\"view-dm\">"+data5+"弹幕</span>");
                     $("#danmutime").after("<div class=\"player-auxiliary-danmaku-btn-danmaku\">\n" +
-                        "                                                弹幕内容（<span>"+data5+"</span>）\n" +
+                        "                                                弹幕内容\n" +
                         "                                            </div>")
+                    // $("#danmutime").after("<div class=\"player-auxiliary-danmaku-btn-danmaku\">\n" +
+                    //     "                                                弹幕内容（<span>"+data5+"</span>）\n" +
+                    //     "                                            </div>")
                 }
+            });
+
+            //获取登录用户信息
+            $.ajax({
+                url:"http://localhost:8888/getUserInfo",
+                type:"post",
+                data:{"id":2},
+                datatype:"json",
+                success:function (data) {
+                    console.log(data);
+                    $("#userface").prepend("<img src=\""+data.userPicadress+"\" width=\"32px\" height=\"32px\">");
+                    $("#firstface").prepend("<img class=\"user-head\" src=\""+data.userPicadress+"\">");
+                    $("#secondface").prepend("<img class=\"user-head\" src=\""+data.userPicadress+"\">")
+                }
+            });
+
+            //发表评论
+            $(".comment-submit").click(function () {
+                //插入评论
+                var tit=$(".ipt-txt").val();
+                var time=new Date();
+                $.ajax({
+                    url:"/video/insertComment",
+                    type:"post",
+                    async:false,
+                    data:{
+                        "userId":2,
+                        "videoId":1,
+                        "comment":tit,
+                        "sendTime":time
+                    },
+                    datatype:"json",
+                    success:function (data) {
+                        $.ajax({
+                            url:"/video/commentCount",
+                            data:{
+                                "videoId":1
+                            },
+                            async:false,
+                            type:"post",
+                            datatype:"json",
+                            success:function (data4) {
+                                $("#commentNum").text(data4);
+                            }
+                        });
+                    },
+                    error:function () {
+                        alert("失败")
+                    }
+                })
+
+
+            });
+
+            //发送弹幕
+            $("#s_btn").click(function () {
+                var tit=$(".s_txt").val();
+                var time=new Date();
+                $.ajax({
+                    url:"/video/insertDanmu",
+                    type:"post",
+                    data:{
+                        "userId":2,
+                        "videoId":1,
+                        "danmu":tit,
+                        "sentTime":time
+                    },
+                    datatype:"json",
+                    success:function (data) {
+                        showDanmu();
+                    },
+                    error:function () {
+                        alert("失败")
+                    }
+                })
             })
 
-            
-        })
+        });
 
+
+
+    </script>
+    <script>
+        $(function(){
+            var E = window.wangEditor;
+            var editor = new E('#editor');
+            editor.customConfig.menus = [
+                'emoticon'  // 表情
+            ]
+            //创建编辑器
+            editor.create();
+        })
     </script>
 </head>
 <body>
@@ -1400,8 +1552,8 @@
         </div>
         <div class="nav-con fr">
             <ul>
-                <li class="nav-item profile-info">
-                    <img src="/images/video/akari.jpg" width="32px" height="32px">
+                <li class="nav-item profile-info" id="userface">
+<%--                    <img src="/images/video/akari.jpg" width="32px" height="32px">--%>
                 </li>
                 <li class="nav-item ">
                     <a href="" class="t">动态</a>
@@ -1414,7 +1566,7 @@
         <div class="nav-search">
             <div class="nav-search showSearch" >
                 <input type="text" class="nav-search-keyword">
-                <button type="submit" class="header-icon-general_search nav-search-submit">
+                <button type="submit" class="header-icon-general_search nav-search-submit iconfont icon-sousuo">
                 </button>
             </div>
         </div>
@@ -1455,7 +1607,7 @@
 <%--                        <video src="${video.videoUrl}" width="638px" height="381px"></video>--%>
                         <!--                弹幕窗口-->
                         <div class="dm">
-                            <div class="dm_show">
+                            <div class="dm_show" id="danmushow">
                                 <div>这是一条弹幕</div>
                                 <div>这也是</div>
                                 <div>这还是</div>
@@ -1495,7 +1647,7 @@
             <!--       按钮和弹幕发送     -->
             <div class="video-bottom">
                 <div class="video-bottom-info">
-                   <input type="text" class="s_txt" width="188px" height="32px"><input type="button" class="s_btn" width="52px" height="32px" value="发送">
+                   <input type="text" class="s_txt" width="188px" height="32px"><input type="button" id="s_btn" class="s_btn" width="52px" height="32px" value="发送">
                 </div>
                 <div class="video-bottom-danmu-root">
                     <div class="danmu-trigger">
@@ -1539,7 +1691,7 @@
             <div id="comment" class="comment-m">
                 <div class="common">
                     <div class="b-head" id="commentcount">
-<%--                        <span class="b-head results">1350</span>--%>
+                        <span class="b-head results" id="commentNum">1350</span>
                         <span class="b-head-t">评论</span>
                     </div>
                     <div class="comment" style="position: relative">
@@ -1556,28 +1708,32 @@
                                 </div>
                             </div>
                             <!--输入框-->
-                            <form method="post" action="/video/insert">
                             <div class="comment-send no-login">
-                                <div class="user-face">
-                                    <img class="user-head" src="//static.hdslb.com/images/member/noface.gif">
+                                <div class="user-face" id="firstface">
+<%--                                    <img class="user-head" src="//static.hdslb.com/images/member/noface.gif">--%>
                                 </div>
                                 <div class="textarea-container">
                                     <div class="baffle-wrap">
                                         <div class="baffle">您的等级不足，升级至Lv2可参与评论
                                         </div>
                                     </div>
-                                    <i class="ipt-arrow"></i>
-                                    <textarea cols="80" name="msg" rows="5" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="ipt-txt">
+<%--                                    <i class="ipt-arrow"></i>--%>
+<%--                                    <textarea cols="80" name="msg" rows="5" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="ipt-txt">--%>
 
-                                    </textarea>
-                                    <button type="submit" class="comment-submit" disabled="disabled">发表评论</button>
+<%--                                    </textarea>--%>
+                                    <div style="width: 473px">
+                                        <div id="editor" style="height:65px;max-height:100px">
+
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="comment-submit" >发表评论</button>
                                 </div>
                                 <div class="comment-emoji">
                                     <i class="face"></i>
                                     <span class="text">表情</span>
                                 </div>
                             </div>
-                            </form>
                             <!--评论信息-->
                             <div class="comment-list">
 <%--                                    <div class="list-item reply-wrap ">--%>
@@ -1611,8 +1767,8 @@
                             <!--输入框-->
                             <form action="/video/insert" method="post">
                             <div class="comment-send no-login">
-                                <div class="user-face">
-                                    <img class="user-head" src="/images/video/akari.jpg">
+                                <div class="user-face" id="secondface">
+<%--                                    <img class="user-head" src="/images/video/akari.jpg">--%>
                                 </div>
                                 <div class="textarea-container">
                                     <div class="baffle-wrap">
@@ -1642,9 +1798,7 @@
         <div class="r-con">
             <div id="v_upinfo" class="up-info">
                 <!--头像-->
-                <div class="u-face" id="upface">
-<%--                    <img src="/images/video/akari.jpg" width="48" height="48" class="up-face">--%>
-                </div>
+                <div class="u-face" id="upface"></div>
                 <!--信息-->
                 <div class="u-info">
                     <!--名字-->
@@ -1662,14 +1816,13 @@
                 </div>
                 <!--关注按钮-->
                 <div class="btn-panel">
-                    <div class="default-btn follow-btn b-gz not-follow">
-                        <span class="">
+                    <div class="default-btn follow-btn b-gz not-follow" id="guanzhu">
+                        <span class="guanzhu" style="display: block">
                             <i class="van-icon-general_addto_s"></i>+关注
                             <span>1.2万</span>
                         </span>
-                        <span class=""style="display: none">
+                        <span class="quxiao" style="display: none">
                             <i class="van-icon-general_addto_s"></i>已关注
-
                         </span>
                     </div>
                 </div>
@@ -1692,7 +1845,7 @@
                                     <div class="player-auxiliary-filter-wrap player-auxiliary-danmaku"style="height: 288px;">
                                         <div class="clearfix"></div>
                                         <div class="player-auxiliary-danmaku-function">
-                                            <div class="player-auxiliary-danmaku-btn-time" id="danmutime">时间</div>
+                                            <div class="player-auxiliary-danmaku-btn-time" id="danmutime">用户</div>
 <%--                                            <div class="player-auxiliary-danmaku-btn-danmaku">--%>
 <%--                                                弹幕内容（<span>1000</span>）--%>
 <%--                                            </div>--%>
@@ -1700,9 +1853,9 @@
                                         </div>
                                         <div class="player-auxiliary-danmaku-contaner player-auxiliary-bscrollbar">
                                             <ul class="player-auxiliary-danmaku-list bpui-component bpui-undefined bpui-selectable" id="danmusss">
-<%--                                                    <li class="danmaku-info-row">--%>
-<%--                                                        <span class="danmaku-info-danmaku">${danmu.danmu}</span>--%>
-<%--                                                        <span class="danmaku-info-date">${danmu.sentTime}</span>--%>
+<%--                                                    <li class="danmaku-info-row" id="dammu-lists">--%>
+<%--&lt;%&ndash;                                                        <span class="danmaku-info-danmaku">${danmu.danmu}</span>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                                        <span class="danmaku-info-date">${danmu.sentTime}</span>&ndash;%&gt;--%>
 <%--                                                    </li>--%>
                                             </ul>
                                         </div>
@@ -1715,11 +1868,23 @@
 
             </div>
         </div>
-
     </div>
 </div>
 </body>
 </html>
+<script>
+    var flag=0;
+    $("#guanzhu").click(function () {
+        if (flag){
+            $(".guanzhu").style.display=='none';
+            $(".quxiao").style.display=='block';
+        }
+        if ($(".guanzhu").style.display=='none'&&$(".quxiao").style.display=='block'){
+            $(".guanzhu").style.display=='block';
+            $(".quxiao").style.display=='none';
+        }
+    })
+</script>
 <!--按钮-->
 <script>
 

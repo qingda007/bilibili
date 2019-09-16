@@ -20,4 +20,9 @@ public class VideoDanmuServiceImpl implements VideoDanmuService {
     public int selectDanmuCount(Integer videoId) {
         return videoDanmuMapper.selectDanmuCount(videoId);
     }
+
+    @Override
+    public int insertSelective(VideoDanmu videoDanmu) {
+        return videoDanmuMapper.insertSelective(videoDanmu);
+    }
 }
