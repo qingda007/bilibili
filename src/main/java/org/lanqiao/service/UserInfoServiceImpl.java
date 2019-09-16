@@ -41,7 +41,9 @@ return userInfoMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public int selectCountUserNum(String userType) {
+    public int countUserNum(String userType) {
         return userInfoMapper.selectCountUserNum(userType);
     }
+
+
 }

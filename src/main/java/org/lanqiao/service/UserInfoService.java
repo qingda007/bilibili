@@ -15,6 +15,6 @@ public interface UserInfoService {
     UserInfo selectByPrimaryKey(Integer id);
     public List<Video> selectVideoUpload(Integer userId);
 
-    int selectCountUserNum(String userType);
     //记录在线人数
+    int countUserNum(String id);
 }

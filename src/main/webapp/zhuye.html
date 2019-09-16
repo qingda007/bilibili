@@ -143,15 +143,14 @@
 					})
 				});
                 //  在线人数
+                var str={"userType":'u87'};
                 $.ajax({
-                    url:"http://localhost:8888/userCountNum",
+                    url:"http://localhost:8888/liveUserNum",
                     type:"post",
-                    dataType:"json",
-                    data:{
-                        "UserType":'u88',
-                    },
+                    dataTyoe:"application/json; charset=utf-8",
+                    data:str,
                     success:function (data) {
-                        alert(data);
+                        vNum.Num=data;
                     },
 
                 });
@@ -1011,7 +1010,7 @@
 					</div>
 					<div class="r-con">
 						<div class="online">
-							<a>在线人数：5888</a>
+							<a>在线人数：{{Num}}</a>
 						</div>
 						<div class="adpos">
 							<a>
@@ -1325,6 +1324,10 @@
                     coin:null,
                 }
             },
+        })
+        var vNum=new Vue({
+            el:'div.online',
+            data: {Num:null,},
         })
     </script>
 </html>
