@@ -8,6 +8,11 @@
     <result column="danmu" property="danmu" jdbcType="VARCHAR" />
     <result column="sent_time" property="sentTime" jdbcType="TIMESTAMP" />
   </resultMap>
+
+  <select id="selectDanmuCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    select count(*) from video_danmu where video_id=#{videoId}
+  </select>
+
   <select id="selectAllDanmu" resultMap="VideoDanmuResultMap">
     select * from video_danmu where video_id=#{videoId}
   </select>

@@ -18,4 +18,6 @@ public interface VideoCommentMapper {
 
     int updateByPrimaryKey(VideoComment record);
     List<VideoComment> selectAllComment(Integer videoId);
+
+    int selectCommentCount(Integer videoId);
 }

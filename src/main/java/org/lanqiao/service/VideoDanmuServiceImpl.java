@@ -15,4 +15,9 @@ public class VideoDanmuServiceImpl implements VideoDanmuService {
     public List<VideoDanmu> selectAllDanmu(Integer videoId) {
         return videoDanmuMapper.selectAllDanmu(videoId);
     }
+
+    @Override
+    public int selectDanmuCount(Integer videoId) {
+        return videoDanmuMapper.selectDanmuCount(videoId);
+    }
 }

@@ -1248,6 +1248,8 @@
     <script>
 
         $(function () {
+
+            //视频信息
             $.ajax({
                 url:"/video/videoInfo",
                 data:{
@@ -1260,8 +1262,7 @@
                         "                    <span class=\"tit\">"+data.videoTitle+"</span>\n" +
                         "                </h1>");
                     $(".a-crumbs").after("<span>"+data.upTime+"</span>");
-                    $("#videodata").prepend("<span title=\"总播放数\" class=\"view\">"+data.playNum+"评论&nbsp;&nbsp;</span>\n" +
-                        "                    <span title=\"弹幕数\" class=\"view-dm\">654弹幕</span>");
+                    $("#videodata").prepend("<span title=\"总播放数\" class=\"view\">"+data.playNum+"播放&nbsp;&nbsp;</span>\n");
                     // $(".video_player").prepend("<video src=\""+data.videoUrl+"\" width=\"638px\" height=\"381px\"></video>")
                     $(".videos").prepend("<source src=\""+data.videoUrl+"\" type=\"video/mp4\">")
                     $(".ops").prepend("<span title=\"点赞数\" class=\"like\">\n" +
@@ -1278,7 +1279,8 @@
 
 
             });
-            
+
+            //评论和评论人信息
             $.ajax({
                 url:"/video/commentInfo",
                 data:{
@@ -1306,6 +1308,7 @@
                 }
             });
 
+            //弹幕信息
             $.ajax({
                 url:"/video/danmuInfo",
                 data:{
@@ -1314,7 +1317,6 @@
                 type: "post",
                 datatype: "json",
                 success:function (data2) {
-
                     for (var j=0;j<data2.length;j++){
                         $("#danmusss").prepend(" <li class=\"danmaku-info-row\">\n" +
                             "<span class=\"danmaku-info-time\">02.03s</span>"+
@@ -1322,13 +1324,50 @@
                             "                                                        <span class=\"danmaku-info-date\">"+data2[j].sentTime+"</span>\n" +
                             "                                                    </li>")
                     }
-
                 }
+            });
+            //up主信息
+            $.ajax({
+                url:"/video/upInfo",
+                data:{
+                    "videoId":1
+                },
+                type:"post",
+                datatype:"json",
+                success:function (data3) {
+                    $("#upface").prepend("<img src=\""+data3.userInfo.userPicadress+"\" width=\"48\" height=\"48\" class=\"up-face\">")
+                    $("#upname").prepend("<a href=\"\" target=\"_blank\" class=\"username\">"+data3.userInfo.userName+"</a>")
+                }
+            });
+            
+            //评论数
+            $.ajax({
+                url:"/video/commentCount",
+                data:{
+                    "videoId":1
+                },
+                type:"post",
+                datatype:"json",
+                success:function (data4) {
+                    $("#commentcount").prepend("<span class=\"b-head results\">"+data4+"</span>")
+                }
+            });
 
-
-
+            //弹幕数
+            $.ajax({
+                url:"/video/danmuCount",
+                data:{
+                    "videoId":1
+                },
+                type:"post",
+                datatype:"json",
+                success:function (data5) {
+                    $("#videodata").append("<span title=\"弹幕数\" class=\"view-dm\">"+data5+"弹幕</span>")
+                    $("#danmutime").after("<div class=\"player-auxiliary-danmaku-btn-danmaku\">\n" +
+                        "                                                弹幕内容（<span>"+data5+"</span>）\n" +
+                        "                                            </div>")
+                }
             })
-
 
             
         })
@@ -1410,7 +1449,7 @@
             <div id="playerWrap" class="player-wrap" style="height: auto">
                 <div id="bofqi" style="width: 638px;height: 493px;position: static">
                     <div class="video_player" >
-                        <video controls class="videos">
+                        <video controls class="videos" width="638px" height="381px">
 <%--                            <source src="hangge.mp4" type="video/mp4">--%>
                         </video>
 <%--                        <video src="${video.videoUrl}" width="638px" height="381px"></video>--%>
@@ -1499,8 +1538,8 @@
             <!--评论区-->
             <div id="comment" class="comment-m">
                 <div class="common">
-                    <div class="b-head">
-                        <span class="b-head results">1350</span>
+                    <div class="b-head" id="commentcount">
+<%--                        <span class="b-head results">1350</span>--%>
                         <span class="b-head-t">评论</span>
                     </div>
                     <div class="comment" style="position: relative">
@@ -1603,14 +1642,14 @@
         <div class="r-con">
             <div id="v_upinfo" class="up-info">
                 <!--头像-->
-                <div class="u-face">
-                    <img src="/images/video/akari.jpg" width="48" height="48" class="up-face">
+                <div class="u-face" id="upface">
+<%--                    <img src="/images/video/akari.jpg" width="48" height="48" class="up-face">--%>
                 </div>
                 <!--信息-->
                 <div class="u-info">
                     <!--名字-->
-                    <div class="name" style="line-height:20px;height:20px;">
-                        <a href="" target="_blank" class="username">千夏Simple</a>
+                    <div class="name" style="line-height:20px;height:20px;" id="upname">
+<%--                        <a href="" target="_blank" class="username">千夏Simple</a>--%>
                         <a class="message">
                             <i class="iconfont icon-xinfeng"></i>发消息
                         </a>
@@ -1653,12 +1692,10 @@
                                     <div class="player-auxiliary-filter-wrap player-auxiliary-danmaku"style="height: 288px;">
                                         <div class="clearfix"></div>
                                         <div class="player-auxiliary-danmaku-function">
-                                            <div class="player-auxiliary-danmaku-btn-time">时间</div>
-                                            <div class="player-auxiliary-danmaku-btn-danmaku">
-                                                弹幕内容（
-                                                <span>1000</span>
-                                                ）
-                                            </div>
+                                            <div class="player-auxiliary-danmaku-btn-time" id="danmutime">时间</div>
+<%--                                            <div class="player-auxiliary-danmaku-btn-danmaku">--%>
+<%--                                                弹幕内容（<span>1000</span>）--%>
+<%--                                            </div>--%>
                                             <div class="player-auxiliary-danmaku-btn-date">发送时间</div>
                                         </div>
                                         <div class="player-auxiliary-danmaku-contaner player-auxiliary-bscrollbar">

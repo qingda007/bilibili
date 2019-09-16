@@ -20,4 +20,9 @@ public class VideoCommmentServiceImpl implements VideoCommentService {
     public int insertMsg(VideoComment videoComment) {
         return videoCommentMapper.insertSelective(videoComment);
     }
+
+    @Override
+    public int selectCommentCount(Integer videoId) {
+        return videoCommentMapper.selectCommentCount(videoId);
+    }
 }

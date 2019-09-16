@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface VideoDanmuService {
     public List<VideoDanmu> selectAllDanmu(Integer videoId);
+    public int selectDanmuCount(Integer videoId);
 }

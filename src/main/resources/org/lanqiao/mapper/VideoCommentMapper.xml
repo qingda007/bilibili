@@ -23,6 +23,11 @@
     <result column="user_coin" property="userCoin" jdbcType="INTEGER" />
     <result column="user_role" property="userRole" jdbcType="VARCHAR" />
   </resultMap>
+
+  <select id="selectCommentCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    select count(*) from video_comment where video_id = #{videoId} group by video_id
+  </select>
+
   <select id="selectAllComment" resultMap="VideoCommentResultMap">
     select c.*,i.user_name,i.user_picadress from video_comment c,user_info i where c.user_id=i.user_id and c.video_id=#{videoId}
   </select>
