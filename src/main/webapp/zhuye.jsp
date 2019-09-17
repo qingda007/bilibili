@@ -178,6 +178,23 @@
             <%--vm.user.uid=${sid};--%>
             <%--var id=vm.user.uid;--%>
             var id= ${sessionScope.userInfo.userId};
+            //跳转用户中心界面
+            $("a.account").onclick=function () {
+                $.ajax({
+                    url:"/toUser",
+                    dataType:"json",
+                    data:{"id":id},
+                    type:"post",
+                    success:function (data) {
+                        alert("成功");
+                        window.location.href="/user";
+                    },
+                    error:function(){
+                        alert("失败");
+                    }
+                })
+                alert("aaaa");
+            };
             if(id!=null){
                 $.ajax({
                     url:"http://localhost:8888/getUserInfo",
@@ -220,27 +237,9 @@
                 },function () {
                     $(this).siblings().hide();
                 });
-                $("a.logout").click(function () {
-                    vm.user.uid=null;
-                    location.reload();
-                });//登录退出按钮
+                //登录退出按钮
             }
-            //跳转用户中心界面
-            $("a.account").click(function () {
-                $.ajax({
-                    url:"/toUser",
-                    dataType:"json",
-                    data:{"id":id},
-                    type:"post",
-                    success:function (data) {
-                        alert("成功");
-                        window.location.href="http://localhost:8888/user";
-                    },
-                    error:function(){
-                        alert("失败");
-                    }
-                })
-            })
+
 
 
 
