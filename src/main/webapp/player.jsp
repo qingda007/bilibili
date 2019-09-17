@@ -12,6 +12,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        .w-e-text-container{
+            height: 70px !important;
+        }
+    </style>
+    <link href="/css/player/wangEditor.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main/iconfont.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -709,6 +715,12 @@
             color: #FFFFFF;
             width: 156px;
         }
+        .up-info .btn-panel .following {
+            color: #999;
+            border: 1px solid #e7e7e7;
+            background: #e7e7e7;
+            width: 123px;
+        }
         .up-info .btn-panel .not-follow i {
             width: 16px;
             height: 16px;
@@ -1136,23 +1148,27 @@
         }
 
         .video-bottom-info {
-            font-size: 12px;
-            height: 16px;
-            line-height: 12px;
-            color: #505050;
-            margin-right: 12px;
-            width: 188px;
-            background-color: #00FFFF;
+            width: 300px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
             position: relative;
-            top: 10px;
+            height: 30px;
+            line-height: 30px;
+            background: #f4f4f4;
+            color: #999;
+            border-radius: 2px;
         }
 
         .video-bottom-danmu-root {
             height: 34px;
-            width: 354px;
+            width: 300px;
             float: right;
             right: 0px;
-            top: 5px;
+            top: 0px;
             position: absolute;
         }
         /*弹幕按钮*/
@@ -1165,6 +1181,14 @@
             margin-right: 11px;
             cursor: pointer;
         }
+        .off .bui-body{
+            background-color: #757575;
+        }
+        .off .bui-dot{
+            color: #757575;
+            left: 2px;
+        }
+
 
         .bui-body {
             margin: 0;
@@ -1223,8 +1247,84 @@
             float: left;
 
         }
+        /*发送弹幕文本框*/
+        .s_btn{
+            z-index: 13;
+            height: 30px;
+            width: 60px;
+            min-width: 60px;
+            line-height: 30px;
+            text-align: center;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            border-radius: 0 2px 2px 0;
+            background-color: #00a1d6;
+            color: #fff;
+        }
+        .s_txt{
+            color: #212121;
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            border: 0;
+            height: 30px;
+            line-height: 30px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            z-index: 12;
+            padding: 0 5px;
+            background: none;
+            font-size: 12px;
+            min-width: 115px;
+            width: 100%;
+        }
+        .s_box{
+            width: 200px;
+            border-radius: 2px 0 0 2px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            border: 1px solid #e7e7e7;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .slide-gg {
+            position: relative;
+            width: 320px;
+            height: 186px;
+            overflow: hidden;
+            border-radius: 2px;
+            background: #eee;
+        }
+        .slide-gg .item-box {
+            z-index: 1;
+        }
+        .van-slide > div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .slide-gg .item-box .item .link {
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+        }
+        .slide-gg .gg-pic {
+            position: absolute;
+            left: 3px;
+            bottom: 3px;
+        }
     </style>
     <script src="/js/jquery-3.4.1.js"></script>
+    <script src="/js/player/wangEditor.min.js"></script>
     <script>
         $(function () {
             var flag0=1;
@@ -1284,6 +1384,55 @@
 
             });
 
+            function showComment(){
+                //评论和评论人信息
+                $.ajax({
+                    url:"/video/commentInfo",
+                    data:{
+                        "videoId":1
+                    },
+                    type: "post",
+                    datatype: "json",
+                    success:function (data1) {
+                        for (var i=0;i<data1.length;i++){
+                            $(".comment-list").prepend(" <div class=\"list-item reply-wrap \">\n" +
+                                "                                        <div class=\"user-face\">\n" +
+                                "                                            <img src=\""+data1[i].userInfo.userPicadress+"\">\n" +
+                                "                                        </div>\n" +
+                                "                                        <div class=\"con\">\n" +
+                                "                                            <div class=\"user\">\n" +
+                                "                                                <span class=\"name\">"+data1[i].userInfo.userName+"</span>\n" +
+                                "                                            </div>\n" +
+                                "                                            <p class=\"text\">"+data1[i].comment+"</p>\n" +
+                                "                                            <div class=\"info\">\n" +
+                                "                                                <span class=\"time\">"+data1[i].sendTime+"</span>\n" +
+                                "                                            </div>\n" +
+                                "                                        </div>\n" +
+                                "                                    </div>")
+                        }
+                    }
+                });
+            }
+            function showDanmu(){
+                //弹幕信息
+                $.ajax({
+                    url:"/video/danmuInfo",
+                    data:{
+                        "videoId":1
+                    },
+                    type: "post",
+                    datatype: "json",
+                    success:function (data2) {
+                        for (var j=0;j<data2.length;j++){
+                            $("#danmusss").prepend("<li class=\"danmaku-info-row\">\n" +
+                                "                                                         <span class=\"danmaku-info-time\">"+data2[j].userInfo.userName+"</span>"+
+                                "                                                        <span class=\"danmaku-info-danmaku\">"+data2[j].danmu+"</span>\n" +
+                                "                                                        <span class=\"danmaku-info-date\">"+data2[j].sentTime+"</span>\n" +
+                                "                                                    </li>")
+                        }
+                    }
+                });
+            }
             //评论和评论人信息
             $.ajax({
                 url:"/video/commentInfo",
@@ -1355,7 +1504,7 @@
                 type:"post",
                 datatype:"json",
                 success:function (data4) {
-                    $("#commentcount").prepend("<span class=\"b-head results\">"+data4+"</span>")
+                    $("#commentNum").text(data4);
                 }
             });
 
@@ -1370,8 +1519,11 @@
                 success:function (data5) {
                     $("#videodata").append("<span title=\"弹幕数\" class=\"view-dm\">"+data5+"弹幕</span>");
                     $("#danmutime").after("<div class=\"player-auxiliary-danmaku-btn-danmaku\">\n" +
-                        "                                                弹幕内容（<span>"+data5+"</span>）\n" +
+                        "                                                弹幕内容\n" +
                         "                                            </div>")
+                    // $("#danmutime").after("<div class=\"player-auxiliary-danmaku-btn-danmaku\">\n" +
+                    //     "                                                弹幕内容（<span>"+data5+"</span>）\n" +
+                    //     "                                            </div>")
                 }
             });
 
@@ -1397,6 +1549,7 @@
                 $.ajax({
                     url:"/video/insertComment",
                     type:"post",
+                    async:false,
                     data:{
                         "userId":2,
                         "videoId":1,
@@ -1405,12 +1558,25 @@
                     },
                     datatype:"json",
                     success:function (data) {
-                        alert(data)
+                        $.ajax({
+                            url:"/video/commentCount",
+                            data:{
+                                "videoId":1
+                            },
+                            async:false,
+                            type:"post",
+                            datatype:"json",
+                            success:function (data4) {
+                                $("#commentNum").text(data4);
+                            }
+                        });
                     },
                     error:function () {
                         alert("失败")
                     }
                 })
+
+
             });
 
             //发送弹幕
@@ -1428,6 +1594,7 @@
                     },
                     datatype:"json",
                     success:function (data) {
+                        showDanmu();
                     },
                     error:function () {
                         alert("失败")
@@ -1439,6 +1606,17 @@
 
 
 
+    </script>
+    <script>
+        $(function(){
+            var E = window.wangEditor;
+            var editor = new E('#editor');
+            editor.customConfig.menus = [
+                'emoticon'  // 表情
+            ]
+            //创建编辑器
+            editor.create();
+        })
     </script>
 </head>
 <body>
@@ -1521,7 +1699,7 @@
                         </video>
 <%--                        <video src="${video.videoUrl}" width="638px" height="381px"></video>--%>
                         <!--                弹幕窗口-->
-                        <div class="dm">
+                        <div class="dm" style="display: none">
                             <div class="dm_show" id="danmushow">
                                 <div>这是一条弹幕</div>
                                 <div>这也是</div>
@@ -1562,15 +1740,19 @@
             <!--       按钮和弹幕发送     -->
             <div class="video-bottom">
                 <div class="video-bottom-info">
-                   <input type="text" class="s_txt" width="188px" height="32px"><input type="button" id="s_btn" class="s_btn" width="52px" height="32px" value="发送">
+                    <div class="s_box">
+                        <input type="text" placeholder="发个弹幕见证当下" class="s_txt" width="188px" height="32px">
+                    </div>
+
+                    <div  id="s_btn" class="s_btn" >发送</div>
                 </div>
                 <div class="video-bottom-danmu-root">
-                    <div class="danmu-trigger">
-								<span class="bui-body">
-									<span class="bui-dot">
+                    <div class="danmu-trigger off">
+                        <span class="bui-body">
+                            <span class="bui-dot">
 										<span >弹</span>
 								</span>
-								</span>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -1606,7 +1788,7 @@
             <div id="comment" class="comment-m">
                 <div class="common">
                     <div class="b-head" id="commentcount">
-<%--                        <span class="b-head results">1350</span>--%>
+                        <span class="b-head results" id="commentNum">1350</span>
                         <span class="b-head-t">评论</span>
                     </div>
                     <div class="comment" style="position: relative">
@@ -1632,10 +1814,16 @@
                                         <div class="baffle">您的等级不足，升级至Lv2可参与评论
                                         </div>
                                     </div>
-                                    <i class="ipt-arrow"></i>
-                                    <textarea cols="80" name="msg" rows="5" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="ipt-txt">
+<%--                                    <i class="ipt-arrow"></i>--%>
+<%--                                    <textarea cols="80" name="msg" rows="5" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="ipt-txt">--%>
 
-                                    </textarea>
+<%--                                    </textarea>--%>
+                                    <div style="width: 473px">
+                                        <div id="editor" style="height:65px;max-height:100px">
+
+                                        </div>
+                                    </div>
+
                                     <button type="submit" class="comment-submit" >发表评论</button>
                                 </div>
                                 <div class="comment-emoji">
@@ -1730,7 +1918,10 @@
                             <i class="van-icon-general_addto_s"></i>+关注
                             <span>1.2万</span>
                         </span>
-                        <span class="quxiao" style="display: none">
+
+                    </div>
+                    <div class="default-btn follow-btn b-gz following" style="display: none">
+                        <span class="quxiao">
                             <i class="van-icon-general_addto_s"></i>已关注
                         </span>
                     </div>
@@ -1776,22 +1967,28 @@
                 </div>
 
             </div>
+            <!--广告-->
+            <div id="slide_ad">
+                <div class="slide-gg">
+                    <div class="van-slide item-box" style="width: 320px;height: 186px;">
+                        <div class="item">
+                            <a>
+                                <img src="images/video/guanggao.jpg"style="height: 100%;width: 100%;">
+                            </a>
+                            <img class="gg-pic" src="images/video/cm_2.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </div>
 </div>
 </body>
 </html>
 <script>
-    $("#guanzhu").click(function () {
-        if ($(".guanzhu").style.display=='block'&&$(".quxiao").style.display=='none'){
-            $(".guanzhu").style.display=='none';
-            $(".quxiao").style.display=='block';
-        }
-        if ($(".guanzhu").style.display=='none'&&$(".quxiao").style.display=='block'){
-            $(".guanzhu").style.display=='block';
-            $(".quxiao").style.display=='none';
-        }
+    $(".btn-panel div").click(function () {
+       $(this).hide();
+       $(this).siblings().show();
     })
 </script>
 <!--按钮-->
@@ -1954,20 +2151,16 @@
 <script>
     $(function () {
         //弹幕开关按钮
-        var flag=1;
+        var flag=0;
         $(".danmu-trigger").click(function(){
-            if(!flag){
-                $(".bui-body").css("background","#00A1D6");
-                $(".bui-dot").css("color","#00A1D6");
-                $(".bui-dot").css("left","12px");
-                $(".dm").fadeIn();
-                flag=1;
-            }else{
-                $(".bui-body").css("background","#757575");
-                $(".bui-dot").css("color","#757575");
-                $(".bui-dot").css("left","2px");
+            if(flag){
+                $("div.danmu-trigger").addClass("off");
                 $(".dm").fadeOut();
                 flag=0;
+            }else{
+                $("div.danmu-trigger").removeClass("off");
+                $(".dm").fadeIn();
+                flag=1;
             }
         });
         init_screen();
