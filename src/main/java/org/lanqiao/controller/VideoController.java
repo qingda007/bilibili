@@ -5,6 +5,7 @@ import org.lanqiao.entity.VideoComment;
 import org.lanqiao.entity.VideoDanmu;
 import org.lanqiao.service.VideoCommmentServiceImpl;
 import org.lanqiao.service.VideoDanmuService;
+import org.lanqiao.service.VideoDanmuServiceImpl;
 import org.lanqiao.service.VideoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,7 @@ public class VideoController {
     VideoCommmentServiceImpl videoCommmentService;
 
     @Autowired
-    VideoDanmuService videoDanmuService;
+    VideoDanmuServiceImpl videoDanmuService;
 
     @RequestMapping("/videoInfo")
     public Video selectVideoInfo(Integer videoId){
