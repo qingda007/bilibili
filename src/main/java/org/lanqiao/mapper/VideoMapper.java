@@ -17,6 +17,7 @@ public interface VideoMapper {
 
     Video selectByPrimaryKey(Integer videoId);
 
+    Video selectUpInfo(Integer videoId);
     int updateByPrimaryKeySelective(Video record);
 
     int updateByPrimaryKey(Video record);

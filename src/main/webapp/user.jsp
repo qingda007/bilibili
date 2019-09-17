@@ -412,6 +412,7 @@
                 return hour + ":" + minute + ":" + second;
             }
 
+            alert(${id});
         })
     </script>
 </head>

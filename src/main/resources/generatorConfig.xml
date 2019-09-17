@@ -49,16 +49,16 @@
 			指定列的java数据类型
 			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
 		</table> -->
-		<!--<table tableName="users" domainObjectName="User"-->
-			<!--enableCountByExample="false" enableDeleteByExample="false"-->
-			<!--enableSelectByExample="false" enableUpdateByExample="false">-->
-			<!--<property name="useActualColumnNames" value="true" />-->
-		<!--</table>-->
-		<table tableName="user_info" domainObjectName="UserInfo"
-			enableCountByExample="false" enableDeleteByExample="false"
-			enableSelectByExample="false" enableUpdateByExample="false">
-			<property name="useActualColumnNames" value="false" />
-		</table>
+<!--		<table tableName="user_info" domainObjectName="UserInfo"-->
+<!--			enableCountByExample="false" enableDeleteByExample="false"-->
+<!--			enableSelectByExample="false" enableUpdateByExample="false">-->
+<!--			<property name="useActualColumnNames" value="false" />-->
+<!--		</table>-->
+<!--		<table tableName="video_comment" domainObjectName="VideoComment"-->
+<!--			enableCountByExample="false" enableDeleteByExample="false"-->
+<!--			enableSelectByExample="false" enableUpdateByExample="false">-->
+<!--			<property name="useActualColumnNames" value="false" />-->
+<!--		</table>-->
 <!--		<table tableName="orderitem" domainObjectName="OrderItem"-->
 <!--			enableCountByExample="false" enableDeleteByExample="false"-->
 <!--			enableSelectByExample="false" enableUpdateByExample="false">-->
