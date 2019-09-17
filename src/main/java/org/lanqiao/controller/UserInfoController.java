@@ -48,12 +48,12 @@ return userInfoService.selectByPrimaryKey(id);
     @RequestMapping("/user")
     public ModelAndView user(){
         ModelAndView user=new ModelAndView("user");
-        user.addObject("id",uid);
+//        user.addObject("id",uid);
         return user;
     }
 
     @RequestMapping("/bilibili")
-    public ModelAndView bilibili(){
+    public ModelAndView zhuye(){
         ModelAndView bilibili=new ModelAndView("bilibili");
         return bilibili;
     }

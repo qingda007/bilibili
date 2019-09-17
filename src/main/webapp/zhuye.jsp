@@ -178,23 +178,27 @@
             <%--vm.user.uid=${sid};--%>
             <%--var id=vm.user.uid;--%>
             var id= ${sessionScope.userInfo.userId};
+
             //跳转用户中心界面
-            $("a.account").onclick=function () {
-                $.ajax({
-                    url:"/toUser",
-                    dataType:"json",
-                    data:{"id":id},
-                    type:"post",
-                    success:function (data) {
-                        alert("成功");
-                        window.location.href="/user";
-                    },
-                    error:function(){
-                        alert("失败");
-                    }
-                })
-                alert("aaaa");
-            };
+            // $("a.account").onclick=function () {
+            //     $.ajax({
+            //         url:"/toUser",
+            //         dataType:"json",
+            //         data:{"id":id},
+            //         type:"post",
+            //         success:function (data) {
+            //             alert("成功");
+            //             window.location.href="/user";
+            //         },
+            //         error:function(){
+            //             alert("失败");
+            //         }
+            //     })
+            //     alert("aaaa");
+            // };
+            // $("a.number").click(function () {
+            //     alert("chenggong");
+            // });
             if(id!=null){
                 $.ajax({
                     url:"http://localhost:8888/getUserInfo",
@@ -346,7 +350,7 @@
                                     <div class="member-menu">
                                         <ul class="clearfix">
                                             <li>
-                                                <a class="account">
+                                                <a class="account"href="/user">
                                                     <i class="bili-icon b-icon-p-account"></i>
                                                     个人中心
                                                 </a>
