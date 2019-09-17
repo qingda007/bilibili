@@ -1291,6 +1291,37 @@
             -webkit-box-sizing: border-box;
             box-sizing: border-box;
         }
+        .slide-gg {
+            position: relative;
+            width: 320px;
+            height: 186px;
+            overflow: hidden;
+            border-radius: 2px;
+            background: #eee;
+        }
+        .slide-gg .item-box {
+            z-index: 1;
+        }
+        .van-slide > div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .slide-gg .item-box .item .link {
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+        }
+        .slide-gg .gg-pic {
+            position: absolute;
+            left: 3px;
+            bottom: 3px;
+        }
     </style>
     <script src="/js/jquery-3.4.1.js"></script>
     <script src="/js/player/wangEditor.min.js"></script>
@@ -1717,11 +1748,11 @@
                 </div>
                 <div class="video-bottom-danmu-root">
                     <div class="danmu-trigger off">
-								<span class="bui-body">
-									<span class="bui-dot">
+                        <span class="bui-body">
+                            <span class="bui-dot">
 										<span >弹</span>
 								</span>
-								</span>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -1936,6 +1967,19 @@
                 </div>
 
             </div>
+            <!--广告-->
+            <div id="slide_ad">
+                <div class="slide-gg">
+                    <div class="van-slide item-box" style="width: 320px;height: 186px;">
+                        <div class="item">
+                            <a>
+                                <img src="images/video/guanggao.jpg"style="height: 100%;width: 100%;">
+                            </a>
+                            <img class="gg-pic" src="images/video/cm_2.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -2109,14 +2153,14 @@
         //弹幕开关按钮
         var flag=0;
         $(".danmu-trigger").click(function(){
-            if(!flag){
+            if(flag){
                 $("div.danmu-trigger").addClass("off");
-                $(".dm").fadeIn();
-                flag=1;
-            }else{
-                $("div.danmu-trigger").removeClass("off");
                 $(".dm").fadeOut();
                 flag=0;
+            }else{
+                $("div.danmu-trigger").removeClass("off");
+                $(".dm").fadeIn();
+                flag=1;
             }
         });
         init_screen();
