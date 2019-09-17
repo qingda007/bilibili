@@ -1,7 +1,12 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2019/9/17
+  Time: 14:25
+  To change this template use File | Settings | File Templates.
+--%>
 
-<%
-    Object userInfo= session.getAttribute("userInfo");
-%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -153,15 +158,15 @@
             //  在线人数
             var str={"userType":'u87'};
 
-                $.ajax({
-                    url:"http://localhost:8888/liveUserNum",
-                    type:"post",
-                    dataType:"application/json; charset=utf-8",
-                    data:str,
-                    success:function (data) {
-                        vNum.Num=data;
-                    },
-                });
+            $.ajax({
+                url:"http://localhost:8888/liveUserNum",
+                type:"post",
+                dataType:"application/json; charset=utf-8",
+                data:str,
+                success:function (data) {
+                    vNum.Num=data;
+                },
+            });
             //从登录界面登录成功后，跳到主界面并给vm.user.uid赋值
             $("#face").attr("src","images/main/akari.jpg");
             $node1=$("div.profile-m").detach();
@@ -175,72 +180,9 @@
             <%--}--%>
             <%--ll();--%>
 
-            <%--vm.user.uid=${sid};--%>
-            <%--var id=vm.user.uid;--%>
-            var id= ${sessionScope.userInfo.userId};
-            if(id!=null){
-                $.ajax({
-                    url:"http://localhost:8888/getUserInfo",
-                    type:"post",
-                    dataType:"json",
-                    data:{
-                        "id":id,
-                    },
-                    success:function(data){
-                        var img=data.userPicadress;
-                        $("#face").attr("src",img);
-                        $("#i-login").remove();
-                        $("#fixed-app-download").remove();
-                        $("#nipi").prepend($node1);
-                        $("#nipi").after($node2);
-                        if (data.userTele!=null){
-                            $("#s1").text("已绑定");
-                        }else {
-                            $("#s1").text("未绑定");
-                        }
-                        if (data.userEmail!=null){
-                            $("#s2").text("已绑定");
-                        }else {
-                            $("#s2").text("未绑定");
-                        }
-                        //vue
-                        vm.user.uname=data.userName;
-                        vm.user.coin=data.userCoin;
-                    },
-                });
-                $("#nipi").hover(function () {
-                    $(this).addClass("on");
-                    $("div.profile-m").show();
-                },function () {
-                    $(this).removeClass("on");
-                    $("div.profile-m").hide();
-                });
-                $(".tips").siblings().hover(function () {
-                    $(this).siblings().show();
-                },function () {
-                    $(this).siblings().hide();
-                });
-                $("a.logout").click(function () {
-                    vm.user.uid=null;
-                    location.reload();
-                });//登录退出按钮
-            }
-            //跳转用户中心界面
-            $("a.account").click(function () {
-                $.ajax({
-                    url:"/toUser",
-                    dataType:"json",
-                    data:{"id":id},
-                    type:"post",
-                    success:function (data) {
-                        alert("成功");
-                        window.location.href="http://localhost:8888/user";
-                    },
-                    error:function(){
-                        alert("失败");
-                    }
-                })
-            })
+
+
+
 
 
 
@@ -313,57 +255,6 @@
                                 <p class="reg">首次使用？
                                     <a href="/user/toRegister">点我去注册</a>
                                 </p>
-                            </div>
-                            <div class="profile-m dd-bubble"style="display: none">
-                                <div class="header-u-info">
-                                    <div class="header-uname">
-                                        <b class="big-vip-red">{{user.uname}}</b>
-                                        <p class="vip-type">
-                                            <a>
-                                                <span class="big-vip-red">会员</span>
-                                            </a>
-                                        </p>
-                                    </div>
-                                    <div class="btns-profile clearfix">
-                                        <div class="coin fl">
-                                            <a>
-                                                <i class="bili-icon bi"></i>
-                                                <span class="num">{{user.coin}}</span>
-                                            </a>
-                                        </div>
-                                        <div class="ver phone fr verified">
-                                            <a>
-                                                <i class="bili-icon"></i>
-                                                <span id="s1" class="tips"></span>
-                                            </a>
-                                        </div>
-                                        <div class="ver email fr verified">
-                                            <a>
-                                                <i class="bili-icon"></i>
-                                                <span id="s2" class="tips"></span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="member-menu">
-                                        <ul class="clearfix">
-                                            <li>
-                                                <a class="account">
-                                                    <i class="bili-icon b-icon-p-account"></i>
-                                                    个人中心
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="number">
-                                                    <i class="bili-icon b-icon-p-member"></i>
-                                                    投稿管理
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="member-bottom">
-                                        <a class="logout"href="/bilibili">退出</a>
-                                    </div>
-                                </div>
                             </div>
                         </li>
                         <li class="nav-item nipi">
@@ -1362,10 +1253,7 @@
     })
     var vNum=new Vue({
         el:'div.online',
-        data: {userNum:{
-            Num:null
-        }
-        },
+        data: {Num:null,},
     })
 </script>
 

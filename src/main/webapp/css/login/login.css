@@ -421,3 +421,11 @@ p[data-v-3e357e28] {
 p[data-v-3e357e28] a{
     cursor: pointer;
 }
+.move{
+    float: left;
+}
+.error{
+    margin-right:5px ;
+    color: #f45d90;
+    font-size: 12px;
+}

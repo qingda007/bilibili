@@ -34,7 +34,7 @@
             text-align: center;
         }
         a:link,a:visited,a:hover,a:active {
-            margin-left: 100px;
+
             color: #0366D6;
         }
 
@@ -182,7 +182,7 @@
                                 </li>
                                 <li class="remember">
                                     <label >
-                                        <input type="checkbox" class="move">记住我
+                                        <input type="checkbox" class="move"style="width: 13px">记住我
                                         <span>不是自己的电脑上不要勾选此项</span>
                                         <a target="_blank" class="forget-password">忘记密码？</a>
                                         <a target="_blank" class="not-checkout">无法验证</a>

@@ -39,7 +39,7 @@ return userInfoService.selectByPrimaryKey(id);
 //        return userInfoService.countUserNum(userType);
 //    }
 
-    static int uid;
+    int uid;
     @RequestMapping(value = "/toUser")
     public int toUser(Integer id){
         uid=id;
@@ -50,5 +50,11 @@ return userInfoService.selectByPrimaryKey(id);
         ModelAndView user=new ModelAndView("user");
         user.addObject("id",uid);
         return user;
+    }
+
+    @RequestMapping("/bilibili")
+    public ModelAndView bilibili(){
+        ModelAndView bilibili=new ModelAndView("bilibili");
+        return bilibili;
     }
 }
