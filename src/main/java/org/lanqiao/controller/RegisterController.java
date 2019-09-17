@@ -7,7 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 
 @Controller
@@ -37,13 +38,14 @@ public class RegisterController {
     //表单提交过来的路径
     @RequestMapping("/checkLogin")
 
-    public String checkLogin(UserInfo userInfo,  ModelMap model){
+    public String checkLogin(UserInfo userInfo, HttpServletRequest request){
         //调用service方法
          userInfoService.checkLogin(userInfo.getUserName(), userInfo.getUserPassw());
          userInfo = userInfoService.updateStatus(userInfo.getUserName());
         //若有user则添加到model里并且跳转到成功页面
         if(userInfo != null){
-            model.addAttribute("sid",userInfo.getUserId());
+            HttpSession session = request.getSession();
+            session.setAttribute("userInfo", userInfo);
             return "zhuye";
         }else{
             return "login";
