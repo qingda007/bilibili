@@ -18,4 +18,8 @@ public interface UserFansMapper {
     int updateByPrimaryKeySelective(UserFans record);
 
     int updateByPrimaryKey(UserFans record);
+
+    int deleteFans(Integer userId,Integer fansId);
+
+    int selectFans(Integer userId,Integer fansId);
 }

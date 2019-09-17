@@ -13,11 +13,25 @@
 <html lang="en">
 <head>
     <style>
-        .w-e-text-container{
-            height: 70px !important;
+        form {
+            margin: 0;
+        }
+        h3{
+            text-align:center;
+        }
+        textarea {
+            display: block;
+        }
+        form .ke-container {
+            margin: 0 auto;
         }
     </style>
-    <link href="/css/player/wangEditor.css" rel="stylesheet">
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <link href="themes/default/default.css" rel="stylesheet" />
+    <script src="js/player/kindeditor-min.js"></script>
+    <script src="js/player/emoticons.js"></script>
+    <script src="js/player/zh_CN.js"></script>
     <link rel="stylesheet" href="css/main/iconfont.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1323,8 +1337,7 @@
             bottom: 3px;
         }
     </style>
-    <script src="/js/jquery-3.4.1.js"></script>
-    <script src="/js/player/wangEditor.min.js"></script>
+
     <script>
         $(function () {
             var flag0=1;
@@ -1350,9 +1363,12 @@
             })
         })
     </script>
+
     <script>
 
         $(function () {
+
+
             //视频信息
             $.ajax({
                 url:"/video/videoInfo",
@@ -1369,50 +1385,35 @@
                     $("#videodata").prepend("<span title=\"总播放数\" class=\"view\">"+data.playNum+"播放&nbsp;&nbsp;</span>\n");
                     // $(".video_player").prepend("<video src=\""+data.videoUrl+"\" width=\"638px\" height=\"381px\"></video>")
                     $(".videos").prepend("<source src=\""+data.videoUrl+"\" type=\"video/mp4\">")
-                    $(".ops").prepend("<span title=\"点赞数\" class=\"like\">\n" +
-                        "                        <i class=\"iconfont icon-dianzan-copy\"></i>"+data.likeNum+"\n" +
-                        "                    </span>\n" +
-                        "                    <span title=\"硬币数\" class=\"coin\">\n" +
-                        "                        <i class=\"iconfont icon-toubi\"></i>"+data.coinNum+"\n" +
-                        "                    </span>\n" +
-                        "                    <span title=\"收藏数\" class=\"collect\"><i class=\"iconfont icon-shoucang\"></i>"+data.collectionNum+"</span>\n" +
-                        "                    <span title=\"分享\" class=\"share\"><i class=\"iconfont icon-zhuanfa\"></i>955</span>");
+                    // $(".ops").prepend("<span title=\"点赞数\" class=\"like\">\n" +
+                    //     "                        <i class=\"iconfont icon-dianzan-copy\"></i>"+data.likeNum+"\n" +
+                    //     "                    </span>\n" +
+                    //     "                    <span title=\"硬币数\" class=\"coin\">\n" +
+                    //     "                        <i class=\"iconfont icon-toubi\"></i>"+data.coinNum+"\n" +
+                    //     "                    </span>\n" +
+                    //     "                    <span title=\"收藏数\" class=\"collect\"><i class=\"iconfont icon-shoucang\"></i>"+data.collectionNum+"</span>\n" +
+                    //     "                    <span title=\"分享\" class=\"share\"><i class=\"iconfont icon-zhuanfa\"></i>955</span>");
+
                     $("#v_desc").prepend("<div class=\"info open\">"+data.videoDesc+"</div>");
                     $(".tag-area").prepend("<li class=\"tag\">"+data.videoTitle+"</li>");
+                    vm.likes.likeNum=data.likeNum;
+                    vm.likes.coinNum=data.coinNum;
+                    vm.likes.collectionNum=data.collectionNum;
+
                 }
 
 
             });
+            $(".like").click(function () {
+                vm.likes.likeNum+=1;
+            });
+            $(".coin").click(function () {
+                vm.likes.coinNum+=1;
+            });
+            $(".collect").click(function () {
+                vm.likes.collectionNum+=1;
+            });
 
-            function showComment(){
-                //评论和评论人信息
-                $.ajax({
-                    url:"/video/commentInfo",
-                    data:{
-                        "videoId":1
-                    },
-                    type: "post",
-                    datatype: "json",
-                    success:function (data1) {
-                        for (var i=0;i<data1.length;i++){
-                            $(".comment-list").prepend(" <div class=\"list-item reply-wrap \">\n" +
-                                "                                        <div class=\"user-face\">\n" +
-                                "                                            <img src=\""+data1[i].userInfo.userPicadress+"\">\n" +
-                                "                                        </div>\n" +
-                                "                                        <div class=\"con\">\n" +
-                                "                                            <div class=\"user\">\n" +
-                                "                                                <span class=\"name\">"+data1[i].userInfo.userName+"</span>\n" +
-                                "                                            </div>\n" +
-                                "                                            <p class=\"text\">"+data1[i].comment+"</p>\n" +
-                                "                                            <div class=\"info\">\n" +
-                                "                                                <span class=\"time\">"+data1[i].sendTime+"</span>\n" +
-                                "                                            </div>\n" +
-                                "                                        </div>\n" +
-                                "                                    </div>")
-                        }
-                    }
-                });
-            }
             function showDanmu(){
                 //弹幕信息
                 $.ajax({
@@ -1459,6 +1460,7 @@
                             "                                    </div>")
                     }
                 }
+
             });
 
             //弹幕信息
@@ -1492,6 +1494,10 @@
                 success:function (data3) {
                     $("#upface").prepend("<img src=\""+data3.userInfo.userPicadress+"\" width=\"48\" height=\"48\" class=\"up-face\">");
                     $("#upname").prepend("<a href=\"\" target=\"_blank\" class=\"username\">"+data3.userInfo.userName+"</a>")
+                    vm.likes.userId=data3.userId;
+                },
+                error:function () {
+                    alert("up主信息失败")
                 }
             });
             
@@ -1602,21 +1608,99 @@
                 })
             })
 
-        });
 
+            var userIds = vm.likes.userId;
+            var flag = false;
+            $.ajax({
+                url:"/selectFans",
+                type:"post",
+                async:false,
+                data:{
+                    "userId":userIds,
+                    "fansId":2
+                },
+                datatype:"json",
+                success:function (data) {
+                    if (data==1){
+                        flag=true;
+                        $("#guanzhu").hide();
+                        $("#quguan").show();
+                    }else if (data==0){
+                        flag=false;
+                        $("#guanzhu").show();
+                        $("#quguan").hide();
+                    }
+                    if (flag==false){
+
+                        $("#guanzhu").click(function () {
+                            $("#guanzhu").hide();
+                            $("#quguan").show();
+                            //关注
+                            $.ajax({
+                                url:"/insertFans",
+                                type:"post",
+                                async:false,
+                                data:{
+                                    "userId":userIds,
+                                    "fansId":2
+                                },
+                                datatype:"json",
+                                success:function (data) {
+                                    flag=true;
+
+                                },
+                                error:function () {
+                                    alert("关注失败")
+                                }
+
+                            });
+                        })
+                    }
+                    if (flag==true){
+
+                        $("#quguan").click(function () {
+                            $("#guanzhu").show();
+                            $("#quguan").hide();
+                            //关注
+                            $.ajax({
+                                url:"/deleteFans",
+                                type:"post",
+                                async:false,
+                                data:{
+                                    "userId":userIds,
+                                    "fansId":2
+                                },
+                                datatype:"json",
+                                success:function (data) {
+                                    flag=false;
+                                },
+                                error:function () {
+                                    alert("取消失败")
+                                }
+
+                            });
+                        })
+                    }
+
+                }
+            });
+
+
+        });
 
 
     </script>
     <script>
-        $(function(){
-            var E = window.wangEditor;
-            var editor = new E('#editor');
-            editor.customConfig.menus = [
-                'emoticon'  // 表情
-            ]
-            //创建编辑器
-            editor.create();
-        })
+        var editor;
+        KindEditor.ready(function(K) {
+            editor = K.create('textarea[name="content"]', {
+                resizeType : 1,
+                allowPreviewEmoticons : false,
+                allowImageUpload : false,
+                items : [
+                    'emoticons']
+            });
+        });
     </script>
 </head>
 <body>
@@ -1708,32 +1792,32 @@
                                 <div>这真的是最后一条</div>
                             </div>
                         </div>
-                        <div class="menu">
-                            <div class="play">播放</div>
-                            <div class="vi-time"></div>
-                            <div class="progress_bar">
-                                <div></div>
-                                <i></i>
-                            </div>
-                            <div class="speed">
-                                <div>倍数</div>
-                                <ul>
-                                    <li>0.5x</li>
-                                    <li>1.0x</li>
-                                    <li>1.5x</li>
-                                    <li>1.25x</li>
-                                    <li>2.0x</li>
-                                </ul>
-                            </div>
-                            <div class="volume">
-                                <span>音量</span>
-                                <div class="Controller">
-                                    <div></div>
-                                    <i></i>
-                                </div>
-                            </div>
-                            <div class="full">全屏</div>
-                        </div>
+<%--                        <div class="menu">--%>
+<%--                            <div class="play">播放</div>--%>
+<%--                            <div class="vi-time"></div>--%>
+<%--                            <div class="progress_bar">--%>
+<%--                                <div></div>--%>
+<%--                                <i></i>--%>
+<%--                            </div>--%>
+<%--                            <div class="speed">--%>
+<%--                                <div>倍数</div>--%>
+<%--                                <ul>--%>
+<%--                                    <li>0.5x</li>--%>
+<%--                                    <li>1.0x</li>--%>
+<%--                                    <li>1.5x</li>--%>
+<%--                                    <li>1.25x</li>--%>
+<%--                                    <li>2.0x</li>--%>
+<%--                                </ul>--%>
+<%--                            </div>--%>
+<%--                            <div class="volume">--%>
+<%--                                <span>音量</span>--%>
+<%--                                <div class="Controller">--%>
+<%--                                    <div></div>--%>
+<%--                                    <i></i>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="full">全屏</div>--%>
+<%--                        </div>--%>
                     </div>
                 </div>
             </div>
@@ -1759,14 +1843,14 @@
             <!--点赞、硬币-->
             <div id="arc_toolbar_report" class="video-toolbar">
                 <div class="ops">
-<%--                    <span title="点赞数" class="like">--%>
-<%--                        <i class="iconfont icon-dianzan-copy"></i>${video.likeNum}--%>
-<%--                    </span>--%>
-<%--                    <span title="硬币数" class="coin">--%>
-<%--                        <i class="iconfont icon-toubi"></i>${video.coinNum}--%>
-<%--                    </span>--%>
-<%--                    <span title="收藏数" class="collect"><i class="iconfont icon-shoucang"></i>${video.collectionNum}</span>--%>
-<%--                    <span title="分享" class="share"><i class="iconfont icon-zhuanfa"></i>955</span>--%>
+                    <span title="点赞数" class="like">
+                        <i class="iconfont icon-dianzan-copy"></i>{{likes.likeNum}}
+                    </span>
+                    <span title="硬币数" class="coin">
+                        <i class="iconfont icon-toubi"></i>{{likes.coinNum}}
+                    </span>
+                    <span title="收藏数" class="collect"><i class="iconfont icon-shoucang"></i>{{likes.collectionNum}}</span>
+                    <span title="分享" class="share"><i class="iconfont icon-zhuanfa"></i>955</span>
                 </div>
                 <div class="appeal-text">稿件投诉</div>
             </div>
@@ -1787,6 +1871,7 @@
             <!--评论区-->
             <div id="comment" class="comment-m">
                 <div class="common">
+<%--                    评论数--%>
                     <div class="b-head" id="commentcount">
                         <span class="b-head results" id="commentNum">1350</span>
                         <span class="b-head-t">评论</span>
@@ -1809,26 +1894,17 @@
                                 <div class="user-face" id="firstface">
 <%--                                    <img class="user-head" src="//static.hdslb.com/images/member/noface.gif">--%>
                                 </div>
-                                <div class="textarea-container">
-                                    <div class="baffle-wrap">
-                                        <div class="baffle">您的等级不足，升级至Lv2可参与评论
-                                        </div>
-                                    </div>
+                                <div class="textarea-container" style="height: 250px">
 <%--                                    <i class="ipt-arrow"></i>--%>
 <%--                                    <textarea cols="80" name="msg" rows="5" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="ipt-txt">--%>
 
 <%--                                    </textarea>--%>
-                                    <div style="width: 473px">
-                                        <div id="editor" style="height:65px;max-height:100px">
+                                     <form>
+                                         <textarea name="content" style="width:400px;height:200px;visibility:hidden;">
 
-                                        </div>
-                                    </div>
-
+                                         </textarea>
+                                     </form>
                                     <button type="submit" class="comment-submit" >发表评论</button>
-                                </div>
-                                <div class="comment-emoji">
-                                    <i class="face"></i>
-                                    <span class="text">表情</span>
                                 </div>
                             </div>
                             <!--评论信息-->
@@ -1918,9 +1994,8 @@
                             <i class="van-icon-general_addto_s"></i>+关注
                             <span>1.2万</span>
                         </span>
-
                     </div>
-                    <div class="default-btn follow-btn b-gz following" style="display: none">
+                    <div class="default-btn follow-btn b-gz following" style="display: none" id="quguan">
                         <span class="quxiao">
                             <i class="van-icon-general_addto_s"></i>已关注
                         </span>
@@ -1984,170 +2059,183 @@
     </div>
 </div>
 </body>
-</html>
+<script src="js/vue.min.js"></script>
 <script>
-    $(".btn-panel div").click(function () {
-       $(this).hide();
-       $(this).siblings().show();
+    var vm = new Vue({
+        el:"div.ops",
+        data:{
+            likes:{
+                likeNum:1,
+                coinNum:1,
+                collectionNum:1,
+                userId:1
+            }
+        }
+
+
     })
 </script>
-<!--按钮-->
+</html>
 <script>
 
-    var video = document.getElementsByTagName('video')[0];
-    var play = document.getElementsByClassName('play')[0];
-    var time = document.getElementsByClassName('vi-time')[0];
-    var bar = document.getElementsByClassName('progress_bar')[0];
-    var Current = bar.getElementsByTagName('div')[0];
-    var Dot = bar.getElementsByTagName('i')[0];
-    var speed = document.getElementsByClassName('speed')[0].getElementsByTagName('div')[0];
-    var ul = document.getElementsByClassName('speed')[0].getElementsByTagName('ul')[0];
-    var Controller = document.getElementsByClassName('Controller')[0];
-    var volume = document.getElementsByClassName('volume')[0].getElementsByTagName('span')[0];
-    var full = document.getElementsByClassName('full')[0];
-    var video_player = document.getElementsByClassName('video_player')[0]
-    var timer = null;
-    var lock = true;
-    play.onclick = function () {
-        if (video.paused) {  //判断是否已经播放了，如果还没播放，返回true
-            video.play();  //触发方法，播放视频
-            play.innerHTML = "暂停";    //修改 文字。
-        } else {
-            video.pause(); //暂停播放。
-            play.innerHTML = "播放";
-        }
-    }
-    video.onloadedmetadata = function () {// 视频加载完成触发,然后我们把时间添加到time标签上去。
-        time.innerHTML = parseInt(video.currentTime / 60) + ":" + parseInt(video.currentTime % 60) + "/" + parseInt(video.duration / 60) + ":" + parseInt(video.duration % 60);
-    }
-
-    setInterval(function () { //每隔 1秒，刷新一下时间。
-        time.innerHTML = parseInt(video.currentTime / 60) + ":" + parseInt(video.currentTime % 60) + "/" + parseInt(video.duration / 60) + ":" + parseInt(video.duration % 60);
-        Current.style.width = video.currentTime / video.duration * parseInt(window.getComputedStyle(video, null).width) + "px";
-        Dot.style.left = video.currentTime / video.duration * parseInt(window.getComputedStyle(video, null).width) + "px";
-    }, 1000)
-
-    bar.onmouseover = function () {  //鼠标进入的时候，进度条变大
-        this.style.top = '-10px';
-        this.style.height = '10px';
-        Dot.style.width = '18px';
-        Dot.style.height = '18px';
-        Dot.style.top = '-5px';
-    }
-    bar.onmouseout = function () {
-        this.style.top = '-6px';
-        this.style.height = '6px';
-        Dot.style.width = '10px';
-        Dot.style.height = '10px';
-        Dot.style.top = '-2px';
-    }
-
-    bar.onmousedown = function (e) { // 鼠标点击的时候，跳转
-        Current.style.width = e.layerX + 'px'; //e.layerX 是点击的时候的位置。
-        Dot.style.left = e.layerX + 'px';
-        video.currentTime = e.layerX / parseInt(window.getComputedStyle(video, null).width) * video.duration; //计算出点击的位置在总时间里面占多少。
-        time.innerHTML = parseInt(video.currentTime / 60) + ":" + parseInt(video.currentTime % 60) + "/" + parseInt(video.duration / 60) + ":" + parseInt(video.duration % 60);
-    }
-
-    // 倍数
-    speed.onclick = function () {
-        ul.style.display = 'block';
-        this.style.backgroundColor = 'rgb(219, 74, 74)';
-    }
-
-    speed.onmouseout = function () {
-        ul.style.display = 'none';
-        this.style.backgroundColor = '';
-    }
-
-    ul.onmouseover = function () {
-        ul.style.display = 'block';
-        speed.style.backgroundColor = 'rgb(219, 74, 74)';
-    }
-    ul.onmouseout = function () {
-        ul.style.display = 'none';
-        speed.style.backgroundColor = '';
-    }
-
-    var lis = ul.getElementsByTagName('li');
-    for (var i = 0; i < lis.length; i++) {
-        lis[i].onclick = function () {
-            video.playbackRate = parseFloat(this.innerHTML); //调节倍数 0 到正无穷
-            speed.innerHTML = this.innerHTML;
-        }
-    }
-
-    // 音量
-    volume.onclick = function () {
-        Controller.style.display = 'block';
-        this.style.backgroundColor = 'rgb(219, 74, 74)';
-    }
-
-    Controller.getElementsByTagName('div')[0].onmousedown = function (e) {
-        this.onmousemove = function (e) {
-            if (100 - e.offsetY > 100) {  // 这里为什么要减100 是因为，Y的顶点是0， 但是我们日常是用顶点是100，把数倒了而已。
-                document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 100px'); // 修改伪元素。 因为我用的是伪元素做音量条
-                document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 100px');
-                video.volume = 1;       // 修改音量。 0-1 之间， 1是默认音量
-            } else if (100 - e.offsetY < 0) {
-                document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 0px');
-                document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 0px');
-                video.volume = 0;
-            } else {
-                document.styleSheets[0].addRule('.volume .Controller div::before', 'height: ' + (100 - e.offsetY) + 'px');
-                document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: ' + (100 - e.offsetY) + 'px');
-                video.volume = (100 - e.offsetY) * 0.01;
-            }
-
-        }
-        this.onmouseout = function () {
-            Controller.onmousemove = function (e) {
-                if (150 - e.offsetY - 25 > 100) {
-                    document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 100px');
-                    document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 100px');
-                    video.volume = 1;
-                } else if (150 - e.offsetY - 25 < 0) {
-                    document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 0px');
-                    document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 0px');
-                    video.volume = 0;
-                } else {
-                    document.styleSheets[0].addRule('.volume .Controller div::before', 'height: ' + (150 - e.offsetY - 25) + 'px');
-                    document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: ' + (150 - e.offsetY - 25) + 'px');
-                    video.volume = (150 - e.offsetY - 25) * 0.01;
-                }
-                Controller.getElementsByTagName('div')[0].onmouseover = function () {
-                    Controller.onmousemove = false;
-                    Controller.getElementsByTagName('div')[0].onmousemove = false;
-                }
-
-            }
-        }
-        document.body.onmouseup = function () {
-            Controller.onmousemove = false;
-            Controller.getElementsByTagName('div')[0].onmousemove = false;
-            Controller.getElementsByTagName('div')[0].onmouseout = false;
-            Controller.style.display = 'none';
-            volume.style.backgroundColor = '';
-        }
-    }
-
-    // 全屏
-    full.onclick = function () {
-        if (lock) {  //声明一个变量来当状态。
-            lock = false;
-            video_player.style.height = window.screen.height + 'px'; //获取屏幕的宽高
-            video_player.style.width = window.screen.width + 'px';
-            document.documentElement.requestFullscreen();   //全屏模式
-            full.innerHTML = '退出';
-        } else {
-            lock = true;
-            video_player.style.height = 500 + 'px';
-            video_player.style.width = 1000 + 'px';
-            document.exitFullscreen();   //退出全屏
-            full.innerHTML = '全屏';
-        }
-    }
 </script>
+<!--按钮-->
+<%--<script>--%>
+
+<%--    var video = document.getElementsByTagName('video')[0];--%>
+<%--    var play = document.getElementsByClassName('play')[0];--%>
+<%--    var time = document.getElementsByClassName('vi-time')[0];--%>
+<%--    var bar = document.getElementsByClassName('progress_bar')[0];--%>
+<%--    var Current = bar.getElementsByTagName('div')[0];--%>
+<%--    var Dot = bar.getElementsByTagName('i')[0];--%>
+<%--    var speed = document.getElementsByClassName('speed')[0].getElementsByTagName('div')[0];--%>
+<%--    var ul = document.getElementsByClassName('speed')[0].getElementsByTagName('ul')[0];--%>
+<%--    var Controller = document.getElementsByClassName('Controller')[0];--%>
+<%--    var volume = document.getElementsByClassName('volume')[0].getElementsByTagName('span')[0];--%>
+<%--    var full = document.getElementsByClassName('full')[0];--%>
+<%--    var video_player = document.getElementsByClassName('video_player')[0]--%>
+<%--    var timer = null;--%>
+<%--    var lock = true;--%>
+<%--    play.onclick = function () {--%>
+<%--        if (video.paused) {  //判断是否已经播放了，如果还没播放，返回true--%>
+<%--            video.play();  //触发方法，播放视频--%>
+<%--            play.innerHTML = "暂停";    //修改 文字。--%>
+<%--        } else {--%>
+<%--            video.pause(); //暂停播放。--%>
+<%--            play.innerHTML = "播放";--%>
+<%--        }--%>
+<%--    }--%>
+<%--    video.onloadedmetadata = function () {// 视频加载完成触发,然后我们把时间添加到time标签上去。--%>
+<%--        time.innerHTML = parseInt(video.currentTime / 60) + ":" + parseInt(video.currentTime % 60) + "/" + parseInt(video.duration / 60) + ":" + parseInt(video.duration % 60);--%>
+<%--    }--%>
+
+<%--    setInterval(function () { //每隔 1秒，刷新一下时间。--%>
+<%--        time.innerHTML = parseInt(video.currentTime / 60) + ":" + parseInt(video.currentTime % 60) + "/" + parseInt(video.duration / 60) + ":" + parseInt(video.duration % 60);--%>
+<%--        Current.style.width = video.currentTime / video.duration * parseInt(window.getComputedStyle(video, null).width) + "px";--%>
+<%--        Dot.style.left = video.currentTime / video.duration * parseInt(window.getComputedStyle(video, null).width) + "px";--%>
+<%--    }, 1000)--%>
+
+<%--    bar.onmouseover = function () {  //鼠标进入的时候，进度条变大--%>
+<%--        this.style.top = '-10px';--%>
+<%--        this.style.height = '10px';--%>
+<%--        Dot.style.width = '18px';--%>
+<%--        Dot.style.height = '18px';--%>
+<%--        Dot.style.top = '-5px';--%>
+<%--    }--%>
+<%--    bar.onmouseout = function () {--%>
+<%--        this.style.top = '-6px';--%>
+<%--        this.style.height = '6px';--%>
+<%--        Dot.style.width = '10px';--%>
+<%--        Dot.style.height = '10px';--%>
+<%--        Dot.style.top = '-2px';--%>
+<%--    }--%>
+
+<%--    bar.onmousedown = function (e) { // 鼠标点击的时候，跳转--%>
+<%--        Current.style.width = e.layerX + 'px'; //e.layerX 是点击的时候的位置。--%>
+<%--        Dot.style.left = e.layerX + 'px';--%>
+<%--        video.currentTime = e.layerX / parseInt(window.getComputedStyle(video, null).width) * video.duration; //计算出点击的位置在总时间里面占多少。--%>
+<%--        time.innerHTML = parseInt(video.currentTime / 60) + ":" + parseInt(video.currentTime % 60) + "/" + parseInt(video.duration / 60) + ":" + parseInt(video.duration % 60);--%>
+<%--    }--%>
+
+<%--    // 倍数--%>
+<%--    speed.onclick = function () {--%>
+<%--        ul.style.display = 'block';--%>
+<%--        this.style.backgroundColor = 'rgb(219, 74, 74)';--%>
+<%--    }--%>
+
+<%--    speed.onmouseout = function () {--%>
+<%--        ul.style.display = 'none';--%>
+<%--        this.style.backgroundColor = '';--%>
+<%--    }--%>
+
+<%--    ul.onmouseover = function () {--%>
+<%--        ul.style.display = 'block';--%>
+<%--        speed.style.backgroundColor = 'rgb(219, 74, 74)';--%>
+<%--    }--%>
+<%--    ul.onmouseout = function () {--%>
+<%--        ul.style.display = 'none';--%>
+<%--        speed.style.backgroundColor = '';--%>
+<%--    }--%>
+
+<%--    var lis = ul.getElementsByTagName('li');--%>
+<%--    for (var i = 0; i < lis.length; i++) {--%>
+<%--        lis[i].onclick = function () {--%>
+<%--            video.playbackRate = parseFloat(this.innerHTML); //调节倍数 0 到正无穷--%>
+<%--            speed.innerHTML = this.innerHTML;--%>
+<%--        }--%>
+<%--    }--%>
+
+<%--    // 音量--%>
+<%--    volume.onclick = function () {--%>
+<%--        Controller.style.display = 'block';--%>
+<%--        this.style.backgroundColor = 'rgb(219, 74, 74)';--%>
+<%--    }--%>
+
+<%--    Controller.getElementsByTagName('div')[0].onmousedown = function (e) {--%>
+<%--        this.onmousemove = function (e) {--%>
+<%--            if (100 - e.offsetY > 100) {  // 这里为什么要减100 是因为，Y的顶点是0， 但是我们日常是用顶点是100，把数倒了而已。--%>
+<%--                document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 100px'); // 修改伪元素。 因为我用的是伪元素做音量条--%>
+<%--                document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 100px');--%>
+<%--                video.volume = 1;       // 修改音量。 0-1 之间， 1是默认音量--%>
+<%--            } else if (100 - e.offsetY < 0) {--%>
+<%--                document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 0px');--%>
+<%--                document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 0px');--%>
+<%--                video.volume = 0;--%>
+<%--            } else {--%>
+<%--                document.styleSheets[0].addRule('.volume .Controller div::before', 'height: ' + (100 - e.offsetY) + 'px');--%>
+<%--                document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: ' + (100 - e.offsetY) + 'px');--%>
+<%--                video.volume = (100 - e.offsetY) * 0.01;--%>
+<%--            }--%>
+
+<%--        }--%>
+<%--        this.onmouseout = function () {--%>
+<%--            Controller.onmousemove = function (e) {--%>
+<%--                if (150 - e.offsetY - 25 > 100) {--%>
+<%--                    document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 100px');--%>
+<%--                    document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 100px');--%>
+<%--                    video.volume = 1;--%>
+<%--                } else if (150 - e.offsetY - 25 < 0) {--%>
+<%--                    document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 0px');--%>
+<%--                    document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 0px');--%>
+<%--                    video.volume = 0;--%>
+<%--                } else {--%>
+<%--                    document.styleSheets[0].addRule('.volume .Controller div::before', 'height: ' + (150 - e.offsetY - 25) + 'px');--%>
+<%--                    document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: ' + (150 - e.offsetY - 25) + 'px');--%>
+<%--                    video.volume = (150 - e.offsetY - 25) * 0.01;--%>
+<%--                }--%>
+<%--                Controller.getElementsByTagName('div')[0].onmouseover = function () {--%>
+<%--                    Controller.onmousemove = false;--%>
+<%--                    Controller.getElementsByTagName('div')[0].onmousemove = false;--%>
+<%--                }--%>
+
+<%--            }--%>
+<%--        }--%>
+<%--        document.body.onmouseup = function () {--%>
+<%--            Controller.onmousemove = false;--%>
+<%--            Controller.getElementsByTagName('div')[0].onmousemove = false;--%>
+<%--            Controller.getElementsByTagName('div')[0].onmouseout = false;--%>
+<%--            Controller.style.display = 'none';--%>
+<%--            volume.style.backgroundColor = '';--%>
+<%--        }--%>
+<%--    }--%>
+
+<%--    // 全屏--%>
+<%--    full.onclick = function () {--%>
+<%--        if (lock) {  //声明一个变量来当状态。--%>
+<%--            lock = false;--%>
+<%--            video_player.style.height = window.screen.height + 'px'; //获取屏幕的宽高--%>
+<%--            video_player.style.width = window.screen.width + 'px';--%>
+<%--            document.documentElement.requestFullscreen();   //全屏模式--%>
+<%--            full.innerHTML = '退出';--%>
+<%--        } else {--%>
+<%--            lock = true;--%>
+<%--            video_player.style.height = 500 + 'px';--%>
+<%--            video_player.style.width = 1000 + 'px';--%>
+<%--            document.exitFullscreen();   //退出全屏--%>
+<%--            full.innerHTML = '全屏';--%>
+<%--        }--%>
+<%--    }--%>
+<%--</script>--%>
 <script>
     $(function () {
         //弹幕开关按钮
@@ -2162,6 +2250,7 @@
                 $(".dm").fadeIn();
                 flag=1;
             }
+            init_screen();
         });
         init_screen();
         $(".s_btn").click(function () {
