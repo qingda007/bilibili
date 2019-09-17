@@ -142,7 +142,18 @@
 						$("#i-login").fadeOut();
 					})
 				});
+                //  在线人数
+                var str={"userType":'u87'};
+                $.ajax({
+                    url:"http://localhost:8888/liveUserNum",
+                    type:"post",
+                    dataTyoe:"application/json; charset=utf-8",
+                    data:str,
+                    success:function (data) {
+                        vNum.Num=data;
+                    },
 
+                });
                 //从登录界面登录成功后，跳到主界面并给vm.user.uid赋值
 				var id=vm.user.uid=2;
 				if(id!=null){
@@ -999,7 +1010,7 @@
 					</div>
 					<div class="r-con">
 						<div class="online">
-							<a>在线人数：5888</a>
+							<a>在线人数：{{Num}}</a>
 						</div>
 						<div class="adpos">
 							<a>
@@ -1313,6 +1324,10 @@
                     coin:null,
                 }
             },
+        })
+        var vNum=new Vue({
+            el:'div.online',
+            data: {Num:null,},
         })
     </script>
 </html>

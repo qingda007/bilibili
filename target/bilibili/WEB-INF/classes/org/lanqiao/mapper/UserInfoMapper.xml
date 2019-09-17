@@ -14,23 +14,35 @@
     <result column="user_picadress" property="userPicadress" jdbcType="VARCHAR" />
     <result column="user_coin" property="userCoin" jdbcType="INTEGER" />
     <result column="user_role" property="userRole" jdbcType="VARCHAR" />
-
   </resultMap>
-
   <select id="selectByPrimaryKey" resultMap="UserInfoResultMap" parameterType="java.lang.Integer">
     select * from user_info where user_id=#{userId}
   </select>
   <insert id="insertUser" parameterType="org.lanqiao.entity.UserInfo" >
     insert into user_info (user_name, user_passw,user_email,user_tele) values (#{userName,jdbcType=VARCHAR},#{userPassw,jdbcType=VARCHAR},#{userEmail,jdbcType=VARCHAR},#{userTele,jdbcType=VARCHAR})
   </insert>
+<!--  注册方法-->
+  <insert id="registerUser" parameterType="org.lanqiao.entity.UserInfo" >
+    insert into user_info (user_name, user_passw,user_email,user_tele) values (#{userName,jdbcType=VARCHAR},#{userPassw,jdbcType=VARCHAR},#{userEmail,jdbcType=VARCHAR},#{userTele,jdbcType=VARCHAR})
+  </insert>
 <!--  登录的方法-->
   <select id="findByUsername" resultMap="UserInfoResultMap">
     select * from user_info where user_name=#{userName}
   </select>
+<!--  登陆时改变激活状态-->
+  <update id="updateStatus"  parameterType="java.lang.String" >
+    update user_info set user_type = 'u87' where user_name=#{userName}
+  </update>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user_info
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
+
+    <!--记录在线人数-->
+    <select id="selectCountUserNum" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select count(*) from user_info where user_type=#{userType}
+  </select>
 
   <insert id="insertSelective" parameterType="org.lanqiao.entity.UserInfo" >
     insert into user_info

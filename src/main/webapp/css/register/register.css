@@ -4,7 +4,7 @@
     padding: 60px 0;
 }
  .form-group{
-     width: 420px;
+     width: 600px;
      margin: 0 auto;
      font-size: 12px;
      position: relative;
@@ -32,7 +32,7 @@
     padding: 0 15px;
     -webkit-transition: border-color .2s cubic-bezier(.645,.045,.355,1);
     transition: border-color .2s cubic-bezier(.645,.045,.355,1);
-    width: 100%;
+    width: 420px;
 }
 .error-message {
     color: #f45d90;
@@ -75,9 +75,14 @@
     font-size: 14px;
     border-radius: 4px;
 }
-#app .el-button--primary {
+.el-button--primary1{
     color: #fff;
     background-color: #00a1d6;
+    border-color: #00a1d6;
+}
+#app .el-button--primary {
+    color: #fff;
+    background-color: #f5f5f5;
     border-color: #00a1d6;
 }
 .yzm-buttom {
@@ -137,9 +142,7 @@ button {
     background-position: 50%;
     cursor: pointer;
 }
-.checkbox-bwxr .active{
-    background-image: url("../../images/register/check-box-inner.png");
-}
+
 /*注册按钮*/
 .btn-full {
     width: 100%;

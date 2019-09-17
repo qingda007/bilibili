@@ -1,7 +1,5 @@
 package org.lanqiao.mapper;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
 import org.lanqiao.entity.UserInfo;
 import org.lanqiao.entity.Video;
 import org.springframework.stereotype.Repository;
@@ -20,6 +18,10 @@ public interface UserInfoMapper {
     //登陆用的方法
     UserInfo findByUsername(String userName);
 
+    //登陆时改变激活状态
+    void updateStatus(String userName);
+
+
     int insertSelective(UserInfo record);
 
     UserInfo selectByPrimaryKey(Integer userId);
@@ -27,4 +29,7 @@ public interface UserInfoMapper {
     int updateByPrimaryKeySelective(UserInfo record);
 
     int updateByPrimaryKey(UserInfo record);
+
+    int selectCountUserNum(String userType);
+    //记录在线人数
 }

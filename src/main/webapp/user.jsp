@@ -20,19 +20,22 @@
     <link href="css/user/user.css" rel="stylesheet">
     <script src="js/jquery-3.4.1.min.js" rel="script"></script>
     <script>
+        //全局变量
         //总数
-        var num=0;
+        var up_num = 0;
+        var coll_num = 0
         //每页数
-        var per_page=2;
+        var per_page = 4;
         //当前页
-        var cur_page=1;
+        var up_cur_page = 1;
+        var coll_cur_page = 1;
         //总页
-        var last_page=0;
-
-        var item_num=0;
-
-        var _list=[];
-
+        var up_last_page = 0;
+        var coll_last_page = 0
+        var up_item_num = 0;
+        var coll_item_num = 0;
+        var up_list = [];
+        var coll_list = [];
         $(function () {
             //导航动态
             $("#nav-collect").click(function () {
@@ -143,7 +146,7 @@
                     $(".n-fs").append("<p id=\"n-fs\" class=\"n-data-v spacing-fans\">"+data+"</p>");
                 }
             })
-
+            //取出上传视频
             $.ajax({
                 url: "http://localhost:8888/getVideoUpload",
                 type: "post",
@@ -152,34 +155,36 @@
                 success: function (data) {
                     console.log(data);
                     //总数
-                    num=data.length;
+                    up_num=data.length;
                     //总页
-                    last_page=Math.ceil(num/per_page);
-                    _list=data;
-                    if(last_page==1){
-                        page(num);
+                    up_last_page=Math.ceil(up_num/per_page);
+                    up_list=data;
+                    if(up_last_page==1){
+                        page(up_num);
                     }else{
                         page(per_page);
                     }
                 }
             })
+
+            //生成上传视频界面
             function page(item) {
                 $(".submit-video").empty();
-                for(var i=0;i<item;i++,item_num++) {
+                for(var i=0;i<item;i++,up_item_num++) {
                     $(".submit-video").prepend("<li class=\"small-item\">\n" +
                         "                                    <a class=\"cover-normal\">\n" +
-                        "                                        <img src=\""+_list[item_num].videoPic+"\"alt=\"测试专用AR-15\">\n" +
+                        "                                        <img src=\""+up_list[up_item_num].videoPic+"\"alt=\"测试专用AR-15\">\n" +
                         "                                        <span class=\"lenth\">08:30</span>\n" +
                         "                                        <div class=\"meta-mask\">\n" +
                         "                                            <div class=\"meta-info\">\n" +
-                        "                                                <p class=\"view\">播放："+_list[item_num].playNum+"</p>\n" +
-                        "                                                <p class=\"favorite\">收藏："+_list[item_num].collectionNum+"</p>\n" +
-                        "                                                <p class=\"author\">UP"+_list[item_num].userId+"</p>\n" +
-                        "                                                <p class=\"pubdate\">投稿时间："+_list[item_num].upTime+"\" pattern=\"yyyy-MM-dd\"/></p>\n" +
+                        "                                                <p class=\"view\">播放："+up_list[up_item_num].playNum+"</p>\n" +
+                        "                                                <p class=\"favorite\">收藏："+up_list[up_item_num].collectionNum+"</p>\n" +
+                        "                                                <p class=\"author\">UP"+up_list[up_item_num].userId+"</p>\n" +
+                        "                                                <p class=\"pubdate\">投稿时间："+up_list[up_item_num].upTime+"</p>\n" +
                         "                                            </div>\n" +
                         "                                        </div>\n" +
                         "                                    </a>\n" +
-                        "                                    <a class=\"title\">"+_list[item_num].videoTitle+"</a>\n" +
+                        "                                    <a class=\"title\">"+up_list[up_item_num].videoTitle+"</a>\n" +
                         "                                    <div class=\"meta pubdate\">收藏于:</div>\n" +
                         "                                    <div class=\"be-dropdown video-edit\">\n" +
                         "                                        <div class=\"be-dropdown-tigger\">\n" +
@@ -189,29 +194,111 @@
                         "                                </li>")
                 }
             }
+            //上一页
             $("#last").click(function () {
-                     cur_page--;
-                    item_num=(cur_page-1)*per_page;
+                     up_cur_page--;
+                    up_item_num=(up_cur_page-1)*per_page;
                     page(per_page);
             })
+            //下一页
             $("#next").click(function () {
-                cur_page++;
-                item_num=(cur_page-1)*per_page;
-                if(num-item_num<per_page) {
-                    page(num-item_num);
+                up_cur_page++;
+                up_item_num=(up_cur_page-1)*per_page;
+                if(up_num-up_item_num<per_page) {
+                    page(up_num-up_item_num);
                 }else {
                     page(per_page);
                 }
             })
-            $("#sure").click(function () {
-                cur_page=$("#pagesize").val();
-                item_num=(cur_page-1)*per_page;
-                if(num-item_num<per_page) {
-                    page(num-item_num);
-                }else {
-                    page(per_page);
+            //跳页
+            $("#page-size").bind("keypress",function (event) {
+                if(event.keyCode==13) {
+                    up_cur_page = $("#page-size").val();
+                    up_item_num = (up_cur_page - 1) * per_page;
+                    if (up_num - up_item_num < per_page) {
+                        page(up_num - up_item_num);
+                    } else {
+                        page(per_page);
+                    }
                 }
             })
+            //取出收藏视频
+            $.ajax({
+                url: "http://localhost:8888/getVideoCollection",
+                type: "post",
+                data: {"userId": 2},
+                datatype: "json",
+                success: function (data) {
+                    console.log(data);
+                    //总数
+                    coll_num=data.length;
+                    //总页
+                    coll_last_page=Math.ceil(coll_num/per_page);
+                    coll_list=data;
+                    if(coll_last_page==1){
+                        coll_page(coll_num);
+                    }else{
+                        coll_page(per_page);
+                    }
+                }
+            })
+            //生成收藏界面
+            function coll_page(item) {
+                $(".fav-video-list").empty();
+                for(var i=0;i<item;i++,coll_item_num++) {
+                    $(".fav-video-list").prepend("<li class=\"small-item\">\n" +
+                        "                                    <a class=\"cover-normal\">\n" +
+                        "                                        <img src=\""+coll_list[coll_item_num].video.videoPic+"\"alt=\"测试专用AR-15\">\n" +
+                        "                                        <span class=\"lenth\">"+coll_list[coll_item_num].video.videoTime+"</span>\n" +
+                        "                                        <div class=\"meta-mask\">\n" +
+                        "                                            <div class=\"meta-info\">\n" +
+                        "                                                <p class=\"view\">播放："+coll_list[coll_item_num].video.playNum+"</p>\n" +
+                        "                                                <p class=\"favorite\">收藏："+coll_list[coll_item_num].video.collectionNum+"</p>\n" +
+                        "                                                <p class=\"author\">UP"+coll_list[coll_item_num].video.userId+"</p>\n" +
+                        "                                                <p class=\"pubdate\">投稿时间："+coll_list[coll_item_num].video.upTime+"</p>\n" +
+                        "                                            </div>\n" +
+                        "                                        </div>\n" +
+                        "                                    </a>\n" +
+                        "                                    <a class=\"title\">"+coll_list[coll_item_num].video.videoTitle+"</a>\n" +
+                        "                                    <div class=\"meta pubdate\">收藏于:coll_list[coll_item_num].collectTime</div>\n" +
+                        "                                    <div class=\"be-dropdown video-edit\">\n" +
+                        "                                        <div class=\"be-dropdown-tigger\">\n" +
+                        "                                            <i class=\"icon icon-ic-more\"></i>\n" +
+                        "                                        </div>\n" +
+                        "                                    </div>\n" +
+                        "                                </li>")
+                }
+            }
+            //上一页
+            $("#coll-last").click(function () {
+                coll_cur_page--;
+                coll_item_num=(coll_cur_page-1)*per_page;
+                coll_page(per_page);
+            })
+            //下一页
+            $("#coll-next").click(function () {
+                coll_cur_page++;
+                coll_item_num=(coll_cur_page-1)*per_page;
+                if(coll_num-coll_item_num<per_page) {
+                    coll_page(coll_num-coll_item_num);
+                }else {
+                    coll_page(per_page);
+                }
+            })
+            //跳页
+            $("#jump-page").bind("keypress",function (event) {
+                if(event.keyCode==13) {
+                    coll_cur_page = $("#jump-page").val();
+                    coll_item_num = (coll_cur_page - 1) * per_page;
+                    if (coll_num - coll_item_num < per_page) {
+                        coll_page(coll_num - coll_item_num);
+                    } else {
+                        coll_page(per_page);
+                    }
+                }
+            })
+
+            alert(${id});
         })
     </script>
 </head>
@@ -598,41 +685,19 @@
                         </div>
                         <div class="fav-content section">
                             <ul class="fav-video-list">
-                                <c:forEach var="videoCollection" items="${pageInfo.list}">
-                                <li class="small-item">
-                                    <a class="cover-normal">
-                                        <img src="${videoCollection.video.videoPic}"alt="测试专用AR-15">
-                                        <span class="lenth">08:30</span>
-                                        <div class="meta-mask">
-                                            <div class="meta-info">
-                                                <p class="view">播放：${videoCollection.video.playNum}</p>
-                                                <p class="favorite">收藏：${videoCollection.video.collectionNum}</p>
-                                                <p class="author">UP:${videoCollection.userId}</p>
-                                                <p class="pubdate">投稿时间：<fmt:formatDate value="${videoCollection.video.upTime}" pattern="yyyy-MM-dd"/></p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="title">${videoCollection.video.videoTitle}</a>
-                                    <div class="meta pubdate">收藏于：<fmt:formatDate value="${videoCollection.collectTime}" pattern="yyyy-MM-dd"/> </div>
-                                    <div class="be-dropdown video-edit">
-                                        <div class="be-dropdown-tigger">
-                                            <i class="icon icon-ic-more"></i>
-                                        </div>
-                                    </div>
-                                </li>
-                                </c:forEach>
+
                             </ul>
 
                             <ul class="be-page">
-                                <li class="be-page-item be-page-prev be-page-disabled"><a>上一页</a></li>
+                                <li class="be-page-item be-page-prev be-page-disabled"id="coll-last"><a>上一页</a></li>
                                 <li class="be-page-item be-page-active"><a>1</a></li>
                                 <li class="be-page-item"><a>2</a></li>
                                 <li class="be-page-item"><a>3</a></li>
                                 <li class="be-page-item-jump-next"></li>
                                 <li class="be-page-item"><a>7</a></li>
-                                <li class="be-page-item be-page-next"><a>下一页</a></li>
+                                <li class="be-page-item be-page-next"id="coll-next"><a>下一页</a></li>
                                 <span class="be-page-total">共7页</span>
-                                <span class="be-page-option">跳至<input type="text">页</span>
+                                <span class="be-page-option">跳至<input type="text" id="jump-page">页</span>
                             </ul>
                         </div>
                     </div>
@@ -681,8 +746,7 @@
                                 <li class="be-page-item"><a>7</a></li>
                                 <li class="be-page-item be-page-next" id="next"><a>下一页</a></li>
                                 <span class="be-page-total">共7页</span>
-                                <span class="be-page-option">跳至<input type="text"id="pagesize">页</span>
-                                <input id="sure" type="button">
+                                <span class="be-page-option">跳至<input type="text"id="page-size">页</span>
                             </ul>
                         </div>
                     </div>

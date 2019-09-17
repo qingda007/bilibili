@@ -1,6 +1,5 @@
 package org.lanqiao.mapper;
 
-import org.apache.ibatis.annotations.Param;
 import org.lanqiao.entity.Video;
 import org.springframework.stereotype.Repository;
 
@@ -24,6 +23,8 @@ public interface VideoMapper {
 
     Video selectByPrimaryKey(Integer videoId);
     //用来更新video
+
+    Video selectUpInfo(Integer videoId);
     int updateByPrimaryKeySelective(Video record);
 
     int updateByPrimaryKey(Video record);

@@ -19,6 +19,20 @@
       <result column="coin_num" property="coinNum" jdbcType="INTEGER" />
       <result column="class_type" property="classType" jdbcType="VARCHAR" />
       <result column="is_review" property="isReview" jdbcType="VARCHAR" />
+      <association property="userInfo" javaType="org.lanqiao.entity.UserInfo">
+        <id column="user_id" property="userId" jdbcType="INTEGER" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="user_passw" property="userPassw" jdbcType="VARCHAR" />
+        <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+        <result column="user_birthday" property="userBirthday" jdbcType="DATE" />
+        <result column="user_sex" property="userSex" jdbcType="VARCHAR" />
+        <result column="user_regtime" property="userRegtime" jdbcType="TIMESTAMP" />
+        <result column="user_tele" property="userTele" jdbcType="VARCHAR" />
+        <result column="user_type" property="userType" jdbcType="VARCHAR" />
+        <result column="user_picadress" property="userPicadress" jdbcType="VARCHAR" />
+        <result column="user_coin" property="userCoin" jdbcType="INTEGER" />
+        <result column="user_role" property="userRole" jdbcType="VARCHAR" />
+      </association>
     </association>
   </resultMap>
   <select id="getVideoCollection" resultMap="CollectionResultMap" parameterType="java.lang.Integer" >

@@ -30,6 +30,13 @@ public class UserInfoServiceImpl implements UserInfoService{
         }
         return null;
     }
+    //登陆时改变激活状态
+    @Override
+    public UserInfo updateStatus(String userName) {
+        userInfoMapper.updateStatus(userName);
+        UserInfo userInfo = userInfoMapper.findByUsername(userName);
+        return userInfo;
+    }
 
     @Override
     public UserInfo selectByPrimaryKey(Integer id) {
@@ -39,4 +46,11 @@ return userInfoMapper.selectByPrimaryKey(id);
     public List<Video> selectVideoUpload(Integer userId) {
         return userInfoMapper.selectVideoUpload(userId);
     }
+
+    @Override
+    public int countUserNum(String userType) {
+        return userInfoMapper.selectCountUserNum(userType);
+    }
+
+
 }
