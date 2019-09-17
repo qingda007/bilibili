@@ -28,6 +28,11 @@ public class RegisterController {
         return "login";
     }
 
+    @RequestMapping("toLogin")
+    public String login(){
+        return "login";
+    }
+
 
     //表单提交过来的路径
     @RequestMapping("/checkLogin")
