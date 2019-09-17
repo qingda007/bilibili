@@ -1,4 +1,7 @@
 
+<%
+    Object userInfo= session.getAttribute("userInfo");
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -172,8 +175,9 @@
             <%--}--%>
             <%--ll();--%>
 
-            vm.user.uid=${sid};
-            var id=vm.user.uid;
+            <%--vm.user.uid=${sid};--%>
+            <%--var id=vm.user.uid;--%>
+            var id= ${sessionScope.userInfo.userId};
             if(id!=null){
                 $.ajax({
                     url:"http://localhost:8888/getUserInfo",

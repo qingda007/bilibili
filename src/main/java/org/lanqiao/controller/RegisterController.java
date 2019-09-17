@@ -43,10 +43,9 @@ public class RegisterController {
          userInfoService.checkLogin(userInfo.getUserName(), userInfo.getUserPassw());
          userInfo = userInfoService.updateStatus(userInfo.getUserName());
         //若有user则添加到model里并且跳转到成功页面
-        int userId = userInfo.getUserId();
         if(userInfo != null){
             HttpSession session = request.getSession();
-            session.setAttribute("userId", userId);
+            session.setAttribute("userInfo", userInfo);
             return "zhuye";
         }else{
             return "login";
