@@ -43,7 +43,7 @@ public class RegisterController {
          userInfo = userInfoService.updateStatus(userInfo.getUserName());
         //若有user则添加到model里并且跳转到成功页面
         if(userInfo != null){
-            model.addAttribute("userInfo",userInfo);
+            model.addAttribute("sid",userInfo.getUserId());
             return "zhuye";
         }else{
             return "login";
