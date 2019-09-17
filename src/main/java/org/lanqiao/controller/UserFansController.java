@@ -1,5 +1,6 @@
 package org.lanqiao.controller;
 
+import org.lanqiao.entity.UserFans;
 import org.lanqiao.service.UserFansService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,4 +18,17 @@ public class UserFansController {
     public int GetBeFansCount(int fansId){
         return userFansService.beFansCount(fansId);
     }
+    @RequestMapping("/insertFans")
+    public int insertFans(UserFans userFans){
+        return userFansService.insertSelective(userFans);
+    }
+    @RequestMapping("/deleteFans")
+    public int deleteFans(Integer userId,Integer fansId){
+        return userFansService.deleteFans(userId,fansId);
+    }
+    @RequestMapping("/selectFans")
+    public int selectFans(Integer userId,Integer fansId){
+        return userFansService.selectFans(userId,fansId);
+    }
+
 }

@@ -34,10 +34,10 @@ return userInfoService.selectByPrimaryKey(id);
         return videoService.selectVideoUpload(userId);
     }
 
-    @RequestMapping("/liveUserNum")
-    public int countUserNum(String userType){
-        return userInfoService.countUserNum(userType);
-    }
+//    @RequestMapping("/liveUserNum")
+//    public int countUserNum(String userType){
+//        return userInfoService.countUserNum(userType);
+//    }
 
     int uid;
     @RequestMapping(value = "/toUser")
