@@ -7,39 +7,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d33027fa-a9f2-4325-ab9d-46bace963481" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/user/test10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/user/test11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/user/test6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/user/test7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/user/test8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/user/test9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/bilibili/css/upload/upload_manager.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/bilibili/images/upload/mrcover.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/bilibili/images/upload/weitougao.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/bilibili/images/user/test10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/bilibili/images/user/test11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/bilibili/images/user/test6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/bilibili/images/user/test7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/bilibili/images/user/test8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/bilibili/images/user/test9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/bilibili/upload-manager.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/AcountController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/account.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/VideoCollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/VideoCollectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/entity/Video.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/entity/Video.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/VideoCollectionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/VideoCollectionMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/VideoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/VideoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/css/user/user.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/user/user.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/META-INF/bilibili.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/UserInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/UserInfoController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/VideoCollectionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/VideoCollectionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/entity/Video.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/entity/Video.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/VideoCollectionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/VideoCollectionMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/VideoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/VideoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/entity/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/css/main/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/css/main/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/css/main/iconfont.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/css/main/iconfont.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/css/user/user.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/css/user/user.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/zhuye.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/zhuye.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/zhuye.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/zhuye.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/UserInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/UserInfoController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/VideoCollectionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/VideoCollectionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/entity/Video.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/entity/Video.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/VideoCollectionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/VideoCollectionMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/VideoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/VideoMapper.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -205,7 +192,9 @@
       <workItem from="1568451748426" duration="1754000" />
       <workItem from="1568456765248" duration="12650000" />
       <workItem from="1568529632064" duration="7209000" />
-      <workItem from="1568545468829" duration="1416000" />
+      <workItem from="1568545468829" duration="8867000" />
+      <workItem from="1568614047795" duration="15977000" />
+      <workItem from="1568681339548" duration="948000" />
     </task>
     <task id="LOCAL-00001" summary="用户自己上传视频">
       <created>1568454716632</created>
@@ -221,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568470137589</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="用户上传实现分页跳转">
+      <created>1568546935991</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1568546935991</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +240,15 @@
     <MESSAGE value="上传视频" />
     <MESSAGE value="用户自己上传视频" />
     <MESSAGE value="用户上传实现分页" />
-    <option name="LAST_COMMIT_MESSAGE" value="用户上传实现分页" />
+    <MESSAGE value="用户上传实现分页跳转" />
+    <option name="LAST_COMMIT_MESSAGE" value="用户上传实现分页跳转" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="this" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="masterDetails">
     <states>

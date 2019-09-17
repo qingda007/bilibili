@@ -8,24 +8,34 @@ import org.lanqiao.service.UserInfoServiceImpl;
 import org.lanqiao.service.VideoService;
 import org.lanqiao.service.VideoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @RestController
 public class UserInfoController {
-@Autowired
-UserInfoService userInfoService;
-@Autowired
-VideoServiceImpl videoService;
-@RequestMapping("/getUserInfo")
-    public UserInfo GetUserInfo(Integer id){
-return userInfoService.selectByPrimaryKey(id);
-}
+    @Autowired
+    UserInfoService userInfoService;
+    @Autowired
+    VideoServiceImpl videoService;
+
+    @RequestMapping("/getUserInfo")
+    public UserInfo GetUserInfo(Integer id) {
+        return userInfoService.selectByPrimaryKey(id);
+    }
+
     @RequestMapping("/getVideoUpload")
     public List<Video> GetVideoUpload(Integer userId) {
         return videoService.selectVideoUpload(userId);
+    }
+
+    @RequestMapping("/index")
+    public ModelAndView index(){
+        ModelAndView mv=new ModelAndView("user");
+        return mv;
     }
 }
