@@ -158,7 +158,7 @@
                     success:function (data) {
                         vNum.Num=data;
                     },
-            });
+                });
             //从登录界面登录成功后，跳到主界面并给vm.user.uid赋值
             $("#face").attr("src","images/main/akari.jpg");
             $node1=$("div.profile-m").detach();
@@ -1358,7 +1358,10 @@
     })
     var vNum=new Vue({
         el:'div.online',
-        data: {Num:null,},
+        data: {userNum:{
+            Num:null
+        }
+        },
     })
 </script>
 
