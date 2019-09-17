@@ -28,24 +28,15 @@ public class ReadVideo {
         return sum;
     }
     public Date readVideo(String videoPath) {
-        String durationStr = "";
         File file = new File(videoPath); //videoPath传入值（"D:\\666.mp4"）
         Encoder encoder = new Encoder();
         Calendar calendar = Calendar.getInstance();
-        long sum = 0;
         try {
             MultimediaInfo m = encoder.getInfo(file);
-         //   sum = m.getDuration()/1000; //时长sum单位：秒
-            calendar.setTimeInMillis( m.getDuration());
+            calendar.setTimeInMillis(m.getDuration());
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        double sum1 = (double) sum;
-//        System.out.println("视频时长总秒数："+sum1);
-//        BigDecimal duration =BigDecimal.valueOf(sum);
-//        durationStr = durationFormatToString(duration);
-//        System.out.println("视频时长:"+durationStr);
-//        return durationStr;
         return calendar.getTime();
     }
 

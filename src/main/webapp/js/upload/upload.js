@@ -12,10 +12,10 @@ function upload() {
         url = 'http://localhost:8888/video/upload', //服务器上传地址
         file = files[0];
     form.append('file', file);
-
+    $("#upload-video-title").val(file.name.substring(0,file.name.indexOf(".")));
     $("#item-title").text(file.name);
-     var videoUrl = URL.createObjectURL(file);
-     document.getElementById("get-video-time").src = videoUrl;
+    var videoUrl = URL.createObjectURL(file);
+    document.getElementById("get-video-time").src = videoUrl;
 
 
     var xhr = new XMLHttpRequest();
@@ -58,7 +58,7 @@ var isSelectCover = false;
 function getCover(data) {
     $(".other-cover-tip").html("可选择以下封面(默认自动选择第一张)：");
     $(".cover").find("img").each(function(i,v){
-        var src = data + (i+1) +".jpg";
+        var src = "/teporary/" + data + (i+1) +".jpg";
         $(this).attr("src",src);
         $(this).css({
             "width" : "128px",
@@ -72,21 +72,21 @@ function getCover(data) {
             "height" : "126px",
             "top" : "0"
         });
-        $("#cover").attr("src",data + "1.jpg");  //显示图片
+        $("#cover").attr("src", "/teporary/" + data + "1.jpg");  //显示图片
     }
 }
 function addCover(e) {
     $("#cover").attr("src",e.src);  //显示图片
 }
 
-function uploadVideoPic(){
+function uploadVideoPic(op){
     isSelectCover = true;
     var files = document.getElementById('upload-video-pic').files; //files是文件选择框选择的文件对象数组
     if(files.length == 0) return;
 
-    var form = new FormData(),
-        url = 'http://localhost:8888/video/uploadVideoPic', //服务器上传地址
-        file = files[0];
+    var form = new FormData();
+    var url = 'http://localhost:8888/video/'+op; //服务器上传地址
+    var file = files[0];
     form.append('cover', file);
 
     var xhr = new XMLHttpRequest();
@@ -165,6 +165,7 @@ function getType2(type1) {
 //提交video的所有信息
 function submitVideoInfo() {
     var videoTitle = document.getElementById('upload-video-title').value;
+    $(".upload-success-hint-3").html("稿件名称: "+videoTitle);
     var videoDesc = document.getElementById('upload-video-desc').value;
     var videoPic = document.getElementById('cover').src;
     var videoTag = document.getElementById("upload-video-tag").value;
@@ -180,6 +181,9 @@ function submitVideoInfo() {
         if(videoDesc.length==0){
             videoDesc="暂无简介";
         }
+        if(videoPic.length>255){
+            videoPic = null;
+        }
         $.ajax({
             url : 'http://localhost:8888/video/uploadVideoInfo',//后台数据地址
             data : {
@@ -192,8 +196,8 @@ function submitVideoInfo() {
                 tags: videoTag
             },//请求type1的数据
             success : function(data){
-                // $("#upload-step2-container").css("display", "none");
-                // $("#upload-step3-container").css("display","block");
+                $("#upload-step2-container").css("display", "none");
+                $("#upload-step3-container").css("display","block");
             }
         });
     }
@@ -202,4 +206,41 @@ function submitVideoInfo() {
 function countWord() {
     var number = $('#upload-video-title').val().length;
     $('.input-box-max-tip').html(number+"/80");
+}
+
+//提交video的所有信息
+function modifyVideoInfo() {
+    var videoTitle = document.getElementById('upload-video-title').value;
+    $(".upload-success-hint-3").html("稿件名称: "+videoTitle);
+    var videoDesc = document.getElementById('upload-video-desc').value;
+    var videoPic = document.getElementById('cover').src;
+    var type1 = $('#video_type_1 option:selected').text();//选中的文本
+    var type2 = $('#video_type_2 option:selected').text();//选中的文本
+    var videoId = $('#video').val();
+    if(videoTitle.length==0){
+        $('html,body').animate({scrollTop:$('#video_type_2').offset().top}, 400);
+    }
+    else {
+        if(videoDesc.length==0){
+            videoDesc="暂无简介";
+        }
+        if(videoPic.length>255){
+            videoPic = null;
+        }
+        $.ajax({
+            url : 'http://localhost:8888/video/modifyVideo',//后台数据地址
+            data : {
+                videoId: videoId,
+                videoTitle: videoTitle,
+                videoPic: videoPic,
+                videoDesc: videoDesc,
+                statusAlias1: type1,
+                statusAlias2: type2
+            },
+            success : function(data){
+                $("#upload-step2-container").css("display", "none");
+                $("#upload-step3-container").css("display","block");
+            }
+        });
+    }
 }

@@ -1,8 +1,14 @@
 #app {
 
 }
+.cc-body {
+    position: relative;
+    padding: 42px 0 0 0;
+    width: 100%;
+    min-width: 940px;
+    height: 100%;
+}
 #upload-step1-container {
-    display: none;
     max-width: 850px;
     padding: 0 10px;
     margin: 0 auto;

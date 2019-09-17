@@ -27,7 +27,7 @@ public class Ffmpeg {
 //        ffmpegToImage(videoPath,imageUrl,second-1);
         File file = new File(imagePath+"4.jpg");
         while(!file.exists());
-        return "/teporary/" + uuid + "_";
+        return uuid + "_";
     }
     public boolean ffmpegToImage(String videoPath,String imagePath,int timePoint){
         List<String> commands = new ArrayList<String>();
@@ -67,10 +67,17 @@ public class Ffmpeg {
             return false;
         }
     }
+    public String getUuid(String fileName){
+        File file = new File(fileName);
+        return file.getName().substring(0, 32);
+    }
     public String getRelDir(String absDir){
         File file = new File(absDir);
         String relDir = "/videoData/" + file.getName();
         return relDir;
+    }
+    public String getDataDir(String relDir){
+        return "E:/bilibili" + relDir;
     }
     public String getPhyDir(String absDir){
         File file = new File(absDir);
@@ -104,6 +111,11 @@ public class Ffmpeg {
                 delFile(f);
             }
         }
+    }
+    public void delDataFile(String path){
+        path = getDataDir(path);
+        File file = new File(path);
+        delFile(file);
     }
     public boolean delFile(File file) {
         if (!file.exists()) {

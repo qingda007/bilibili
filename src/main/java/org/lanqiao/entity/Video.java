@@ -32,6 +32,26 @@ public class Video {
 
     private String isReview;
 
+    private Status status;
+
+    private Integer danmuNum;
+
+    public Integer getDanmuNum() {
+        return danmuNum;
+    }
+
+    public void setDanmuNum(Integer danmuNum) {
+        this.danmuNum = danmuNum;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     public Integer getVideoId() {
         return videoId;
     }
