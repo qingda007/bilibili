@@ -11,7 +11,6 @@
     <result column="video_time" property="videoTime" jdbcType="TIMESTAMP" />
     <result column="play_num" property="playNum" jdbcType="INTEGER" />
     <result column="like_num" property="likeNum" jdbcType="INTEGER" />
-    <result column="collection_num" property="collectionNum" jdbcType="INTEGER" />
     <result column="coin_num" property="coinNum" jdbcType="INTEGER" />
     <result column="class_type" property="classType" jdbcType="VARCHAR" />
     <result column="is_review" property="isReview" jdbcType="VARCHAR" />
@@ -34,7 +33,7 @@
 
   <sql id="Base_Column_List" >
     video_id, user_id, video_title, video_pic, video_desc, video_url, up_time, video_time, 
-    play_num, like_num, collection_num, coin_num, class_type, is_review
+    play_num, like_num, coin_num, class_type, is_review
   </sql>
 
   <select id="selectUpInfo" resultMap="VideoResultMap" parameterType="java.lang.Integer">
@@ -62,12 +61,12 @@
     insert into video (video_id, user_id, video_title, 
       video_pic, video_desc, video_url, 
       up_time, video_time, play_num, 
-      like_num, collection_num, coin_num, 
+      like_num,  coin_num,
       class_type, is_review)
     values (#{videoId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{videoTitle,jdbcType=VARCHAR}, 
       #{videoPic,jdbcType=VARCHAR}, #{videoDesc,jdbcType=VARCHAR}, #{videoUrl,jdbcType=VARCHAR}, 
       #{upTime,jdbcType=TIMESTAMP}, #{videoTime,jdbcType=TIMESTAMP}, #{playNum,jdbcType=INTEGER}, 
-      #{likeNum,jdbcType=INTEGER}, #{collectionNum,jdbcType=INTEGER}, #{coinNum,jdbcType=INTEGER}, 
+      #{likeNum,jdbcType=INTEGER},  #{coinNum,jdbcType=INTEGER},
       #{classType,jdbcType=VARCHAR}, #{isReview,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.lanqiao.entity.Video" >
@@ -103,9 +102,7 @@
       <if test="likeNum != null" >
         like_num,
       </if>
-      <if test="collectionNum != null" >
-        collection_num,
-      </if>
+
       <if test="coinNum != null" >
         coin_num,
       </if>
@@ -147,9 +144,7 @@
       <if test="likeNum != null" >
         #{likeNum,jdbcType=INTEGER},
       </if>
-      <if test="collectionNum != null" >
-        #{collectionNum,jdbcType=INTEGER},
-      </if>
+
       <if test="coinNum != null" >
         #{coinNum,jdbcType=INTEGER},
       </if>
@@ -191,9 +186,7 @@
       <if test="likeNum != null" >
         like_num = #{likeNum,jdbcType=INTEGER},
       </if>
-      <if test="collectionNum != null" >
-        collection_num = #{collectionNum,jdbcType=INTEGER},
-      </if>
+
       <if test="coinNum != null" >
         coin_num = #{coinNum,jdbcType=INTEGER},
       </if>
@@ -217,7 +210,6 @@
       video_time = #{videoTime,jdbcType=TIMESTAMP},
       play_num = #{playNum,jdbcType=INTEGER},
       like_num = #{likeNum,jdbcType=INTEGER},
-      collection_num = #{collectionNum,jdbcType=INTEGER},
       coin_num = #{coinNum,jdbcType=INTEGER},
       class_type = #{classType,jdbcType=VARCHAR},
       is_review = #{isReview,jdbcType=VARCHAR}

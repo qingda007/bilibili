@@ -23,8 +23,6 @@ public class Video {
 
     private Integer likeNum;
 
-    private Integer collectionNum;
-
     private Integer coinNum;
 
     private String classType;
@@ -111,14 +109,6 @@ public class Video {
         this.likeNum = likeNum;
     }
 
-    public Integer getCollectionNum() {
-        return collectionNum;
-    }
-
-    public void setCollectionNum(Integer collectionNum) {
-        this.collectionNum = collectionNum;
-    }
-
     public Integer getCoinNum() {
         return coinNum;
     }
@@ -143,23 +133,4 @@ public class Video {
         this.isReview = isReview == null ? null : isReview.trim();
     }
 
-    @Override
-    public String toString() {
-        return "Video{" +
-                "videoId=" + videoId +
-                ", userInfo=" + userInfo +
-                ", videoTitle='" + videoTitle + '\'' +
-                ", videoPic='" + videoPic + '\'' +
-                ", videoDesc='" + videoDesc + '\'' +
-                ", videoUrl='" + videoUrl + '\'' +
-                ", upTime=" + upTime +
-                ", videoTime=" + videoTime +
-                ", playNum=" + playNum +
-                ", likeNum=" + likeNum +
-                ", collectionNum=" + collectionNum +
-                ", coinNum=" + coinNum +
-                ", classType='" + classType + '\'' +
-                ", isReview='" + isReview + '\'' +
-                '}';
-    }
 }
