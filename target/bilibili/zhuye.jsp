@@ -1,4 +1,7 @@
 
+<%
+    Object userInfo= session.getAttribute("userInfo");
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -34,7 +37,8 @@
             }, function() { // 当鼠标移出，开始轮播
                 autoNextPage();
             });
-            //
+
+
 
             //小圆点的相应功能 事件委托
             clickButtons();
@@ -144,28 +148,51 @@
                 }, function() {
                     $("#i-login").fadeOut();
                 })
-            })
+            });
 
+            //  在线人数
+            var str={"userType":'u87'};
+
+                $.ajax({
+                    url:"http://localhost:8888/liveUserNum",
+                    type:"post",
+                    dataType:"application/json; charset=utf-8",
+                    data:str,
+                    success:function (data) {
+                        vNum.Num=data;
+                    },
+            });
             //从登录界面登录成功后，跳到主界面并给vm.user.uid赋值
+            $("#face").attr("src","images/main/akari.jpg");
+            $node1=$("div.profile-m").detach();
+            $node2=$("li.nipi").detach();
+            <%--function ll(){--%>
+            <%--    try {--%>
+            <%--        vm.user.uid=${sid};--%>
+            <%--    }catch (e) {--%>
+            <%--        vm.user.uid=null;--%>
+            <%--    }--%>
+            <%--}--%>
+            <%--ll();--%>
 
-            vm.user.uid=2;
+            <%--vm.user.uid=${sid};--%>
+            <%--var id=vm.user.uid;--%>
 
-            // var id=vm.user.uid;
-            var id=userInfo.userId;
-            if(id!=null){
+
                 $.ajax({
                     url:"http://localhost:8888/getUserInfo",
                     type:"post",
                     dataType:"json",
                     data:{
-                        "id":id,
+                        "id":${sessionScope.userInfo.userId},
                     },
                     success:function(data){
                         var img=data.userPicadress;
                         $("#face").attr("src",img);
                         $("#i-login").remove();
                         $("#fixed-app-download").remove();
-
+                        $("#nipi").prepend($node1);
+                        $("#nipi").after($node2);
                         if (data.userTele!=null){
                             $("#s1").text("已绑定");
                         }else {
@@ -180,7 +207,6 @@
                         vm.user.uname=data.userName;
                         vm.user.coin=data.userCoin;
                     },
-
                 });
                 $("#nipi").hover(function () {
                     $(this).addClass("on");
@@ -198,15 +224,29 @@
                     vm.user.uid=null;
                     location.reload();
                 });//登录退出按钮
-            }else{
-                $("#face").attr("src","images/main/akari.jpg");
-                $("div.profile-m").remove();
-                $("li.nipi").remove();
-            }
+
+            //跳转用户中心界面
+            $("a.account").click(function () {
+                $.ajax({
+                    url:"/toUser",
+                    dataType:"json",
+                    data:{"id":id},
+                    type:"post",
+                    success:function (data) {
+                        alert("成功");
+                        window.location.href="http://localhost:8888/user";
+                    },
+                    error:function(){
+                        alert("失败");
+                    }
+                })
+            })
+
+
+
         })
 
     </script>
-    <script src="js/jquery-3.4.1.js"></script>
 </head>
 
 <body>
@@ -269,13 +309,78 @@
                                     <img id="d1" src="images/main/danmu1.png" />
                                     <img id="d2" src="images/main/danmu1.png" style="left: 320px;" />
                                 </div>
-                                <a class="login-btn">登录</a>
+                                <a class="login-btn" href="/user/toLogin">登录</a>
                                 <p class="reg">首次使用？
-                                    <a>点我去注册</a>
+                                    <a href="/user/toRegister">点我去注册</a>
                                 </p>
                             </div>
+                            <div class="profile-m dd-bubble"style="display: none">
+                                <div class="header-u-info">
+                                    <div class="header-uname">
+                                        <b class="big-vip-red">{{user.uname}}</b>
+                                        <p class="vip-type">
+                                            <a>
+                                                <span class="big-vip-red">会员</span>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="btns-profile clearfix">
+                                        <div class="coin fl">
+                                            <a>
+                                                <i class="bili-icon bi"></i>
+                                                <span class="num">{{user.coin}}</span>
+                                            </a>
+                                        </div>
+                                        <div class="ver phone fr verified">
+                                            <a>
+                                                <i class="bili-icon"></i>
+                                                <span id="s1" class="tips"></span>
+                                            </a>
+                                        </div>
+                                        <div class="ver email fr verified">
+                                            <a>
+                                                <i class="bili-icon"></i>
+                                                <span id="s2" class="tips"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="member-menu">
+                                        <ul class="clearfix">
+                                            <li>
+                                                <a class="account">
+                                                    <i class="bili-icon b-icon-p-account"></i>
+                                                    个人中心
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="number">
+                                                    <i class="bili-icon b-icon-p-member"></i>
+                                                    投稿管理
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="member-bottom">
+                                        <a class="logout"href="/bilibili">退出</a>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
-
+                        <li class="nav-item nipi">
+                            <a class="t">
+                                稍后再看
+                            </a>
+                        </li>
+                        <li class="nav-item nipi">
+                            <a class="t">
+                                收藏
+                            </a>
+                        </li>
+                        <li class="nav-item nipi">
+                            <a class="t">
+                                消息
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="t">
                                 动态
@@ -940,7 +1045,7 @@
             </div>
             <div class="r-con">
                 <div class="online">
-                    <a>在线人数：5888</a>
+                    <a>在线人数：{{Num}}</a>
                 </div>
                 <div class="adpos">
                     <a>
@@ -1241,136 +1346,24 @@
     </div>
     <div class="footer " style="display: none; "></div>
 </div>
-<script src="js/jquery-3.4.1.js"></script>
+
+</body>
+<script type="text/javascript" src="/js/vue.min.js"></script>
 <script>
-    var imgCount = 5;
-    var index = 1;
-    var intervalId;
-    var buttonSpan = $('.trig')[0].children; //htmlCollection 集合
-    //自动轮播功能 使用定时器
-    autoNextPage();
-    autoNextScroll();
-
-    function autoNextPage() {
-        intervalId = setInterval(function() {
-            nextPage(true);
-        }, 3000);
-    }
-    //当鼠标移入 停止轮播
-    $('.panel').hover(function() {
-        console.log('hah');
-        clearInterval(intervalId);
-    }, function() { // 当鼠标移出，开始轮播
-        autoNextPage();
-    });
-    //
-
-    //小圆点的相应功能 事件委托
-    clickButtons();
-
-    function clickButtons() {
-        var length = buttonSpan.length;
-        for(var i = 0; i < length; i++) {
-            buttonSpan[i].onclick = function() {
-                $(buttonSpan[index - 1]).removeClass('on');
-                if($(this).attr('index') == 1) {
-                    index = 5;
-                } else {
-                    index = $(this).attr('index') - 1;
-                }
-                nextPage(true);
-            };
-        }
-    }
-
-    function nextPage(next) {
-        var targetLeft = 0;
-        //当前的圆点去掉on样式
-        $(buttonSpan[index - 1]).removeClass('on');
-        if(next) { //往后走
-            if(index == 5) { //到最后一张，直接跳到第一张
-                targetLeft = 0;
-                index = 1;
-            } else {
-                index++;
-                targetLeft = -440 * (index - 1);
+    var vm=new Vue({
+        el:'#nipi',
+        data:{
+            user:{
+                uid:null,
+                uname:null,
+                coin:null,
             }
-
-        } else { //往前走
-            if(index == 1) { //在第一张，直接跳到第五张
-                index = 5;
-                targetLeft = -440 * (imgCount - 1);
-            } else {
-                index--;
-                targetLeft = -440 * (index - 1);
-            }
-
-        }
-        $('.carousel-module .panel .pic').animate({
-            left: targetLeft + 'px'
-        });
-        //更新后的圆点加上样式
-        $(buttonSpan[index - 1]).addClass('on');
-
-    }
-    /*-------/
-     *
-     */
-
-
-    $("#close").click(function() {
-        $("#fixed-app-download").detach();
+        },
     })
-    var $menu_li = $(".bili-tab-item");
-    $menu_li.click(function() {
-        //1.将点击的li高亮
-        $(this).addClass("on");
-        //并去掉其他的高亮
-        $(this).siblings().removeClass("on");
-
-        //点击第1个li 显示第1个div  点击第2个li 显示第2个div
-        //首先获得点击了第几个li
-        var clickedLiIndex = $menu_li.index(this);
-        $("div.tab-box>div").eq(clickedLiIndex).show();
-        $("div.tab-box>div").eq(clickedLiIndex).siblings().hide();
-    })
-    var left1 = 0;
-    var left2 = 320;
-    autoNextScroll()
-    function autoNextScroll() {
-        intervalId = setInterval(function() {
-            scroll1(true);
-        }, 100);
-    }
-
-    function scroll1(next) {
-
-        if(left1 == -320) {
-            left1 = 320;
-        }
-        if(left2 == -320) {
-            left2 = 320;
-        }
-        left1 -= 10;
-        left2 -= 10;
-        $('#d1').animate({
-            left: left1 + 'px'
-        });
-        $('#d2').animate({
-            left: left2 + 'px'
-        });
-    }
-    $("img[class='face']").hover(function() {
-        $("#i-login").fadeIn();
-
-    }, function() {
-        $("#i-login").hover(function() {
-            $("#i-login").fadeIn();
-        }, function() {
-            $("#i-login").fadeOut();
-        })
+    var vNum=new Vue({
+        el:'div.online',
+        data: {Num:null,},
     })
 </script>
-</body>
 
 </html>

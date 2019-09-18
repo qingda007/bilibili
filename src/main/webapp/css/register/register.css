@@ -8,12 +8,16 @@
      margin: 0 auto;
      font-size: 12px;
      position: relative;
+
 }
  .el-input{
      position: relative;
      font-size: 14px;
      display: inline-block;
      width: 100%;
+ }
+ .el-input label{
+
  }
  .el-input_inner{
     -webkit-appearance: none;
@@ -79,6 +83,7 @@
     color: #fff;
     background-color: #00a1d6;
     border-color: #00a1d6;
+
 }
 #app .el-button--primary {
     color: #fff;

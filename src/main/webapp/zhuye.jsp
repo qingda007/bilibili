@@ -177,14 +177,14 @@
 
             <%--vm.user.uid=${sid};--%>
             <%--var id=vm.user.uid;--%>
-            var id= ${sessionScope.userInfo.userId};
-            if(id!=null){
+
+
                 $.ajax({
                     url:"http://localhost:8888/getUserInfo",
                     type:"post",
                     dataType:"json",
                     data:{
-                        "id":id,
+                        "id":${sessionScope.userInfo.userId},
                     },
                     success:function(data){
                         var img=data.userPicadress;
@@ -224,7 +224,7 @@
                     vm.user.uid=null;
                     location.reload();
                 });//登录退出按钮
-            }
+
             //跳转用户中心界面
             $("a.account").click(function () {
                 $.ajax({

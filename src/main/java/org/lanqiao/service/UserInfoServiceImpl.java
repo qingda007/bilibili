@@ -19,8 +19,6 @@ public class UserInfoServiceImpl implements UserInfoService{
         userInfoMapper.registerUser(userInfo);
         return userInfo;
     }
-
-
     //登录业务
     @Override
     public UserInfo checkLogin(String userName, String userPassw) {
