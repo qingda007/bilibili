@@ -41,8 +41,8 @@ public class UploadController {
     private String rootPath = "E:/bilibili/teporary";
     @ResponseBody
     @RequestMapping(value = "/test")
-    public int test(@RequestParam("userId") int userId,@RequestParam("word") String word){
-        return uploadService.countByWord(userId,word);
+    public int test(@RequestParam("word") String type1){
+        return statusService.countVideoByType1(type1);
     }
     @ResponseBody
     @RequestMapping(value = "/upload")
