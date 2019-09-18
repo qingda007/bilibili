@@ -142,6 +142,11 @@ public class UploadController {
         return new ModelAndView("upload");
     }
 
+    @RequestMapping(value = "/homeVideo")
+    public ModelAndView homeVideo() {
+        return new ModelAndView("upload-home");
+    }
+
     @RequestMapping(value = "/managerVideo")
     public ModelAndView managerVideo(@RequestParam(value="pageNo", defaultValue = "1") int pageNum, @RequestParam(value="isReview", defaultValue = "-1") int isReview, @RequestParam(value="videoId", defaultValue = "-1") int videoId) {
         ModelAndView modelAndView = new ModelAndView();

@@ -42,9 +42,9 @@ button {
 
 .cc-body {
     position: relative;
-    padding: 42px 0 0 240px;
+    padding: 0 0 0 500px;
     width: 100%;
-    min-width: 940px;
+    max-width: 940px;
     height: 100%;
 }
 .cc-body .cc-content-body {
