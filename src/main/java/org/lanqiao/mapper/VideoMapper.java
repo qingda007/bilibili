@@ -16,7 +16,11 @@ public interface VideoMapper {
 
     List<Video> selectVideoByIsReview(@Param("userId")Integer userId, @Param("isReview")Integer isReview);
 
-    int countByWord(@Param("userId")Integer userId, @Param("word")String word);
+    int countByPlay(@Param("userId")Integer userId);
+    int countByLike(@Param("userId")Integer userId);
+    int countByDanmu(@Param("userId")Integer userId);
+    int countByCollection(@Param("userId")Integer userId);
+    int countByCoin(@Param("userId")Integer userId);
 
     int deleteByPrimaryKey(Integer videoId);
 

@@ -42,6 +42,11 @@ public class UploadServiceImpl implements UploadService {
 
     @Override
     public int countByWord(int userId, String word) {
-        return videoMapper.countByWord(userId, word);
+        if("play".equals(word)) return videoMapper.countByPlay(userId);
+        else if("like".equals(word)) return videoMapper.countByLike(userId);
+        else if("danmu".equals(word)) return videoMapper.countByDanmu(userId);
+        else if("collection".equals(word)) return videoMapper.countByCollection(userId);
+        else if("coin".equals(word)) return videoMapper.countByCoin(userId);
+        else return 0;
     }
 }
