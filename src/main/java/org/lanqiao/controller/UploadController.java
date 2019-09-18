@@ -144,7 +144,7 @@ public class UploadController {
 
     @RequestMapping(value = "/homeVideo")
     public ModelAndView homeVideo() {
-        return new ModelAndView("upload-home");
+        return new ModelAndView("upload-home","videoInfo",uploadService.countVideoInfo(1));
     }
 
     @RequestMapping(value = "/managerVideo")
@@ -181,10 +181,13 @@ public class UploadController {
         ModelAndView modelAndView = new ModelAndView();
         Video video = videoService.selectVideoInfo(videoId);
         Ffmpeg ffmpeg = new Ffmpeg();
-        String uuid = ffmpeg.getUuid(video.getVideoUrl());
-        request.getSession(true).setAttribute("Uuid", uuid);
-        request.getSession(true).setAttribute("videoUrl", ffmpeg.getDataDir(video.getVideoUrl()));
-        modelAndView.addObject("video",video);
+        if(ffmpeg.isExist(video.getVideoUrl())){
+            String uuid = ffmpeg.getUuid(video.getVideoUrl());
+            request.getSession(true).setAttribute("Uuid", uuid);
+            request.getSession(true).setAttribute("videoUrl", ffmpeg.getDataDir(video.getVideoUrl()));
+            modelAndView.addObject("video",video);
+        }
+        else modelAndView.addObject("video",-1);
         modelAndView.setViewName("upload-modify");
         return modelAndView;
     }

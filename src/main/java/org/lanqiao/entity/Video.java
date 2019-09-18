@@ -32,9 +32,19 @@ public class Video {
 
     private String isReview;
 
-    private Status status;
+    private Status status; //联合status表（一对一）
 
-    private Integer danmuNum;
+    private Integer danmuNum; //使用子查询获取
+
+    private Integer collectionNum; //使用子查询获取
+
+    public Integer getCollectionNum() {
+        return collectionNum;
+    }
+
+    public void setCollectionNum(Integer collectionNum) {
+        this.collectionNum = collectionNum;
+    }
 
     public Integer getUserId() {
         return userId;

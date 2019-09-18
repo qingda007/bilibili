@@ -1366,7 +1366,7 @@
         }
         .dm {
             width: 638px;
-            height: 407px;
+            height: 377px;
             position: absolute;
             top: 20px;
         }
@@ -1454,6 +1454,117 @@
             position: absolute;
             left: 3px;
             bottom: 3px;
+        }
+        .bili-dialog-m {
+            background: rgba(0,0,0,.65);
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            z-index: 10102;
+        }
+        .bili-dialog-m .bili-dialog-bomb {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            -ms-transform: translateX(-50%) translateY(-50%);
+            box-sizing: border-box;
+            margin-bottom: 50px;
+        }
+        .coin-operated-m {
+            width: 360px;
+            background: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .coin-operated-m .close {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: 16px;
+            top: 16px;
+            cursor: pointer;
+            background-position: -470px -534px;
+        }
+        .bili-icon, .icon {
+            display: inline-block;
+            background-image: url("images/main/icons.png");
+        }
+        .coin-operated-m .coin-title {
+            font-size: 16px;
+            margin-top: 20px;
+            color: #222;
+            text-align: center;
+        }
+        .coin-operated-m .coin-title span {
+            font-size: 30px;
+            color: #00a1d6;
+        }
+        .coin-operated-m .mc {
+            text-align: center;
+        }
+        .coin-operated-m .mc-box.on.left-con {
+            background-size: 122px;
+            background-image: url("images/video/22.gif");
+        }
+        .coin-operated-m .mc-box.on {
+            border-style: solid;
+            border-color: #02a0d8;
+        }
+        .coin-operated-m .mc-box.on .c-num {
+            color: #00a1d6;
+        }
+        .coin-operated-m .mc-box .c-num {
+            color: #99a2aa;
+            text-align: left;
+            font-size: 14px;
+            line-height: 40px;
+            position: absolute;
+            left: 15px;
+        }
+        .coin-operated-m .mc-box.left-con {
+            margin-left:30%;
+            background-image: url(//s1.hdslb.com/bfs/static/jinkela/video/asserts/22-gray.png);
+        }
+        .coin-operated-m .mc-box {
+            position: relative;
+            display: inline-block;
+            margin-right: 30px;
+            margin-top: 35px;
+            width: 160px;
+            height: 230px;
+            border: 2px dashed #ccd0d6;
+            border-top-color: rgb(204, 208, 214);
+            border-top-style: dashed;
+            border-right-color: rgb(204, 208, 214);
+            border-right-style: dashed;
+            border-bottom-color: rgb(204, 208, 214);
+            border-bottom-style: dashed;
+            border-left-color: rgb(204, 208, 214);
+            border-left-style: dashed;
+            border-radius: 5px;
+            background-repeat: no-repeat;
+            background-position: 50%;
+        }
+        .coin-operated-m .coin-bottom {
+            text-align: center;
+            padding: 25px 0;
+        }
+        .bi-btn {
+            display: inline-block;
+            background: #00a1d6;
+            color: #fff;
+            font-size: 14px;
+            padding: 4px 18px;
+            border-radius: 4px;
+            transition: all .3s;
+            -ms-user-select: none;
+            user-select: none;
+            border: 1px solid #00a1d6;
+            text-align: center;
+            cursor: pointer;
         }
     </style>
 <%--弹幕列展开--%>
@@ -2276,7 +2387,7 @@
                             </div>
                             <div class="bui-collapse-body">
                                 <div class="player-auxiliary-wraplist">
-                                    <div class="player-auxiliary-filter-wrap player-auxiliary-danmaku"style="height: 288px;">
+                                    <div class="player-auxiliary-filter-wrap player-auxiliary-danmaku"style="height: 398px;">
                                         <div class="clearfix"></div>
                                         <div class="player-auxiliary-danmaku-function">
                                             <div class="player-auxiliary-danmaku-btn-time" id="danmutime">用户</div>
@@ -2315,6 +2426,27 @@
                 </div>
             </div>
         </div>
+        <div class="bili-dialog-m">
+            <div class="bili-dialog-bomb">
+                <div class="coin-operated-m">
+                    <i id="close" class="icon close"></i>
+                    <div class="coin-title">
+                        为up主投上
+                        <span>1</span>
+                        枚硬币
+                    </div>
+
+                    <div class="mc clearfix"></div>
+                    <div class="mc-box left-con on">
+                        <span class="c-num">1硬币</span>
+                    </div>
+                    <div class="coin-bottom">
+                        <span class="bi-btn">确定</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
 </body>
@@ -2340,6 +2472,15 @@
 <%--//弹幕开关按钮--%>
 <script>
     $(function () {
+        //投币窗口
+        $("#close").click(function () {
+            $("div.bili-dialog-m").detach();
+         })
+        $toubi=$("div.bili-dialog-m").detach();
+        $(".coin").click(function () {
+            $(".v-wrap").prepend($toubi);
+        })
+
         //弹幕开关按钮
         var flag=0;
         $(".danmu-trigger").click(function(){
@@ -2391,4 +2532,5 @@
         return "#"+str;
 
     }
+
 </script>

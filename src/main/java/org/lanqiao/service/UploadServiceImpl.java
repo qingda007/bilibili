@@ -1,16 +1,21 @@
 package org.lanqiao.service;
 
 import org.lanqiao.entity.Video;
+import org.lanqiao.mapper.UserFansMapper;
 import org.lanqiao.mapper.VideoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class UploadServiceImpl implements UploadService {
     @Autowired
     VideoMapper videoMapper;
+    @Autowired
+    UserFansMapper userFansMapper;
+
     @Override
     public int uploadVideo(Video video) {
         return videoMapper.insertSelective(video);
@@ -21,9 +26,7 @@ public class UploadServiceImpl implements UploadService {
     }
 
     @Override
-    public List<Video> selectUploadVideo(int userId) {
-        return videoMapper.selectUploadVideo(userId);
-    }
+    public List<Video> selectUploadVideo(int userId) { return videoMapper.selectUploadVideo(userId); }
 
     @Override
     public int countIsReview(int userId, int isReview) {
@@ -48,5 +51,17 @@ public class UploadServiceImpl implements UploadService {
         else if("collection".equals(word)) return videoMapper.countByCollection(userId);
         else if("coin".equals(word)) return videoMapper.countByCoin(userId);
         else return 0;
+    }
+
+    @Override
+    public List<Integer> countVideoInfo(int userId) {
+        List<Integer> videoInfo = new ArrayList<>();
+        videoInfo.add(videoMapper.countByPlay(userId));
+        videoInfo.add(videoMapper.countByLike(userId));
+        videoInfo.add(videoMapper.countByDanmu(userId));
+        videoInfo.add(videoMapper.countByCollection(userId));
+        videoInfo.add(videoMapper.countByCoin(userId));
+        videoInfo.add(userFansMapper.fansCount(userId));
+        return videoInfo;
     }
 }

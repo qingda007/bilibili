@@ -67,6 +67,10 @@ public class Ffmpeg {
             return false;
         }
     }
+    public boolean isExist(String dataPath){
+        File file = new File("E:/bilibili"+dataPath);
+        return file.exists();
+    }
     public String getUuid(String fileName){
         File file = new File(fileName);
         return file.getName().substring(0, 32);
