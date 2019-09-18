@@ -28,10 +28,6 @@
     </style>
 
     <script src="js/jquery-3.4.1.min.js"></script>
-    <link href="themes/default/default.css" rel="stylesheet" />
-    <script src="js/player/kindeditor-min.js"></script>
-    <script src="js/player/emoticons.js"></script>
-    <script src="js/player/zh_CN.js"></script>
     <link rel="stylesheet" href="css/main/iconfont.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1507,7 +1503,7 @@
         }
         .coin-operated-m .mc-box.on.left-con {
             background-size: 122px;
-            background-image: url("images/video/22.gif");
+            /*background-image: url("images/video/22.gif");*/
         }
         .coin-operated-m .mc-box.on {
             border-style: solid;
@@ -1596,106 +1592,25 @@
     </script>
 <%--总的方法--%>
     <script>
-        //全局变量
-        //总数
-        var up_num = 0;
-        //每页数
-        var per_page = 7;
-        //当前页
-        var up_cur_page = 1;
-        //总页
-        var up_last_page = 0;
-        var up_item_num = 0;
-        var up_list = [];
 
         $(function () {
-            //取出评论
-            $.ajax({
-                url:"/video/commentInfo",
-                data:{
-                    "videoId":1
-                },
-                type: "post",
-                datatype: "json",
-                success:function (data1) {
-                    //总数
-                    up_num = data1.length;
-                    //总页
-                    up_last_page=Math.ceil(up_num/per_page);
-                    up_list=data;
-                    if(up_last_page==1){
-                        page(up_num);
-                    }else{
-                        page(per_page);
-                    }
-                }
-
-            });
-            //生成评论
-            function page(item) {
-                $(".comment-list").empty();
-                for(var i=0;i<item;i++,up_item_num++) {
-                    $(".comment-list").prepend("<div class=\"list-item reply-wrap \">\n" +
-                        "                                        <div class=\"user-face\">\n" +
-                        "                                            <img src=\""+up_list[up_item_num].userInfo.userPicadress+"\">\n" +
-                        "                                        </div>\n" +
-                        "                                        <div class=\"con\">\n" +
-                        "                                            <div class=\"user\">\n" +
-                        "                                                <span class=\"name\">"+up_list[up_item_num].userInfo.userName+"</span>\n" +
-                        "                                            </div>\n" +
-                        "                                            <p class=\"text\">"+up_list[up_item_num].comment+"</p>\n" +
-                        "                                            <div class=\"info\">\n" +
-                        "                                                <span class=\"time\">"+up_list[up_item_num].sendTime+"</span>\n" +
-                        "                                            </div>\n" +
-                        "                                        </div>\n" +
-                        "                                    </div>")
-                }
-            }
-            //上一页
-            $("#last").click(function () {
-                up_cur_page--;
-                up_item_num=(up_cur_page-1)*per_page;
-                page(per_page);
-            })
-            //下一页
-            $("#next").click(function () {
-                up_cur_page++;
-                up_item_num=(up_cur_page-1)*per_page;
-                if(up_num-up_item_num<per_page) {
-                    page(up_num-up_item_num);
-                }else {
-                    page(per_page);
-                }
-            })
-            //跳页
-            $("#page-size").bind("keypress",function (event) {
-                if(event.keyCode==13) {
-                    up_cur_page = $("#page-size").val();
-                    up_item_num = (up_cur_page - 1) * per_page;
-                    if (up_num - up_item_num < per_page) {
-                        page(up_num - up_item_num);
-                    } else {
-                        page(per_page);
-                    }
-                }
-            })
 
             //视频信息
             $.ajax({
-                url:"/video/videoInfo",
-                data:{
-                    "videoId":1,
+                url: "/video/videoInfo",
+                data: {
+                    "videoId": 1,
                 },
-                type:"post",
-                datatype:"json",
-                success:function (data) {
+                type: "post",
+                datatype: "json",
+                success: function (data) {
                     $("#viewbox_report").prepend(" <h1 title=\"视频名\" class=\"video-title\">\n" +
-                        "                    <span class=\"tit\">"+data.videoTitle+"</span>\n" +
+                        "                    <span class=\"tit\">" + data.videoTitle + "</span>\n" +
                         "                </h1>");
-                    $(".a-crumbs").after("<span>"+data.upTime+"</span>");
-                    $("#videodata").prepend("<span title=\"总播放数\" class=\"view\">"+data.playNum+"播放&nbsp;&nbsp;</span>\n");
+                    $(".a-crumbs").after("<span>" + data.upTime + "</span>");
+                    $("#videodata").prepend("<span title=\"总播放数\" class=\"view\">" + data.playNum + "播放&nbsp;&nbsp;</span>\n");
                     // $(".video_player").prepend("<video src=\""+data.videoUrl+"\" width=\"638px\" height=\"381px\"></video>")
-                    $(".videos").prepend("<source src=\""+data.videoUrl+"\" type=\"video/mp4\">")
+                    $(".videos").prepend("<source src=\"" + data.videoUrl + "\" type=\"video/mp4\">")
                     // $(".ops").prepend("<span title=\"点赞数\" class=\"like\">\n" +
                     //     "                        <i class=\"iconfont icon-dianzan-copy\"></i>"+data.likeNum+"\n" +
                     //     "                    </span>\n" +
@@ -1705,129 +1620,153 @@
                     //     "                    <span title=\"收藏数\" class=\"collect\"><i class=\"iconfont icon-shoucang\"></i>"+data.collectionNum+"</span>\n" +
                     //     "                    <span title=\"分享\" class=\"share\"><i class=\"iconfont icon-zhuanfa\"></i>955</span>");
 
-                    $("#v_desc").prepend("<div class=\"info open\">"+data.videoDesc+"</div>");
-                    $(".tag-area").prepend("<li class=\"tag\">"+data.videoTitle+"</li>");
-                    vm.likes.likeNum=data.likeNum;
-                    vm.likes.coinNum=data.coinNum;
+                    $("#v_desc").prepend("<div class=\"info open\">" + data.videoDesc + "</div>");
+                    $(".tag-area").prepend("<li class=\"tag\">" + data.videoTitle + "</li>");
+                    vm.likes.likeNum = data.likeNum;
+                    vm.likes.coinNum = data.coinNum;
                 }
             });
-            $(".like").click(function () {
-                vm.likes.likeNum+=1;
-            });
-            $(".coin").click(function () {
-                vm.likes.coinNum+=1;
-            });
 
-            function showDanmu(){
+            function showDanmu() {
                 //弹幕信息
                 $.ajax({
-                    url:"/video/danmuInfo",
-                    data:{
-                        "videoId":1
+                    url: "/video/danmuInfo",
+                    data: {
+                        "videoId": 1
                     },
                     type: "post",
                     datatype: "json",
-                    success:function (data2) {
-                        for (var j=0;j<data2.length;j++){
+                    success: function (data2) {
+                        for (var j = 0; j < data2.length; j++) {
                             $("#danmusss").prepend("<li class=\"danmaku-info-row\">\n" +
-                                "                                                         <span class=\"danmaku-info-time\">"+data2[j].userInfo.userName+"</span>"+
-                                "                                                        <span class=\"danmaku-info-danmaku\">"+data2[j].danmu+"</span>\n" +
-                                "                                                        <span class=\"danmaku-info-date\">"+data2[j].sentTime+"</span>\n" +
+                                "                                                         <span class=\"danmaku-info-time\">" + data2[j].userInfo.userName + "</span>" +
+                                "                                                        <span class=\"danmaku-info-danmaku\">" + data2[j].danmu + "</span>\n" +
+                                "                                                        <span class=\"danmaku-info-date\">" + data2[j].sentTime + "</span>\n" +
                                 "                                                    </li>")
                         }
                     }
                 });
             }
-            //评论和评论人信息
-            // $.ajax({
-            //     url:"/video/commentInfo",
-            //     data:{
-            //         "videoId":1
-            //     },
-            //     type: "post",
-            //     datatype: "json",
-            //     success:function (data1) {
-            //         for (var i=0;i<data1.length;i++){
-            //             $(".comment-list").prepend(" <div class=\"list-item reply-wrap \">\n" +
-            //                 "                                        <div class=\"user-face\">\n" +
-            //                 "                                            <img src=\""+data1[i].userInfo.userPicadress+"\">\n" +
-            //                 "                                        </div>\n" +
-            //                 "                                        <div class=\"con\">\n" +
-            //                 "                                            <div class=\"user\">\n" +
-            //                 "                                                <span class=\"name\">"+data1[i].userInfo.userName+"</span>\n" +
-            //                 "                                            </div>\n" +
-            //                 "                                            <p class=\"text\">"+data1[i].comment+"</p>\n" +
-            //                 "                                            <div class=\"info\">\n" +
-            //                 "                                                <span class=\"time\">"+data1[i].sendTime+"</span>\n" +
-            //                 "                                            </div>\n" +
-            //                 "                                        </div>\n" +
-            //                 "                                    </div>")
-            //         }
-            //     }
-            //
-            // });
+            function showComment(){
+                $.ajax({
+                    url:"/video/commentInfo",
+                    data:{
+                        "videoId":1
+                    },
+                    type: "post",
+                    datatype: "json",
+                    success:function (data1) {
+                        for (var i=0;i<data1.length;i++){
+                            $(".comment-list").prepend(" <div class=\"list-item reply-wrap \">\n" +
+                                "                                        <div class=\"user-face\">\n" +
+                                "                                            <img src=\""+data1[i].userInfo.userPicadress+"\">\n" +
+                                "                                        </div>\n" +
+                                "                                        <div class=\"con\">\n" +
+                                "                                            <div class=\"user\">\n" +
+                                "                                                <span class=\"name\">"+data1[i].userInfo.userName+"</span>\n" +
+                                "                                            </div>\n" +
+                                "                                            <p class=\"text\">"+data1[i].comment+"</p>\n" +
+                                "                                            <div class=\"info\">\n" +
+                                "                                                <span class=\"time\">"+data1[i].sendTime+"</span>\n" +
+                                "                                            </div>\n" +
+                                "                                        </div>\n" +
+                                "                                    </div>")
+                        }
+                    }
 
-            //弹幕信息
+                });
+            }
+
+            // 评论和评论人信息
             $.ajax({
-                url:"/video/danmuInfo",
+                url:"/video/commentInfo",
                 data:{
                     "videoId":1
                 },
                 type: "post",
                 datatype: "json",
-                success:function (data2) {
-                    for (var j=0;j<data2.length;j++){
+                success:function (data1) {
+                    for (var i=0;i<data1.length;i++){
+                        $(".comment-list").prepend(" <div class=\"list-item reply-wrap \">\n" +
+                            "                                        <div class=\"user-face\">\n" +
+                            "                                            <img src=\""+data1[i].userInfo.userPicadress+"\">\n" +
+                            "                                        </div>\n" +
+                            "                                        <div class=\"con\">\n" +
+                            "                                            <div class=\"user\">\n" +
+                            "                                                <span class=\"name\">"+data1[i].userInfo.userName+"</span>\n" +
+                            "                                            </div>\n" +
+                            "                                            <p class=\"text\">"+data1[i].comment+"</p>\n" +
+                            "                                            <div class=\"info\">\n" +
+                            "                                                <span class=\"time\">"+data1[i].sendTime+"</span>\n" +
+                            "                                            </div>\n" +
+                            "                                        </div>\n" +
+                            "                                    </div>")
+                    }
+                }
+
+            });
+
+            //弹幕信息
+            $.ajax({
+                url: "/video/danmuInfo",
+                data: {
+                    "videoId": 1
+                },
+                type: "post",
+                datatype: "json",
+                success: function (data2) {
+                    for (var j = 0; j < data2.length; j++) {
                         $("#danmusss").prepend("<li class=\"danmaku-info-row\">\n" +
-                            "                                                         <span class=\"danmaku-info-time\">"+data2[j].userInfo.userName+"</span>"+
-                            "                                                        <span class=\"danmaku-info-danmaku\">"+data2[j].danmu+"</span>\n" +
-                            "                                                        <span class=\"danmaku-info-date\">"+data2[j].sentTime+"</span>\n" +
+                            "                                                         <span class=\"danmaku-info-time\">" + data2[j].userInfo.userName + "</span>" +
+                            "                                                        <span class=\"danmaku-info-danmaku\">" + data2[j].danmu + "</span>\n" +
+                            "                                                        <span class=\"danmaku-info-date\">" + data2[j].sentTime + "</span>\n" +
                             "                                                    </li>");
-                        $("#danmushow").append("<div>"+data2[j].danmu+"<div>")
+                        $("#danmushow").append("<div>" + data2[j].danmu + "<div>")
                     }
                 }
             });
 
             //up主信息
             $.ajax({
-                url:"/video/upInfo",
-                data:{
-                    "videoId":1
+                url: "/video/upInfo",
+                data: {
+                    "videoId": 1
                 },
-                type:"post",
-                datatype:"json",
-                success:function (data3) {
-                    $("#upface").prepend("<img src=\""+data3.userInfo.userPicadress+"\" width=\"48\" height=\"48\" class=\"up-face\">");
-                    $("#upname").prepend("<a href=\"\" target=\"_blank\" class=\"username\">"+data3.userInfo.userName+"</a>")
-                    vm.likes.userId=data3.userId;
+                type: "post",
+                datatype: "json",
+                success: function (data3) {
+                    $("#upface").prepend("<img src=\"" + data3.userInfo.userPicadress + "\" width=\"48\" height=\"48\" class=\"up-face\">");
+                    $("#upname").prepend("<a href=\"\" target=\"_blank\" class=\"username\">" + data3.userInfo.userName + "</a>")
+                    vm.likes.userId = data3.userId;
                 },
-                error:function () {
+                error: function () {
                     alert("up主信息失败")
                 }
             });
-            
+
             //评论数
             $.ajax({
-                url:"/video/commentCount",
-                data:{
-                    "videoId":1
+                url: "/video/commentCount",
+                data: {
+                    "videoId": 1
                 },
-                type:"post",
-                datatype:"json",
-                success:function (data4) {
+                type: "post",
+                datatype: "json",
+                success: function (data4) {
                     $("#commentNum").text(data4);
                 }
             });
 
             //弹幕数
             $.ajax({
-                url:"/video/danmuCount",
-                data:{
-                    "videoId":1
+                url: "/video/danmuCount",
+                data: {
+                    "videoId": 1
                 },
-                type:"post",
-                datatype:"json",
-                success:function (data5) {
-                    $("#videodata").append("<span title=\"弹幕数\" class=\"view-dm\">"+data5+"弹幕</span>");
+                type: "post",
+                datatype: "json",
+                success: function (data5) {
+                    $("#videodata").append("<span title=\"弹幕数\" class=\"view-dm\">" + data5 + "弹幕</span>");
                     $("#danmutime").after("<div class=\"player-auxiliary-danmaku-btn-danmaku\">\n" +
                         "                                                弹幕内容\n" +
                         "                                            </div>")
@@ -1839,62 +1778,66 @@
 
             //收藏数
             $.ajax({
-                url:"/gerCollectionCount",
-                data:{
-                    "videoId":1
+                url: "/gerCollectionCount",
+                data: {
+                    "videoId": 1
                 },
-                type:"post",
-                datatype:"json",
-                success:function (data) {
-                    vm.likes.collectionNum=data;
+                type: "post",
+                datatype: "json",
+                success: function (data) {
+                    vm.likes.collectionNum = data;
                 }
             });
 
             //获取登录用户信息
             $.ajax({
-                url:"http://localhost:8888/getUserInfo",
-                type:"post",
-                data:{"id":2},
-                datatype:"json",
-                success:function (data) {
+                url: "http://localhost:8888/getUserInfo",
+                type: "post",
+                data: {"id": 2},
+                datatype: "json",
+                success: function (data) {
                     console.log(data);
-                    $("#userface").prepend("<img src=\""+data.userPicadress+"\" width=\"32px\" height=\"32px\">");
-                    $("#firstface").prepend("<img class=\"user-head\" src=\""+data.userPicadress+"\">");
-                    $("#secondface").prepend("<img class=\"user-head\" src=\""+data.userPicadress+"\">")
+                    $("#userface").prepend("<img src=\"" + data.userPicadress + "\" width=\"32px\" height=\"32px\">");
+                    $("#firstface").prepend("<img class=\"user-head\" src=\"" + data.userPicadress + "\">");
+                    $("#secondface").prepend("<img class=\"user-head\" src=\"" + data.userPicadress + "\">")
+                    vm.likes.userCoinNum = data.userCoin;
                 }
             });
 
             //发表评论
             $(".comment-submit").click(function () {
+
                 //插入评论
-                var tit=$(".ipt-txt").val();
-                var time=new Date();
+                var tit = $(".ipt-txt").val();
+                var time = new Date();
                 $.ajax({
-                    url:"/video/insertComment",
-                    type:"post",
-                    async:false,
-                    data:{
-                        "userId":2,
-                        "videoId":1,
-                        "comment":tit,
-                        "sendTime":time
+                    url: "/video/insertComment",
+                    type: "post",
+                    async: false,
+                    data: {
+                        "userId": 2,
+                        "videoId": 1,
+                        "comment": tit,
+                        "sendTime": time
                     },
-                    datatype:"json",
-                    success:function (data) {
+                    datatype: "json",
+                    success: function (data) {
+
+                        showComment();
                         $.ajax({
-                            url:"/video/commentCount",
-                            data:{
-                                "videoId":1
+                            url: "/video/commentCount",
+                            data: {
+                                "videoId": 1
                             },
-                            async:false,
-                            type:"post",
-                            datatype:"json",
-                            success:function (data4) {
+                            async: false,
+                            type: "post",
+                            datatype: "json",
+                            success: function (data4) {
                                 $("#commentNum").text(data4);
                             }
                         });
                     },
-                    error:function () {
+                    error: function () {
                         alert("失败")
                     }
                 })
@@ -1904,183 +1847,293 @@
 
             //发送弹幕
             $("#s_btn").click(function () {
-                var tit=$(".s_txt").val();
-                var time=new Date();
+                var tit = $(".s_txt").val();
+                var time = new Date();
                 $.ajax({
-                    url:"/video/insertDanmu",
-                    type:"post",
-                    data:{
-                        "userId":2,
-                        "videoId":1,
-                        "danmu":tit,
-                        "sentTime":time
+                    url: "/video/insertDanmu",
+                    type: "post",
+                    data: {
+                        "userId": 2,
+                        "videoId": 1,
+                        "danmu": tit,
+                        "sentTime": time
                     },
-                    datatype:"json",
-                    success:function (data) {
+                    datatype: "json",
+                    success: function (data) {
                         showDanmu();
                     },
-                    error:function () {
+                    error: function () {
                         alert("失败")
                     }
                 })
             })
 
             //获取是否收藏
-            var collectd=false;
+            var collectd = false;
             $.ajax({
-                url:"/getCollectionCount",
-                type:"post",
-                data:{
-                    "videoId":1,
-                    "userId":2
+                url: "/getCollectionCount",
+                type: "post",
+                data: {
+                    "videoId": 1,
+                    "userId": 2
                 },
-                datatype:"text",
-                success:function (data) {
-                    if (data==1){
+                datatype: "text",
+                success: function (data) {
+                    if (data == 1) {
                         collectd = true;
-                    }else if (data==0){
+                    } else if (data == 0) {
                         collectd = false;
                     }
                 },
-                error:function () {
+                error: function () {
                     alert("是否收藏失败")
                 }
             });
             $(".collect").click(function () {
-                if ( collectd == true){
+                if (collectd == true) {
                     quxiaoconllect();
-                }else if (collectd == false){
+                } else if (collectd == false) {
                     shoucang();
                 }
             });
 
             //点击收藏
             function shoucang() {
+                vm.likes.collectionNum += 1;
+                $.ajax({
+                    url: "/insertCollection",
+                    type: "post",
+                    data: {
+                        "videoId": 1,
+                        "userId": 2
+                    },
+                    datatype: "json",
+                    success: function (data) {
+                        collectd = true;
+                    },
+                    error: function () {
+                        alert("收藏失败");
+                    }
 
-                    vm.likes.collectionNum+=1;
-                    $.ajax({
-                        url: "/insertCollection",
-                        type: "post",
-                        data: {
-                            "videoId": 1,
-                            "userId": 2
-                        },
-                        datatype: "json",
-                        success: function (data) {
-                            collectd = true;
-                        },
-                        error: function () {
-                            alert("收藏失败");
-                        }
-
-                    })
+                })
 
             };
 
             //点击取消收藏
             function quxiaoconllect() {
 
-                    vm.likes.collectionNum-=1;
-                    $.ajax({
-                        url: "/deleteCollection",
-                        type: "post",
-                        data: {
-                            "videoId": 1,
-                            "userId": 2
-                        },
-                        datatype: "json",
-                        success: function (data) {
-                            collectd = false;
-                        },
-                        error: function () {
-                            alert("取消收藏失败");
-                        }
+                vm.likes.collectionNum -= 1;
+                $.ajax({
+                    url: "/deleteCollection",
+                    type: "post",
+                    data: {
+                        "videoId": 1,
+                        "userId": 2
+                    },
+                    datatype: "json",
+                    success: function (data) {
+                        collectd = false;
+                    },
+                    error: function () {
+                        alert("取消收藏失败");
+                    }
 
-                    })
+                })
 
             };
-
 
             //获取是否已关注
             var userIds = vm.likes.userId;
             var flag = false;
             $.ajax({
-                url:"/selectFans",
-                type:"post",
-                data:{
-                    "userId":userIds,
-                    "fansId":2
+                url: "/selectFans",
+                type: "post",
+                data: {
+                    "userId": userIds,
+                    "fansId": 2
                 },
-                datatype:"text",
-                success:function (data) {
-                    if (data==1){
-                        flag=true;
+                datatype: "text",
+                success: function (data) {
+                    if (data == 1) {
+                        flag = true;
                         $("#guanzhu").hide();
                         $("#quguan").show();
                         quxiaota();
                         guanzhuta();
-                    }else if (data==0){
-                        flag=false;
+                    } else if (data == 0) {
+                        flag = false;
                         $("#guanzhu").show();
                         $("#quguan").hide();
                         guanzhuta();
                         quxiaota();
                     }
                 },
-                error:function (data) {
+                error: function (data) {
                     alert("粉丝失败")
 
                 }
             });
-                //点击关注
-                function guanzhuta(){
-                    $("#guanzhu").click(function () {
-                        $("#guanzhu").hide();
-                        $("#quguan").show();
-                        //关注
-                        $.ajax({
-                            url:"/insertFans",
-                            type:"post",
-                            data:{
-                                "userId":userIds,
-                                "fansId":2
-                            },
-                            datatype:"json",
-                            success:function (data) {
-                                flag=true;
 
-                            },
-                            error:function () {
-                                alert("关注失败")
-                            }
+            //点击关注
+            function guanzhuta() {
+                $("#guanzhu").click(function () {
+                    $("#guanzhu").hide();
+                    $("#quguan").show();
+                    //关注
+                    $.ajax({
+                        url: "/insertFans",
+                        type: "post",
+                        data: {
+                            "userId": userIds,
+                            "fansId": 2
+                        },
+                        datatype: "json",
+                        success: function (data) {
+                            flag = true;
 
-                        });
-                    })
+                        },
+                        error: function () {
+                            alert("关注失败")
+                        }
+
+                    });
+                })
+            }
+
+            //点击取关
+            function quxiaota() {
+                $("#quguan").click(function () {
+                    $("#guanzhu").show();
+                    $("#quguan").hide();
+                    //关注
+                    $.ajax({
+                        url: "/deleteFans",
+                        type: "post",
+                        data: {
+                            "userId": userIds,
+                            "fansId": 2
+                        },
+                        datatype: "json",
+                        success: function (data) {
+                            flag = false;
+                        },
+                        error: function () {
+                            alert("取消失败")
+                        }
+
+                    });
+                })
+            }
+
+            //投币
+            $(".bi-btn").click(function () {
+                coinAdd();
+                coinSub();
+            });
+
+            //videoCoin加一
+            function coinAdd() {
+                vm.likes.coinNum+=1;
+                $.ajax({
+                    url: "/video/coin",
+                    type: "post",
+                    data: {
+                        "coinNum": vm.likes.coinNum,
+                        "videoId": 1
+                    },
+                    datatype: "json",
+                    success: function (data) {
+                    },
+                    error: function () {
+                        alert("投币失败")
+                    }
+                })
+            }
+            //userCoin减一
+            function coinSub() {
+                vm.likes.userCoinNum-=1;
+                $.ajax({
+                    url: "/userCoin",
+                    type: "post",
+                    data: {
+                        "userCoin": vm.likes.userCoinNum,
+                        "userId": 2
+                    },
+                    datatype: "json",
+                    success: function (data) {
+                    },
+                    error: function () {
+                        alert("减币失败")
+                    }
+                })
+            }
+            //点赞
+            var likeStatus = false;
+            $(".like").click(function () {
+                if (likeStatus == false) {
+                    addlike();
                 }
-                //点击取关
-                function quxiaota(){
-                    $("#quguan").click(function () {
-                        $("#guanzhu").show();
-                        $("#quguan").hide();
-                        //关注
-                        $.ajax({
-                            url:"/deleteFans",
-                            type:"post",
-                            data:{
-                                "userId":userIds,
-                                "fansId":2
-                            },
-                            datatype:"json",
-                            success:function (data) {
-                                flag=false;
-                            },
-                            error:function () {
-                                alert("取消失败")
-                            }
-
-                        });
-                    })
+                else if (likeStatus == true) {
+                    sublike();
                 }
+            });
+            //点击加赞
+            function addlike() {
+                vm.likes.likeNum += 1;
+                $.ajax({
+                    url: "/video/like",
+                    type: "post",
+                    data: {
+                        "likeNum": vm.likes.likeNum,
+                        "videoId": 1
+                    },
+                    datatype: "json",
+                    success: function (data) {
+                        likeStatus = true;
+                    },
+                    error: function () {
+                        alert("点赞失败")
+                    }
+                })
+            }
+            function sublike() {
+
+                vm.likes.likeNum -= 1;
+                $.ajax({
+                    url: "/video/like",
+                    type: "post",
+                    data: {
+                        "likeNum": vm.likes.likeNum,
+                        "videoId": 1
+                    },
+                    datatype: "json",
+                    success: function (data) {
+                        likeStatus = false;
+                    },
+                    error: function () {
+                        alert("取消点赞失败")
+                    }
+                });
+            }
+
+            //视频标签
+            $.ajax({
+                url: "/video/videoStatus",
+                type: "post",
+                data: {
+                    "videoId": 1
+                },
+                datatype: "json",
+                success: function (data) {
+
+                    $("#video_status").prepend("<span class=\"a-crumbs\">\n" +
+                        "                        <a target=\"_blank\" href=\"#\">"+data.status.statusAlias1+"</a>\n" +
+                        "                        <i class=\"fuhao\">></i>\n" +
+                        "                        <a target=\"_blank\" href=\"#\">"+data.status.statusAlias2+"</a>\n" +
+                        "                    </span>")
+                }
+            })
+
         });
 
 
@@ -2143,7 +2196,7 @@
 <%--                <h1 title="视频名" class="video-title">--%>
 <%--                    <span class="tit">${video.videoTitle}</span>--%>
 <%--                </h1>--%>
-                <div class="video-data">
+                <div class="video-data" id="video_status">
 <%--                    <span class="a-crumbs">--%>
 <%--                        <a target="_blank" href="#">国创</a>--%>
 <%--                        <i class="fuhao">></i>--%>
@@ -2261,12 +2314,9 @@
                                     <textarea cols="80" name="msg" rows="5" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="ipt-txt">
 
                                     </textarea>
-                                    <button type="submit" class="comment-submit" disabled="disabled">发表评论</button>
+                                    <button type="submit" class="comment-submit" >发表评论</button>
                                 </div>
-                                <div class="comment-emoji">
-                                    <i class="face"></i>
-                                    <span class="text">表情</span>
-                                </div>
+
                             </div>
                             <!--评论信息-->
                             <div class="comment-list">
@@ -2296,19 +2346,19 @@
                             </div>
 
 <%--                            <!--分页-->--%>
-                            <div class="bottom-page">
-                                <ul class="be-page">
-                                    <li class="be-page-item be-page-prev be-page-disabled" id="last"><a>上一页</a></li>
-                                    <li class="be-page-item be-page-active"><a>1</a></li>
-                                    <li class="be-page-item"><a>2</a></li>
-                                    <li class="be-page-item"><a>3</a></li>
-                                    <li class="be-page-item-jump-next"></li>
-                                    <li class="be-page-item"><a>7</a></li>
-                                    <li class="be-page-item be-page-next" id="next"><a>下一页</a></li>
-                                    <span class="be-page-total">共7页</span>
-                                    <span class="be-page-option">跳至<input type="text"id="page-size">页</span>
-                                </ul>
-                            </div>
+<%--                            <div class="bottom-page">--%>
+<%--                                <ul class="be-page">--%>
+<%--                                    <li class="be-page-item be-page-prev be-page-disabled" id="last"><a>上一页</a></li>--%>
+<%--                                    <li class="be-page-item be-page-active"><a>1</a></li>--%>
+<%--                                    <li class="be-page-item"><a>2</a></li>--%>
+<%--                                    <li class="be-page-item"><a>3</a></li>--%>
+<%--                                    <li class="be-page-item-jump-next"></li>--%>
+<%--                                    <li class="be-page-item"><a>7</a></li>--%>
+<%--                                    <li class="be-page-item be-page-next" id="next"><a>下一页</a></li>--%>
+<%--                                    <span class="be-page-total">共7页</span>--%>
+<%--                                    <span class="be-page-option">跳至<input type="text"id="page-size">页</span>--%>
+<%--                                </ul>--%>
+<%--                            </div>--%>
                             <!--输入框-->
                             <div class="comment-send no-login">
                                 <div class="user-face" id="secondface">
@@ -2460,7 +2510,8 @@
                 likeNum:1,
                 coinNum:1,
                 collectionNum:1,
-                userId:1
+                userId:1,
+                userCoinNum:1
             }
         }
 
@@ -2476,6 +2527,10 @@
         $("#close").click(function () {
             $("div.bili-dialog-m").detach();
          })
+        $(".bi-btn").click(function () {
+            $("div.bili-dialog-m").detach();
+         })
+
         $toubi=$("div.bili-dialog-m").detach();
         $(".coin").click(function () {
             $(".v-wrap").prepend($toubi);
@@ -2506,8 +2561,8 @@
         function init_screen() {
             var _top=0;
             $(".dm_show").find("div").show().each(function () {
-                _top = _top+70;
-                if (_top>=$(".dm").height()-100){
+                _top = _top+20;
+                if (_top>=$(".dm").height()-20){
                     _top=0;
                 }
                 //div的left

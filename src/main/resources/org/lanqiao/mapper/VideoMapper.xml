@@ -53,6 +53,12 @@
     <result column="user_coin" property="userCoin" jdbcType="INTEGER" />
     <result column="user_role" property="userRole" jdbcType="VARCHAR" />
   </resultMap>
+
+  <select id="selectStatus" resultMap="VideoResultMap" parameterType="java.lang.Integer">
+    select s.*
+    from video v,status s
+    where v.class_type  = s.status_id and v.video_id=#{videoId}
+  </select>
   <select id="selectUploadVideo" resultMap="UploadResultMap" parameterType="java.lang.Integer">
     select v.*,s.*,(select count(*) from video_danmu d where d.video_id = v.video_id) as danmu_num,(select count(*) from video_collection c where c.video_id = v.video_id) as collection_num
     from video v, status s
@@ -264,19 +270,9 @@
     where video_id = #{videoId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Video" >
-    update video
-    set user_id = #{userId,jdbcType=INTEGER},
-      video_title = #{videoTitle,jdbcType=VARCHAR},
-      video_pic = #{videoPic,jdbcType=VARCHAR},
-      video_desc = #{videoDesc,jdbcType=VARCHAR},
-      video_url = #{videoUrl,jdbcType=VARCHAR},
-      up_time = #{upTime,jdbcType=TIMESTAMP},
-      video_time = #{videoTime,jdbcType=TIMESTAMP},
-      play_num = #{playNum,jdbcType=INTEGER},
-      like_num = #{likeNum,jdbcType=INTEGER},
-      coin_num = #{coinNum,jdbcType=INTEGER},
-      class_type = #{classType,jdbcType=VARCHAR},
-      is_review = #{isReview,jdbcType=VARCHAR}
+    update video v
+    set
+      coin_num = #{coinNum,jdbcType=INTEGER}
     where video_id = #{videoId,jdbcType=INTEGER}
   </update>
   <resultMap id="UploadResultMap" type="org.lanqiao.entity.Video" >

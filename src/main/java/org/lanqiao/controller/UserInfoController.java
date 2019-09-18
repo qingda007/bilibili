@@ -58,4 +58,9 @@ return userInfoService.selectByPrimaryKey(id);
         ModelAndView bilibili=new ModelAndView("bilibili");
         return bilibili;
     }
+
+    @RequestMapping("/userCoin")
+    public int updataUserCoin(UserInfo userInfo){
+        return userInfoService.updateByPrimaryKeySelective(userInfo);
+    }
 }

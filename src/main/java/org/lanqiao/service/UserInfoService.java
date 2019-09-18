@@ -19,4 +19,6 @@ public interface UserInfoService {
 
     //记录在线人数
     int countUserNum(String userType);
+
+    int updateByPrimaryKeySelective(UserInfo record);
 }

@@ -57,5 +57,10 @@ return userInfoMapper.selectByPrimaryKey(id);
         }
     }
 
+    @Override
+    public int updateByPrimaryKeySelective(UserInfo userInfo) {
+        return userInfoMapper.updateByPrimaryKeySelective(userInfo);
+    }
+
 
 }
