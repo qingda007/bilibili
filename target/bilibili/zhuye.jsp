@@ -158,9 +158,22 @@
                     success:function (data) {
                         vNum.Num=data;
                     },
-            });
+                });
             //从登录界面登录成功后，跳到主界面并给vm.user.uid赋值
-            var id=vm.user.uid=2;
+            $("#face").attr("src","images/main/akari.jpg");
+            $node1=$("div.profile-m").detach();
+            $node2=$("li.nipi").detach();
+            <%--function ll(){--%>
+            <%--    try {--%>
+            <%--        vm.user.uid=${sid};--%>
+            <%--    }catch (e) {--%>
+            <%--        vm.user.uid=null;--%>
+            <%--    }--%>
+            <%--}--%>
+            <%--ll();--%>
+
+            vm.user.uid=${sid};
+            var id=vm.user.uid;
             if(id!=null){
                 $.ajax({
                     url:"http://localhost:8888/getUserInfo",
@@ -174,7 +187,8 @@
                         $("#face").attr("src",img);
                         $("#i-login").remove();
                         $("#fixed-app-download").remove();
-
+                        $("#nipi").prepend($node1);
+                        $("#nipi").after($node2);
                         if (data.userTele!=null){
                             $("#s1").text("已绑定");
                         }else {
@@ -189,7 +203,6 @@
                         vm.user.uname=data.userName;
                         vm.user.coin=data.userCoin;
                     },
-
                 });
                 $("#nipi").hover(function () {
                     $(this).addClass("on");
@@ -207,10 +220,6 @@
                     vm.user.uid=null;
                     location.reload();
                 });//登录退出按钮
-            }else{
-                $("#face").attr("src","images/main/akari.jpg");
-                $("div.profile-m").remove();
-                $("li.nipi").remove();
             }
             //跳转用户中心界面
             $("a.account").click(function () {
@@ -296,7 +305,7 @@
                                     <img id="d1" src="images/main/danmu1.png" />
                                     <img id="d2" src="images/main/danmu1.png" style="left: 320px;" />
                                 </div>
-                                <a class="login-btn">登录</a>
+                                <a class="login-btn" href="/user/toLogin">登录</a>
                                 <p class="reg">首次使用？
                                     <a href="/user/toRegister">点我去注册</a>
                                 </p>
@@ -348,7 +357,7 @@
                                         </ul>
                                     </div>
                                     <div class="member-bottom">
-                                        <a class="logout">退出</a>
+                                        <a class="logout"href="/bilibili">退出</a>
                                     </div>
                                 </div>
                             </div>
@@ -1349,7 +1358,10 @@
     })
     var vNum=new Vue({
         el:'div.online',
-        data: {Num:null,},
+        data: {userNum:{
+            Num:null
+        }
+        },
     })
 </script>
 

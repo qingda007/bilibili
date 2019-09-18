@@ -1,9 +1,12 @@
 package org.lanqiao.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Video {
     private Integer videoId;
+
+    private Integer userId;
 
     private UserInfo userInfo;
 
@@ -23,13 +26,49 @@ public class Video {
 
     private Integer likeNum;
 
-    private Integer collectionNum;
-
     private Integer coinNum;
 
     private String classType;
 
     private String isReview;
+
+    private Status status; //联合status表（一对一）
+
+    private Integer danmuNum; //使用子查询获取
+
+    private Integer collectionNum; //使用子查询获取
+
+    public Integer getCollectionNum() {
+        return collectionNum;
+    }
+
+    public void setCollectionNum(Integer collectionNum) {
+        this.collectionNum = collectionNum;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getDanmuNum() {
+        return danmuNum;
+    }
+
+    public void setDanmuNum(Integer danmuNum) {
+        this.danmuNum = danmuNum;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
     public Integer getVideoId() {
         return videoId;
@@ -111,14 +150,6 @@ public class Video {
         this.likeNum = likeNum;
     }
 
-    public Integer getCollectionNum() {
-        return collectionNum;
-    }
-
-    public void setCollectionNum(Integer collectionNum) {
-        this.collectionNum = collectionNum;
-    }
-
     public Integer getCoinNum() {
         return coinNum;
     }
@@ -143,23 +174,4 @@ public class Video {
         this.isReview = isReview == null ? null : isReview.trim();
     }
 
-    @Override
-    public String toString() {
-        return "Video{" +
-                "videoId=" + videoId +
-                ", userInfo=" + userInfo +
-                ", videoTitle='" + videoTitle + '\'' +
-                ", videoPic='" + videoPic + '\'' +
-                ", videoDesc='" + videoDesc + '\'' +
-                ", videoUrl='" + videoUrl + '\'' +
-                ", upTime=" + upTime +
-                ", videoTime=" + videoTime +
-                ", playNum=" + playNum +
-                ", likeNum=" + likeNum +
-                ", collectionNum=" + collectionNum +
-                ", coinNum=" + coinNum +
-                ", classType='" + classType + '\'' +
-                ", isReview='" + isReview + '\'' +
-                '}';
-    }
 }

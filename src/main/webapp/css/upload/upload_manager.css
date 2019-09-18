@@ -58,10 +58,9 @@ button {
 }
 .cc-body {
     position: relative;
-    padding: 42px 0 0 240px;
-    padding-top: 42px;
+    padding-top: 20px;
     width: 100%;
-    min-width: 940px;
+    min-width: 800px;
     height: 100%;
 }
 .cc-body .cc-content-body {
@@ -70,13 +69,11 @@ button {
 }
 .page-wrp {
     position: relative;
-    width: 940px;
+    width: 720px;
     margin: 0 auto;
 }
 .cc-article-wrp .article-header {
-    height: 82px;
-    padding-top: 25px;
-
+    height: 60px;
 }
 .bili-tab {
     display: inline-block;
@@ -126,7 +123,6 @@ cc-article-wrp .info-wrp .cc-btn .icon-text {
     min-height: 140px;
     border-radius: 4px;
     background: #fff;
-    margin-bottom: 20px;
     padding: 20px;
 }
 .cc-article-wrp .article-card .cover-wrp {
@@ -188,7 +184,7 @@ cc-article-wrp .info-wrp .cc-btn .icon-text {
     margin-right: 10px;
 
 }
-.cc-article-wrp .article-card .meta-title .name {
+.cc-article-wrp .article-card .meta-title .name1 {
     display: inline-block;
     max-width: 420px;
     font-size: 18px;
@@ -260,7 +256,7 @@ cc-article-wrp .info-wrp .cc-btn .icon-text {
 .cc-article-wrp .article-card .meta-footer .view-stat {
     display: inline-block;
     float: left;
-    margin-right: 20px;
+    margin-right: 30px;
     color: #99a2aa;
 }
 .cc-article-wrp .article-card .meta-footer .view-stat {
@@ -296,4 +292,10 @@ cc-article-wrp .info-wrp .cc-btn .icon-text {
     border-right: 3px solid transparent;
     border-left: 3px solid transparent;
     border-bottom: 3px solid #00a1d6;
+}
+#upload-manager-container {
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+    padding: 5px 0;
 }

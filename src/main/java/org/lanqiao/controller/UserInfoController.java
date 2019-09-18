@@ -37,12 +37,13 @@ public class UserInfoController {
         return videoService.selectVideoUpload(userId);
     }
 
+    //统计在线人数
     @RequestMapping("/liveUserNum")
     public int countUserNum(String userType){
         return userInfoService.countUserNum(userType);
     }
 
-    static int uid;
+    int uid;
     @RequestMapping(value = "/toUser")
     public int toUser(Integer id){
         uid=id;
@@ -51,8 +52,14 @@ public class UserInfoController {
     @RequestMapping("/user")
     public ModelAndView user(){
         ModelAndView user=new ModelAndView("user");
-        user.addObject("id",uid);
+//        user.addObject("id",uid);
         return user;
+    }
+
+    @RequestMapping("/bilibili")
+    public ModelAndView zhuye(){
+        ModelAndView bilibili=new ModelAndView("bilibili");
+        return bilibili;
     }
 
     @RequestMapping("/index")

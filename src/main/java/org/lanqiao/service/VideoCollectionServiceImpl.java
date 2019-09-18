@@ -18,4 +18,24 @@ public class VideoCollectionServiceImpl implements VideoCollectionService {
         return videoCollectionMapper.getVideoCollection(userId);
     }
 
+    @Override
+    public int collectionCount(Integer videoId) {
+        return videoCollectionMapper.collectionCount(videoId);
+    }
+
+    @Override
+    public int selectIsCollection(Integer videoId, Integer userId) {
+        return videoCollectionMapper.selectIsCollection(videoId,userId);
+    }
+
+    @Override
+    public int insertSelective(VideoCollection videoCollection) {
+        return videoCollectionMapper.insertSelective(videoCollection);
+    }
+
+    @Override
+    public Integer deletecollect(Integer videoId, Integer userId) {
+        return videoCollectionMapper.deletecollect(videoId,userId);
+    }
+
 }

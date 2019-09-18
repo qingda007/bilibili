@@ -13,11 +13,25 @@
 <html lang="en">
 <head>
     <style>
-        .w-e-text-container{
-            height: 70px !important;
+        form {
+            margin: 0;
+        }
+        h3{
+            text-align:center;
+        }
+        textarea {
+            display: block;
+        }
+        form .ke-container {
+            margin: 0 auto;
         }
     </style>
-    <link href="/css/player/wangEditor.css" rel="stylesheet">
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <link href="themes/default/default.css" rel="stylesheet" />
+    <script src="js/player/kindeditor-min.js"></script>
+    <script src="js/player/emoticons.js"></script>
+    <script src="js/player/zh_CN.js"></script>
     <link rel="stylesheet" href="css/main/iconfont.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -612,6 +626,124 @@
         .bb-comment .bottom-page{
             margin: 20px 0;
         }
+
+        /*分页*/
+        .be-page{
+            margin-bottom: 50px;
+            text-align: center;
+            clear: both;
+        }
+        .be-page li{
+            margin-top: 40px;
+        }
+        .be-page-disabled{
+            display: none;
+        }
+        .be-page-next,.be-page-prev{
+            padding: 0 14px;
+            border: 1px solid #d7dde4;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+
+        .be-page-item{
+            display: inline-block;
+            line-height: 38px;
+            padding: 0 15px;
+            margin-right: 4px;
+            text-align: center;
+            list-style: none;
+            background-color: #fff;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: pointer;
+            font-family: Arial;
+            font-size: 14px;
+            border: 1px solid #d7dde4;
+            border-radius: 4px;
+            transition: all .2s ease-in-out;
+        }
+        .be-page-active{
+            background-color: #00a1d6;
+            border-color: #00a1d6;
+        }
+        .be-page-item a{
+            text-decoration: none;
+            color: #657180;
+        }
+        .be-page-active:hover a,.be-page-active a{
+            color: #fff;
+        }
+
+        .be-page-item:hover{
+            border-color: #00a1d6;
+        }
+        .be-page-item-jump-next{
+            display: inline-block;
+            font-size: 14px;
+            line-height: 38px;
+            list-style: none;
+            text-align: center;
+            cursor: pointer;
+            color: #666;
+            font-family: Arial;
+            transition: all .2s ease-in-out;
+            margin-right: 4px;
+            padding: 0 5px;
+        }
+        .be-page-next{
+            padding: 0 14px;
+            border: 1px solid #d7dde4;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+        .be-page-next{
+            display: inline-block;
+            font-size: 14px;
+            line-height: 38px;
+            list-style: none;
+            text-align: center;
+            cursor: pointer;
+            color: #666;
+            font-family: Arial;
+            transition: all .2s ease-in-out;
+        }
+        .be-page-total{
+            display: inline-block;
+            height: 32px;
+            line-height: 32px;
+            margin-left: 30px;
+            color: #99a2aa;
+        }
+        .be-page-option{
+            display: inline-block;
+            height: 32px;
+            line-height: 32px;
+            color: #99a2aa;
+        }
+        .be-page-option input{
+            border-radius: 4px;
+            margin: 0 8px;
+            width: 50px;
+        }
+        .be-page-item-jump-next, .be-page-next, .be-page-prev {
+            display: inline-block;
+            font-size: 14px;
+            line-height: 38px;
+            list-style: none;
+            text-align: center;
+            cursor: pointer;
+            color: #666;
+            font-family: Arial;
+            transition: all .2s ease-in-out;
+        }
+        .be-page-item-jump-next{
+            margin-right: 4px;
+        }
+        .be-page-item-jump-next{
+            padding: 0 5px;
+        }
+
     </style>
     <!--右边部分-->
     <style>
@@ -916,6 +1048,7 @@
     <!--视频播放按钮-->
     <style>
         .video_player {
+            background-color: black;
             position: relative;
             margin: 0 auto;
             overflow: hidden;
@@ -1148,7 +1281,7 @@
         }
 
         .video-bottom-info {
-            width: 300px;
+            width: 400px;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
@@ -1165,7 +1298,7 @@
 
         .video-bottom-danmu-root {
             height: 34px;
-            width: 300px;
+            width: 100px;
             float: right;
             right: 0px;
             top: 0px;
@@ -1233,7 +1366,7 @@
         }
         .dm {
             width: 638px;
-            height: 407px;
+            height: 377px;
             position: absolute;
             top: 20px;
         }
@@ -1322,10 +1455,121 @@
             left: 3px;
             bottom: 3px;
         }
+        .bili-dialog-m {
+            background: rgba(0,0,0,.65);
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            z-index: 10102;
+        }
+        .bili-dialog-m .bili-dialog-bomb {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            -ms-transform: translateX(-50%) translateY(-50%);
+            box-sizing: border-box;
+            margin-bottom: 50px;
+        }
+        .coin-operated-m {
+            width: 360px;
+            background: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .coin-operated-m .close {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: 16px;
+            top: 16px;
+            cursor: pointer;
+            background-position: -470px -534px;
+        }
+        .bili-icon, .icon {
+            display: inline-block;
+            background-image: url("images/main/icons.png");
+        }
+        .coin-operated-m .coin-title {
+            font-size: 16px;
+            margin-top: 20px;
+            color: #222;
+            text-align: center;
+        }
+        .coin-operated-m .coin-title span {
+            font-size: 30px;
+            color: #00a1d6;
+        }
+        .coin-operated-m .mc {
+            text-align: center;
+        }
+        .coin-operated-m .mc-box.on.left-con {
+            background-size: 122px;
+            background-image: url("images/video/22.gif");
+        }
+        .coin-operated-m .mc-box.on {
+            border-style: solid;
+            border-color: #02a0d8;
+        }
+        .coin-operated-m .mc-box.on .c-num {
+            color: #00a1d6;
+        }
+        .coin-operated-m .mc-box .c-num {
+            color: #99a2aa;
+            text-align: left;
+            font-size: 14px;
+            line-height: 40px;
+            position: absolute;
+            left: 15px;
+        }
+        .coin-operated-m .mc-box.left-con {
+            margin-left:30%;
+            background-image: url(//s1.hdslb.com/bfs/static/jinkela/video/asserts/22-gray.png);
+        }
+        .coin-operated-m .mc-box {
+            position: relative;
+            display: inline-block;
+            margin-right: 30px;
+            margin-top: 35px;
+            width: 160px;
+            height: 230px;
+            border: 2px dashed #ccd0d6;
+            border-top-color: rgb(204, 208, 214);
+            border-top-style: dashed;
+            border-right-color: rgb(204, 208, 214);
+            border-right-style: dashed;
+            border-bottom-color: rgb(204, 208, 214);
+            border-bottom-style: dashed;
+            border-left-color: rgb(204, 208, 214);
+            border-left-style: dashed;
+            border-radius: 5px;
+            background-repeat: no-repeat;
+            background-position: 50%;
+        }
+        .coin-operated-m .coin-bottom {
+            text-align: center;
+            padding: 25px 0;
+        }
+        .bi-btn {
+            display: inline-block;
+            background: #00a1d6;
+            color: #fff;
+            font-size: 14px;
+            padding: 4px 18px;
+            border-radius: 4px;
+            transition: all .3s;
+            -ms-user-select: none;
+            user-select: none;
+            border: 1px solid #00a1d6;
+            text-align: center;
+            cursor: pointer;
+        }
     </style>
-    <script src="/js/jquery-3.4.1.js"></script>
-    <script src="/js/player/wangEditor.min.js"></script>
+<%--弹幕列展开--%>
     <script>
+
         $(function () {
             var flag0=1;
             $(".bui-collapse-header").click(function () {
@@ -1350,9 +1594,92 @@
             })
         })
     </script>
+<%--总的方法--%>
     <script>
+        //全局变量
+        //总数
+        var up_num = 0;
+        //每页数
+        var per_page = 7;
+        //当前页
+        var up_cur_page = 1;
+        //总页
+        var up_last_page = 0;
+        var up_item_num = 0;
+        var up_list = [];
 
         $(function () {
+            //取出评论
+            $.ajax({
+                url:"/video/commentInfo",
+                data:{
+                    "videoId":1
+                },
+                type: "post",
+                datatype: "json",
+                success:function (data1) {
+                    //总数
+                    up_num = data1.length;
+                    //总页
+                    up_last_page=Math.ceil(up_num/per_page);
+                    up_list=data;
+                    if(up_last_page==1){
+                        page(up_num);
+                    }else{
+                        page(per_page);
+                    }
+                }
+
+            });
+            //生成评论
+            function page(item) {
+                $(".comment-list").empty();
+                for(var i=0;i<item;i++,up_item_num++) {
+                    $(".comment-list").prepend("<div class=\"list-item reply-wrap \">\n" +
+                        "                                        <div class=\"user-face\">\n" +
+                        "                                            <img src=\""+up_list[up_item_num].userInfo.userPicadress+"\">\n" +
+                        "                                        </div>\n" +
+                        "                                        <div class=\"con\">\n" +
+                        "                                            <div class=\"user\">\n" +
+                        "                                                <span class=\"name\">"+up_list[up_item_num].userInfo.userName+"</span>\n" +
+                        "                                            </div>\n" +
+                        "                                            <p class=\"text\">"+up_list[up_item_num].comment+"</p>\n" +
+                        "                                            <div class=\"info\">\n" +
+                        "                                                <span class=\"time\">"+up_list[up_item_num].sendTime+"</span>\n" +
+                        "                                            </div>\n" +
+                        "                                        </div>\n" +
+                        "                                    </div>")
+                }
+            }
+            //上一页
+            $("#last").click(function () {
+                up_cur_page--;
+                up_item_num=(up_cur_page-1)*per_page;
+                page(per_page);
+            })
+            //下一页
+            $("#next").click(function () {
+                up_cur_page++;
+                up_item_num=(up_cur_page-1)*per_page;
+                if(up_num-up_item_num<per_page) {
+                    page(up_num-up_item_num);
+                }else {
+                    page(per_page);
+                }
+            })
+            //跳页
+            $("#page-size").bind("keypress",function (event) {
+                if(event.keyCode==13) {
+                    up_cur_page = $("#page-size").val();
+                    up_item_num = (up_cur_page - 1) * per_page;
+                    if (up_num - up_item_num < per_page) {
+                        page(up_num - up_item_num);
+                    } else {
+                        page(per_page);
+                    }
+                }
+            })
+
             //视频信息
             $.ajax({
                 url:"/video/videoInfo",
@@ -1369,50 +1696,28 @@
                     $("#videodata").prepend("<span title=\"总播放数\" class=\"view\">"+data.playNum+"播放&nbsp;&nbsp;</span>\n");
                     // $(".video_player").prepend("<video src=\""+data.videoUrl+"\" width=\"638px\" height=\"381px\"></video>")
                     $(".videos").prepend("<source src=\""+data.videoUrl+"\" type=\"video/mp4\">")
-                    $(".ops").prepend("<span title=\"点赞数\" class=\"like\">\n" +
-                        "                        <i class=\"iconfont icon-dianzan-copy\"></i>"+data.likeNum+"\n" +
-                        "                    </span>\n" +
-                        "                    <span title=\"硬币数\" class=\"coin\">\n" +
-                        "                        <i class=\"iconfont icon-toubi\"></i>"+data.coinNum+"\n" +
-                        "                    </span>\n" +
-                        "                    <span title=\"收藏数\" class=\"collect\"><i class=\"iconfont icon-shoucang\"></i>"+data.collectionNum+"</span>\n" +
-                        "                    <span title=\"分享\" class=\"share\"><i class=\"iconfont icon-zhuanfa\"></i>955</span>");
+                    // $(".ops").prepend("<span title=\"点赞数\" class=\"like\">\n" +
+                    //     "                        <i class=\"iconfont icon-dianzan-copy\"></i>"+data.likeNum+"\n" +
+                    //     "                    </span>\n" +
+                    //     "                    <span title=\"硬币数\" class=\"coin\">\n" +
+                    //     "                        <i class=\"iconfont icon-toubi\"></i>"+data.coinNum+"\n" +
+                    //     "                    </span>\n" +
+                    //     "                    <span title=\"收藏数\" class=\"collect\"><i class=\"iconfont icon-shoucang\"></i>"+data.collectionNum+"</span>\n" +
+                    //     "                    <span title=\"分享\" class=\"share\"><i class=\"iconfont icon-zhuanfa\"></i>955</span>");
+
                     $("#v_desc").prepend("<div class=\"info open\">"+data.videoDesc+"</div>");
                     $(".tag-area").prepend("<li class=\"tag\">"+data.videoTitle+"</li>");
+                    vm.likes.likeNum=data.likeNum;
+                    vm.likes.coinNum=data.coinNum;
                 }
-
-
+            });
+            $(".like").click(function () {
+                vm.likes.likeNum+=1;
+            });
+            $(".coin").click(function () {
+                vm.likes.coinNum+=1;
             });
 
-            function showComment(){
-                //评论和评论人信息
-                $.ajax({
-                    url:"/video/commentInfo",
-                    data:{
-                        "videoId":1
-                    },
-                    type: "post",
-                    datatype: "json",
-                    success:function (data1) {
-                        for (var i=0;i<data1.length;i++){
-                            $(".comment-list").prepend(" <div class=\"list-item reply-wrap \">\n" +
-                                "                                        <div class=\"user-face\">\n" +
-                                "                                            <img src=\""+data1[i].userInfo.userPicadress+"\">\n" +
-                                "                                        </div>\n" +
-                                "                                        <div class=\"con\">\n" +
-                                "                                            <div class=\"user\">\n" +
-                                "                                                <span class=\"name\">"+data1[i].userInfo.userName+"</span>\n" +
-                                "                                            </div>\n" +
-                                "                                            <p class=\"text\">"+data1[i].comment+"</p>\n" +
-                                "                                            <div class=\"info\">\n" +
-                                "                                                <span class=\"time\">"+data1[i].sendTime+"</span>\n" +
-                                "                                            </div>\n" +
-                                "                                        </div>\n" +
-                                "                                    </div>")
-                        }
-                    }
-                });
-            }
             function showDanmu(){
                 //弹幕信息
                 $.ajax({
@@ -1434,32 +1739,33 @@
                 });
             }
             //评论和评论人信息
-            $.ajax({
-                url:"/video/commentInfo",
-                data:{
-                    "videoId":1
-                },
-                type: "post",
-                datatype: "json",
-                success:function (data1) {
-                    for (var i=0;i<data1.length;i++){
-                        $(".comment-list").prepend(" <div class=\"list-item reply-wrap \">\n" +
-                            "                                        <div class=\"user-face\">\n" +
-                            "                                            <img src=\""+data1[i].userInfo.userPicadress+"\">\n" +
-                            "                                        </div>\n" +
-                            "                                        <div class=\"con\">\n" +
-                            "                                            <div class=\"user\">\n" +
-                            "                                                <span class=\"name\">"+data1[i].userInfo.userName+"</span>\n" +
-                            "                                            </div>\n" +
-                            "                                            <p class=\"text\">"+data1[i].comment+"</p>\n" +
-                            "                                            <div class=\"info\">\n" +
-                            "                                                <span class=\"time\">"+data1[i].sendTime+"</span>\n" +
-                            "                                            </div>\n" +
-                            "                                        </div>\n" +
-                            "                                    </div>")
-                    }
-                }
-            });
+            // $.ajax({
+            //     url:"/video/commentInfo",
+            //     data:{
+            //         "videoId":1
+            //     },
+            //     type: "post",
+            //     datatype: "json",
+            //     success:function (data1) {
+            //         for (var i=0;i<data1.length;i++){
+            //             $(".comment-list").prepend(" <div class=\"list-item reply-wrap \">\n" +
+            //                 "                                        <div class=\"user-face\">\n" +
+            //                 "                                            <img src=\""+data1[i].userInfo.userPicadress+"\">\n" +
+            //                 "                                        </div>\n" +
+            //                 "                                        <div class=\"con\">\n" +
+            //                 "                                            <div class=\"user\">\n" +
+            //                 "                                                <span class=\"name\">"+data1[i].userInfo.userName+"</span>\n" +
+            //                 "                                            </div>\n" +
+            //                 "                                            <p class=\"text\">"+data1[i].comment+"</p>\n" +
+            //                 "                                            <div class=\"info\">\n" +
+            //                 "                                                <span class=\"time\">"+data1[i].sendTime+"</span>\n" +
+            //                 "                                            </div>\n" +
+            //                 "                                        </div>\n" +
+            //                 "                                    </div>")
+            //         }
+            //     }
+            //
+            // });
 
             //弹幕信息
             $.ajax({
@@ -1492,6 +1798,10 @@
                 success:function (data3) {
                     $("#upface").prepend("<img src=\""+data3.userInfo.userPicadress+"\" width=\"48\" height=\"48\" class=\"up-face\">");
                     $("#upname").prepend("<a href=\"\" target=\"_blank\" class=\"username\">"+data3.userInfo.userName+"</a>")
+                    vm.likes.userId=data3.userId;
+                },
+                error:function () {
+                    alert("up主信息失败")
                 }
             });
             
@@ -1524,6 +1834,19 @@
                     // $("#danmutime").after("<div class=\"player-auxiliary-danmaku-btn-danmaku\">\n" +
                     //     "                                                弹幕内容（<span>"+data5+"</span>）\n" +
                     //     "                                            </div>")
+                }
+            });
+
+            //收藏数
+            $.ajax({
+                url:"/gerCollectionCount",
+                data:{
+                    "videoId":1
+                },
+                type:"post",
+                datatype:"json",
+                success:function (data) {
+                    vm.likes.collectionNum=data;
                 }
             });
 
@@ -1602,21 +1925,165 @@
                 })
             })
 
+            //获取是否收藏
+            var collectd=false;
+            $.ajax({
+                url:"/getCollectionCount",
+                type:"post",
+                data:{
+                    "videoId":1,
+                    "userId":2
+                },
+                datatype:"text",
+                success:function (data) {
+                    if (data==1){
+                        collectd = true;
+                    }else if (data==0){
+                        collectd = false;
+                    }
+                },
+                error:function () {
+                    alert("是否收藏失败")
+                }
+            });
+            $(".collect").click(function () {
+                if ( collectd == true){
+                    quxiaoconllect();
+                }else if (collectd == false){
+                    shoucang();
+                }
+            });
+
+            //点击收藏
+            function shoucang() {
+
+                    vm.likes.collectionNum+=1;
+                    $.ajax({
+                        url: "/insertCollection",
+                        type: "post",
+                        data: {
+                            "videoId": 1,
+                            "userId": 2
+                        },
+                        datatype: "json",
+                        success: function (data) {
+                            collectd = true;
+                        },
+                        error: function () {
+                            alert("收藏失败");
+                        }
+
+                    })
+
+            };
+
+            //点击取消收藏
+            function quxiaoconllect() {
+
+                    vm.likes.collectionNum-=1;
+                    $.ajax({
+                        url: "/deleteCollection",
+                        type: "post",
+                        data: {
+                            "videoId": 1,
+                            "userId": 2
+                        },
+                        datatype: "json",
+                        success: function (data) {
+                            collectd = false;
+                        },
+                        error: function () {
+                            alert("取消收藏失败");
+                        }
+
+                    })
+
+            };
+
+
+            //获取是否已关注
+            var userIds = vm.likes.userId;
+            var flag = false;
+            $.ajax({
+                url:"/selectFans",
+                type:"post",
+                data:{
+                    "userId":userIds,
+                    "fansId":2
+                },
+                datatype:"text",
+                success:function (data) {
+                    if (data==1){
+                        flag=true;
+                        $("#guanzhu").hide();
+                        $("#quguan").show();
+                        quxiaota();
+                        guanzhuta();
+                    }else if (data==0){
+                        flag=false;
+                        $("#guanzhu").show();
+                        $("#quguan").hide();
+                        guanzhuta();
+                        quxiaota();
+                    }
+                },
+                error:function (data) {
+                    alert("粉丝失败")
+
+                }
+            });
+                //点击关注
+                function guanzhuta(){
+                    $("#guanzhu").click(function () {
+                        $("#guanzhu").hide();
+                        $("#quguan").show();
+                        //关注
+                        $.ajax({
+                            url:"/insertFans",
+                            type:"post",
+                            data:{
+                                "userId":userIds,
+                                "fansId":2
+                            },
+                            datatype:"json",
+                            success:function (data) {
+                                flag=true;
+
+                            },
+                            error:function () {
+                                alert("关注失败")
+                            }
+
+                        });
+                    })
+                }
+                //点击取关
+                function quxiaota(){
+                    $("#quguan").click(function () {
+                        $("#guanzhu").show();
+                        $("#quguan").hide();
+                        //关注
+                        $.ajax({
+                            url:"/deleteFans",
+                            type:"post",
+                            data:{
+                                "userId":userIds,
+                                "fansId":2
+                            },
+                            datatype:"json",
+                            success:function (data) {
+                                flag=false;
+                            },
+                            error:function () {
+                                alert("取消失败")
+                            }
+
+                        });
+                    })
+                }
         });
 
 
-
-    </script>
-    <script>
-        $(function(){
-            var E = window.wangEditor;
-            var editor = new E('#editor');
-            editor.customConfig.menus = [
-                'emoticon'  // 表情
-            ]
-            //创建编辑器
-            editor.create();
-        })
     </script>
 </head>
 <body>
@@ -1692,7 +2159,7 @@
             </div>
             <!--视频播放器-->
             <div id="playerWrap" class="player-wrap" style="height: auto">
-                <div id="bofqi" style="width: 638px;height: 493px;position: static">
+                <div id="bofqi" style="width: 638px;height: 453px;position: static">
                     <div class="video_player" >
                         <video controls class="videos" width="638px" height="381px">
 <%--                            <source src="hangge.mp4" type="video/mp4">--%>
@@ -1708,32 +2175,7 @@
                                 <div>这真的是最后一条</div>
                             </div>
                         </div>
-                        <div class="menu">
-                            <div class="play">播放</div>
-                            <div class="vi-time"></div>
-                            <div class="progress_bar">
-                                <div></div>
-                                <i></i>
-                            </div>
-                            <div class="speed">
-                                <div>倍数</div>
-                                <ul>
-                                    <li>0.5x</li>
-                                    <li>1.0x</li>
-                                    <li>1.5x</li>
-                                    <li>1.25x</li>
-                                    <li>2.0x</li>
-                                </ul>
-                            </div>
-                            <div class="volume">
-                                <span>音量</span>
-                                <div class="Controller">
-                                    <div></div>
-                                    <i></i>
-                                </div>
-                            </div>
-                            <div class="full">全屏</div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -1759,14 +2201,14 @@
             <!--点赞、硬币-->
             <div id="arc_toolbar_report" class="video-toolbar">
                 <div class="ops">
-<%--                    <span title="点赞数" class="like">--%>
-<%--                        <i class="iconfont icon-dianzan-copy"></i>${video.likeNum}--%>
-<%--                    </span>--%>
-<%--                    <span title="硬币数" class="coin">--%>
-<%--                        <i class="iconfont icon-toubi"></i>${video.coinNum}--%>
-<%--                    </span>--%>
-<%--                    <span title="收藏数" class="collect"><i class="iconfont icon-shoucang"></i>${video.collectionNum}</span>--%>
-<%--                    <span title="分享" class="share"><i class="iconfont icon-zhuanfa"></i>955</span>--%>
+                    <span title="点赞数" class="like">
+                        <i class="iconfont icon-dianzan-copy"></i>{{likes.likeNum}}
+                    </span>
+                    <span title="硬币数" class="coin">
+                        <i class="iconfont icon-toubi"></i>{{likes.coinNum}}
+                    </span>
+                    <span title="收藏数" class="collect"><i class="iconfont icon-shoucang"></i>{{likes.collectionNum}}</span>
+                    <span title="分享" class="share"><i class="iconfont icon-zhuanfa"></i>955</span>
                 </div>
                 <div class="appeal-text">稿件投诉</div>
             </div>
@@ -1787,6 +2229,7 @@
             <!--评论区-->
             <div id="comment" class="comment-m">
                 <div class="common">
+<%--                    评论数--%>
                     <div class="b-head" id="commentcount">
                         <span class="b-head results" id="commentNum">1350</span>
                         <span class="b-head-t">评论</span>
@@ -1807,24 +2250,18 @@
                             <!--输入框-->
                             <div class="comment-send no-login">
                                 <div class="user-face" id="firstface">
-<%--                                    <img class="user-head" src="//static.hdslb.com/images/member/noface.gif">--%>
+                                    <%--   <img class="user-head" src="/images/video/akari.jpg">--%>
                                 </div>
                                 <div class="textarea-container">
                                     <div class="baffle-wrap">
                                         <div class="baffle">您的等级不足，升级至Lv2可参与评论
                                         </div>
                                     </div>
-<%--                                    <i class="ipt-arrow"></i>--%>
-<%--                                    <textarea cols="80" name="msg" rows="5" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="ipt-txt">--%>
+                                    <i class="ipt-arrow"></i>
+                                    <textarea cols="80" name="msg" rows="5" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="ipt-txt">
 
-<%--                                    </textarea>--%>
-                                    <div style="width: 473px">
-                                        <div id="editor" style="height:65px;max-height:100px">
-
-                                        </div>
-                                    </div>
-
-                                    <button type="submit" class="comment-submit" >发表评论</button>
+                                    </textarea>
+                                    <button type="submit" class="comment-submit" disabled="disabled">发表评论</button>
                                 </div>
                                 <div class="comment-emoji">
                                     <i class="face"></i>
@@ -1857,12 +2294,22 @@
 <%--                                        </div>--%>
 <%--                                    </div>--%>
                             </div>
+
 <%--                            <!--分页-->--%>
-<%--                            <div class="bottom-page">--%>
-<%--                                <pager:page pageNo="${pageInfo.pageNum}" totalRecord="${pageInfo.total}" pageSize="${pageInfo.pageSize}" url="/video/Msg"></pager:page>--%>
-<%--                            </div>--%>
+                            <div class="bottom-page">
+                                <ul class="be-page">
+                                    <li class="be-page-item be-page-prev be-page-disabled" id="last"><a>上一页</a></li>
+                                    <li class="be-page-item be-page-active"><a>1</a></li>
+                                    <li class="be-page-item"><a>2</a></li>
+                                    <li class="be-page-item"><a>3</a></li>
+                                    <li class="be-page-item-jump-next"></li>
+                                    <li class="be-page-item"><a>7</a></li>
+                                    <li class="be-page-item be-page-next" id="next"><a>下一页</a></li>
+                                    <span class="be-page-total">共7页</span>
+                                    <span class="be-page-option">跳至<input type="text"id="page-size">页</span>
+                                </ul>
+                            </div>
                             <!--输入框-->
-                            <form action="/video/insert" method="post">
                             <div class="comment-send no-login">
                                 <div class="user-face" id="secondface">
 <%--                                    <img class="user-head" src="/images/video/akari.jpg">--%>
@@ -1883,7 +2330,6 @@
                                     <span class="text">表情</span>
                                 </div>
                             </div>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -1918,9 +2364,8 @@
                             <i class="van-icon-general_addto_s"></i>+关注
                             <span>1.2万</span>
                         </span>
-
                     </div>
-                    <div class="default-btn follow-btn b-gz following" style="display: none">
+                    <div class="default-btn follow-btn b-gz following" style="display: none" id="quguan">
                         <span class="quxiao">
                             <i class="van-icon-general_addto_s"></i>已关注
                         </span>
@@ -1942,7 +2387,7 @@
                             </div>
                             <div class="bui-collapse-body">
                                 <div class="player-auxiliary-wraplist">
-                                    <div class="player-auxiliary-filter-wrap player-auxiliary-danmaku"style="height: 288px;">
+                                    <div class="player-auxiliary-filter-wrap player-auxiliary-danmaku"style="height: 398px;">
                                         <div class="clearfix"></div>
                                         <div class="player-auxiliary-danmaku-function">
                                             <div class="player-auxiliary-danmaku-btn-time" id="danmutime">用户</div>
@@ -1981,175 +2426,61 @@
                 </div>
             </div>
         </div>
+        <div class="bili-dialog-m">
+            <div class="bili-dialog-bomb">
+                <div class="coin-operated-m">
+                    <i id="close" class="icon close"></i>
+                    <div class="coin-title">
+                        为up主投上
+                        <span>1</span>
+                        枚硬币
+                    </div>
+
+                    <div class="mc clearfix"></div>
+                    <div class="mc-box left-con on">
+                        <span class="c-num">1硬币</span>
+                    </div>
+                    <div class="coin-bottom">
+                        <span class="bi-btn">确定</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
 </body>
-</html>
+<script src="js/vue.min.js"></script>
+<%--//vue--%>
 <script>
-    $(".btn-panel div").click(function () {
-       $(this).hide();
-       $(this).siblings().show();
+    var vm = new Vue({
+        el:"div.ops",
+        data:{
+            likes:{
+                likeNum:1,
+                coinNum:1,
+                collectionNum:1,
+                userId:1
+            }
+        }
+
+
     })
 </script>
-<!--按钮-->
-<script>
+</html>
 
-    var video = document.getElementsByTagName('video')[0];
-    var play = document.getElementsByClassName('play')[0];
-    var time = document.getElementsByClassName('vi-time')[0];
-    var bar = document.getElementsByClassName('progress_bar')[0];
-    var Current = bar.getElementsByTagName('div')[0];
-    var Dot = bar.getElementsByTagName('i')[0];
-    var speed = document.getElementsByClassName('speed')[0].getElementsByTagName('div')[0];
-    var ul = document.getElementsByClassName('speed')[0].getElementsByTagName('ul')[0];
-    var Controller = document.getElementsByClassName('Controller')[0];
-    var volume = document.getElementsByClassName('volume')[0].getElementsByTagName('span')[0];
-    var full = document.getElementsByClassName('full')[0];
-    var video_player = document.getElementsByClassName('video_player')[0]
-    var timer = null;
-    var lock = true;
-    play.onclick = function () {
-        if (video.paused) {  //判断是否已经播放了，如果还没播放，返回true
-            video.play();  //触发方法，播放视频
-            play.innerHTML = "暂停";    //修改 文字。
-        } else {
-            video.pause(); //暂停播放。
-            play.innerHTML = "播放";
-        }
-    }
-    video.onloadedmetadata = function () {// 视频加载完成触发,然后我们把时间添加到time标签上去。
-        time.innerHTML = parseInt(video.currentTime / 60) + ":" + parseInt(video.currentTime % 60) + "/" + parseInt(video.duration / 60) + ":" + parseInt(video.duration % 60);
-    }
-
-    setInterval(function () { //每隔 1秒，刷新一下时间。
-        time.innerHTML = parseInt(video.currentTime / 60) + ":" + parseInt(video.currentTime % 60) + "/" + parseInt(video.duration / 60) + ":" + parseInt(video.duration % 60);
-        Current.style.width = video.currentTime / video.duration * parseInt(window.getComputedStyle(video, null).width) + "px";
-        Dot.style.left = video.currentTime / video.duration * parseInt(window.getComputedStyle(video, null).width) + "px";
-    }, 1000)
-
-    bar.onmouseover = function () {  //鼠标进入的时候，进度条变大
-        this.style.top = '-10px';
-        this.style.height = '10px';
-        Dot.style.width = '18px';
-        Dot.style.height = '18px';
-        Dot.style.top = '-5px';
-    }
-    bar.onmouseout = function () {
-        this.style.top = '-6px';
-        this.style.height = '6px';
-        Dot.style.width = '10px';
-        Dot.style.height = '10px';
-        Dot.style.top = '-2px';
-    }
-
-    bar.onmousedown = function (e) { // 鼠标点击的时候，跳转
-        Current.style.width = e.layerX + 'px'; //e.layerX 是点击的时候的位置。
-        Dot.style.left = e.layerX + 'px';
-        video.currentTime = e.layerX / parseInt(window.getComputedStyle(video, null).width) * video.duration; //计算出点击的位置在总时间里面占多少。
-        time.innerHTML = parseInt(video.currentTime / 60) + ":" + parseInt(video.currentTime % 60) + "/" + parseInt(video.duration / 60) + ":" + parseInt(video.duration % 60);
-    }
-
-    // 倍数
-    speed.onclick = function () {
-        ul.style.display = 'block';
-        this.style.backgroundColor = 'rgb(219, 74, 74)';
-    }
-
-    speed.onmouseout = function () {
-        ul.style.display = 'none';
-        this.style.backgroundColor = '';
-    }
-
-    ul.onmouseover = function () {
-        ul.style.display = 'block';
-        speed.style.backgroundColor = 'rgb(219, 74, 74)';
-    }
-    ul.onmouseout = function () {
-        ul.style.display = 'none';
-        speed.style.backgroundColor = '';
-    }
-
-    var lis = ul.getElementsByTagName('li');
-    for (var i = 0; i < lis.length; i++) {
-        lis[i].onclick = function () {
-            video.playbackRate = parseFloat(this.innerHTML); //调节倍数 0 到正无穷
-            speed.innerHTML = this.innerHTML;
-        }
-    }
-
-    // 音量
-    volume.onclick = function () {
-        Controller.style.display = 'block';
-        this.style.backgroundColor = 'rgb(219, 74, 74)';
-    }
-
-    Controller.getElementsByTagName('div')[0].onmousedown = function (e) {
-        this.onmousemove = function (e) {
-            if (100 - e.offsetY > 100) {  // 这里为什么要减100 是因为，Y的顶点是0， 但是我们日常是用顶点是100，把数倒了而已。
-                document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 100px'); // 修改伪元素。 因为我用的是伪元素做音量条
-                document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 100px');
-                video.volume = 1;       // 修改音量。 0-1 之间， 1是默认音量
-            } else if (100 - e.offsetY < 0) {
-                document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 0px');
-                document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 0px');
-                video.volume = 0;
-            } else {
-                document.styleSheets[0].addRule('.volume .Controller div::before', 'height: ' + (100 - e.offsetY) + 'px');
-                document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: ' + (100 - e.offsetY) + 'px');
-                video.volume = (100 - e.offsetY) * 0.01;
-            }
-
-        }
-        this.onmouseout = function () {
-            Controller.onmousemove = function (e) {
-                if (150 - e.offsetY - 25 > 100) {
-                    document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 100px');
-                    document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 100px');
-                    video.volume = 1;
-                } else if (150 - e.offsetY - 25 < 0) {
-                    document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 0px');
-                    document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 0px');
-                    video.volume = 0;
-                } else {
-                    document.styleSheets[0].addRule('.volume .Controller div::before', 'height: ' + (150 - e.offsetY - 25) + 'px');
-                    document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: ' + (150 - e.offsetY - 25) + 'px');
-                    video.volume = (150 - e.offsetY - 25) * 0.01;
-                }
-                Controller.getElementsByTagName('div')[0].onmouseover = function () {
-                    Controller.onmousemove = false;
-                    Controller.getElementsByTagName('div')[0].onmousemove = false;
-                }
-
-            }
-        }
-        document.body.onmouseup = function () {
-            Controller.onmousemove = false;
-            Controller.getElementsByTagName('div')[0].onmousemove = false;
-            Controller.getElementsByTagName('div')[0].onmouseout = false;
-            Controller.style.display = 'none';
-            volume.style.backgroundColor = '';
-        }
-    }
-
-    // 全屏
-    full.onclick = function () {
-        if (lock) {  //声明一个变量来当状态。
-            lock = false;
-            video_player.style.height = window.screen.height + 'px'; //获取屏幕的宽高
-            video_player.style.width = window.screen.width + 'px';
-            document.documentElement.requestFullscreen();   //全屏模式
-            full.innerHTML = '退出';
-        } else {
-            lock = true;
-            video_player.style.height = 500 + 'px';
-            video_player.style.width = 1000 + 'px';
-            document.exitFullscreen();   //退出全屏
-            full.innerHTML = '全屏';
-        }
-    }
-</script>
+<%--//弹幕开关按钮--%>
 <script>
     $(function () {
+        //投币窗口
+        $("#close").click(function () {
+            $("div.bili-dialog-m").detach();
+         })
+        $toubi=$("div.bili-dialog-m").detach();
+        $(".coin").click(function () {
+            $(".v-wrap").prepend($toubi);
+        })
+
         //弹幕开关按钮
         var flag=0;
         $(".danmu-trigger").click(function(){
@@ -2162,6 +2493,7 @@
                 $(".dm").fadeIn();
                 flag=1;
             }
+            init_screen();
         });
         init_screen();
         $(".s_btn").click(function () {
@@ -2200,4 +2532,5 @@
         return "#"+str;
 
     }
+
 </script>
