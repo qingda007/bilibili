@@ -67,7 +67,7 @@ public class VideoController {
 
     @RequestMapping("/typeCount")
     public int countType1(String type1){
-        return statusService.countType1(type1);
+        return statusService.countVideoByType1(type1);
     }
 
 }
