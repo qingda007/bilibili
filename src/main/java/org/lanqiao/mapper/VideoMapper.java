@@ -1,5 +1,6 @@
 package org.lanqiao.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.lanqiao.entity.Video;
 import org.springframework.stereotype.Repository;
 

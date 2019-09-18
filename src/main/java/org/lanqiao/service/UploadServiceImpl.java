@@ -34,4 +34,9 @@ public class UploadServiceImpl implements UploadService {
     public List<Video> selectVideoByIsReview(int userId, int isReview) {
         return videoMapper.selectVideoByIsReview(userId, isReview);
     }
+
+    @Override
+    public int delVideo(int videoId) {
+        return videoMapper.deleteByPrimaryKey(videoId);
+    }
 }
