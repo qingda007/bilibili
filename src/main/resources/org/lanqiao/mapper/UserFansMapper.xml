@@ -20,7 +20,8 @@
     from user_fans
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectFans" parameterType="java.lang.Integer">
+
+  <select id="selectFans" resultType="java.lang.Integer"  >
     select count(*) from user_fans where user_id=#{userId} and fans_id=#{fansId}
   </select>
   <delete id="deleteFans" parameterType="java.lang.Integer">
