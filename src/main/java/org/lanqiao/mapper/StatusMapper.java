@@ -13,7 +13,7 @@ public interface StatusMapper {
     //查找一二级分区对应的statusId
     String selectIdByType(Status status);
     //查找一级分区对应的视频数量
-    int countType1(String type1);
+    int countVideoByType1(String type1);
 
     int deleteByPrimaryKey(String statusId);
 

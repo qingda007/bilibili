@@ -213,7 +213,7 @@
                 <div class="nav-upload-btn"><a href="/video/uploadVideo" class="active" id="nav_upload_btn">投稿</a></div>
                 <ul class="nav-wrp">
                     <li id="nav_upload_home">
-                        <a href="/video/uploadVideo" class="nav-item">
+                        <a href="/video/homeVideo" class="nav-item">
                             <i class="fontvt icon-ic_home"></i>
                             <span>首页管理</span>
                         </a>
@@ -224,12 +224,12 @@
                             <span>内容管理</span>
                         </a>
                     </li>
-                    <li id="nav_upload_income">
-                        <a href="/video/managerVideo" class="nav-item">
-                            <i class="fontvt icon-ic_income"></i>
-                            <span>收益管理</span>
-                        </a>
-                    </li>
+                    <%--            <li id="nav_upload_income">--%>
+                    <%--                <a href="/video/managerVideo" class="nav-item">--%>
+                    <%--                    <i class="fontvt icon-ic_income"></i>--%>
+                    <%--                    <span>收益管理</span>--%>
+                    <%--                </a>--%>
+                    <%--            </li>--%>
                 </ul>
             </div>
         </div>
