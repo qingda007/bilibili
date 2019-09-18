@@ -12,9 +12,11 @@ public interface VideoMapper {
 
     List<Video> selectUploadVideo(Integer userId);
 
-    int countIsReview(Integer isReview);
+    int countIsReview(@Param("userId")Integer userId, @Param("isReview") Integer isReview);
 
     List<Video> selectVideoByIsReview(@Param("userId")Integer userId, @Param("isReview")Integer isReview);
+
+    int countByWord(@Param("userId")Integer userId, @Param("word")String word);
 
     int deleteByPrimaryKey(Integer videoId);
 

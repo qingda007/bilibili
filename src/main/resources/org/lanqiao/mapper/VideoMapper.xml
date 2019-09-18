@@ -65,10 +65,10 @@
     desc
   </select>
 
-  <select id="countIsReview" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+  <select id="countIsReview" resultType="java.lang.Integer">
     select count(*)
     from video
-    where is_review = #{isReview}
+    where is_review = #{isReview} and user_id = #{userId}
   </select>
   <select id="selectVideoByIsReview" resultMap="VideoResultMap">
     select *
@@ -76,6 +76,11 @@
     where v.user_id = #{userId} and v.is_review = #{isReview} and s.status_id = v.class_type
     order by v.up_time
     desc
+  </select>
+  <select id="countByWord" resultType="java.lang.Integer">
+    select sum(danmu_num)
+    from video
+    where user_id = #{userId}
   </select>
 
   <sql id="Base_Column_List" >

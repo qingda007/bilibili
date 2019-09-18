@@ -10,5 +10,5 @@ public interface StatusService {
     String selectIdByType(Status status);
     Status selectStatusById(String statusId);
     //查找一级分区对应的视频数量
-    int countType1(String type1);
+    int countVideoByType1(String type1);
 }

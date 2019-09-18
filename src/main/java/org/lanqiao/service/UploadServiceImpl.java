@@ -26,8 +26,8 @@ public class UploadServiceImpl implements UploadService {
     }
 
     @Override
-    public int countIsReview(int isReview) {
-        return videoMapper.countIsReview(isReview);
+    public int countIsReview(int userId, int isReview) {
+        return videoMapper.countIsReview(userId, isReview);
     }
 
     @Override
@@ -38,5 +38,10 @@ public class UploadServiceImpl implements UploadService {
     @Override
     public int delVideo(int videoId) {
         return videoMapper.deleteByPrimaryKey(videoId);
+    }
+
+    @Override
+    public int countByWord(int userId, String word) {
+        return videoMapper.countByWord(userId, word);
     }
 }

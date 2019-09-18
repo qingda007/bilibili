@@ -13,11 +13,61 @@
 <html>
 <head>
     <title>创作中心 - 哔哩哔哩弹幕视频网 - ( ゜- ゜)つロ 乾杯~</title>
+
+    <link rel="stylesheet" href="/css/main/bass.css"/>
     <link rel="stylesheet" href="/css/upload/upload_menu.css" type="text/css">
     <link rel="stylesheet" href="/css/main/header.css" />
     <link rel="stylesheet" href="/css/upload/upload_manager.css">
     <link rel="stylesheet" href="/css/main/iconfont.css">
     <script src="/js/jquery-3.4.1.js"></script>
+    <script>
+        $(function () {
+            $("#face").attr("src","images/main/akari.jpg");
+            //用户信息显示
+            var id=1;
+            if(id!=null){
+                $.ajax({
+                    url:"http://localhost:8888/getUserInfo",
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        "id":id,
+                    },
+                    success:function(data){
+                        var img=data.userPicadress;
+                        $("#face").attr("src",img);
+                        if (data.userTele!=null){
+                            $("#s1").text("已绑定");
+                        }else {
+                            $("#s1").text("未绑定");
+                        }
+                        if (data.userEmail!=null){
+                            $("#s2").text("已绑定");
+                        }else {
+                            $("#s2").text("未绑定");
+                        }
+
+                        //vue
+                        vm.user.uname=data.userName;
+                        vm.user.coin=data.userCoin;
+                    },
+                });
+                $("#nipi").hover(function () {
+                    $(this).addClass("on");
+                    $("div.profile-m").show();
+                },function () {
+                    $(this).removeClass("on");
+                    $("div.profile-m").hide();
+                });
+                $(".tips").siblings().hover(function () {
+                    $(this).siblings().show();
+                },function () {
+                    $(this).siblings().hide();
+                });
+                //登录退出按钮
+            }
+        })
+    </script>
     <script>
         function delVideo(videoId) {
             if(window.confirm("您确定要删除该稿件吗？")){
@@ -42,6 +92,7 @@
              }
         }
         function getVideo(isReview) {
+            sureTotal();
             $("#isReview").val(isReview);
             $.ajax({
                 url: "http://localhost:8888/video/managerVideo",
@@ -53,8 +104,8 @@
                     var Obj = $("#flushDIV").append($(data));
                     //需要获取的对应块
                     var $html = $("#flushDIV", Obj);
-                    //获取对应块中的内容
                     $('#flushDIV').html("");
+                    //获取对应块中的内容
                     $('#flushDIV').html($html.html());
                 }
             });
@@ -69,7 +120,18 @@
             $(".duration").html(time);
             return time;
         }
+        function sureTotal(){
+            var total = ${pageInfo.total};
+            if(total==0){
+                $("#flushDIV").html("");
+                $(".info-wrp").css("display","block");
+            }
+            else {
+                $(".info-wrp").css("display","none");
+            }
+        }
         $(function () {
+            sureTotal();
             $menu_left=$(".left a");
             $menu_left.click(function () {
                 $(this).addClass("current");
@@ -84,7 +146,7 @@
     <div class="nav-menu">
         <div class="blur-bg" style="background-image: url(images/main/header.png);"></div>
         <div class="nav-mask"></div>
-        <div class="bili-wrapper clearfix nav-wraper" style="min-width: 1500px; margin-left: 80px;">
+        <div class="bili-wrapper clearfix nav-wraper" style="min-width: 100%; margin-left: 0px;">
             <div class="nav-con fl">
                 <ul>
                     <li class="nav-item home">
@@ -132,17 +194,6 @@
                                 <img class="pendant"  />
                             </i>
                         </a>
-                        <div id="i-login" class="i_menu i_menu_login" style="display: none;">
-                            <p class="tip">登录后你可以：</p>
-                            <div class="img">
-                                <img id="d1" src="images/main/danmu1.png" />
-                                <img id="d2" src="images/main/danmu1.png" style="left: 320px;" />
-                            </div>
-                            <a class="login-btn">登录</a>
-                            <p class="reg">首次使用？
-                                <a>点我去注册</a>
-                            </p>
-                        </div>
                         <div class="profile-m dd-bubble"style="display: none">
                             <div class="header-u-info">
                                 <div class="header-uname">
@@ -232,7 +283,7 @@
         <div class="nav-upload-btn"><a href="/video/uploadVideo" class="active" id="nav_upload_btn">投稿</a></div>
         <ul class="nav-wrp">
             <li id="nav_upload_home">
-                <a href="/video/uploadVideo" class="nav-item">
+                <a href="/video/homeVideo" class="nav-item">
                     <i class="fontvt icon-ic_home"></i>
                     <span>首页管理</span>
                 </a>
@@ -243,12 +294,12 @@
                     <span>内容管理</span>
                 </a>
             </li>
-            <li id="nav_upload_income">
-                <a href="/video/managerVideo" class="nav-item">
-                    <i class="fontvt icon-ic_income"></i>
-                    <span>收益管理</span>
-                </a>
-            </li>
+<%--            <li id="nav_upload_income">--%>
+<%--                <a href="/video/managerVideo" class="nav-item">--%>
+<%--                    <i class="fontvt icon-ic_income"></i>--%>
+<%--                    <span>收益管理</span>--%>
+<%--                </a>--%>
+<%--            </li>--%>
         </ul>
     </div>
 </div>
@@ -264,10 +315,10 @@
                         <a href="javascript:getVideo(2)" class="bili-tab">未通过（${noPass}）</a>
                     </div>
                 </div>
-                <div class="info-wrp"style="display: none">
+                <div class="info-wrp" style="display: none">
                     <div class="text">你还没有投过一个稿件("▔□▔)</div>
                     <img src="/images/upload/weitougao.png">
-                    <a class="cc-btn is-main">
+                    <a href="/video/uploadVideo" class="cc-btn is-main">
                         <span class="icon-text">投稿</span>
                     </a>
                 </div><!--未投稿状态-->
@@ -340,4 +391,24 @@
     </div>
 </div>
 </body>
+<script type="text/javascript" src="/js/vue.min.js"></script>
+<script>
+    var vm=new Vue({
+        el:'#nipi',
+        data:{
+            user:{
+                uid:null,
+                uname:null,
+                coin:null,
+            }
+        },
+    })
+    var vNum=new Vue({
+        el:'div.online',
+        data: {userNum:{
+                Num:null
+            }
+        },
+    })
+</script>
 </html>

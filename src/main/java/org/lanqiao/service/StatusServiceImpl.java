@@ -29,7 +29,7 @@ public class StatusServiceImpl implements StatusService {
         return statusMapper.selectByPrimaryKey(statusId);
     }
     @Override
-    public int countType1(String type1) {
-        return statusMapper.countType1(type1);
+    public int countVideoByType1(String type1) {
+        return statusMapper.countVideoByType1(type1);
     }
 }

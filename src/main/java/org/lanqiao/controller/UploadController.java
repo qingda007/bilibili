@@ -39,7 +39,11 @@ public class UploadController {
     @Autowired
     VideoService videoService;
     private String rootPath = "E:/bilibili/teporary";
-
+    @ResponseBody
+    @RequestMapping(value = "/test")
+    public int test(@RequestParam("type1") String type1){
+        return statusService.countVideoByType1(type1);
+    }
     @ResponseBody
     @RequestMapping(value = "/upload")
     public void upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws IOException {
@@ -156,9 +160,9 @@ public class UploadController {
             PageInfo<Video> p = new PageInfo<>(videos);
             modelAndView.addObject("pageInfo",p);
         }
-        long waitReview = uploadService.countIsReview(0);
-        long isPass = uploadService.countIsReview(1);
-        long noPass = uploadService.countIsReview(2);
+        long waitReview = uploadService.countIsReview(1,0);
+        long isPass = uploadService.countIsReview(1,1);
+        long noPass = uploadService.countIsReview(1,2);
         long length = waitReview + isPass + noPass;
         modelAndView.addObject("length",length);
         modelAndView.addObject("waitReview",waitReview);
