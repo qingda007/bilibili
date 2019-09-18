@@ -17,4 +17,20 @@ public class VideoCollectionController {
     public List<VideoCollection> getVideoCollection(Integer userId){
         return videoCollectionService.getVideoCollection(userId);
     }
+//获取收藏数
+    @RequestMapping("/getCollectionCount")
+    public int selectIsCollection(Integer videoId , Integer userId){
+        return videoCollectionService.selectIsCollection(videoId,userId);
+    }
+
+    //插入收藏
+    @RequestMapping("/insertCollection")
+    public int insertSelective(VideoCollection videoCollection) {
+        return videoCollectionService.insertSelective(videoCollection);
+    }
+    //取消收藏
+    @RequestMapping("/deleteCollection")
+    public Integer deleteSelective(Integer videoId, Integer userId) {
+        return videoCollectionService.deletecollect(videoId,userId);
+    }
 }
