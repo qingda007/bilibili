@@ -52,5 +52,10 @@ return userInfoMapper.selectByPrimaryKey(id);
         return userInfoMapper.selectCountUserNum(userType);
     }
 
+    @Override
+    public int updateByPrimaryKeySelective(UserInfo record) {
+        return userInfoMapper.updateByPrimaryKeySelective(record);
+    }
+
 
 }

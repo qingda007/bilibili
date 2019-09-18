@@ -5,18 +5,28 @@
   Time: 20:17
   To change this template use File | Settings | File Templates.
 --%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"
+            +request.getServerName()+":"
+            +request.getServerPort()+path+"/";
+%>
+<%
+    Object userinfo=session.getAttribute("userinfo");
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <title>哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</title>
-    <base href="/">
+    <base href="<%=basePath%>">
     <link rel="stylesheet" href="css/main/bass.css" />
     <link rel="stylesheet" href="css/main/header.css" />
     <link rel="stylesheet" href="css/main/iconfont.css" />
     <script type="text/javascript" src="js/jquery-3.4.1.js" ></script>
+    <style type="text/css">
+    </style>
     <script>
         $(function () {
             $("div.el-radio-group label.el-radio-button").click(function () {
@@ -33,7 +43,31 @@
                 var sindex=$sec_menu.index($(this));
                 $("div.security-right").eq(sindex).show();
                 $("div.security-right").eq(sindex).siblings().hide();
-            })
+            });
+            //转换日期
+            function getdate(t) {
+                var _time = new Date(t);
+                var year = _time.getFullYear();//2017
+                var month = _time.getMonth() + 1;//7
+                var date = _time.getDate();//10
+                return year + "-" + month + "-" + date;
+            }
+            //用户信息
+            $.ajax({
+                url: "http://localhost:8888/getUserInfo",
+                type: "post",
+                data: {"id":${sessionScope.userinfo.userId}},
+                datatype: "json",
+                success: function (data) {
+                    console.log(${sessionScope.userinfo.userId})
+                    console.log(data);
+                    $("#el-name").append("<input class=\"el-input__inner\" type=\"text\"autocomplete=\"off\" placeholder=\"你的昵称\"value=\""+data.userName+"\" name=\"userName\"/>\n");
+                    $("#el-id").prepend("<input name=\"userId\"style='border: none' readonly=\"readonly\" value='"+data.userId+"'/>\n");
+                    $("#el-phone").append("<input class=\"el-input__inner\" type=\"text\"autocomplete=\"off\" name='userTele' placeholder=\""+data.userTele+"\"/>\n");
+                    $("#el-email").append("<input class=\"el-input__inner\" type=\"text\"autocomplete=\"off\" name='userEmail' placeholder=\""+data.userEmail+"\"/>\n");
+                    $("#date").append("<input readonly=\"readonly\"style='border: none' class=\"el-input__inner\"value=\""+getdate(data.userBirthday)+"\">\n")
+                }
+            });
         })
     </script>
 </head>
@@ -164,14 +198,10 @@
                     <i class="security-icon icon-3"></i>
                     <span class="security-nav-name"style="color: #FFFFFF">我的信息</span>
                 </li>
-                <li class="security-list">
-                    <i class="security-icon icon-6"></i>
-                    <span class="security-nav-name">账号安全</span>
-                </li>
             </ul>
             <ul class="security-ul ">
                 <li class="security-list-jump">
-                    <a class="security-list-link-jump">
+                    <a class="security-list-link-jump" href="/index">
                         个人空间
                         <i class="security-list-jump-icon"></i>
                     </a>
@@ -186,19 +216,17 @@
                 </div>
                 <div class="user-setting-warp">
                     <div>
-                        <form class="el-form clearfix">
+                        <form class="el-form clearfix" action="/account/changeuserinfo">
                             <div class="el-form-item user-nick-name">
                                 <label class="el-form-item__label">昵称：</label>
                                 <div class="el-form-item__content">
-                                    <div class="el-input">
-                                        <input class="el-input__inner" type="text"autocomplete="off" placeholder="你的昵称"value="用户昵称(暂定)"/>
+                                    <div class="el-input"id="el-name">
                                     </div>
                                 </div>
                             </div>
                             <div class="el-form-item user-nick-rel-name">
                                 <label class="el-form-item__label">用户名：</label>
-                                <div class="el-form-item__content">
-                                    <span class="">注：这里填入用户id</span>
+                                <div class="el-form-item__content" id="el-id">
                                 </div>
                             </div>
                             <div class="el-form-item user-my-sex">
@@ -223,9 +251,29 @@
                             <div class="el-form-item user-my-sex">
                                 <label class="el-form-item__label">出生日期：</label>
                                 <div class="el-form-item__content">
-                                    <div class="el-date-editor el-input el-date-editor--date">
-                                        <i class="el-input__icon iconfont icon-rili"></i>
-                                        <input autocomplete="off" placeholder="选择日期" readonly="readonly" type="text" rows="2" class="el-input__inner">
+                                    <div class="el-date-editor el-input el-date-editor--date"id="date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el-form-item user-nick-name">
+                                <label class="el-form-item__label">更换密码：</label>
+                                <div class="el-form-item__content">
+                                    <div class="el-input">
+                                        <input class="el-input__inner" type="text" name="userPassw" autocomplete="off"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el-form-item user-nick-name">
+                                <label class="el-form-item__label">更换手机：</label>
+                                <div class="el-form-item__content">
+                                    <div class="el-input" id="el-phone">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el-form-item user-nick-name">
+                                <label class="el-form-item__label">更换邮箱：</label>
+                                <div class="el-form-item__content">
+                                    <div class="el-input" id="el-email">
                                     </div>
                                 </div>
                             </div>
@@ -233,7 +281,7 @@
                                 <div class="el-form-item__content">
                                     <div class="padding-dom"></div>
                                     <div class="user-my-btn-warp">
-                                        <button class="el-button">
+                                        <button class="el-button"type="submit">
                                             <span>保存</span>
                                         </button>
                                     </div>
@@ -242,75 +290,6 @@
                         </form>
                     </div>
                     <div></div>
-                </div>
-            </div>
-            <div class="security-right"style="display: none">
-                <div class="security-right-title">
-                    <span class="security-right-title-icon"></span>
-                    <span class="security-right-title-text">账号安全</span>
-                </div>
-                <div class="user-setting-warp">
-                    <div class="res-box">
-                        <div class="safe-logo safe">
-                            <div ></div>
-                        </div>
-                        <ul class="nav-list">
-                            <li>
-                                <div class="nav-container clearfix">
-                                    <div class="list-title clearfix">
-                                        <div class="list-title-text">
-												<span class="normal">
-												</span>
-                                            <p>绑定手机</p>
-                                        </div>
-
-                                    </div>
-                                    <div class="list-description">
-                                        <p>"用户电话号码"</p>
-                                    </div>
-                                    <div class="list-link">
-                                        <p><a>更换手机</a></p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="nav-container clearfix">
-                                    <div class="list-title clearfix">
-                                        <div class="list-title-text">
-												<span class="safe">
-												</span>
-                                            <p>设置密码</p>
-                                        </div>
-
-                                    </div>
-                                    <div class="list-description">
-                                        <p>"设置或未设置"</p>
-                                    </div>
-                                    <div class="list-link">
-                                        <p><a>修改密码</a></p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="nav-container clearfix">
-                                    <div class="list-title clearfix">
-                                        <div class="list-title-text">
-												<span class="normal">
-												</span>
-                                            <p>绑定邮箱</p>
-                                        </div>
-
-                                    </div>
-                                    <div class="list-description">
-                                        <p>"用户邮箱号码"</p>
-                                    </div>
-                                    <div class="list-link">
-                                        <p><a>更换邮箱</a></p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>

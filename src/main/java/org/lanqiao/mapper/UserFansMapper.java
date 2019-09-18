@@ -2,7 +2,13 @@ package org.lanqiao.mapper;
 
 import org.lanqiao.entity.UserFans;
 
+import java.util.List;
+
 public interface UserFansMapper {
+    List<UserFans> followList(Integer fansId);
+
+    List<UserFans> fansList(Integer userId);
+
     int fansCount(Integer userId);
 
     int beFansCount(Integer fansId);

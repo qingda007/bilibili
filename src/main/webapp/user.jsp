@@ -43,12 +43,17 @@
                 $(".col-2").css("display", "none");
                 $(".col-full").css("display", "block");
                 $(".col-3").css("display", "none");
+                $(".col-4").css("display", "none");
+                $(".col-5").css("display", "none");
+
             });
             $("#nav-album").click(function () {
                 $(".col-1").css("display", "none");
                 $(".col-2").css("display", "none");
                 $(".col-full").css("display", "none");
                 $(".col-3").css("display", "block");
+                $(".col-4").css("display", "none");
+                $(".col-5").css("display", "none");
 
             });
             $("#nav-home").click(function () {
@@ -56,9 +61,26 @@
                 $(".col-2").css("display", "block");
                 $(".col-full").css("display", "none");
                 $(".col-3").css("display", "none");
-
+                $(".col-4").css("display", "none");
+                $(".col-5").css("display", "none");
 
             });
+            $("#follow").click(function () {
+                $(".col-1").css("display", "none");
+                $(".col-2").css("display", "none");
+                $(".col-full").css("display", "none");
+                $(".col-3").css("display", "none");
+                $(".col-4").css("display", "block");
+                $(".col-5").css("display", "none");
+            })
+            $("#fan").click(function () {
+                $(".col-1").css("display", "none");
+                $(".col-2").css("display", "none");
+                $(".col-full").css("display", "none");
+                $(".col-3").css("display", "none");
+                $(".col-4").css("display", "none");
+                $(".col-5").css("display", "block");
+            })
             $("#nav-home").hover(function () {
                 $(".n-cursor").css("width", "50px");
                 $(".n-cursor").css("left", "20px");
@@ -171,7 +193,7 @@
                     //总页
                     up_last_page = Math.ceil(up_num / per_page);
                     up_list = data;
-                    $("#nav-album").append("<span class=\"n-num\">"+up_num+"</span>\n")
+                    $("#nav-album").append("<span class=\"n-num\">" + up_num + "</span>\n")
                     if (up_last_page == 1) {
                         page(up_num);
                     } else {
@@ -242,7 +264,7 @@
             });
 
             //上传更改样式
-            function up(){
+            function up() {
                 $(".be-page-now").css("color", "#000");
                 $(".be-page-now").css("background-color", "#fff");
                 $(".be-page-now").css("border-color", "#d7dde4");
@@ -277,7 +299,7 @@
                     $(".favinfo-cover").append("<img src=\"" + data[0].video.videoPic + "\">\n");
                     $("#coll-num").append("<span class=\"num\">" + coll_num + "</span>\n");
                     $("#fav-num").prepend("<span>" + coll_num + "个内容</span>\n");
-                    $("#nav-collect").append("<span class=\"n-num\">"+coll_num+"</span>\n");
+                    $("#nav-collect").append("<span class=\"n-num\">" + coll_num + "</span>\n");
                     if (coll_last_page == 1) {
                         coll_page(coll_num);
                     } else {
@@ -400,19 +422,69 @@
                 var hour = _time.getHours();//10
                 var minute = _time.getMinutes();//56
                 var second = _time.getSeconds();//15
-                if(hour<10){
-                    hour="0"+hour;
+                if (hour < 10) {
+                    hour = "0" + hour;
                 }
-                if(minute<10){
-                    minute="0"+minute;
+                if (minute < 10) {
+                    minute = "0" + minute;
                 }
-                if(second<10){
-                    second="0"+second;
+                if (second < 10) {
+                    second = "0" + second;
                 }
                 return hour + ":" + minute + ":" + second;
             }
 
-            alert(${id});
+            $.ajax({
+                url: "http://localhost:8888/getFansList",
+                type: "post",
+                data: {"userId": 1},
+                datatype: "json",
+                success:function (data) {
+                    console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        $("#fans-list").prepend("<li class=\"list-item\">\n" +
+                            "<a class=\"cover\">\n" +
+                            "<img src=\""+data[i].userInfo.userPicadress+"\"alt='"+data[i].userInfo.userName+"'>\n" +
+                            "</a>\n" +
+                            "<div class=\"content\">\n" +
+                            "<span class=\"fans-name\">"+data[i].userInfo.userName+"</span>\n" +
+                            "<p class=\"fans-desc\">该用户未发过动态</p>\n" +
+                            "</div>\n" +
+                            "<div class=\"fans-action\">\n" +
+                            "<div class=\"be-drop-fans\">\n" +
+                            "<span class=\"fans-text\">回粉</span>\n" +
+                            "</div>\n" +
+                            "</div>\n" +
+                            "</li>\n")
+                    }
+                }
+            })
+            $.ajax({
+                url: "http://localhost:8888/getFollowList",
+                type: "post",
+                data: {"fansId": 10},
+                datatype: "json",
+                success: function (data) {
+                    console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        $("#follow-list").prepend("<li class=\"list-item\">\n" +
+                            "<a class=\"cover\">\n" +
+                            "<img src=\""+data[i].userInfo.userPicadress+"\"alt='"+data[i].userInfo.userName+"'>\n" +
+                            "</a>\n" +
+                            "<div class=\"content\">\n" +
+                            "<span class=\"fans-name\">"+data[i].userInfo.userName+"</span>\n" +
+                            "<p class=\"fans-desc\">该用户未发过动态</p>\n" +
+                            "</div>\n" +
+                            "<div class=\"fans-action\">\n" +
+                            "<div class=\"be-drop-fans\">\n" +
+                            "<span class=\"fans-text\">已关注</span>\n" +
+                            "</div>\n" +
+                            "</div>\n" +
+                            "</li>")
+                    }
+                }
+            })
+
         })
     </script>
 </head>
@@ -465,7 +537,7 @@
                 <li id="account" class="info">
                     <div class="i-face">
                         <a href="/account/account">
-                        <img src="images/user/head.webp" class="face">
+                            <img src="images/user/head.webp" class="face">
                         </a>
                     </div>
                 </li>
@@ -558,10 +630,10 @@
                     <span class="search-btn"></span>
                 </div>
                 <div class="n-static">
-                    <a class="n-data n-gz">
+                    <a class="n-data n-gz" id="follow">
                         <p class="n-data-k">关注数</p>
                     </a>
-                    <a class="n-data n-fs">
+                    <a class="n-data n-fs" id="fan">
                         <p class="n-data-k">粉丝数</p>
                     </a>
                 </div>
@@ -855,6 +927,86 @@
                                 <span class="be-page-total">共7页</span>
                                 <span class="be-page-option">跳至<input type="text" id="page-size">页</span>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="col-3-cover">
+                <div class="sidenav">
+                    <div class="containlist">
+                        <div class="list-container">
+                            <ul class="contribution-list">
+                                <li class="contribution-item">
+                                    <span class="text">
+                                        我的关注
+                                    </span>
+                                    <span class="icon icon-add"></span>
+                                </li>
+                                <li class="contribution-item now">
+                                    <a class="text text-router-link">全部关注</a>
+                                    <span class="num">33</span>
+                                </li>
+                                <li class="contribution-item">
+                                    <a class="text">特别关注</a>
+                                    <span class="num">0</span>
+                                </li>
+                                <li class="contribution-item">
+                                    <a class="text">悄悄关注</a>
+                                    <span class="num">0</span>
+                                </li>
+                                <li class="contribution-item">
+                                    <a class="text">默认分组</a>
+                                    <span class="num">33</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-content">
+                    <div class="row page-head">
+                        <div class="breadcrumb">
+                            <p class="item">全部关注</p>
+                        </div>
+                        <div class="follow-content">
+                            <ul class="relation-list"id="follow-list">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="col-5">
+                <div class="col-3-cover">
+                    <div class="sidenav">
+                        <div class="containlist">
+                            <div class="list-container">
+                                <ul class="contribution-list">
+                                    <li class="contribution-item">
+                                    <span class="text">
+                                        我的粉丝
+                                    </span>
+                                        <span class="icon icon-add"></span>
+                                    </li>
+                                    <li class="contribution-item now">
+                                        <a class="text text-router-link">我的粉丝</a>
+                                        <span class="num">1</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-content">
+                        <div class="row page-head">
+                            <div class="breadcrumb">
+                                <p class="item">我的粉丝</p>
+                            </div>
+                            <div class="follow-content">
+                                <ul class="relation-list"id="fans-list">
+
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

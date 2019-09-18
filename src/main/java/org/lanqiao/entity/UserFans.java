@@ -3,7 +3,7 @@ package org.lanqiao.entity;
 public class UserFans {
     private Integer id;
 
-    private Integer userId;
+    private UserInfo userInfo;
 
     private Integer fansId;
 
@@ -15,12 +15,12 @@ public class UserFans {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public UserInfo getUserInfo() {
+        return userInfo;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
     }
 
     public Integer getFansId() {
