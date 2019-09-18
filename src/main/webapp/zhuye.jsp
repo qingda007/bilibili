@@ -153,15 +153,15 @@
             //  在线人数
             var str={"userType":'u87'};
 
-                $.ajax({
-                    url:"http://localhost:8888/liveUserNum",
-                    type:"post",
-                    dataType:"application/json; charset=utf-8",
-                    data:str,
-                    success:function (data) {
-                        vNum.Num=data;
-                    },
-                });
+            $.ajax({
+                url:"/liveUserNum",
+                type:"post",
+                dataType:"text",
+                data:str,
+                success: function (data) {
+                    vNum.Num=data;
+                },
+            });
             //从登录界面登录成功后，跳到主界面并给vm.user.uid赋值
             $("#face").attr("src","images/main/akari.jpg");
             $node1=$("div.profile-m").detach();
