@@ -180,21 +180,47 @@
             <%--    }--%>
             <%--}--%>
             <%--ll();--%>
-            // 视频分类数量
-            var type1={"type1":'动画'};
+                //  视频类型的数量
             $.ajax({
-                url:"/typeCount",
+                    url:"/video/typeCount",
+                    type:"post",
+                    dataType:"text",
+                    data:{"type1":'动画'},
+                    success: function (data) {
+                        vType.type1.num1=data;
+
+                    },
+                    error:function () {
+                        alert("失败");
+                    }
+                })
+            $.ajax({
+                url:"/video/typeCount",
                 type:"post",
                 dataType:"text",
-                data:type1,
+                data:{"type1":'番剧'},
                 success: function (data) {
-                    alert(data);
+                    vType.type1.num2=data;
 
                 },
                 error:function () {
                     alert("失败");
                 }
             })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'国创'},
+                success: function (data) {
+                    vType.type1.num3=data;
+
+                },
+                error:function () {
+                    alert("失败");
+                }
+            })
+
 
 
         })
@@ -315,7 +341,7 @@
         </div>
         <div class="bili-wrapper">
             <div id="primary_menu" class="primary-menu report-scroll-module ">
-                <ul class="nav-menu">
+                <ul id="nav-menu" class="nav-menu">
                     <li class="home">
                         <a>
                             <div class="nav-name">首页</div>
@@ -325,7 +351,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num1}}</span>
                             </div>
                             <div class="nav-name">动画</div>
                         </a>
@@ -350,7 +376,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num2}}</span>
                             </div>
                             <div class="nav-name">番剧</div>
                         </a>
@@ -378,7 +404,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num3}}</span>
                             </div>
                             <div class="nav-name">国创</div>
                         </a>
@@ -1265,6 +1291,16 @@
     var vNum=new Vue({
         el:'div.online',
         data: {Num:null,},
+    })
+    var vType=new Vue({
+        el:'#nav-menu',
+        data:{
+            type1:{
+                num1:0,
+                num2:0,
+                num3:0,
+            }
+        }
     })
 </script>
 
