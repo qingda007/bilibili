@@ -28,7 +28,7 @@
             var buttonSpan = $('.trig')[0].children; //htmlCollection 集合
             //自动轮播功能 使用定时器
             autoNextPage();
-            autoNextScroll();
+
 
             function autoNextPage() {
                 intervalId = setInterval(function() {
@@ -114,6 +114,7 @@
                 $("div.tab-box>div").eq(clickedLiIndex).show();
                 $("div.tab-box>div").eq(clickedLiIndex).siblings().hide();
             })
+            autoNextScroll();
             var left1 = 0;
             var left2 = 320;
             autoNextScroll()
@@ -180,13 +181,20 @@
             <%--}--%>
             <%--ll();--%>
             // 视频分类数量
+            var type1={"type1":'动画'};
             $.ajax({
+                url:"/typeCount",
+                type:"post",
+                dataType:"text",
+                data:type1,
+                success: function (data) {
+                    alert(data);
 
+                },
+                error:function () {
+                    alert("失败");
+                }
             })
-
-
-
-
 
 
         })
