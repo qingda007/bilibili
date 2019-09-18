@@ -276,7 +276,7 @@
                                         <a class="more-text" style="z-index: 200;">更多</a>
                                     </li>
                                     <li class="scrollx off ">
-                                        <img src="images/upload/lunbo2.jpg"  />
+                                        <img src="/images/upload/lunbo2.jpg"  />
                                         <a class="more-text" style="z-index: 200;">更多</a>
                                     </li>
                                     <li class="scrollx off ">
@@ -322,72 +322,72 @@
                                     播放总量
                                 </div>
                                 <div class="text-content">
-                                    <span>5</span>
+                                    <span>${videoInfo.get(0)}</span>
                                 </div>
-                                <div class="diff-wrp">
-                                    <span class="improve">昨日增量</span>
-                                    <span class="no-improve"></span>
-                                </div>
+<%--                                <div class="diff-wrp">--%>
+<%--                                    <span class="improve">昨日增量</span>--%>
+<%--                                    <span class="no-improve"></span>--%>
+<%--                                </div>--%>
                             </div>
                             <div class="section-item vedio fl">
                                 <div class="data-name">
-                                    播放总量
+                                    点赞总量
                                 </div>
                                 <div class="text-content">
-                                    <span>5</span>
+                                    <span>${videoInfo.get(1)}</span>
                                 </div>
-                                <div class="diff-wrp">
-                                    <span class="improve">昨日增量</span>
-                                    <span class="no-improve"></span>
-                                </div>
+<%--                                <div class="diff-wrp">--%>
+<%--                                    <span class="improve">昨日增量</span>--%>
+<%--                                    <span class="no-improve"></span>--%>
+<%--                                </div>--%>
                             </div>
                             <div class="section-item vedio fl">
                                 <div class="data-name">
-                                    播放总量
+                                    弹幕总量
                                 </div>
                                 <div class="text-content">
-                                    <span>5</span>
+                                    <span>${videoInfo.get(2)}</span>
                                 </div>
-                                <div class="diff-wrp">
-                                    <span class="improve">昨日增量</span>
-                                    <span class="no-improve"></span>
-                                </div>
+<%--                                <div class="diff-wrp">--%>
+<%--                                    <span class="improve">昨日增量</span>--%>
+<%--                                    <span class="no-improve"></span>--%>
+<%--                                </div>--%>
                             </div>
                             <div class="section-item vedio fl">
                                 <div class="data-name">
-                                    播放总量
+                                    收藏总量
                                 </div>
                                 <div class="text-content">
-                                    <span>5</span>
+                                    <span>${videoInfo.get(3)}</span>
                                 </div>
-                                <div class="diff-wrp">
-                                    <span class="improve">昨日增量</span>
-                                    <span class="no-improve"></span>
-                                </div>
+<%--                                <div class="diff-wrp">--%>
+<%--                                    <span class="improve">昨日增量</span>--%>
+<%--                                    <span class="no-improve"></span>--%>
+<%--                                </div>--%>
                             </div>
                             <div class="section-item vedio fl">
                                 <div class="data-name">
-                                    播放总量
+                                    硬币总量
                                 </div>
                                 <div class="text-content">
-                                    <span>5</span>
+                                    <span>${videoInfo.get(4)}</span>
                                 </div>
-                                <div class="diff-wrp">
-                                    <span class="improve">昨日增量</span>
-                                    <span class="no-improve"></span>
-                                </div>
+<%--                                <div class="diff-wrp">--%>
+<%--                                    <span class="improve">昨日增量</span>--%>
+<%--                                    <span class="no-improve"></span>--%>
+<%--                                </div>--%>
                             </div>
                             <div class="section-item vedio fl">
                                 <div class="data-name">
-                                    播放总量
+                                    粉丝数
                                 </div>
                                 <div class="text-content">
-                                    <span>5</span>
+                                    <span>${videoInfo.get(5)}</span>
                                 </div>
-                                <div class="diff-wrp">
-                                    <span class="improve">昨日增量</span>
-                                    <span class="no-improve"></span>
-                                </div>
+<%--                                <div class="diff-wrp">--%>
+<%--                                    <span class="improve">昨日增量</span>--%>
+<%--                                    <span class="no-improve"></span>--%>
+<%--                                </div>--%>
                             </div>
                         </div>
                     </div>

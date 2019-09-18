@@ -24,6 +24,11 @@
     <script src="/js/upload/header.js"></script>
     <script>
         $(function () {
+            var videoExist = $("#videoExist").val();
+            if(videoExist==-1){
+                alert("该视频丢失，请联系管理员！");
+                window.history.back();
+            }
             $(".other-cover-tip").html("正在为您截取可选封面");
             $.ajax({
                 url : 'http://localhost:8888/video/getCover',//后台数据地址
@@ -58,6 +63,7 @@
 </head>
 <body>
 <div id=app>
+    <input id="videoExist" type="hidden" value="${video}">
     <div class="bili-header">
         <div class="nav-menu">
             <div class="blur-bg" style="background-image: url(/images/main/header.png);"></div>

@@ -75,6 +75,7 @@ button {
 .home-wrap .card {
     background: #fff;
     overflow: hidden;
+    margin: 0 auto;
 }
 .chief-recommend-module .carousel-box {
     width: 620px;
@@ -131,7 +132,7 @@ button {
 .data-card .tab .data-tab {
     display: inline-block;
     position: relative;
-    top: -5px;
+    top: -18px;
     line-height: 35px;
     margin-right: 24px;
     font-size: 20px;
