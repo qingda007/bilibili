@@ -12,4 +12,5 @@ public interface UploadService {
     List<Video> selectVideoByIsReview(int userId, int isReview);
     int delVideo(int videoId);
     int countByWord(int userId, String word);
+    List<Integer> countVideoInfo(int userId);
 }

@@ -144,7 +144,7 @@ public class UploadController {
 
     @RequestMapping(value = "/homeVideo")
     public ModelAndView homeVideo() {
-        return new ModelAndView("upload-home");
+        return new ModelAndView("upload-home","videoInfo",uploadService.countVideoInfo(1));
     }
 
     @RequestMapping(value = "/managerVideo")
