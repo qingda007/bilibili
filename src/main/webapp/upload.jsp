@@ -11,12 +11,61 @@
 <head>
     <title>上传视频</title>
     <link rel="stylesheet" href="/css/main/header.css" />
+    <link rel="stylesheet" href="/css/main/bass.css"/>
     <link rel="stylesheet" href="/css/upload/upload_step1.css" type="text/css">
     <link rel="stylesheet" href="/css/upload/upload_step2.css" type="text/css">
     <link rel="stylesheet" href="/css/upload/upload_step3.css" type="text/css">
     <link rel="stylesheet" href="/css/upload/upload_menu.css" type="text/css">
     <script src="/js/upload/upload.js"></script>
     <script src="/js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#face").attr("src","images/main/akari.jpg");
+            //用户信息显示
+            var id=1;
+            if(id!=null){
+                $.ajax({
+                    url:"http://localhost:8888/getUserInfo",
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        "id":id,
+                    },
+                    success:function(data){
+                        var img=data.userPicadress;
+                        $("#face").attr("src",img);
+                        if (data.userTele!=null){
+                            $("#s1").text("已绑定");
+                        }else {
+                            $("#s1").text("未绑定");
+                        }
+                        if (data.userEmail!=null){
+                            $("#s2").text("已绑定");
+                        }else {
+                            $("#s2").text("未绑定");
+                        }
+
+                        //vue
+                        vm.user.uname=data.userName;
+                        vm.user.coin=data.userCoin;
+                    },
+                });
+                $("#nipi").hover(function () {
+                    $(this).addClass("on");
+                    $("div.profile-m").show();
+                },function () {
+                    $(this).removeClass("on");
+                    $("div.profile-m").hide();
+                });
+                $(".tips").siblings().hover(function () {
+                    $(this).siblings().show();
+                },function () {
+                    $(this).siblings().hide();
+                });
+                //登录退出按钮
+            }
+        })
+    </script>
 </head>
 <body>
     <div id=app>
@@ -24,7 +73,7 @@
             <div class="nav-menu">
                 <div class="blur-bg" style="background-image: url(images/main/header.png);"></div>
                 <div class="nav-mask"></div>
-                <div class="bili-wrapper clearfix nav-wraper" style="min-width: 1500px; margin-left: 80px;">
+                <div class="bili-wrapper clearfix nav-wraper" style="min-width: 100%; margin-left: 0px;">
                     <div class="nav-con fl">
                         <ul>
                             <li class="nav-item home">
@@ -72,17 +121,6 @@
                                         <img class="pendant"  />
                                     </i>
                                 </a>
-                                <div id="i-login" class="i_menu i_menu_login" style="display: none;">
-                                    <p class="tip">登录后你可以：</p>
-                                    <div class="img">
-                                        <img id="d1" src="images/main/danmu1.png" />
-                                        <img id="d2" src="images/main/danmu1.png" style="left: 320px;" />
-                                    </div>
-                                    <a class="login-btn">登录</a>
-                                    <p class="reg">首次使用？
-                                        <a>点我去注册</a>
-                                    </p>
-                                </div>
                                 <div class="profile-m dd-bubble"style="display: none">
                                     <div class="header-u-info">
                                         <div class="header-uname">
@@ -343,4 +381,24 @@
         </div>
     </div>
 </body>
+<script type="text/javascript" src="/js/vue.min.js"></script>
+<script>
+    var vm=new Vue({
+        el:'#nipi',
+        data:{
+            user:{
+                uid:null,
+                uname:null,
+                coin:null,
+            }
+        },
+    })
+    var vNum=new Vue({
+        el:'div.online',
+        data: {userNum:{
+                Num:null
+            }
+        },
+    })
+</script>
 </html>
