@@ -9,20 +9,14 @@
     <list default="true" id="e3bf18da-ad0e-4e20-8eda-e51c241bb006" name="Default Changelist" comment="增加了删除稿件的功能 9/18">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UploadController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/StatusMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/StatusMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/VideoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/VideoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/VideoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/VideoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/StatusService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/StatusService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/StatusServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/StatusServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/UploadService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/UploadService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/UploadServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/service/UploadServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/StatusMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/StatusMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/VideoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/VideoMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/upload/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/upload/upload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/upload-manager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/upload-manager.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/upload-modify.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/upload-modify.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/upload.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/upload.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/upload/upload_manager.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/upload/upload_manager.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/log4j.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/mybatis.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/mybatis.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/RegisterController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/UserFansController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/UserFansController.class" afterDir="false" />
@@ -33,6 +27,8 @@
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/StatusMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/StatusMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/UserFansMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/UserFansMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/UserFansMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/UserFansMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/UserInfoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/UserInfoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/UserInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/UserInfoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/VideoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/VideoMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/VideoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/mapper/VideoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/StatusService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/StatusService.class" afterDir="false" />
@@ -41,10 +37,12 @@
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/UploadServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/UploadServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/UserFansService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/UserFansService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/UserFansServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/UserFansServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/UserInfoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/UserInfoServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/VideoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/VideoService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/VideoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/service/VideoServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/util/Upload.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/util/Upload.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/spring-mybatis.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/spring-mybatis.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/page.tld" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/page.tld" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/account.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/css/login/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/css/login/login.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/css/main/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/css/main/header.css" afterDir="false" />
@@ -52,6 +50,7 @@
       <change beforePath="$PROJECT_DIR$/target/bilibili/css/upload/upload_manager.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/css/upload/upload_manager.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/css/upload/upload_step1.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/css/upload/upload_step1.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/css/upload/upload_step2.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/css/upload/upload_step2.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/js/jquery-3.4.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/js/jquery-3.4.1.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/js/upload/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/js/upload/upload.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/login.jsp" afterDir="false" />
@@ -62,6 +61,7 @@
       <change beforePath="$PROJECT_DIR$/target/bilibili/zhuye.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/zhuye.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/zhuye.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/zhuye.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/log4j.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mybatis.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/RegisterController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/UserFansController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/UserFansController.class" afterDir="false" />
@@ -72,6 +72,8 @@
       <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/StatusMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/StatusMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/UserFansMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/UserFansMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/UserFansMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/UserFansMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/UserInfoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/UserInfoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/UserInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/UserInfoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/VideoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/VideoMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/VideoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/mapper/VideoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/service/StatusService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/StatusService.class" afterDir="false" />
@@ -80,6 +82,7 @@
       <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/service/UploadServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/UploadServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/service/UserFansService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/UserFansService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/service/UserFansServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/UserFansServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/service/UserInfoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/UserInfoServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/service/VideoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/VideoService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/service/VideoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/service/VideoServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/util/Upload.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/util/Upload.class" afterDir="false" />
@@ -110,19 +113,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/service/UploadServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/upload-manager.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="44" column="53" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
+            <state relative-caret-position="193">
+              <caret line="308" column="32" selection-start-line="308" selection-start-column="24" selection-end-line="308" selection-end-column="32" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#653#654#0" expanded="true" />
-                <element signature="e#713#714#0" expanded="true" />
-                <element signature="e#1047#1048#0" expanded="true" />
-                <element signature="e#1109#1110#0" expanded="true" />
-                <element signature="e#1198#1199#0" expanded="true" />
-                <element signature="e#1231#1232#0" expanded="true" />
+                <element signature="n#c:forEach#0;n#jsp:root#0;n#!!top" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/css/upload/upload_manager.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -130,62 +136,45 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/service/UploadService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="319">
+              <caret line="13" column="45" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/LoginController.java">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/VideoMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="79" column="58" selection-start-line="79" selection-start-column="58" selection-end-line="79" selection-end-column="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/service/StatusService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="14" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="14" />
+            <state relative-caret-position="377">
+              <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/service/StatusServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserFansController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+            <state relative-caret-position="145">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/StatusMapper.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/service/UploadServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/VideoMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/StatusMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+            <state relative-caret-position="640">
+              <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#653#654#0" expanded="true" />
+                <element signature="e#713#714#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -193,7 +182,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/entity/Video.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
+            <state relative-caret-position="508">
               <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
             </state>
           </provider>
@@ -202,11 +191,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UploadController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="43" column="57" lean-forward="true" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
-              <folding>
-                <element signature="e#1612#1613#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="377">
+              <caret line="46" column="17" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/VideoMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -231,6 +226,9 @@
       <find>cc-nav-wrp</find>
       <find>images</find>
       <find>bili-wrapper clearfix nav-wraper</find>
+      <find>danmu_num</find>
+      <find>here v.user_id</find>
+      <find>page-wrp</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -241,20 +239,21 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/entity/Video.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/zhuye.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/css/upload/upload_manager.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/upload/upload.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/upload-manager.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/upload-modify.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/upload.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/service/UploadService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/VideoMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/service/UploadServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/VideoMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/StatusMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/service/StatusServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/StatusMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/service/StatusService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/VideoController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/service/UploadServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UploadController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/VideoMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/VideoMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/css/upload/upload_manager.css" />
       </list>
     </option>
   </component>
@@ -326,72 +325,6 @@
               <item name="bilibili" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lanqiao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lanqiao" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lanqiao" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lanqiao" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lanqiao" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -400,7 +333,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
@@ -408,8 +341,8 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-              <item name="video" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="upload" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -545,7 +478,7 @@
       <updated>1568727940795</updated>
       <workItem from="1568727965830" duration="912000" />
       <workItem from="1568730876961" duration="5799000" />
-      <workItem from="1568773666882" duration="10388000" />
+      <workItem from="1568773666882" duration="15165000" />
     </task>
     <task id="LOCAL-00001" summary="增加了删除稿件的功能 9/18">
       <created>1568776560566</created>
@@ -554,11 +487,18 @@
       <option name="project" value="LOCAL" />
       <updated>1568776560566</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="实现查找一级分类视频数量的service接口 9/18">
+      <created>1568785019942</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1568785019942</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17099000" />
+    <option name="totallyTimeSpent" value="21876000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -606,18 +546,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="增加了删除稿件的功能 9/18" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加了删除稿件的功能 9/18" />
+    <MESSAGE value="实现查找一级分类视频数量的service接口 9/18" />
+    <option name="LAST_COMMIT_MESSAGE" value="实现查找一级分类视频数量的service接口 9/18" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/service/VideoServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/service/VideoTagService.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -659,13 +593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserFansController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserInfoController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-174">
@@ -673,27 +600,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/VideoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-375">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/zhuye.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="179" column="51" selection-start-line="179" selection-start-column="20" selection-end-line="179" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/upload/upload_manager.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -715,21 +625,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
           <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/upload-manager.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="279" selection-start-line="279" selection-end-line="304" selection-end-column="6" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#c:forEach#0;n#jsp:root#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -775,85 +670,123 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/entity/Video.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/StatusMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/service/UploadService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/service/UploadServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="44" column="53" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#653#654#0" expanded="true" />
-            <element signature="e#713#714#0" expanded="true" />
-            <element signature="e#1047#1048#0" expanded="true" />
-            <element signature="e#1109#1110#0" expanded="true" />
-            <element signature="e#1198#1199#0" expanded="true" />
-            <element signature="e#1231#1232#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/VideoMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/VideoMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="79" column="58" selection-start-line="79" selection-start-column="58" selection-end-line="79" selection-end-column="58" />
+        <state relative-caret-position="348">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/service/StatusServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
-          <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+          <caret line="34" column="1" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UploadController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/VideoController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="43" column="57" lean-forward="true" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
+        <state relative-caret-position="-230">
+          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
           <folding>
-            <element signature="e#1612#1613#0" expanded="true" />
+            <element signature="e#2008#2009#0" expanded="true" />
+            <element signature="e#2069#2070#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/StatusMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/StatusMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+        <state relative-caret-position="464">
+          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/service/StatusService.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/service/VideoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/service/UploadService.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
-          <caret line="14" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="14" />
+          <caret line="13" column="45" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UploadController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="46" column="17" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/mapper/VideoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/entity/Video.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserFansController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/org/lanqiao/mapper/VideoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/service/UploadServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#653#654#0" expanded="true" />
+            <element signature="e#713#714#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/upload-manager.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="308" column="32" selection-start-line="308" selection-start-column="24" selection-end-line="308" selection-end-column="32" />
+          <folding>
+            <element signature="n#c:forEach#0;n#jsp:root#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/upload/upload_manager.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
         </state>
       </provider>
     </entry>

@@ -58,7 +58,7 @@
     <result column="user_role" property="userRole" jdbcType="VARCHAR" />
   </resultMap>
   <select id="selectUploadVideo" resultMap="VideoResultMap" parameterType="java.lang.Integer">
-    select *
+    select v.*,s.*,(select count(*) from video_danmu d where d.video_id = v.video_id) as danmu_num,(select count(*) from video_collection c where c.video_id = v.video_id) as collection_num
     from video v, status s
     where v.user_id = #{userId,jdbcType=INTEGER} and s.status_id = v.class_type
     order by v.up_time
@@ -77,8 +77,30 @@
     order by v.up_time
     desc
   </select>
-  <select id="countByWord" resultType="java.lang.Integer">
-    select sum(danmu_num)
+  <select id="countByPlay" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    select sum(play_num)
+    from video
+    where user_id = #{userId}
+  </select>
+  <select id="countByLike" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    select sum(like_num)
+    from video
+    where user_id = #{userId}
+  </select>
+  <select id="countByDanmu" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    select count(*)
+    from video_danmu d
+    where d.video_id in
+    (select video_id from video where user_id = #{userId})
+  </select>
+    <select id="countByCollection" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    select count(*)
+    from video_collection c
+    where c.video_id in
+    (select video_id from video where user_id = #{userId})
+  </select>
+    <select id="countByCoin" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    select sum(coin_num)
     from video
     where user_id = #{userId}
   </select>
