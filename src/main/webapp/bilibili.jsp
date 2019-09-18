@@ -159,11 +159,11 @@
             var str={"userType":'u87'};
 
             $.ajax({
-                url:"http://localhost:8888/liveUserNum",
+                url:"/liveUserNum",
                 type:"post",
-                dataType:"application/json; charset=utf-8",
+                dataType:"text",
                 data:str,
-                success:function (data) {
+                success: function (data) {
                     vNum.Num=data;
                 },
             });
@@ -179,7 +179,10 @@
             <%--    }--%>
             <%--}--%>
             <%--ll();--%>
+            // 视频分类数量
+            $.ajax({
 
+            })
 
 
 
