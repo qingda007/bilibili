@@ -10,4 +10,5 @@ public interface UploadService {
     List<Video> selectUploadVideo(int userId);
     int countIsReview(int isReview);
     List<Video> selectVideoByIsReview(int userId, int isReview);
+    int delVideo(int videoId);
 }

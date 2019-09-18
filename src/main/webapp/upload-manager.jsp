@@ -19,8 +19,30 @@
     <link rel="stylesheet" href="/css/main/iconfont.css">
     <script src="/js/jquery-3.4.1.js"></script>
     <script>
+        function delVideo(videoId) {
+            if(window.confirm("您确定要删除该稿件吗？")){
+                $.ajax({
+                    url: "http://localhost:8888/video/managerVideo",
+                    type: "post",
+                    data: {
+                        "isReview": $("#isReview").val(),
+                        "videoId": videoId
+                    },
+                    dataType: "html",
+                    cache: false,
+                    success: function (data) {
+                        var Obj = $("#flushDIV").append($(data));
+                        //需要获取的对应块
+                        var $html = $("#flushDIV", Obj);
+                        //获取对应块中的内容
+                        $('#flushDIV').html("");
+                        $('#flushDIV').html($html.html());
+                    }
+                });
+             }
+        }
         function getVideo(isReview) {
-            $('#flushDIV').html("");
+            $("#isReview").val(isReview);
             $.ajax({
                 url: "http://localhost:8888/video/managerVideo",
                 type: "post",
@@ -32,6 +54,7 @@
                     //需要获取的对应块
                     var $html = $("#flushDIV", Obj);
                     //获取对应块中的内容
+                    $('#flushDIV').html("");
                     $('#flushDIV').html($html.html());
                 }
             });
@@ -56,6 +79,7 @@
     </script>
 </head>
 <body>
+<input id="isReview" type="hidden" value="-1">
 <div class="bili-header">
     <div class="nav-menu">
         <div class="blur-bg" style="background-image: url(images/main/header.png);"></div>
@@ -235,7 +259,7 @@
                 <div class="article-header clearfix">
                     <div class="left">
                         <a href="javascript:getVideo(-1)" class="bili-tab current">全部稿件（${length}）</a>
-                        <a href="javascript:getVideo(0)" class="bili-tab">待审核（${waitReview}）</a>
+                        <a href="javascript:getVideo(0)" class="bili-tab">审核中（${waitReview}）</a>
                         <a href="javascript:getVideo(1)" class="bili-tab">已通过（${isPass}）</a>
                         <a href="javascript:getVideo(2)" class="bili-tab">未通过（${noPass}）</a>
                     </div>
@@ -261,9 +285,9 @@
                                     <a class="name1 ellipsis">${video.videoTitle}</a>
                                 </div>
                                 <div class="meta-status">
-                                    <div class="status hint--rounded hint--bottom is-pubdate">
-                                        <span class="shenhe">审核中</span>
-                                    </div>
+<%--                                    <div class="status hint--rounded hint--bottom is-pubdate">--%>
+<%--                                        <span class="shenhe">审核中</span>--%>
+<%--                                    </div>--%>
                                     <span class="pubdate"><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${video.upTime}"></fmt:formatDate></span><!--上传时间-->
                                 </div>
 
@@ -271,6 +295,7 @@
                                     <input type='hidden' id="videoId" name="videoId" value='${video.videoId}'/>
                                     <div class="meta-view">
                                         <a href="javascript:document.form${video.videoId}.submit();" class="bili-btn ok">编辑</a>
+                                        <a href="javascript:delVideo(${video.videoId})" class="bili-btn plain">删除</a>
                                     </div>
                                 </form>
                                 <div class="meta-footer clearfix">

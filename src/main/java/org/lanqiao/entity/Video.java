@@ -6,6 +6,8 @@ import java.util.List;
 public class Video {
     private Integer videoId;
 
+    private Integer userId;
+
     private UserInfo userInfo;
 
     private String videoTitle;
@@ -35,6 +37,14 @@ public class Video {
     private Status status;
 
     private Integer danmuNum;
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public Integer getDanmuNum() {
         return danmuNum;

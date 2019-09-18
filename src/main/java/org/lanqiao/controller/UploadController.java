@@ -2,6 +2,7 @@ package org.lanqiao.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.ibatis.annotations.Param;
 import org.lanqiao.entity.Status;
 import org.lanqiao.entity.Video;
@@ -43,7 +44,7 @@ public class UploadController {
     @RequestMapping(value = "/upload")
     public void upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws IOException {
         //用户上传视频文件
-        String uuid = new Upload().upload(file, rootPath, request);
+        new Upload().upload(file, rootPath, request);
     }
     @ResponseBody
     @RequestMapping(value = "/getCover")
@@ -137,10 +138,12 @@ public class UploadController {
         return new ModelAndView("upload");
     }
 
-
     @RequestMapping(value = "/managerVideo")
-    public ModelAndView managerVideo(@RequestParam(value="pageNo", defaultValue = "1") int pageNum, @RequestParam(value="isReview", defaultValue = "-1") int isReview) {
+    public ModelAndView managerVideo(@RequestParam(value="pageNo", defaultValue = "1") int pageNum, @RequestParam(value="isReview", defaultValue = "-1") int isReview, @RequestParam(value="videoId", defaultValue = "-1") int videoId) {
         ModelAndView modelAndView = new ModelAndView();
+        if(videoId!=-1){
+            uploadService.delVideo(videoId);
+        }
         if(isReview==-1){
             PageHelper.startPage(pageNum, 5);
             List<Video> videos = uploadService.selectUploadVideo(1);
@@ -180,15 +183,15 @@ public class UploadController {
     @RequestMapping(value = "/modifyVideo")
     public int modifyVideo(Video video, HttpServletRequest request) {
         Ffmpeg ffmpeg = new Ffmpeg();
-        String uuid = (String)request.getSession(false).getAttribute("uuid");
+        String uuid = (String)request.getSession(false).getAttribute("Uuid");
         String picUrl = video.getVideoPic();
         String modifyPicUrl = (String)request.getSession(false).getAttribute("modifyPicUrl");
-        if(picUrl.contains("teporary")){ //如果选择截取的图片
+        if(picUrl.contains("/teporary/")){ //如果选择截取的图片
             picUrl = ffmpeg.getPhyDir(picUrl); //截取文件名
             ffmpeg.delDataFile(videoService.selectVideoInfo(video.getVideoId()).getVideoPic());
             video.setVideoPic(ffmpeg.getRelDir(ffmpeg.moveFile(picUrl)));
         }
-        else if (picUrl.contains("videoData")){ //如果选择原有的图片
+        else if (picUrl.contains("/videoData/")){ //如果选择原有的图片
             video.setVideoPic(null);
         }
         else { //如果选择了上传的图片
