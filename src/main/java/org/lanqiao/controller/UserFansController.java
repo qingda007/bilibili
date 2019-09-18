@@ -1,9 +1,11 @@
 package org.lanqiao.controller;
 
+import org.apache.ibatis.annotations.Param;
 import org.lanqiao.entity.UserFans;
 import org.lanqiao.service.UserFansService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

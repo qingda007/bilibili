@@ -1,9 +1,11 @@
 package org.lanqiao.service;
 
+import org.apache.ibatis.annotations.Param;
 import org.lanqiao.entity.UserFans;
 import org.lanqiao.mapper.UserFansMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class UserFansServiceImpl implements UserFansService {
@@ -30,7 +32,7 @@ public class UserFansServiceImpl implements UserFansService {
     }
 
     @Override
-    public int selectFans(Integer userId, Integer fansId) {
+    public int selectFans(@RequestParam("userId") Integer userId,@RequestParam("fansId") Integer fansId) {
         return userFansMapper.selectFans(userId,fansId);
     }
 }

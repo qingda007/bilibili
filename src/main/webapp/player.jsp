@@ -626,6 +626,124 @@
         .bb-comment .bottom-page{
             margin: 20px 0;
         }
+
+        /*分页*/
+        .be-page{
+            margin-bottom: 50px;
+            text-align: center;
+            clear: both;
+        }
+        .be-page li{
+            margin-top: 40px;
+        }
+        .be-page-disabled{
+            display: none;
+        }
+        .be-page-next,.be-page-prev{
+            padding: 0 14px;
+            border: 1px solid #d7dde4;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+
+        .be-page-item{
+            display: inline-block;
+            line-height: 38px;
+            padding: 0 15px;
+            margin-right: 4px;
+            text-align: center;
+            list-style: none;
+            background-color: #fff;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: pointer;
+            font-family: Arial;
+            font-size: 14px;
+            border: 1px solid #d7dde4;
+            border-radius: 4px;
+            transition: all .2s ease-in-out;
+        }
+        .be-page-active{
+            background-color: #00a1d6;
+            border-color: #00a1d6;
+        }
+        .be-page-item a{
+            text-decoration: none;
+            color: #657180;
+        }
+        .be-page-active:hover a,.be-page-active a{
+            color: #fff;
+        }
+
+        .be-page-item:hover{
+            border-color: #00a1d6;
+        }
+        .be-page-item-jump-next{
+            display: inline-block;
+            font-size: 14px;
+            line-height: 38px;
+            list-style: none;
+            text-align: center;
+            cursor: pointer;
+            color: #666;
+            font-family: Arial;
+            transition: all .2s ease-in-out;
+            margin-right: 4px;
+            padding: 0 5px;
+        }
+        .be-page-next{
+            padding: 0 14px;
+            border: 1px solid #d7dde4;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+        .be-page-next{
+            display: inline-block;
+            font-size: 14px;
+            line-height: 38px;
+            list-style: none;
+            text-align: center;
+            cursor: pointer;
+            color: #666;
+            font-family: Arial;
+            transition: all .2s ease-in-out;
+        }
+        .be-page-total{
+            display: inline-block;
+            height: 32px;
+            line-height: 32px;
+            margin-left: 30px;
+            color: #99a2aa;
+        }
+        .be-page-option{
+            display: inline-block;
+            height: 32px;
+            line-height: 32px;
+            color: #99a2aa;
+        }
+        .be-page-option input{
+            border-radius: 4px;
+            margin: 0 8px;
+            width: 50px;
+        }
+        .be-page-item-jump-next, .be-page-next, .be-page-prev {
+            display: inline-block;
+            font-size: 14px;
+            line-height: 38px;
+            list-style: none;
+            text-align: center;
+            cursor: pointer;
+            color: #666;
+            font-family: Arial;
+            transition: all .2s ease-in-out;
+        }
+        .be-page-item-jump-next{
+            margin-right: 4px;
+        }
+        .be-page-item-jump-next{
+            padding: 0 5px;
+        }
+
     </style>
     <!--右边部分-->
     <style>
@@ -930,6 +1048,7 @@
     <!--视频播放按钮-->
     <style>
         .video_player {
+            background-color: black;
             position: relative;
             margin: 0 auto;
             overflow: hidden;
@@ -1162,7 +1281,7 @@
         }
 
         .video-bottom-info {
-            width: 300px;
+            width: 400px;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
@@ -1179,7 +1298,7 @@
 
         .video-bottom-danmu-root {
             height: 34px;
-            width: 300px;
+            width: 100px;
             float: right;
             right: 0px;
             top: 0px;
@@ -1339,6 +1458,7 @@
     </style>
 
     <script>
+
         $(function () {
             var flag0=1;
             $(".bui-collapse-header").click(function () {
@@ -1365,9 +1485,89 @@
     </script>
 
     <script>
+        //全局变量
+        //总数
+        var up_num = 0;
+        //每页数
+        var per_page = 7;
+        //当前页
+        var up_cur_page = 1;
+        //总页
+        var up_last_page = 0;
+        var up_item_num = 0;
+        var up_list = [];
 
         $(function () {
+            //取出评论
+            $.ajax({
+                url:"/video/commentInfo",
+                data:{
+                    "videoId":1
+                },
+                type: "post",
+                datatype: "json",
+                success:function (data1) {
+                    //总数
+                    up_num = data1.length;
+                    //总页
+                    up_last_page=Math.ceil(up_num/per_page);
+                    up_list=data;
+                    if(up_last_page==1){
+                        page(up_num);
+                    }else{
+                        page(per_page);
+                    }
+                }
 
+            });
+            //生成评论
+            function page(item) {
+                $(".comment-list").empty();
+                for(var i=0;i<item;i++,up_item_num++) {
+                    $(".comment-list").prepend("<div class=\"list-item reply-wrap \">\n" +
+                        "                                        <div class=\"user-face\">\n" +
+                        "                                            <img src=\""+up_list[up_item_num].userInfo.userPicadress+"\">\n" +
+                        "                                        </div>\n" +
+                        "                                        <div class=\"con\">\n" +
+                        "                                            <div class=\"user\">\n" +
+                        "                                                <span class=\"name\">"+up_list[up_item_num].userInfo.userName+"</span>\n" +
+                        "                                            </div>\n" +
+                        "                                            <p class=\"text\">"+up_list[up_item_num].comment+"</p>\n" +
+                        "                                            <div class=\"info\">\n" +
+                        "                                                <span class=\"time\">"+up_list[up_item_num].sendTime+"</span>\n" +
+                        "                                            </div>\n" +
+                        "                                        </div>\n" +
+                        "                                    </div>")
+                }
+            }
+            //上一页
+            $("#last").click(function () {
+                up_cur_page--;
+                up_item_num=(up_cur_page-1)*per_page;
+                page(per_page);
+            })
+            //下一页
+            $("#next").click(function () {
+                up_cur_page++;
+                up_item_num=(up_cur_page-1)*per_page;
+                if(up_num-up_item_num<per_page) {
+                    page(up_num-up_item_num);
+                }else {
+                    page(per_page);
+                }
+            })
+            //跳页
+            $("#page-size").bind("keypress",function (event) {
+                if(event.keyCode==13) {
+                    up_cur_page = $("#page-size").val();
+                    up_item_num = (up_cur_page - 1) * per_page;
+                    if (up_num - up_item_num < per_page) {
+                        page(up_num - up_item_num);
+                    } else {
+                        page(per_page);
+                    }
+                }
+            })
 
             //视频信息
             $.ajax({
@@ -1399,10 +1599,7 @@
                     vm.likes.likeNum=data.likeNum;
                     vm.likes.coinNum=data.coinNum;
                     vm.likes.collectionNum=data.collectionNum;
-
                 }
-
-
             });
             $(".like").click(function () {
                 vm.likes.likeNum+=1;
@@ -1435,33 +1632,33 @@
                 });
             }
             //评论和评论人信息
-            $.ajax({
-                url:"/video/commentInfo",
-                data:{
-                    "videoId":1
-                },
-                type: "post",
-                datatype: "json",
-                success:function (data1) {
-                    for (var i=0;i<data1.length;i++){
-                        $(".comment-list").prepend(" <div class=\"list-item reply-wrap \">\n" +
-                            "                                        <div class=\"user-face\">\n" +
-                            "                                            <img src=\""+data1[i].userInfo.userPicadress+"\">\n" +
-                            "                                        </div>\n" +
-                            "                                        <div class=\"con\">\n" +
-                            "                                            <div class=\"user\">\n" +
-                            "                                                <span class=\"name\">"+data1[i].userInfo.userName+"</span>\n" +
-                            "                                            </div>\n" +
-                            "                                            <p class=\"text\">"+data1[i].comment+"</p>\n" +
-                            "                                            <div class=\"info\">\n" +
-                            "                                                <span class=\"time\">"+data1[i].sendTime+"</span>\n" +
-                            "                                            </div>\n" +
-                            "                                        </div>\n" +
-                            "                                    </div>")
-                    }
-                }
-
-            });
+            // $.ajax({
+            //     url:"/video/commentInfo",
+            //     data:{
+            //         "videoId":1
+            //     },
+            //     type: "post",
+            //     datatype: "json",
+            //     success:function (data1) {
+            //         for (var i=0;i<data1.length;i++){
+            //             $(".comment-list").prepend(" <div class=\"list-item reply-wrap \">\n" +
+            //                 "                                        <div class=\"user-face\">\n" +
+            //                 "                                            <img src=\""+data1[i].userInfo.userPicadress+"\">\n" +
+            //                 "                                        </div>\n" +
+            //                 "                                        <div class=\"con\">\n" +
+            //                 "                                            <div class=\"user\">\n" +
+            //                 "                                                <span class=\"name\">"+data1[i].userInfo.userName+"</span>\n" +
+            //                 "                                            </div>\n" +
+            //                 "                                            <p class=\"text\">"+data1[i].comment+"</p>\n" +
+            //                 "                                            <div class=\"info\">\n" +
+            //                 "                                                <span class=\"time\">"+data1[i].sendTime+"</span>\n" +
+            //                 "                                            </div>\n" +
+            //                 "                                        </div>\n" +
+            //                 "                                    </div>")
+            //         }
+            //     }
+            //
+            // });
 
             //弹幕信息
             $.ajax({
@@ -1609,83 +1806,86 @@
             })
 
 
+            //获取是否已关注
             var userIds = vm.likes.userId;
             var flag = false;
             $.ajax({
                 url:"/selectFans",
                 type:"post",
-                async:false,
                 data:{
                     "userId":userIds,
                     "fansId":2
                 },
-                datatype:"json",
+                datatype:"text",
                 success:function (data) {
                     if (data==1){
                         flag=true;
                         $("#guanzhu").hide();
                         $("#quguan").show();
+                        quxiaota();
+                        guanzhuta();
                     }else if (data==0){
                         flag=false;
                         $("#guanzhu").show();
                         $("#quguan").hide();
+                        guanzhuta();
+                        quxiaota();
                     }
-                    if (flag==false){
-
-                        $("#guanzhu").click(function () {
-                            $("#guanzhu").hide();
-                            $("#quguan").show();
-                            //关注
-                            $.ajax({
-                                url:"/insertFans",
-                                type:"post",
-                                async:false,
-                                data:{
-                                    "userId":userIds,
-                                    "fansId":2
-                                },
-                                datatype:"json",
-                                success:function (data) {
-                                    flag=true;
-
-                                },
-                                error:function () {
-                                    alert("关注失败")
-                                }
-
-                            });
-                        })
-                    }
-                    if (flag==true){
-
-                        $("#quguan").click(function () {
-                            $("#guanzhu").show();
-                            $("#quguan").hide();
-                            //关注
-                            $.ajax({
-                                url:"/deleteFans",
-                                type:"post",
-                                async:false,
-                                data:{
-                                    "userId":userIds,
-                                    "fansId":2
-                                },
-                                datatype:"json",
-                                success:function (data) {
-                                    flag=false;
-                                },
-                                error:function () {
-                                    alert("取消失败")
-                                }
-
-                            });
-                        })
-                    }
+                },
+                error:function (data) {
+                    alert("粉丝失败")
 
                 }
             });
+                //点击关注
+                function guanzhuta(){
+                    $("#guanzhu").click(function () {
+                        $("#guanzhu").hide();
+                        $("#quguan").show();
+                        //关注
+                        $.ajax({
+                            url:"/insertFans",
+                            type:"post",
+                            data:{
+                                "userId":userIds,
+                                "fansId":2
+                            },
+                            datatype:"json",
+                            success:function (data) {
+                                flag=true;
 
+                            },
+                            error:function () {
+                                alert("关注失败")
+                            }
 
+                        });
+                    })
+                }
+                //点击取关
+                function quxiaota(){
+                    $("#quguan").click(function () {
+                        $("#guanzhu").show();
+                        $("#quguan").hide();
+                        //关注
+                        $.ajax({
+                            url:"/deleteFans",
+                            type:"post",
+                            data:{
+                                "userId":userIds,
+                                "fansId":2
+                            },
+                            datatype:"json",
+                            success:function (data) {
+                                flag=false;
+                            },
+                            error:function () {
+                                alert("取消失败")
+                            }
+
+                        });
+                    })
+                }
         });
 
 
@@ -1776,7 +1976,7 @@
             </div>
             <!--视频播放器-->
             <div id="playerWrap" class="player-wrap" style="height: auto">
-                <div id="bofqi" style="width: 638px;height: 493px;position: static">
+                <div id="bofqi" style="width: 638px;height: 453px;position: static">
                     <div class="video_player" >
                         <video controls class="videos" width="638px" height="381px">
 <%--                            <source src="hangge.mp4" type="video/mp4">--%>
@@ -1792,32 +1992,7 @@
                                 <div>这真的是最后一条</div>
                             </div>
                         </div>
-<%--                        <div class="menu">--%>
-<%--                            <div class="play">播放</div>--%>
-<%--                            <div class="vi-time"></div>--%>
-<%--                            <div class="progress_bar">--%>
-<%--                                <div></div>--%>
-<%--                                <i></i>--%>
-<%--                            </div>--%>
-<%--                            <div class="speed">--%>
-<%--                                <div>倍数</div>--%>
-<%--                                <ul>--%>
-<%--                                    <li>0.5x</li>--%>
-<%--                                    <li>1.0x</li>--%>
-<%--                                    <li>1.5x</li>--%>
-<%--                                    <li>1.25x</li>--%>
-<%--                                    <li>2.0x</li>--%>
-<%--                                </ul>--%>
-<%--                            </div>--%>
-<%--                            <div class="volume">--%>
-<%--                                <span>音量</span>--%>
-<%--                                <div class="Controller">--%>
-<%--                                    <div></div>--%>
-<%--                                    <i></i>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="full">全屏</div>--%>
-<%--                        </div>--%>
+
                     </div>
                 </div>
             </div>
@@ -1892,19 +2067,22 @@
                             <!--输入框-->
                             <div class="comment-send no-login">
                                 <div class="user-face" id="firstface">
-<%--                                    <img class="user-head" src="//static.hdslb.com/images/member/noface.gif">--%>
+                                    <%--   <img class="user-head" src="/images/video/akari.jpg">--%>
                                 </div>
-                                <div class="textarea-container" style="height: 250px">
-<%--                                    <i class="ipt-arrow"></i>--%>
-<%--                                    <textarea cols="80" name="msg" rows="5" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="ipt-txt">--%>
+                                <div class="textarea-container">
+                                    <div class="baffle-wrap">
+                                        <div class="baffle">您的等级不足，升级至Lv2可参与评论
+                                        </div>
+                                    </div>
+                                    <i class="ipt-arrow"></i>
+                                    <textarea cols="80" name="msg" rows="5" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="ipt-txt">
 
-<%--                                    </textarea>--%>
-                                     <form>
-                                         <textarea name="content" style="width:400px;height:200px;visibility:hidden;">
-
-                                         </textarea>
-                                     </form>
-                                    <button type="submit" class="comment-submit" >发表评论</button>
+                                    </textarea>
+                                    <button type="submit" class="comment-submit" disabled="disabled">发表评论</button>
+                                </div>
+                                <div class="comment-emoji">
+                                    <i class="face"></i>
+                                    <span class="text">表情</span>
                                 </div>
                             </div>
                             <!--评论信息-->
@@ -1933,12 +2111,22 @@
 <%--                                        </div>--%>
 <%--                                    </div>--%>
                             </div>
+
 <%--                            <!--分页-->--%>
-<%--                            <div class="bottom-page">--%>
-<%--                                <pager:page pageNo="${pageInfo.pageNum}" totalRecord="${pageInfo.total}" pageSize="${pageInfo.pageSize}" url="/video/Msg"></pager:page>--%>
-<%--                            </div>--%>
+                            <div class="bottom-page">
+                                <ul class="be-page">
+                                    <li class="be-page-item be-page-prev be-page-disabled" id="last"><a>上一页</a></li>
+                                    <li class="be-page-item be-page-active"><a>1</a></li>
+                                    <li class="be-page-item"><a>2</a></li>
+                                    <li class="be-page-item"><a>3</a></li>
+                                    <li class="be-page-item-jump-next"></li>
+                                    <li class="be-page-item"><a>7</a></li>
+                                    <li class="be-page-item be-page-next" id="next"><a>下一页</a></li>
+                                    <span class="be-page-total">共7页</span>
+                                    <span class="be-page-option">跳至<input type="text"id="page-size">页</span>
+                                </ul>
+                            </div>
                             <!--输入框-->
-                            <form action="/video/insert" method="post">
                             <div class="comment-send no-login">
                                 <div class="user-face" id="secondface">
 <%--                                    <img class="user-head" src="/images/video/akari.jpg">--%>
@@ -1959,7 +2147,6 @@
                                     <span class="text">表情</span>
                                 </div>
                             </div>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -2060,6 +2247,7 @@
 </div>
 </body>
 <script src="js/vue.min.js"></script>
+<%--//vue--%>
 <script>
     var vm = new Vue({
         el:"div.ops",
@@ -2076,166 +2264,8 @@
     })
 </script>
 </html>
-<script>
 
-</script>
-<!--按钮-->
-<%--<script>--%>
-
-<%--    var video = document.getElementsByTagName('video')[0];--%>
-<%--    var play = document.getElementsByClassName('play')[0];--%>
-<%--    var time = document.getElementsByClassName('vi-time')[0];--%>
-<%--    var bar = document.getElementsByClassName('progress_bar')[0];--%>
-<%--    var Current = bar.getElementsByTagName('div')[0];--%>
-<%--    var Dot = bar.getElementsByTagName('i')[0];--%>
-<%--    var speed = document.getElementsByClassName('speed')[0].getElementsByTagName('div')[0];--%>
-<%--    var ul = document.getElementsByClassName('speed')[0].getElementsByTagName('ul')[0];--%>
-<%--    var Controller = document.getElementsByClassName('Controller')[0];--%>
-<%--    var volume = document.getElementsByClassName('volume')[0].getElementsByTagName('span')[0];--%>
-<%--    var full = document.getElementsByClassName('full')[0];--%>
-<%--    var video_player = document.getElementsByClassName('video_player')[0]--%>
-<%--    var timer = null;--%>
-<%--    var lock = true;--%>
-<%--    play.onclick = function () {--%>
-<%--        if (video.paused) {  //判断是否已经播放了，如果还没播放，返回true--%>
-<%--            video.play();  //触发方法，播放视频--%>
-<%--            play.innerHTML = "暂停";    //修改 文字。--%>
-<%--        } else {--%>
-<%--            video.pause(); //暂停播放。--%>
-<%--            play.innerHTML = "播放";--%>
-<%--        }--%>
-<%--    }--%>
-<%--    video.onloadedmetadata = function () {// 视频加载完成触发,然后我们把时间添加到time标签上去。--%>
-<%--        time.innerHTML = parseInt(video.currentTime / 60) + ":" + parseInt(video.currentTime % 60) + "/" + parseInt(video.duration / 60) + ":" + parseInt(video.duration % 60);--%>
-<%--    }--%>
-
-<%--    setInterval(function () { //每隔 1秒，刷新一下时间。--%>
-<%--        time.innerHTML = parseInt(video.currentTime / 60) + ":" + parseInt(video.currentTime % 60) + "/" + parseInt(video.duration / 60) + ":" + parseInt(video.duration % 60);--%>
-<%--        Current.style.width = video.currentTime / video.duration * parseInt(window.getComputedStyle(video, null).width) + "px";--%>
-<%--        Dot.style.left = video.currentTime / video.duration * parseInt(window.getComputedStyle(video, null).width) + "px";--%>
-<%--    }, 1000)--%>
-
-<%--    bar.onmouseover = function () {  //鼠标进入的时候，进度条变大--%>
-<%--        this.style.top = '-10px';--%>
-<%--        this.style.height = '10px';--%>
-<%--        Dot.style.width = '18px';--%>
-<%--        Dot.style.height = '18px';--%>
-<%--        Dot.style.top = '-5px';--%>
-<%--    }--%>
-<%--    bar.onmouseout = function () {--%>
-<%--        this.style.top = '-6px';--%>
-<%--        this.style.height = '6px';--%>
-<%--        Dot.style.width = '10px';--%>
-<%--        Dot.style.height = '10px';--%>
-<%--        Dot.style.top = '-2px';--%>
-<%--    }--%>
-
-<%--    bar.onmousedown = function (e) { // 鼠标点击的时候，跳转--%>
-<%--        Current.style.width = e.layerX + 'px'; //e.layerX 是点击的时候的位置。--%>
-<%--        Dot.style.left = e.layerX + 'px';--%>
-<%--        video.currentTime = e.layerX / parseInt(window.getComputedStyle(video, null).width) * video.duration; //计算出点击的位置在总时间里面占多少。--%>
-<%--        time.innerHTML = parseInt(video.currentTime / 60) + ":" + parseInt(video.currentTime % 60) + "/" + parseInt(video.duration / 60) + ":" + parseInt(video.duration % 60);--%>
-<%--    }--%>
-
-<%--    // 倍数--%>
-<%--    speed.onclick = function () {--%>
-<%--        ul.style.display = 'block';--%>
-<%--        this.style.backgroundColor = 'rgb(219, 74, 74)';--%>
-<%--    }--%>
-
-<%--    speed.onmouseout = function () {--%>
-<%--        ul.style.display = 'none';--%>
-<%--        this.style.backgroundColor = '';--%>
-<%--    }--%>
-
-<%--    ul.onmouseover = function () {--%>
-<%--        ul.style.display = 'block';--%>
-<%--        speed.style.backgroundColor = 'rgb(219, 74, 74)';--%>
-<%--    }--%>
-<%--    ul.onmouseout = function () {--%>
-<%--        ul.style.display = 'none';--%>
-<%--        speed.style.backgroundColor = '';--%>
-<%--    }--%>
-
-<%--    var lis = ul.getElementsByTagName('li');--%>
-<%--    for (var i = 0; i < lis.length; i++) {--%>
-<%--        lis[i].onclick = function () {--%>
-<%--            video.playbackRate = parseFloat(this.innerHTML); //调节倍数 0 到正无穷--%>
-<%--            speed.innerHTML = this.innerHTML;--%>
-<%--        }--%>
-<%--    }--%>
-
-<%--    // 音量--%>
-<%--    volume.onclick = function () {--%>
-<%--        Controller.style.display = 'block';--%>
-<%--        this.style.backgroundColor = 'rgb(219, 74, 74)';--%>
-<%--    }--%>
-
-<%--    Controller.getElementsByTagName('div')[0].onmousedown = function (e) {--%>
-<%--        this.onmousemove = function (e) {--%>
-<%--            if (100 - e.offsetY > 100) {  // 这里为什么要减100 是因为，Y的顶点是0， 但是我们日常是用顶点是100，把数倒了而已。--%>
-<%--                document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 100px'); // 修改伪元素。 因为我用的是伪元素做音量条--%>
-<%--                document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 100px');--%>
-<%--                video.volume = 1;       // 修改音量。 0-1 之间， 1是默认音量--%>
-<%--            } else if (100 - e.offsetY < 0) {--%>
-<%--                document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 0px');--%>
-<%--                document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 0px');--%>
-<%--                video.volume = 0;--%>
-<%--            } else {--%>
-<%--                document.styleSheets[0].addRule('.volume .Controller div::before', 'height: ' + (100 - e.offsetY) + 'px');--%>
-<%--                document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: ' + (100 - e.offsetY) + 'px');--%>
-<%--                video.volume = (100 - e.offsetY) * 0.01;--%>
-<%--            }--%>
-
-<%--        }--%>
-<%--        this.onmouseout = function () {--%>
-<%--            Controller.onmousemove = function (e) {--%>
-<%--                if (150 - e.offsetY - 25 > 100) {--%>
-<%--                    document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 100px');--%>
-<%--                    document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 100px');--%>
-<%--                    video.volume = 1;--%>
-<%--                } else if (150 - e.offsetY - 25 < 0) {--%>
-<%--                    document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 0px');--%>
-<%--                    document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 0px');--%>
-<%--                    video.volume = 0;--%>
-<%--                } else {--%>
-<%--                    document.styleSheets[0].addRule('.volume .Controller div::before', 'height: ' + (150 - e.offsetY - 25) + 'px');--%>
-<%--                    document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: ' + (150 - e.offsetY - 25) + 'px');--%>
-<%--                    video.volume = (150 - e.offsetY - 25) * 0.01;--%>
-<%--                }--%>
-<%--                Controller.getElementsByTagName('div')[0].onmouseover = function () {--%>
-<%--                    Controller.onmousemove = false;--%>
-<%--                    Controller.getElementsByTagName('div')[0].onmousemove = false;--%>
-<%--                }--%>
-
-<%--            }--%>
-<%--        }--%>
-<%--        document.body.onmouseup = function () {--%>
-<%--            Controller.onmousemove = false;--%>
-<%--            Controller.getElementsByTagName('div')[0].onmousemove = false;--%>
-<%--            Controller.getElementsByTagName('div')[0].onmouseout = false;--%>
-<%--            Controller.style.display = 'none';--%>
-<%--            volume.style.backgroundColor = '';--%>
-<%--        }--%>
-<%--    }--%>
-
-<%--    // 全屏--%>
-<%--    full.onclick = function () {--%>
-<%--        if (lock) {  //声明一个变量来当状态。--%>
-<%--            lock = false;--%>
-<%--            video_player.style.height = window.screen.height + 'px'; //获取屏幕的宽高--%>
-<%--            video_player.style.width = window.screen.width + 'px';--%>
-<%--            document.documentElement.requestFullscreen();   //全屏模式--%>
-<%--            full.innerHTML = '退出';--%>
-<%--        } else {--%>
-<%--            lock = true;--%>
-<%--            video_player.style.height = 500 + 'px';--%>
-<%--            video_player.style.width = 1000 + 'px';--%>
-<%--            document.exitFullscreen();   //退出全屏--%>
-<%--            full.innerHTML = '全屏';--%>
-<%--        }--%>
-<%--    }--%>
-<%--</script>--%>
+<%--//弹幕开关按钮--%>
 <script>
     $(function () {
         //弹幕开关按钮

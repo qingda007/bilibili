@@ -40,10 +40,10 @@ public class VideoController {
         return videoDanmuService.selectAllDanmu(videoId);
     }
 
-//    @RequestMapping("/upInfo")
-//    public Video selectUpInfo(Integer videoId){
-//        return videoService.selectUpInfo(videoId);
-//    }
+    @RequestMapping("/upInfo")
+    public Video selectUpInfo(Integer videoId){
+        return videoService.selectUpInfo(videoId);
+    }
 
     @RequestMapping("/insertComment")
     public int insertMsg(VideoComment videoComment){
