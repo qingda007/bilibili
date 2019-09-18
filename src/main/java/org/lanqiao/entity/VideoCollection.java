@@ -7,8 +7,16 @@ public class VideoCollection {
     private Video video;
 
     private Integer userId;
-
+    private Integer videoId;
     private Date collectTime;
+
+    public Integer getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(Integer videoId) {
+        this.videoId = videoId;
+    }
 
     public Integer getCollectId() {
         return collectId;

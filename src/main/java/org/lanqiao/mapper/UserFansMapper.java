@@ -1,8 +1,15 @@
 package org.lanqiao.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.lanqiao.entity.UserFans;
 
+import java.util.List;
+
 public interface UserFansMapper {
+    List<UserFans> followList(Integer fansId);
+
+    List<UserFans> fansList(Integer userId);
+
     int fansCount(Integer userId);
 
     int beFansCount(Integer fansId);
@@ -18,4 +25,8 @@ public interface UserFansMapper {
     int updateByPrimaryKeySelective(UserFans record);
 
     int updateByPrimaryKey(UserFans record);
+
+    int deleteFans(@Param("userId") Integer userId,@Param("fansId") Integer fansId);
+
+    int selectFans(@Param("userId") Integer userId,@Param("fansId") Integer fansId);
 }

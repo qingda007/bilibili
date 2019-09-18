@@ -120,7 +120,7 @@
                     }
                 })
             })
-            
+
         // ajax将验证码传入后端
         });
 
@@ -231,16 +231,15 @@
                 <div class="el-input">
                     <input type="text"  autocomplete="off" id="userName" name="userName" placeholder="昵称" class="el-input_inner" >
                 </div>
-                <p class="error-message">请告诉我你的昵称吧</p>
+
             </div>
             <div class="register-hidden-group"></div>
             <!--         密码    -->
             <div class="form-group">
                 <div class="el-input" >
                     <input type="password" autocomplete="off" id="userPassw" name="userPassw" placeholder="密码（6-16个字符组成，区分大小写）" class="el-input_inner">
-                    <lable class="error-message">密码不能小于6个字符</lable>
                 </div>
-                <lable class="error-message error" id="userPassw-error">密码不能小于6个字符</lable>
+
             </div>
             <div class="register-hidden-group"></div>
             <!--       手机号码      -->
@@ -248,7 +247,7 @@
                 <div class="el-input">
                     <input type="text" autocomplete="off" id="userTele" name="userTele" placeholder="填写常用手机号" class="el-input_inner">
                 </div>
-                <p class="error-message">手机号格式错误</p>
+
             </div>
             <div class="register-hidden-group"></div>
             <!--       邮箱      -->
@@ -256,7 +255,7 @@
                 <div class="el-input">
                     <input type="email" autocomplete="off" id="userEmail" name="userEmail" placeholder="填写常用邮箱" class="el-input_inner">
                 </div>
-                <p class="error-message">请填写正确的邮箱</p>
+
             </div>
             <div class="register-hidden-group"></div>
             <!--       短信验证      -->

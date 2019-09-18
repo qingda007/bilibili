@@ -47,7 +47,17 @@ return userInfoMapper.selectByPrimaryKey(id);
 
     @Override
     public int countUserNum(String userType) {
-        return userInfoMapper.selectCountUserNum(userType);
+        List<UserInfo> userInfos = userInfoMapper.selectCountUserNum(userType);
+        if (userInfos!=null){
+            return userInfos.size();
+        }else {
+            return 0;
+        }
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(UserInfo record) {
+        return userInfoMapper.updateByPrimaryKeySelective(record);
     }
 
 

@@ -1,19 +1,11 @@
 package org.lanqiao.controller;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-
-import org.lanqiao.entity.Video;
 import org.lanqiao.entity.VideoCollection;
 import org.lanqiao.service.VideoCollectionService;
 
-import org.lanqiao.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -25,5 +17,21 @@ public class VideoCollectionController {
     @RequestMapping("/getVideoCollection")
     public List<VideoCollection> getVideoCollection(Integer userId){
         return videoCollectionService.getVideoCollection(userId);
+    }
+//获取收藏数
+    @RequestMapping("/getCollectionCount")
+    public int selectIsCollection(Integer videoId , Integer userId){
+        return videoCollectionService.selectIsCollection(videoId,userId);
+    }
+
+    //插入收藏
+    @RequestMapping("/insertCollection")
+    public int insertSelective(VideoCollection videoCollection) {
+        return videoCollectionService.insertSelective(videoCollection);
+    }
+    //取消收藏
+    @RequestMapping("/deleteCollection")
+    public Integer deleteSelective(Integer videoId, Integer userId) {
+        return videoCollectionService.deletecollect(videoId,userId);
     }
 }
