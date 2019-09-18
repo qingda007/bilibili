@@ -12,8 +12,6 @@
     <result column="video_time" property="videoTime" jdbcType="TIMESTAMP" />
     <result column="play_num" property="playNum" jdbcType="INTEGER" />
     <result column="like_num" property="likeNum" jdbcType="INTEGER" />
-    <result column="danmu_num" property="danmuNum" jdbcType="INTEGER" />
-    <result column="collection_num" property="collectionNum" jdbcType="INTEGER" />
     <result column="coin_num" property="coinNum" jdbcType="INTEGER" />
     <result column="class_type" property="classType" jdbcType="VARCHAR" />
     <result column="is_review" property="isReview" jdbcType="VARCHAR" />
@@ -29,8 +27,6 @@
     <result column="video_time" property="videoTime" jdbcType="TIMESTAMP" />
     <result column="play_num" property="playNum" jdbcType="INTEGER" />
     <result column="like_num" property="likeNum" jdbcType="INTEGER" />
-    <result column="danmu_num" property="danmuNum" jdbcType="INTEGER" />
-    <result column="collection_num" property="collectionNum" jdbcType="INTEGER" />
     <result column="coin_num" property="coinNum" jdbcType="INTEGER" />
     <result column="class_type" property="classType" jdbcType="VARCHAR" />
     <result column="is_review" property="isReview" jdbcType="VARCHAR" />
@@ -57,7 +53,7 @@
     <result column="user_coin" property="userCoin" jdbcType="INTEGER" />
     <result column="user_role" property="userRole" jdbcType="VARCHAR" />
   </resultMap>
-  <select id="selectUploadVideo" resultMap="VideoResultMap" parameterType="java.lang.Integer">
+  <select id="selectUploadVideo" resultMap="UploadResultMap" parameterType="java.lang.Integer">
     select v.*,s.*,(select count(*) from video_danmu d where d.video_id = v.video_id) as danmu_num,(select count(*) from video_collection c where c.video_id = v.video_id) as collection_num
     from video v, status s
     where v.user_id = #{userId,jdbcType=INTEGER} and s.status_id = v.class_type
@@ -107,7 +103,7 @@
 
   <sql id="Base_Column_List" >
     video_id, user_id, video_title, video_pic, video_desc, video_url, up_time, video_time,
-    play_num, like_num, danmu_num, collection_num, coin_num, class_type, is_review
+    play_num, like_num, coin_num, class_type, is_review
   </sql>
 
   <select id="selectUpInfo" resultMap="VideoResultMap" parameterType="java.lang.Integer">
@@ -163,12 +159,6 @@
       </if>
       <if test="likeNum != null" >
         like_num,
-      </if>
-      <if test="danmuNum != null" >
-        danmu_num,
-      </if>
-      <if test="collectionNum != null" >
-        collection_num,
       </if>
       <if test="coinNum != null" >
         coin_num,
@@ -261,12 +251,6 @@
       <if test="likeNum != null" >
         like_num = #{likeNum,jdbcType=INTEGER},
       </if>
-      <if test="danmuNum != null" >
-        danmu_num = #{danmuNum,jdbcType=INTEGER},
-      </if>
-      <if test="collectionNum != null" >
-        collection_num = #{collectionNum,jdbcType=INTEGER},
-      </if>
       <if test="coinNum != null" >
         coin_num = #{coinNum,jdbcType=INTEGER},
       </if>
@@ -290,11 +274,34 @@
       video_time = #{videoTime,jdbcType=TIMESTAMP},
       play_num = #{playNum,jdbcType=INTEGER},
       like_num = #{likeNum,jdbcType=INTEGER},
-      danmu_num = #{danmuNum,jdbcType=INTEGER},
-      collection_num = #{collectionNum,jdbcType=INTEGER},
       coin_num = #{coinNum,jdbcType=INTEGER},
       class_type = #{classType,jdbcType=VARCHAR},
       is_review = #{isReview,jdbcType=VARCHAR}
     where video_id = #{videoId,jdbcType=INTEGER}
   </update>
+  <resultMap id="UploadResultMap" type="org.lanqiao.entity.Video" >
+    <id column="video_id" property="videoId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="video_title" property="videoTitle" jdbcType="VARCHAR" />
+    <result column="video_pic" property="videoPic" jdbcType="VARCHAR" />
+    <result column="video_desc" property="videoDesc" jdbcType="VARCHAR" />
+    <result column="video_url" property="videoUrl" jdbcType="VARCHAR" />
+    <result column="up_time" property="upTime" jdbcType="TIMESTAMP" />
+    <result column="video_time" property="videoTime" jdbcType="TIMESTAMP" />
+    <result column="play_num" property="playNum" jdbcType="INTEGER" />
+    <result column="like_num" property="likeNum" jdbcType="INTEGER" />
+    <result column="danmu_num" property="danmuNum" jdbcType="INTEGER" />
+    <result column="collection_num" property="collectionNum" jdbcType="INTEGER" />
+    <result column="coin_num" property="coinNum" jdbcType="INTEGER" />
+    <result column="class_type" property="classType" jdbcType="VARCHAR" />
+    <result column="is_review" property="isReview" jdbcType="VARCHAR" />
+    <association property="status" javaType="org.lanqiao.entity.Status">
+      <id column="status_id" property="statusId" jdbcType="VARCHAR" />
+      <result column="status_alias1" property="statusAlias1" jdbcType="VARCHAR" />
+      <result column="status_alias2" property="statusAlias2" jdbcType="VARCHAR" />
+      <result column="status_class" property="statusClass" jdbcType="INTEGER" />
+      <result column="status_desc" property="statusDesc" jdbcType="VARCHAR" />
+    </association>
+    <association property="userInfo" resultMap="UserInfoResultMap"></association>
+  </resultMap>
 </mapper>

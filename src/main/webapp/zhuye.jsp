@@ -166,39 +166,12 @@
             $("#face").attr("src","images/main/akari.jpg");
             $node1=$("div.profile-m").detach();
             $node2=$("li.nipi").detach();
-            <%--function ll(){--%>
-            <%--    try {--%>
-            <%--        vm.user.uid=${sid};--%>
-            <%--    }catch (e) {--%>
-            <%--        vm.user.uid=null;--%>
-            <%--    }--%>
-            <%--}--%>
-            <%--ll();--%>
 
-            <%--vm.user.uid=${sid};--%>
-            <%--var id=vm.user.uid;--%>
+
             var id= ${sessionScope.userInfo.userId};
 
-            //跳转用户中心界面
-            // $("a.account").onclick=function () {
-            //     $.ajax({
-            //         url:"/toUser",
-            //         dataType:"json",
-            //         data:{"id":id},
-            //         type:"post",
-            //         success:function (data) {
-            //             alert("成功");
-            //             window.location.href="/user";
-            //         },
-            //         error:function(){
-            //             alert("失败");
-            //         }
-            //     })
-            //     alert("aaaa");
-            // };
-            // $("a.number").click(function () {
-            //     alert("chenggong");
-            // });
+            //导入用户信息
+
             if(id!=null){
                 $.ajax({
                     url:"http://localhost:8888/getUserInfo",
@@ -209,7 +182,12 @@
                     },
                     success:function(data){
                         var img=data.userPicadress;
-                        $("#face").attr("src",img);
+                        if(img!=null){
+                            $("#face").attr("src",img);
+                        }else{
+                            $("#face").attr("src","images/main/akari.jpg");
+                        }
+
                         $("#i-login").remove();
                         $("#fixed-app-download").remove();
                         $("#nipi").prepend($node1);
@@ -244,7 +222,202 @@
                 //登录退出按钮
             }
 
+            //  视频类型的数量
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'动画'},
+                success: function (data) {
+                    vType.type1.num1=data;
 
+                },
+                error:function () {
+                    vType.type1.num1=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'番剧'},
+                success: function (data) {
+                    vType.type1.num2=data;
+
+                },
+                error:function () {
+                    vType.type1.num2=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'国创'},
+                success: function (data) {
+                    vType.type1.num3=data;
+
+                },
+                error:function () {
+                    vType.type1.num3=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'音乐'},
+                success: function (data) {
+                    vType.type1.num4=data;
+
+                },
+                error:function () {
+                    vType.type1.num4=0;
+                }
+
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'舞蹈'},
+                success: function (data) {
+                    vType.type1.num5=data;
+
+                },
+                error:function () {
+                    vType.type1.num5=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'游戏'},
+                success: function (data) {
+                    vType.type1.num6=data;
+
+                },
+                error:function () {
+                    vType.type1.num6=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'科技'},
+                success: function (data) {
+                    vType.type1.num7=data;
+
+                },
+                error:function () {
+                    vType.type1.num7=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'数码'},
+                success: function (data) {
+                    vType.type1.num8=data;
+
+                },
+                error:function () {
+                    vType.type1.num8=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'生活'},
+                success: function (data) {
+                    vType.type1.num9=data;
+
+                },
+                error:function () {
+                    vType.type1.num9=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'鬼畜'},
+                success: function (data) {
+                    vType.type1.num10=data;
+
+                },
+                error:function () {
+                    vType.type1.num10=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'时尚'},
+                success: function (data) {
+                    vType.type1.num11=data;
+
+                },
+                error:function () {
+                    vType.type1.num11=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'广告'},
+                success: function (data) {
+                    vType.type1.num12=data;
+
+                },
+                error:function () {
+                    vType.type1.num12=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'娱乐'},
+                success: function (data) {
+                    vType.type1.num13=data;
+                },
+                error:function () {
+                    vType.type1.num13=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'影视'},
+                success: function (data) {
+                    vType.type1.num14=data;
+
+                },
+                error:function () {
+                    vType.type1.num14=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'放映厅'},
+                success: function (data) {
+                    vType.type1.num15=data;
+
+                },
+                error:function () {
+                    vType.type1.num15=0;
+                }
+            })
 
 
         })
@@ -295,7 +468,7 @@
                     </ul>
                 </div>
                 <div class="up-load fr">
-                    <a class="u-link">投稿</a>
+                    <a class="u-link"href="/video/uploadVideo">投稿</a>
                 </div>
                 <div class="nav-con fr">
                     <ul class="fr">
@@ -356,7 +529,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a class="number">
+                                                <a class="number"href="/video/uploadVideo">
                                                     <i class="bili-icon b-icon-p-member"></i>
                                                     投稿管理
                                                 </a>
@@ -416,7 +589,7 @@
         </div>
         <div class="bili-wrapper">
             <div id="primary_menu" class="primary-menu report-scroll-module ">
-                <ul class="nav-menu">
+                <ul id="nav-menu" class="nav-menu">
                     <li class="home">
                         <a>
                             <div class="nav-name">首页</div>
@@ -426,7 +599,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num1}}</span>
                             </div>
                             <div class="nav-name">动画</div>
                         </a>
@@ -451,7 +624,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num2}}</span>
                             </div>
                             <div class="nav-name">番剧</div>
                         </a>
@@ -479,7 +652,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num3}}</span>
                             </div>
                             <div class="nav-name">国创</div>
                         </a>
@@ -511,7 +684,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num4}}</span>
                             </div>
                             <div class="nav-name">音乐</div>
                         </a>
@@ -551,7 +724,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num5}}</span>
                             </div>
                             <div class="nav-name">舞蹈</div>
                         </a>
@@ -570,7 +743,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num6}}</span>
                             </div>
                             <div class="nav-name">游戏</div>
                         </a>
@@ -607,7 +780,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num7}}</span>
                             </div>
                             <div class="nav-name">科技</div>
                         </a>
@@ -636,7 +809,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num8}}</span>
                             </div>
                             <div class="nav-name">数码</div>
                         </a>
@@ -658,7 +831,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num9}}</span>
                             </div>
                             <div class="nav-name">生活</div>
                         </a>
@@ -692,7 +865,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num10}}</span>
                             </div>
                             <div class="nav-name">鬼畜</div>
                         </a>
@@ -715,7 +888,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num11}}</span>
                             </div>
                             <div class="nav-name">时尚</div>
                         </a>
@@ -740,7 +913,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num12}}</span>
                             </div>
                             <div class="nav-name">广告</div>
                         </a>
@@ -749,7 +922,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num13}}</span>
                             </div>
                             <div class="nav-name">娱乐</div>
                         </a>
@@ -769,7 +942,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num14}}</span>
                             </div>
                             <div class="nav-name">影视</div>
                         </a>
@@ -791,7 +964,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num15}}</span>
                             </div>
                             <div class="nav-name">放映厅</div>
                         </a>
@@ -1369,6 +1542,29 @@
             Num:null
         }
         },
+    })
+    var vType=new Vue({
+        el:'#nav-menu',
+        data:{
+            type1:{
+                num1:null,
+                num2:null,
+                num3:null,
+                num4:null,
+                num5:null,
+                num6:null,
+                num7:null,
+                num8:null,
+                num9:null,
+                num10:null,
+                num11:null,
+                num12:null,
+                num13:null,
+                num14:null,
+                num15:null,
+
+            }
+        }
     })
 </script>
 

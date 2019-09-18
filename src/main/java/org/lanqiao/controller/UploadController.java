@@ -41,8 +41,8 @@ public class UploadController {
     private String rootPath = "E:/bilibili/teporary";
     @ResponseBody
     @RequestMapping(value = "/test")
-    public int test(@RequestParam("userId") int userId,@RequestParam("word") String word){
-        return uploadService.countByWord(userId,word);
+    public int test(@RequestParam("word") String type1){
+        return statusService.countVideoByType1(type1);
     }
     @ResponseBody
     @RequestMapping(value = "/upload")
@@ -148,10 +148,18 @@ public class UploadController {
     }
 
     @RequestMapping(value = "/managerVideo")
-    public ModelAndView managerVideo(@RequestParam(value="pageNo", defaultValue = "1") int pageNum, @RequestParam(value="isReview", defaultValue = "-1") int isReview, @RequestParam(value="videoId", defaultValue = "-1") int videoId) {
+    public ModelAndView managerVideo(@RequestParam(value="pageNo", defaultValue = "1") int pageNum, @RequestParam(value="isReview", defaultValue = "-1") int isReview, @RequestParam(value="videoId", defaultValue = "-1") final int videoId) {
         ModelAndView modelAndView = new ModelAndView();
         if(videoId!=-1){
-            uploadService.delVideo(videoId);
+            new Thread() {
+                public void run() {
+                    Ffmpeg ffmpeg = new Ffmpeg();
+                    Video video = videoService.selectVideoInfo(videoId);
+                    ffmpeg.delDataFile(video.getVideoPic()); //删除该稿件的封面
+                    ffmpeg.delDataFile(video.getVideoUrl());  //删除该稿件的视频文件
+                }
+            }.start();
+            uploadService.delVideo(videoId); //删除该稿件的数据库记录
         }
         if(isReview==-1){
             PageHelper.startPage(pageNum, 5);
@@ -181,10 +189,13 @@ public class UploadController {
         ModelAndView modelAndView = new ModelAndView();
         Video video = videoService.selectVideoInfo(videoId);
         Ffmpeg ffmpeg = new Ffmpeg();
-        String uuid = ffmpeg.getUuid(video.getVideoUrl());
-        request.getSession(true).setAttribute("Uuid", uuid);
-        request.getSession(true).setAttribute("videoUrl", ffmpeg.getDataDir(video.getVideoUrl()));
-        modelAndView.addObject("video",video);
+        if(ffmpeg.isExist(video.getVideoUrl())){
+            String uuid = ffmpeg.getUuid(video.getVideoUrl());
+            request.getSession(true).setAttribute("Uuid", uuid);
+            request.getSession(true).setAttribute("videoUrl", ffmpeg.getDataDir(video.getVideoUrl()));
+            modelAndView.addObject("video",video);
+        }
+        else modelAndView.addObject("video",-1);
         modelAndView.setViewName("upload-modify");
         return modelAndView;
     }
