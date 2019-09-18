@@ -148,10 +148,18 @@ public class UploadController {
     }
 
     @RequestMapping(value = "/managerVideo")
-    public ModelAndView managerVideo(@RequestParam(value="pageNo", defaultValue = "1") int pageNum, @RequestParam(value="isReview", defaultValue = "-1") int isReview, @RequestParam(value="videoId", defaultValue = "-1") int videoId) {
+    public ModelAndView managerVideo(@RequestParam(value="pageNo", defaultValue = "1") int pageNum, @RequestParam(value="isReview", defaultValue = "-1") int isReview, @RequestParam(value="videoId", defaultValue = "-1") final int videoId) {
         ModelAndView modelAndView = new ModelAndView();
         if(videoId!=-1){
-            uploadService.delVideo(videoId);
+            new Thread() {
+                public void run() {
+                    Ffmpeg ffmpeg = new Ffmpeg();
+                    Video video = videoService.selectVideoInfo(videoId);
+                    ffmpeg.delDataFile(video.getVideoPic()); //删除该稿件的封面
+                    ffmpeg.delDataFile(video.getVideoUrl());  //删除该稿件的视频文件
+                }
+            }.start();
+            uploadService.delVideo(videoId); //删除该稿件的数据库记录
         }
         if(isReview==-1){
             PageHelper.startPage(pageNum, 5);
