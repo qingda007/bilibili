@@ -1,7 +1,11 @@
 package org.lanqiao.entity;
 
+import org.hibernate.validator.constraints.Email;
 import org.springframework.stereotype.Repository;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Repository

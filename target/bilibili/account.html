@@ -150,14 +150,10 @@
 			<div class="security_content">
 				<div class="security-left">
 					<span class="security-title">个人中心</span>
-					<ul class="security-ul">
-						<li class="security-list">
+					<ul id="ul1" class="security-ul">
+						<li class="security-list is-active">
 							<i class="security-icon icon-3"></i>
 							<span class="security-nav-name"style="color: #FFFFFF">我的信息</span>
-						</li>
-						<li class="security-list">
-							<i class="security-icon icon-6"></i>
-							<span class="security-nav-name">账号安全</span>
 						</li>
 					</ul>
 					<ul class="security-ul ">
@@ -176,20 +172,8 @@
 							<span class="security-right-title-text">我的信息</span>
 						</div>
 						<div class="user-setting-warp">
-							<div class="face-tool">
-								<div class="tool-container">
-									<a>
-										<div class="tool-change-face">
-											<span>更改头像</span>
-										</div>
-									</a>
-									<div class="tool-face-box">
-										<img class="tool-user-face" src="images/main/akari.jpg" />
-									</div>
-								</div>
-							</div>
 							<div>
-								<form class="el-form clearfix">
+								<form class="el-form clearfix" action="changeuserinfo">
 									<div class="el-form-item user-nick-name">
 										<label class="el-form-item__label">昵称：</label>
 										<div class="el-form-item__content">
@@ -232,6 +216,30 @@
 											</div>
 										</div>
 									</div>
+									<div class="el-form-item user-nick-name">
+										<label class="el-form-item__label">更换密码：</label>
+										<div class="el-form-item__content">
+											<div class="el-input">
+												<input class="el-input__inner" type="text"autocomplete="off" placeholder=""/>
+											</div>
+										</div>
+									</div>
+									<div class="el-form-item user-nick-name">
+										<label class="el-form-item__label">更换手机：</label>
+										<div class="el-form-item__content">
+											<div class="el-input">
+												<input class="el-input__inner" type="text"autocomplete="off" placeholder=""/>
+											</div>
+										</div>
+									</div>
+									<div class="el-form-item user-nick-name">
+										<label class="el-form-item__label">更换邮箱：</label>
+										<div class="el-form-item__content">
+											<div class="el-input">
+												<input class="el-input__inner" type="text"autocomplete="off" placeholder=""/>
+											</div>
+										</div>
+									</div>
 									<div class="el-form-item user-my-btn">
 										<div class="el-form-item__content">
 											<div class="padding-dom"></div>
@@ -245,75 +253,6 @@
 								</form>
 							</div>
 							<div></div>
-						</div>
-					</div>
-					<div class="security-right"style="display: none">
-						<div class="security-right-title">
-							<span class="security-right-title-icon"></span>
-							<span class="security-right-title-text">账号安全</span>
-						</div>
-						<div class="user-setting-warp">
-							<div class="res-box">
-								<div class="safe-logo safe">
-									<div ></div>
-								</div>
-								<ul class="nav-list">
-									<li>
-										<div class="nav-container clearfix">
-											<div class="list-title clearfix">
-												<div class="list-title-text">
-												<span class="normal">
-												</span>
-													<p>绑定手机</p>
-												</div>
-
-											</div>
-											<div class="list-description">
-												<p>"用户电话号码"</p>
-											</div>
-											<div class="list-link">
-												<p><a>更换手机</a></p>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="nav-container clearfix">
-											<div class="list-title clearfix">
-												<div class="list-title-text">
-												<span class="safe">
-												</span>
-													<p>设置密码</p>
-												</div>
-
-											</div>
-											<div class="list-description">
-												<p>"设置或未设置"</p>
-											</div>
-											<div class="list-link">
-												<p><a>修改密码</a></p>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="nav-container clearfix">
-											<div class="list-title clearfix">
-												<div class="list-title-text">
-												<span class="normal">
-												</span>
-													<p>绑定邮箱</p>
-												</div>
-
-											</div>
-											<div class="list-description">
-												<p>"用户邮箱号码"</p>
-											</div>
-											<div class="list-link">
-												<p><a>更换邮箱</a></p>
-											</div>
-										</div>
-									</li>
-								</ul>
-							</div>
 						</div>
 					</div>
 				</div>

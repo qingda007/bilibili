@@ -1,5 +1,9 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
@@ -14,7 +18,7 @@
         // 手机号码验证
         jQuery.validator.addMethod("mobile", function(value, element) {
             var length = value.length;
-            var mobile =  /^(((13[0-9]{1})|(15[0-9]{1}))+\d{8})$/
+            var mobile =  /^1(3|4|5|7|8)\d{9}$/;
             return this.optional(element) || (length == 11 && mobile.test(value));
         }, "手机号码格式错误");
 
@@ -39,13 +43,16 @@
                     userEmail:{
                         required:true,
                         email:true
+                    },
+                    code:{
+                        required:true,
+                        rangelength:[4,4]
                     }
                 },
                 messages:{
                     userName:{
                         required:"请输入用户名",
                         rangelength:$.validator.format("用户名长度在必须为：6-12 之间"),
-                        remote:"该用户名已存在！"
                     },
                     userPassw:{
                         required:"请输入密码",
@@ -59,41 +66,68 @@
                     userEmail:{
                         required:"请填写邮件",
                         email:"邮箱格式不正确"
+                    },
+                    code:{
+                        required:"请先获得验证码"
                     }
                 }
             });
-            // $("#submit").click(function () {
-            //     var userName = $("#userName").val();
-            //     var userPassw = $("#userPassw").val();
-            //     var userTele = $("#userTele").val();
-            //     var userEmail = $("#userEmail").val();
-            //     $.ajax({
-            //         url:"/user/doRegister",//获取自己系统后台用户信息接口
-            //         data:{
-            //             "userName":userName,
-            //             "userPassw":userPassw,
-            //             "userTele":userTele,
-            //             "userEmail":userEmail
-            //         },
-            //         type:"post",
-            //         dataType:"json",
-            //         success:function (data) {
-            //             alert(data);
-            //             if(data==0){
-            //                 alert("注册失败");
-            //             }else {
-            //                 alert("注册成功");
-            //                 window.location.href="/login.jsp";
-            //             }
-            //         },
-            //         error:function (data) {
-            //             alert(data);
-            //             alert("请求失败，请联系管理员");
-            //         }
-            //
-            //     })
-            // })
-        })
+            //当点击获取验证码，将手机号传到后端,并开始计时
+            $("#button").click(function () {
+                var backTime = 60;
+                setTime();
+
+                function setTime() {
+                    if (backTime == 0) {
+                        $("#button").removeAttr("disabled");
+                        $("#button").css("background-color","#00a1d6");
+                        $("#button").val("点击获取").css("color","#ffffff");
+                    } else {
+                        $("#button").attr("disabled", true).css("background-color","#dddddd");
+                        $("#button").val(backTime + "秒").css("color","#555555");
+                        backTime--;
+
+                        setTimeout(function () {
+                            setTime();}, 1000)
+                    }
+                }
+                $.ajax({
+                    url:"http://localhost:8888/user/getcode",
+                    type:"post",
+                    dataType:"json",
+                    data:{"phone":$("#userTele").val()},
+                    success:function (data) {
+                        if(data == 0){
+                            $("#button").attr("disabled", true);
+                        }
+                    }
+                })
+            });
+
+
+
+            //从验证码移开始检验
+            $("#code").blur(function () {
+                $.ajax({
+                    url:"http://localhost:8888/user/comparecode",
+                    type:"post",
+                    dataType:"json",
+                    data:{"preauthcode":$("#code").val()},
+                    success:function (data) {
+                        if(data == 2){
+                            error("请输入正确的验证码哦！")
+                        }
+                    }
+                })
+            })
+            
+        // ajax将验证码传入后端
+        });
+
+
+
+
+
 
         //选中复选框才能点击注册
         function terms(){
@@ -104,6 +138,8 @@
                 $("#submit").attr("disabled",true).css("background-color","#f5f5f5")
             }
         }
+
+
     </script>
 </head>
 <body>
@@ -200,10 +236,11 @@
             <div class="register-hidden-group"></div>
             <!--         密码    -->
             <div class="form-group">
-                <div class="el-input">
+                <div class="el-input" >
                     <input type="password" autocomplete="off" id="userPassw" name="userPassw" placeholder="密码（6-16个字符组成，区分大小写）" class="el-input_inner">
+                    <lable class="error-message">密码不能小于6个字符</lable>
                 </div>
-                <p class="error-message">密码不能小于6个字符</p>
+                <lable class="error-message error" id="userPassw-error">密码不能小于6个字符</lable>
             </div>
             <div class="register-hidden-group"></div>
             <!--       手机号码      -->
@@ -225,13 +262,11 @@
             <!--       短信验证      -->
             <div class="form-group back-fff">
                 <div class="el-input">
-                    <input type="text" autocomplete="off" placeholder="请输入短信验证码" name="code" class="el-input_inner">
+                    <input type="text" id="code" name="code" autocomplete="off" placeholder="请输入短信验证码" class="el-input_inner">
                 </div>
                 <div id="captchCheck" class="check" style="display: none;">
                 </div>
-                <button type="button" class="el-button yzm-buttom el-button--primary1">
-                    <span>点击获取</span>
-                </button>
+                <input type="button" id="button" class="el-button yzm-buttom el-button--primary1"  value="点击获取">
             </div>
             <!--      同意协议          -->
             <div class="form-group">

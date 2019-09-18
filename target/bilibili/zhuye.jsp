@@ -1,4 +1,7 @@
 
+<%
+    Object userInfo= session.getAttribute("userInfo");
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -158,7 +161,7 @@
                     success:function (data) {
                         vNum.Num=data;
                     },
-                });
+            });
             //从登录界面登录成功后，跳到主界面并给vm.user.uid赋值
             $("#face").attr("src","images/main/akari.jpg");
             $node1=$("div.profile-m").detach();
@@ -172,15 +175,16 @@
             <%--}--%>
             <%--ll();--%>
 
-            vm.user.uid=${sid};
-            var id=vm.user.uid;
-            if(id!=null){
+            <%--vm.user.uid=${sid};--%>
+            <%--var id=vm.user.uid;--%>
+
+
                 $.ajax({
                     url:"http://localhost:8888/getUserInfo",
                     type:"post",
                     dataType:"json",
                     data:{
-                        "id":id,
+                        "id":${sessionScope.userInfo.userId},
                     },
                     success:function(data){
                         var img=data.userPicadress;
@@ -220,7 +224,7 @@
                     vm.user.uid=null;
                     location.reload();
                 });//登录退出按钮
-            }
+
             //跳转用户中心界面
             $("a.account").click(function () {
                 $.ajax({
@@ -1358,10 +1362,7 @@
     })
     var vNum=new Vue({
         el:'div.online',
-        data: {userNum:{
-            Num:null
-        }
-        },
+        data: {Num:null,},
     })
 </script>
 

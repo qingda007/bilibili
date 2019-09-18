@@ -49,7 +49,7 @@
 			指定列的java数据类型
 			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
 		</table> -->
-<!--		<table tableName="video_danmu" domainObjectName="VideoDanmu"-->
+<!--		<table tableName="user_info" domainObjectName="UserInfo"-->
 <!--			enableCountByExample="false" enableDeleteByExample="false"-->
 <!--			enableSelectByExample="false" enableUpdateByExample="false">-->
 <!--			<property name="useActualColumnNames" value="false" />-->

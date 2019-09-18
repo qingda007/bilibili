@@ -1567,7 +1567,7 @@
             cursor: pointer;
         }
     </style>
-
+<%--弹幕列展开--%>
     <script>
 
         $(function () {
@@ -1594,7 +1594,7 @@
             })
         })
     </script>
-
+<%--总的方法--%>
     <script>
         //全局变量
         //总数
@@ -1709,7 +1709,6 @@
                     $(".tag-area").prepend("<li class=\"tag\">"+data.videoTitle+"</li>");
                     vm.likes.likeNum=data.likeNum;
                     vm.likes.coinNum=data.coinNum;
-                    vm.likes.collectionNum=data.collectionNum;
                 }
             });
             $(".like").click(function () {
@@ -1717,9 +1716,6 @@
             });
             $(".coin").click(function () {
                 vm.likes.coinNum+=1;
-            });
-            $(".collect").click(function () {
-                vm.likes.collectionNum+=1;
             });
 
             function showDanmu(){
@@ -1841,6 +1837,19 @@
                 }
             });
 
+            //收藏数
+            $.ajax({
+                url:"/gerCollectionCount",
+                data:{
+                    "videoId":1
+                },
+                type:"post",
+                datatype:"json",
+                success:function (data) {
+                    vm.likes.collectionNum=data;
+                }
+            });
+
             //获取登录用户信息
             $.ajax({
                 url:"http://localhost:8888/getUserInfo",
@@ -1915,6 +1924,81 @@
                     }
                 })
             })
+
+            //获取是否收藏
+            var collectd=false;
+            $.ajax({
+                url:"/getCollectionCount",
+                type:"post",
+                data:{
+                    "videoId":1,
+                    "userId":2
+                },
+                datatype:"text",
+                success:function (data) {
+                    if (data==1){
+                        collectd = true;
+                    }else if (data==0){
+                        collectd = false;
+                    }
+                },
+                error:function () {
+                    alert("是否收藏失败")
+                }
+            });
+            $(".collect").click(function () {
+                if ( collectd == true){
+                    quxiaoconllect();
+                }else if (collectd == false){
+                    shoucang();
+                }
+            });
+
+            //点击收藏
+            function shoucang() {
+
+                    vm.likes.collectionNum+=1;
+                    $.ajax({
+                        url: "/insertCollection",
+                        type: "post",
+                        data: {
+                            "videoId": 1,
+                            "userId": 2
+                        },
+                        datatype: "json",
+                        success: function (data) {
+                            collectd = true;
+                        },
+                        error: function () {
+                            alert("收藏失败");
+                        }
+
+                    })
+
+            };
+
+            //点击取消收藏
+            function quxiaoconllect() {
+
+                    vm.likes.collectionNum-=1;
+                    $.ajax({
+                        url: "/deleteCollection",
+                        type: "post",
+                        data: {
+                            "videoId": 1,
+                            "userId": 2
+                        },
+                        datatype: "json",
+                        success: function (data) {
+                            collectd = false;
+                        },
+                        error: function () {
+                            alert("取消收藏失败");
+                        }
+
+                    })
+
+            };
 
 
             //获取是否已关注
@@ -2000,18 +2084,6 @@
         });
 
 
-    </script>
-    <script>
-        var editor;
-        KindEditor.ready(function(K) {
-            editor = K.create('textarea[name="content"]', {
-                resizeType : 1,
-                allowPreviewEmoticons : false,
-                allowImageUpload : false,
-                items : [
-                    'emoticons']
-            });
-        });
     </script>
 </head>
 <body>

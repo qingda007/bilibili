@@ -3,8 +3,21 @@
 <mapper namespace="org.lanqiao.mapper.UserFansMapper" >
   <resultMap id="FansResultMap" type="org.lanqiao.entity.UserFans" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="fans_id" property="fansId" jdbcType="INTEGER" />
+    <association property="userInfo" javaType="org.lanqiao.entity.UserInfo">
+      <id column="user_id" property="userId" jdbcType="INTEGER" />
+      <result column="user_name" property="userName" jdbcType="VARCHAR" />
+      <result column="user_passw" property="userPassw" jdbcType="VARCHAR" />
+      <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+      <result column="user_birthday" property="userBirthday" jdbcType="DATE" />
+      <result column="user_sex" property="userSex" jdbcType="VARCHAR" />
+      <result column="user_regtime" property="userRegtime" jdbcType="TIMESTAMP" />
+      <result column="user_tele" property="userTele" jdbcType="VARCHAR" />
+      <result column="user_type" property="userType" jdbcType="VARCHAR" />
+      <result column="user_picadress" property="userPicadress" jdbcType="VARCHAR" />
+      <result column="user_coin" property="userCoin" jdbcType="INTEGER" />
+      <result column="user_role" property="userRole" jdbcType="VARCHAR" />
+    </association>
   </resultMap>
 
   <select id="fansCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
@@ -15,8 +28,15 @@
     select count(*) from user_fans where fans_id=#{userId} group by fans_id
   </select>
 
+  <select id="fansList" resultMap="FansResultMap" parameterType="java.lang.Integer">
+    select * from user_fans f,user_info u where f.user_id =#{userId} and f.fans_id=u.user_id
+  </select>
+
+  <select id="followList" resultMap="FansResultMap" parameterType="java.lang.Integer">
+    select * from user_fans f,user_info u where f.fans_id =#{fansId} and f.user_id=u.user_id
+  </select>
   <select id="selectByPrimaryKey" resultMap="FansResultMap" parameterType="java.lang.Integer" >
-    select 
+    select *
     from user_fans
     where id = #{id,jdbcType=INTEGER}
   </select>

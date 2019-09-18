@@ -15,20 +15,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
 @RestController
 public class UserInfoController {
-@Autowired
-UserInfoService userInfoService;
-@Autowired
-VideoServiceImpl videoService;
-@RequestMapping("/getUserInfo")
-    public UserInfo GetUserInfo(Integer id){
-return userInfoService.selectByPrimaryKey(id);
-}
+    @Autowired
+    UserInfoService userInfoService;
+    @Autowired
+    VideoServiceImpl videoService;
+
+    @RequestMapping("/getUserInfo")
+    public UserInfo GetUserInfo(Integer id) {
+        return userInfoService.selectByPrimaryKey(id);
+    }
+
     @RequestMapping("/getVideoUpload")
     public List<Video> GetVideoUpload(Integer userId) {
         return videoService.selectVideoUpload(userId);
@@ -57,5 +60,15 @@ return userInfoService.selectByPrimaryKey(id);
     public ModelAndView zhuye(){
         ModelAndView bilibili=new ModelAndView("bilibili");
         return bilibili;
+    }
+
+    @RequestMapping("/index")
+    public ModelAndView index(HttpServletRequest request){
+        ModelAndView mv=new ModelAndView("user");
+        HttpSession session=request.getSession();
+        UserInfo userInfo=new UserInfo();
+        userInfo=userInfoService.selectByPrimaryKey(1);
+        session.setAttribute("userinfo",userInfo);
+        return mv;
     }
 }
