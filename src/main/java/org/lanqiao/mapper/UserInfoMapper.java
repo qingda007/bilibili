@@ -30,6 +30,6 @@ public interface UserInfoMapper {
 
     int updateByPrimaryKey(UserInfo record);
 
-    int selectCountUserNum(String userType);
+    List<UserInfo> selectCountUserNum(String userType);
     //记录在线人数
 }

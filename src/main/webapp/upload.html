@@ -5,239 +5,170 @@
     <title>上传视频</title>
     <link rel="stylesheet" href="css/upload/upload_step1.css" type="text/css">
     <link rel="stylesheet" href="css/upload/upload_step2.css" type="text/css">
+    <link rel="stylesheet" href="css/upload/upload_step3.css" type="text/css">
     <script src="js/upload/upload.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
-<div id=app>
-    <div class="upload-step1-container">
+    <div id=app>
+    <div id="upload-step1-container">
         <div id="homeDrop">
             <div class="upload-icon"></div>
             <div class="upload-tips">拖拽视频到此处也可上传</div>
-            <div class="upload-btn">
-                <input id="upload-btn" onchange="upload()" type="file">
+            <div class="upload-btn-container">
+                <input type="file" class="upload-btn" id="first-upload-btn" onchange="upload()" accept="video/mp4">
                 <div class="upload-btn-title">上传视频</div>
             </div>
             <div class="video-jam">
                 <p class="video-jam-pretext">当前审核队列</p>
                 <p class="video-jam-state" style="background-color: rgb(255, 189, 45);">繁忙</p>
             </div>
-            <div id="progress-container">
-                <div id="progress">
-                    <div id="progress-length"></div>
-                </div>
-                <div id="progress-value">0%</div>
-            </div>
         </div>
     </div>
-    <div class="upload-step2-container" style="display: none">
-        <div class="file-list-v2-container">
-            <div class="file-title"><h1>文件上传</h1>
-                <p>（单次最多允许上传100p视频，推荐采用mp4、flv格式，可有效缩短审核转码耗时）</p></div>
-            <div class="file-list-v2-wrp">
-                <div>
-                    <div class="file-list-v2-item">
-                        <div class="file-list-v2-item-icon"><span>P1</span></div>
-                        <div class="file-list-v2-item-wrp">
-                            <div class="item-status-wrp">
-                                <p class="item-title">911Mothers_2010W-480p</p>
-                                <div class="item-status-op">
-                                    <span class="item-status-click">删除</span>
-                                    <i class="icon-success-v2"></i>
-                                </div>
-                            </div>
-                            <div class="item-upload-info">
-                                <span class="upload-status-intro">上传完成</span>
-                             </div>
-                            <div class="item-upload-progress">
-                                <div class="item-upload-progress-complete" style="width: 100%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="file-add-btn-group">
-                <div class="file-add-btn">
-                    <img src="" alt="icon_add" class="file-add-btn-img">
-                    <span class="file-add-btn-title">添加视频</span>
-                    <div id="bili-upload-btn-more"></div>
-                </div>
-            </div>
-            <div class="dividing-line"></div>
+    <div id="upload-step2-container">
+        <div class="file-title">
+            <h1>文件上传</h1>
+            <p>（单次最多允许上传100p视频，推荐采用mp4、flv格式，可有效缩短审核转码耗时）</p>
         </div>
-        <div class="file-content-v2-container">
-            <div class="normal-v2-container">
-                <div class="normal-title-wrp">
-                    <h1>基本信息</h1>
-                </div>
-                <div class="cover-v2-container">
-                    <div class="section-title-v2-container"><h3 class="section-title-v2-content-main">视频封面设置</h3>
-                        <p class="section-title-v2-content-sub">（格式jpeg、png，文件大小≤5MB，建议尺寸≥1146*717，最低尺寸≥960*600）</p>
-                    </div>
-                    <div class="cover-v2-detail-wrp">
-                        <div class="cover-v2-preview">
-                            <div class="cover-v2-preview-default">
-                                <img src="" alt="bili_tv" class="bili_tv">
-                                <span class="cover-v2-upload-tip">上传封面</span></div>
-                            <input type="file" accept="image/jpeg, image/jpg, image/png"></div>
-                        <div class="cover-v2-selector">
-                            <div class="cover-v2-selector-deg"></div>
-                            <div><p class="cover-v2-selector-title">可选择以下封面。</p>
-                                <span class="cover-v2-selector-title-more">查看更多封面</span></div>
-                            <div class="cover-v2-selector-items">
-                                <div class="selector-item">
-                                    <img src="" alt="ai_cover" class="select-ai-covers">
+        <div class="file-list-wrp">
+            <div>
+                <div class="file-list-item">
+                    <div class="file-list-item-icon"><span>P1</span></div>
+                    <div class="file-list-item-wrp">
+                        <div class="item-status-wrp">
+                            <p id="item-title">&nbsp;</p>
+                        </div>
+                        <div id="item-upload-progress">
+                            <div class="progress-container">
+                                <div class="progress">
+                                    <div class="progress-length" id="progress-length"></div>
                                 </div>
-                                <div class="selector-item">
-                                    <img src="" alt="ai_cover" class="select-ai-covers">
-                                </div>
-                                <div class="selector-item">
-                                    <img src="" alt="ai_cover" class="select-ai-covers">
-                                </div>
-                                <div class="selector-item"><img data-v-cfae3af0=""
-                                                                                   src="//upos-videocovers.acgvideo.com/m190908ws31tq26jzj1s0o3ivpkbckt3_0028.jpg"
-                                                                                   alt="ai_cover"
-                                                                                   class="select-ai-covers">
-                                </div>
+                                <div class="progress-percent" id="progress-percent">0%</div>
                             </div>
+                            <div class="progress-value" id="progress-value"></div>
                         </div>
                     </div>
+                    <video controls="controls" id="get-video-time" ></video>
                 </div>
-                <div data-v-640a3622="" class="ui-v2-normal-line-white-divide"></div>
-                <div data-v-15c37d5b="" data-v-640a3622="" class="copyright-v2-container">
-                    <div data-v-704ae438="" data-v-15c37d5b="" class="section-title-v2-container"><p data-v-704ae438=""
-                                                                                                     class="section-title-v2-deg">
-                        *</p>
-                        <h3 data-v-704ae438="" class="section-title-v2-content-main">类型</h3>
-                    </div>
-                    <div data-v-15c37d5b="" class="copyright-v2-check-radio-wrp">
-                        <div data-v-53cf102e="" data-v-15c37d5b="" class="check-radio-v2-container"><span
-                                data-v-53cf102e="" class="check-radio-v2-box check-radio-v2-box-checked"></span> <span
-                                data-v-53cf102e="" class="check-radio-v2-name">自制</span></div>
-                        <div class="check-radio-v2-container">
-                            <span class="check-radio-v2-box"></span>
-                            <span class="check-radio-v2-name">转载</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui-v2-normal-line-white-divide"></div>
-                <div id="type-list-v2-container" class="type-list-v2-container">
-                    <div class="section-title-v2-container">
-                        <p class="section-title-v2-deg">*</p>
-                        <h3 class="section-title-v2-content-main">分区</h3>
-                    </div>
-                    <div class="type-list-v2-selector-wrp">
-                        <div class="select-box-v2-container">
-                            <div class="select-box-v2-controller">
-                                <p class="select-item-cont">点击选择</p>
-                                <i class="selebox-box-v2-drop-icon iconfont icon-ic_collapse" style="transform: rotate(180deg) translateZ(0px);"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui-v2-normal-line-white-divide"></div>
-                <div class="content-title-v2-container">
-                    <div class="section-title-v2-container">
-                        <p class="section-title-v2-deg">*</p>
-                        <h3 class="section-title-v2-content-main">标题</h3>
-                    </div>
-                    <div class="content-title-v2-input-wrp">
-                        <div class="input-box-v2-1-container">
-                            <div class="input-box-v2-1-instance">
-                                <input type="text" maxlength="80" placeholder="请输入稿件标题" class="input-box-v2-1-val">
-                            </div>
-                            <p class="input-box-v2-1-max-tip">21/80</p></div>
-                    </div>
-                </div>
-                <div class="ui-v2-normal-line-white-divide"></div>
-                <div id="content-tag-v2-container" class="content-tag-v2-container">
-                    <div class="section-title-v2-container">
-                        <p class="section-title-v2-deg">*</p>
-                        <h3 class="section-title-v2-content-main">标签</h3>
-                        <p class="section-title-v2-content-sub">（使用活动标签即可参与活动，默认以前三个标签同步生成动态话题）</p>
-                    </div>
-                    <div class="content-tag-v2-input-wrp">
-                        <div class="input-box-v2-1-container">
-                            <div class="content-tag-v2-pre-wrp"></div>
-                            <div class="input-box-v2-1-instance">
-                                <input type="text" maxlength="20" placeholder="按回车键Enter创建标签" class="input-box-v2-1-val">
-                            </div>
-                            <p class="content-tag-v2-last-wrp">还可以添加10个标签</p>
-                        </div>
-                    </div>
-                    <div class="content-tag-v2-other-wrp"><p class="content-tag-v2-other-label">
-                        推荐标签：</p>
-                        <div class="content-tag-v2-other-tag-wrp">
-                            <div class="label-item-v2-2-container">
-                                <p><span>音乐</span></p></div>
-                            <div class="label-item-v2-2-container"><p><span>美国</span>
-                            </p></div>
-                            <div class="label-item-v2-2-container"><p><span>手表</span>
-                            </p></div>
-                            <div class="label-item-v2-2-container"><p><span>欧美</span>
-                            </p></div>
-                            <div class="label-item-v2-2-container"><p><span>艺术</span>
-                            </p></div>
-                            <div class="label-item-v2-2-container"><p><span>现场</span>
-                            </p></div>
-                            <div class="label-item-v2-2-container"><p><span>MV</span>
-                            </p></div>
-                            <div class="label-item-v2-2-container"><p><span>摄影</span>
-                            </p></div>
-                            <div class="label-item-v2-2-container"><p><span>电影</span>
-                            </p></div>
-                            <div class="label-item-v2-2-container"><p><span>纪录片</span>
-                               </p></div>
-                            <div class="label-item-v2-2-container"><p><span>纽约</span>
-                            </p></div>
-                            <div class="label-item-v2-2-container"><p><span>英国</span>
-                            </p></div>
-                            <div class="label-item-v2-2-container"><p><span>经典</span>
-                            </p></div>
-                            <div class="label-item-v2-2-container"><p><span>爱情</span>
-                            </p></div>
-                            <div class="label-item-v2-2-container"><p><span>时尚</span>
-                            </p></div>
-                            <div class="label-item-v2-2-container"><p><span>完整版</span>
-                               </p></div>
-                            <div class="label-item-v2-2-container"><p><span>原创</span>
-                            </p></div>
-                            <div class="label-item-v2-2-container"><p><span>广告</span>
-                            </p></div>
-                            <div class="label-item-v2-2-container"><p><span>美女</span>
-                            </p></div>
-                            <div class="label-item-v2-2-container"><p><span>剧情</span>
-                            </p></div>
-                        </div>
-                    </div>
-                    <div class="content-tag-v2-other-wrp">
-                        <p class="content-tag-v2-other-label">
-                        参与活动：
-                        </p>
-                        <p class="content-tag-v2-other-tag-error-wrp">
-                            活动标签可在
-                            <span style="font-weight: 700;">选择分区</span>
-                            后查看
-                        </p>
-                    </div>
-                </div>
-                <div class="ui-v2-normal-line-white-divide"></div>
-                <div class="content-desc-v2-container">
-                    <div class="section-title-v2-container">
-                        <h3 class="section-title-v2-content-main">简介</h3>
-                    </div>
-                    <div class="content-desc-v2-text-wrp">
-                        <div class="text-area-box-v2-container">
-                            <textarea maxlength="250" class="text-area-box-v2-val placeholder-style"></textarea>
-                            <p class="text-area-box-v2-max-tip">0/250</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="dividing-line"></div>
             </div>
-            <div class="submit-button-group-v2-container">
-                <span class="submit-btn-group-add">立即投稿</span>
-                <span lass="submit-btn-group-tpl">保存模版</span>
+        </div>
+        <div class="upload-btn-container">
+            <input type="file" class="upload-btn" id="upload-btn" onchange="upload()" accept="video/mp4">
+            <div class="upload-btn-title">上传视频</div>
+        </div>
+        <div class="basic-info"><h1>基本信息</h1></div>
+        <div class="select-cover">
+            <h3>视频封面设置</h3>
+            <p>（格式jpeg、png，文件大小≤5MB，建议尺寸≥1146*717，最低尺寸≥960*600）</p>
+        </div>
+        <div class="cover-preview">
+            <div class="cover-preview-default">
+                <img id="cover" src="images/upload/small-tv-logo.png" alt="bili_tv">
+                <span class="cover-upload-tip">上传封面</span>
+            </div>
+            <div class="other-cover">
+                <div class="other-cover-tip">可选择以下封面：</div>
+                <div class="cover">
+                    <img src="images/upload/small-tv-logo.png" alt="bili_tv">
+                </div>
+                <div class="cover">
+                    <img src="images/upload/small-tv-logo.png" alt="bili_tv">
+                </div>
+                <div class="cover">
+                    <img src="images/upload/small-tv-logo.png" alt="bili_tv">
+                </div>
+                <div class="cover">
+                    <img src="images/upload/small-tv-logo.png" alt="bili_tv">
+                </div>
+            </div>
+            <input type="file" id="upload-video-pic" onchange="uploadVideoPic()" accept="image/jpeg, image/jpg, image/png">
+        </div>
+        <br>
+        <div class="section-title-container">
+            <p class="section-title-deg">*</p>
+            <h3 class="section-title-content-main">分区</h3>
+        </div>
+        <br>
+        <div class="type-select-box">
+            <div class="type-font">选择一级分区：</div>
+            <select id="video_type_1" onchange="change(this)"></select>
+            <i></i>
+            <div class="type-font">选择二级分区：</div>
+            <select id="video_type_2"></select>
+        </div>
+        <div class="section-title-container">
+            <p class="section-title-deg">*</p>
+            <h3 class="section-title-content-main">标题</h3>
+        </div>
+        <div class="content-title-container">
+            <div class="input-box-instance">
+                <input type="text" id="upload-video-title" oninput="countWord()" maxlength="80" placeholder="请输入稿件标题" class="input-box-val">
+            </div>
+            <p class="input-box-max-tip">0/80</p>
+        </div>
+        <br>
+        <div class="section-title-container">
+            <p class="section-title-deg">*</p>
+            <h3 class="section-title-content-main">标签</h3>
+            <p class="select-title-tips">（标签可自定义）</p>
+        </div>
+        <div class="content-title-container">
+            <div class="input-box-instance">
+                <input type="text" id="upload-video-tag" maxlength="80" placeholder="用空格隔开多个标签" class="input-box-val">
+            </div>
+        </div>
+        <br>
+        <div class="section-title-container">
+            <h3 class="section-title-content-main">&ensp;简介</h3>
+        </div>
+        <div class="content-desc-container">
+            <textarea id="upload-video-desc" maxlength="2000" placeholder="请输入该视频的简介"></textarea>
+        </div>
+
+        <div class="upload-video">
+            <button id="upload-video-btn" onclick="submitVideoInfo()">立即投稿</button>
+        </div>
+    </div>
+    <div id="upload-step3-container">
+        <div class="upload-step-3-container-v2">
+            <div class="step-controller-v2-container">
+                <div class="step-ctrl-item">
+                    <span class="step-ctrl-complete-icon iconfont icon-duihao"></span>
+                    <span class="step-ctrl-complete-content">填写投稿信息</span>
+                </div>
+                <div class="step-ctrl-line step-ctrl-line-active"></div>
+                <div class="step-ctrl-item">
+                    <span class="step-ctrl-active-icon">2</span>
+                    <span class="step-ctrl-active-content">投稿审核中</span>
+                </div>
+                <div class="step-ctrl-line step-ctrl-line-wait"></div>
+                <div class="step-ctrl-item">
+                    <span  class="step-ctrl-wait-icon">3</span>
+                    <span class="step-ctrl-wait-content">完成</span>
+                </div>
+            </div>
+            <div class="upload-3-v2-success-image">
+                <img src="//s2.hdslb.com/bfs/static/studio-upload-v3/static/img/success-2233.0a1bf03.png" alt="upload_success_2">
+            </div> <h3 class="upload-3-v2-success-hint-1">稿件投递成功</h3>
+            <div class="upload-3-v2-success-split"></div>
+            <div class="upload-3-v2-success-go-url">
+                <a href="//member.bilibili.com/v2#/upload-manager/article" target="_self" class="">查看稿件</a>
+                <a href="https://member.bilibili.com/video/upload.html" target="_self" class="">再投一个</a></div>
+            <p class="upload-3-v2-success-hint-2">若稿件没有立刻显示在列表中，请稍候片刻</p>
+            <p class="upload-3-v2-success-hint-3">稿件名称:big_buck_bunny</p>
+            <div class="upload-3-v2-follow"><p class="upload-3-v2-follow-title">想要了解更多创作资讯，关注我们的官方账号吧～</p>
+                <div class="upload-3-v2-follow-account">
+                    <a href="https://space.bilibili.com/37090048/#/" target="_blank">
+                        <div class="upload-3-v2-follow-avatar">
+                            <img alt="官方账号头像" src="//i2.hdslb.com/bfs/face/01365904ffb64d1858da7e20e1040b9f2d94165d.jpg" class="upload-3-v2-follow-avatar-pic">
+                            <img alt="闪电标志" src="" class="upload-3-v2-follow-avatar-cert"></div>
+                        <span class="upload-3-v2-follow-name">哔哩哔哩创作中心</span>
+                    </a>
+                </div>
+                <div class="upload-3-v2-follow-btn follow">
+                    <i class="iconfont icon-ic_add"></i>
+                    <span>关注</span>
+                </div>
             </div>
         </div>
     </div>

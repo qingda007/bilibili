@@ -153,15 +153,15 @@
             //  在线人数
             var str={"userType":'u87'};
 
-                $.ajax({
-                    url:"http://localhost:8888/liveUserNum",
-                    type:"post",
-                    dataType:"application/json; charset=utf-8",
-                    data:str,
-                    success:function (data) {
-                        vNum.Num=data;
-                    },
-                });
+            $.ajax({
+                url:"/liveUserNum",
+                type:"post",
+                dataType:"text",
+                data:str,
+                success: function (data) {
+                    vNum.Num=data;
+                },
+            });
             //从登录界面登录成功后，跳到主界面并给vm.user.uid赋值
             $("#face").attr("src","images/main/akari.jpg");
             $node1=$("div.profile-m").detach();
@@ -178,6 +178,27 @@
             <%--vm.user.uid=${sid};--%>
             <%--var id=vm.user.uid;--%>
             var id= ${sessionScope.userInfo.userId};
+
+            //跳转用户中心界面
+            // $("a.account").onclick=function () {
+            //     $.ajax({
+            //         url:"/toUser",
+            //         dataType:"json",
+            //         data:{"id":id},
+            //         type:"post",
+            //         success:function (data) {
+            //             alert("成功");
+            //             window.location.href="/user";
+            //         },
+            //         error:function(){
+            //             alert("失败");
+            //         }
+            //     })
+            //     alert("aaaa");
+            // };
+            // $("a.number").click(function () {
+            //     alert("chenggong");
+            // });
             if(id!=null){
                 $.ajax({
                     url:"http://localhost:8888/getUserInfo",
@@ -220,27 +241,9 @@
                 },function () {
                     $(this).siblings().hide();
                 });
-                $("a.logout").click(function () {
-                    vm.user.uid=null;
-                    location.reload();
-                });//登录退出按钮
+                //登录退出按钮
             }
-            //跳转用户中心界面
-            $("a.account").click(function () {
-                $.ajax({
-                    url:"/toUser",
-                    dataType:"json",
-                    data:{"id":id},
-                    type:"post",
-                    success:function (data) {
-                        alert("成功");
-                        window.location.href="http://localhost:8888/user";
-                    },
-                    error:function(){
-                        alert("失败");
-                    }
-                })
-            })
+
 
 
 
@@ -347,7 +350,7 @@
                                     <div class="member-menu">
                                         <ul class="clearfix">
                                             <li>
-                                                <a class="account">
+                                                <a class="account"href="/user">
                                                     <i class="bili-icon b-icon-p-account"></i>
                                                     个人中心
                                                 </a>

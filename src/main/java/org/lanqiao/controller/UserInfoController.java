@@ -34,10 +34,11 @@ return userInfoService.selectByPrimaryKey(id);
         return videoService.selectVideoUpload(userId);
     }
 
-//    @RequestMapping("/liveUserNum")
-//    public int countUserNum(String userType){
-//        return userInfoService.countUserNum(userType);
-//    }
+    //统计在线人数
+    @RequestMapping("/liveUserNum")
+    public int countUserNum(String userType){
+        return userInfoService.countUserNum(userType);
+    }
 
     int uid;
     @RequestMapping(value = "/toUser")
@@ -48,12 +49,12 @@ return userInfoService.selectByPrimaryKey(id);
     @RequestMapping("/user")
     public ModelAndView user(){
         ModelAndView user=new ModelAndView("user");
-        user.addObject("id",uid);
+//        user.addObject("id",uid);
         return user;
     }
 
     @RequestMapping("/bilibili")
-    public ModelAndView bilibili(){
+    public ModelAndView zhuye(){
         ModelAndView bilibili=new ModelAndView("bilibili");
         return bilibili;
     }
