@@ -5,6 +5,7 @@ import org.lanqiao.mapper.VideoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -48,5 +49,16 @@ public class UploadServiceImpl implements UploadService {
         else if("collection".equals(word)) return videoMapper.countByCollection(userId);
         else if("coin".equals(word)) return videoMapper.countByCoin(userId);
         else return 0;
+    }
+
+    @Override
+    public List<Integer> countVideoInfo(int userId) {
+        List<Integer> videoInfo = new ArrayList<>();
+        videoInfo.add(videoMapper.countByPlay(userId));
+        videoInfo.add(videoMapper.countByLike(userId));
+        videoInfo.add(videoMapper.countByDanmu(userId));
+        videoInfo.add(videoMapper.countByCollection(userId));
+        videoInfo.add(videoMapper.countByCoin(userId));
+        return videoInfo;
     }
 }
