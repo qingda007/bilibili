@@ -15,6 +15,7 @@ public class ReadVideo {
      * @param videoPath 视频路径
      * @return
      */
+    //获取视频文件的时长 秒数long型
     public long readVideoSecond(String videoPath){
         File file = new File(videoPath);
         Encoder encoder = new Encoder();
@@ -27,13 +28,14 @@ public class ReadVideo {
         }
         return sum;
     }
+    //获取视频文件的时长 date型
     public Date readVideo(String videoPath) {
-        File file = new File(videoPath); //videoPath传入值（"D:\\666.mp4"）
+        File file = new File(videoPath); //videoPath视频文件的绝对路径
         Encoder encoder = new Encoder();
         Calendar calendar = Calendar.getInstance();
         try {
             MultimediaInfo m = encoder.getInfo(file);
-            calendar.setTimeInMillis(m.getDuration());
+            calendar.setTimeInMillis(m.getDuration()+57600000); //增加16个小时，因为存在时区误差八小时
         } catch (Exception e) {
             e.printStackTrace();
         }
