@@ -2,9 +2,9 @@ package org.lanqiao.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.ibatis.annotations.Param;
 import org.lanqiao.entity.Status;
+import org.lanqiao.entity.UserInfo;
 import org.lanqiao.entity.Video;
 import org.lanqiao.entity.VideoTag;
 import org.lanqiao.service.StatusService;
@@ -41,8 +41,11 @@ public class UploadController {
     private String rootPath = "E:/bilibili/teporary";
     @ResponseBody
     @RequestMapping(value = "/test")
-    public int test(@RequestParam("userId") int userId,@RequestParam("word") String word){
-        return uploadService.countByWord(userId,word);
+    public int test(@RequestParam("a") int a, @RequestParam("a") String b){
+        VideoTag videoTag = new VideoTag();
+        videoTag.setVideoId(a);
+        videoTag.setTagName(b);
+        return videoTagService.addVideoTag(videoTag);
     }
     @ResponseBody
     @RequestMapping(value = "/upload")
@@ -93,7 +96,7 @@ public class UploadController {
 
     @ResponseBody
     @RequestMapping(value = "/uploadVideoInfo")//投稿
-    public int uploadVideoInfo(Video video, Status status, String tags, HttpServletRequest request) {
+    public int uploadVideoInfo(final Video video, Status status, String tags, HttpServletRequest request) {
         //根据选择的一二级分区，设置视频的类型
         video.setClassType(statusService.selectIdByType(status));
         //设置当前时间为上传时间
@@ -101,10 +104,10 @@ public class UploadController {
         //获取session中的视频文件路径
         String videoUrl = (String)request.getSession(false).getAttribute("videoUrl");
         //设置视频路径
-        Ffmpeg ffmpeg = new Ffmpeg();
+        final Ffmpeg ffmpeg = new Ffmpeg();
         //获取视频和封面的物理路径
          String picUrl = video.getVideoPic();
-        String uuid = (String)request.getSession(false).getAttribute("Uuid");
+        final String uuid = (String)request.getSession(false).getAttribute("Uuid");
         if(picUrl.contains(uuid)){//选择截取的图片作为封面
             picUrl = ffmpeg.getPhyDir(picUrl);
         }
@@ -125,7 +128,7 @@ public class UploadController {
         //数据库新增video记录
         int flag = uploadService.uploadVideo(video);
         //获取新增video的id
-        int videoId = video.getVideoId();
+        final int videoId = video.getVideoId();
         //根据获取的videoId插入对应的VideoTag表
         VideoTag videoTag = new VideoTag();
         for (String tag : tagList) {
@@ -133,41 +136,60 @@ public class UploadController {
             videoTag.setVideoId(videoId);
             flag = flag*videoTagService.addVideoTag(videoTag);
         }
-        ffmpeg.delUuidFile(uuid);
+        new Thread() {
+            public void run() {
+                Ffmpeg ffmpeg = new Ffmpeg();
+                ffmpeg.delUuidFile(uuid);
+            }
+        }.start();
         return flag;
     }
 
     @RequestMapping(value = "/uploadVideo")
-    public ModelAndView uploadVideo() {
+    public ModelAndView uploadVideo(HttpServletRequest request) {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUserId(2);
+        request.getSession().setAttribute("userInfo",userInfo);
         return new ModelAndView("upload");
     }
 
     @RequestMapping(value = "/homeVideo")
-    public ModelAndView homeVideo() {
-        return new ModelAndView("upload-home","videoInfo",uploadService.countVideoInfo(1));
+    public ModelAndView homeVideo(HttpServletRequest request) {
+        UserInfo userInfo = (UserInfo)request.getSession(false).getAttribute("userInfo");
+        return new ModelAndView("upload-home","videoInfo",uploadService.countVideoInfo(userInfo.getUserId()));
     }
 
     @RequestMapping(value = "/managerVideo")
-    public ModelAndView managerVideo(@RequestParam(value="pageNo", defaultValue = "1") int pageNum, @RequestParam(value="isReview", defaultValue = "-1") int isReview, @RequestParam(value="videoId", defaultValue = "-1") int videoId) {
+    public ModelAndView managerVideo(@RequestParam(value="pageNo", defaultValue = "1") int pageNum, @RequestParam(value="isReview", defaultValue = "-1") int isReview, @RequestParam(value="videoId", defaultValue = "-1") final int videoId, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
-        if(videoId!=-1){
-            uploadService.delVideo(videoId);
+        UserInfo userInfo = (UserInfo)request.getSession(false).getAttribute("userInfo");
+        int userId = userInfo.getUserId();
+        if(videoId!=-1){ //代表执行删除稿件的操作
+            new Thread() {
+                public void run() {
+                    Ffmpeg ffmpeg = new Ffmpeg();
+                    Video video = videoService.selectVideoInfo(videoId);
+                    ffmpeg.delDataFile(video.getVideoPic()); //删除该稿件的封面
+                    ffmpeg.delDataFile(video.getVideoUrl());  //删除该稿件的视频文件
+                }
+            }.start();
+            uploadService.delVideo(videoId); //删除该稿件的数据库记录
         }
         if(isReview==-1){
             PageHelper.startPage(pageNum, 5);
-            List<Video> videos = uploadService.selectUploadVideo(1);
+            List<Video> videos = uploadService.selectUploadVideo(userId);
             PageInfo<Video> p = new PageInfo<>(videos);
             modelAndView.addObject("pageInfo",p);
         }
         else {
             PageHelper.startPage(pageNum, 5);
-            List<Video> videos = uploadService.selectVideoByIsReview(1, isReview);
+            List<Video> videos = uploadService.selectVideoByIsReview(userId, isReview);
             PageInfo<Video> p = new PageInfo<>(videos);
             modelAndView.addObject("pageInfo",p);
         }
-        long waitReview = uploadService.countIsReview(1,0);
-        long isPass = uploadService.countIsReview(1,1);
-        long noPass = uploadService.countIsReview(1,2);
+        long waitReview = uploadService.countIsReview(userId,0);
+        long isPass = uploadService.countIsReview(userId,1);
+        long noPass = uploadService.countIsReview(userId,2);
         long length = waitReview + isPass + noPass;
         modelAndView.addObject("length",length);
         modelAndView.addObject("waitReview",waitReview);

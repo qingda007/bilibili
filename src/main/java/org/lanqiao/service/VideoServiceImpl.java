@@ -27,5 +27,20 @@ public class VideoServiceImpl implements VideoService {
         return videoMapper.selectUpInfo(videoId);
     }
 
+    @Override
+    public int updateByPrimaryKeySelective(Video video) {
+        return videoMapper.updateByPrimaryKeySelective(video);
+    }
+
+    @Override
+    public int updateByPrimaryKey(Video video) {
+        return videoMapper.updateByPrimaryKey(video);
+    }
+
+    @Override
+    public Video selectStatus(Integer videoId) {
+        return videoMapper.selectStatus(videoId);
+    }
+
 
 }
