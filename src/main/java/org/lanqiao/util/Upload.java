@@ -53,39 +53,18 @@ public class Upload {
         file.transferTo(targetFile);
         return targetFile.getAbsolutePath();
     }
-//    public String modifyPic(MultipartFile file, String path, String fileName, HttpServletRequest request) throws IOException {
-//        String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-//        String rootPath = path;
-//        // 获取原始图片的名字和扩展名
-//        String originalFilename = file.getOriginalFilename();
-//        // 生成文件新的名字
-//        String newFileName = uuid + "_" + fileName + originalFilename.substring(originalFilename.lastIndexOf("."));
-//        // 封装上传文件位置的全路径
-//        File targetFile = new File(rootPath, newFileName);
-//        if( !targetFile.getParentFile().exists()) {
-//            // 如果目标文件所在的目录不存在，则创建父目录
-//            targetFile.getParentFile().mkdirs();
-//        }
-//        file.transferTo(targetFile);
-//        request.getSession(true).setAttribute("ModifyUuid", uuid);
-//        return newFileName;
-//    }
-//    public String upload(MultipartFile file, String rootPath, String fileName, HttpServletRequest request) throws IOException {
-//      //  String rootPath = request.getSession().getServletContext().getRealPath("/") + path;
-//        String path = "/upload";
-//        rootPath = rootPath + path;
-//        // 获取原始图片的扩展名
-//        String originalFilename = file.getOriginalFilename();
-//        // 生成文件新的名字
-//        String newFileName = fileName + originalFilename.substring(originalFilename.lastIndexOf("."));
-//        // 封装上传文件位置的全路径
-//        File targetFile = new File(rootPath, newFileName);
-//        if( !targetFile.getParentFile().exists()) {
-//            // 如果目标文件所在的目录不存在，则创建父目录
-//            targetFile.getParentFile().mkdirs();
-//        }
-//        file.transferTo(targetFile);
-//        return path + "/" + newFileName;
-//       // return targetFile.getAbsolutePath();
-//    }
+    //上传用户头像
+    //传入用户头像文件、绝对路径
+    //返回最终的文件路径
+    public String uploadUserPic(MultipartFile file, String path) throws IOException {
+        String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+        String originalFilename = file.getOriginalFilename();
+        String newFileName = uuid + "_" + originalFilename;
+        File targetFile = new File(path, newFileName);
+        if( !targetFile.getParentFile().exists()) {
+            targetFile.getParentFile().mkdirs();
+        }
+        file.transferTo(targetFile);
+        return targetFile.getAbsolutePath();
+    }
 }
