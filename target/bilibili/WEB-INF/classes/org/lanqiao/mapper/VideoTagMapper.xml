@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lanqiao.mapper.VideoTagMapper" >
   <resultMap id="BaseResultMap" type="org.lanqiao.entity.VideoTag" >
-    <id column="video_id" property="videoId" jdbcType="INTEGER" />
+    <result column="video_id" property="videoId" jdbcType="INTEGER" />
     <result column="tag_name" property="tagName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
