@@ -12,7 +12,7 @@
             +request.getServerPort()+path+"/";
 %>
 <%
-    Object userinfo=session.getAttribute("userinfo");
+    Object userInfo=session.getAttribute("userInfo");
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -56,11 +56,10 @@
             $.ajax({
                 url: "http://localhost:8888/getUserInfo",
                 type: "post",
-                data: {"id":${sessionScope.userinfo.userId}},
+                data: {"id":${sessionScope.userInfo.userId}},
                 datatype: "json",
                 success: function (data) {
-                    console.log(${sessionScope.userinfo.userId})
-                    console.log(data);
+
                     $("#el-name").append("<input class=\"el-input__inner\" type=\"text\"autocomplete=\"off\" placeholder=\"你的昵称\"value=\""+data.userName+"\" name=\"userName\"/>\n");
                     $("#el-id").prepend("<input name=\"userId\"style='border: none' readonly=\"readonly\" value='"+data.userId+"'/>\n");
                     $("#el-phone").append("<input class=\"el-input__inner\" type=\"text\"autocomplete=\"off\" name='userTele' placeholder=\""+data.userTele+"\"/>\n");

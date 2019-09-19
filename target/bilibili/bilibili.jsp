@@ -172,28 +172,20 @@
             $("#face").attr("src","images/main/akari.jpg");
             $node1=$("div.profile-m").detach();
             $node2=$("li.nipi").detach();
-            <%--function ll(){--%>
-            <%--    try {--%>
-            <%--        vm.user.uid=${sid};--%>
-            <%--    }catch (e) {--%>
-            <%--        vm.user.uid=null;--%>
-            <%--    }--%>
-            <%--}--%>
-            <%--ll();--%>
-                //  视频类型的数量
+            //  视频类型的数量
             $.ajax({
-                    url:"/video/typeCount",
-                    type:"post",
-                    dataType:"text",
-                    data:{"type1":'动画'},
-                    success: function (data) {
-                        vType.type1.num1=data;
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'动画'},
+                success: function (data) {
+                    vType.type1.num1=data;
 
-                    },
-                    error:function () {
-                        alert("失败");
-                    }
-                })
+                },
+                error:function () {
+                    vType.type1.num1=0;
+                }
+            })
             $.ajax({
                 url:"/video/typeCount",
                 type:"post",
@@ -204,7 +196,7 @@
 
                 },
                 error:function () {
-                    alert("失败");
+                    vType.type1.num2=0;
                 }
             })
             $.ajax({
@@ -217,12 +209,165 @@
 
                 },
                 error:function () {
-                    alert("失败");
+                    vType.type1.num3=0;
                 }
             })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'音乐'},
+                success: function (data) {
+                    vType.type1.num4=data;
 
+                },
+                error:function () {
+                    vType.type1.num4=0;
+                }
 
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'舞蹈'},
+                success: function (data) {
+                    vType.type1.num5=data;
 
+                },
+                error:function () {
+                    vType.type1.num5=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'游戏'},
+                success: function (data) {
+                    vType.type1.num6=data;
+
+                },
+                error:function () {
+                    vType.type1.num6=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'科技'},
+                success: function (data) {
+                    vType.type1.num7=data;
+
+                },
+                error:function () {
+                    vType.type1.num7=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'数码'},
+                success: function (data) {
+                    vType.type1.num8=data;
+
+                },
+                error:function () {
+                    vType.type1.num8=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'生活'},
+                success: function (data) {
+                    vType.type1.num9=data;
+
+                },
+                error:function () {
+                    vType.type1.num9=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'鬼畜'},
+                success: function (data) {
+                    vType.type1.num10=data;
+
+                },
+                error:function () {
+                    vType.type1.num10=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'时尚'},
+                success: function (data) {
+                    vType.type1.num11=data;
+
+                },
+                error:function () {
+                    vType.type1.num11=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'广告'},
+                success: function (data) {
+                    vType.type1.num12=data;
+
+                },
+                error:function () {
+                    vType.type1.num12=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'娱乐'},
+                success: function (data) {
+                    vType.type1.num13=data;
+                },
+                error:function () {
+                    vType.type1.num13=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'影视'},
+                success: function (data) {
+                    vType.type1.num14=data;
+
+                },
+                error:function () {
+                    vType.type1.num14=0;
+                }
+            })
+            $.ajax({
+                url:"/video/typeCount",
+                type:"post",
+                dataType:"text",
+                data:{"type1":'放映厅'},
+                success: function (data) {
+                    vType.type1.num15=data;
+
+                },
+                error:function () {
+                    vType.type1.num15=0;
+                }
+            })
         })
 
     </script>
@@ -271,7 +416,7 @@
                     </ul>
                 </div>
                 <div class="up-load fr">
-                    <a class="u-link">投稿</a>
+                    <a class="u-link" href="/user/toLogin">投稿</a>
                 </div>
                 <div class="nav-con fr">
                     <ul class="fr">
@@ -436,7 +581,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num4}}</span>
                             </div>
                             <div class="nav-name">音乐</div>
                         </a>
@@ -476,7 +621,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num5}}</span>
                             </div>
                             <div class="nav-name">舞蹈</div>
                         </a>
@@ -495,7 +640,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num6}}</span>
                             </div>
                             <div class="nav-name">游戏</div>
                         </a>
@@ -532,7 +677,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num7}}</span>
                             </div>
                             <div class="nav-name">科技</div>
                         </a>
@@ -561,7 +706,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num8}}</span>
                             </div>
                             <div class="nav-name">数码</div>
                         </a>
@@ -583,7 +728,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num9}}</span>
                             </div>
                             <div class="nav-name">生活</div>
                         </a>
@@ -617,7 +762,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num10}}</span>
                             </div>
                             <div class="nav-name">鬼畜</div>
                         </a>
@@ -640,7 +785,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num11}}</span>
                             </div>
                             <div class="nav-name">时尚</div>
                         </a>
@@ -665,7 +810,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num12}}</span>
                             </div>
                             <div class="nav-name">广告</div>
                         </a>
@@ -674,7 +819,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num13}}</span>
                             </div>
                             <div class="nav-name">娱乐</div>
                         </a>
@@ -694,7 +839,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num14}}</span>
                             </div>
                             <div class="nav-name">影视</div>
                         </a>
@@ -716,7 +861,7 @@
                     <li class="">
                         <a>
                             <div class="num-wrap">
-                                <span>999+</span>
+                                <span>{{type1.num15}}</span>
                             </div>
                             <div class="nav-name">放映厅</div>
                         </a>
@@ -983,264 +1128,264 @@
             </div>
         </div>
         <div class="report-wrap-module " style="top:232px "></div>
-        <div id="bili_live" class="zone-wrap-module report-scroll-module clearfix">
-            <div class="live-module clearfix">
-                <div class="gg-floor-module">
-                    <div class="item" style="overflow: hidden; margin: 0px auto;">
-                        <a>
-                            <div class="lazy-img">
-                                <img src="images/main/广告1.jpg" />
-                            </div>
-                            <img class="gg-pic" src="images/main/cm_2.png" />
-                        </a>
-                    </div>
-                </div>
-                <div class="l-con">
-                    <div class="zone-title">
-                        <div class="headline clearfix">
-                            <i class="icon icon_t icon-live"></i>
-                            <a class="name">正在直播</a>
-                            <p class="online">
-                                当前共有
-                                <span>12354</span> 正在直播
-                            </p>
-                            <a class="fire">
-                                <i class="icon pmt-icon"></i> 233秒居然能做这些！
-                            </a>
-                            <a class="link-more">
-                                更多
-                                <i class="icon"></i>
-                            </a>
-                            <div class="read-push">
-                                <i class="icon icon_read"></i>
-                                <span class="info">
-											<b>141096</b>
-											条新动态
-										</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="storey-box clearfix">
-                        <div class="card-live-module">
-                            <a>
-                                <div class="pic">
-                                    <div class="lazy-img">
-                                        <img src="images/main/直播1.jpg" />
-                                    </div>
-                                    <div class="snum">
-                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>
-                                        <span class="online"><i></i>1657.4万</span>
-                                    </div>
-                                    <div class="mask" style=""></div>
-                                </div>
-                                <p class="t">英雄联盟八周年庆典</p>
-                                <p class="num">
-                                    网游 · 英雄联盟
-                                </p>
-                            </a>
-                        </div>
-                        <div class="card-live-module">
-                            <a>
-                                <div class="pic">
-                                    <div class="lazy-img">
-                                        <img src="images/main/直播1.jpg" />
-                                    </div>
-                                    <div class="snum">
-                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>
-                                        <span class="online"><i></i>1657.4万</span>
-                                    </div>
-                                    <div class="mask" style=""></div>
-                                </div>
-                                <p class="t">英雄联盟八周年庆典</p>
-                                <p class="num">
-                                    网游 · 英雄联盟
-                                </p>
-                            </a>
-                        </div>
-                        <div class="card-live-module">
-                            <a>
-                                <div class="pic">
-                                    <div class="lazy-img">
-                                        <img src="images/main/直播1.jpg" />
-                                    </div>
-                                    <div class="snum">
-                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>
-                                        <span class="online"><i></i>1657.4万</span>
-                                    </div>
-                                    <div class="mask" style=""></div>
-                                </div>
-                                <p class="t">英雄联盟八周年庆典</p>
-                                <p class="num">
-                                    网游 · 英雄联盟
-                                </p>
-                            </a>
-                        </div>
-                        <div class="card-live-module">
-                            <a>
-                                <div class="pic">
-                                    <div class="lazy-img">
-                                        <img src="images/main/直播1.jpg" />
-                                    </div>
-                                    <div class="snum">
-                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>
-                                        <span class="online"><i></i>1657.4万</span>
-                                    </div>
-                                    <div class="mask" style=""></div>
-                                </div>
-                                <p class="t">英雄联盟八周年庆典</p>
-                                <p class="num">
-                                    网游 · 英雄联盟
-                                </p>
-                            </a>
-                        </div>
-                        <div class="card-live-module">
-                            <a>
-                                <div class="pic">
-                                    <div class="lazy-img">
-                                        <img src="images/main/直播1.jpg" />
-                                    </div>
-                                    <div class="snum">
-                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>
-                                        <span class="online"><i></i>1657.4万</span>
-                                    </div>
-                                    <div class="mask" style=""></div>
-                                </div>
-                                <p class="t">英雄联盟八周年庆典</p>
-                                <p class="num">
-                                    网游 · 英雄联盟
-                                </p>
-                            </a>
-                        </div>
-                        <div class="card-live-module">
-                            <a>
-                                <div class="pic">
-                                    <div class="lazy-img">
-                                        <img src="images/main/直播1.jpg" />
-                                    </div>
-                                    <div class="snum">
-                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>
-                                        <span class="online"><i></i>1657.4万</span>
-                                    </div>
-                                    <div class="mask" style=""></div>
-                                </div>
-                                <p class="t">英雄联盟八周年庆典</p>
-                                <p class="num">
-                                    网游 · 英雄联盟
-                                </p>
-                            </a>
-                        </div>
-                        <div class="card-live-module">
-                            <a>
-                                <div class="pic">
-                                    <div class="lazy-img">
-                                        <img src="images/main/直播1.jpg" />
-                                    </div>
-                                    <div class="snum">
-                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>
-                                        <span class="online"><i></i>1657.4万</span>
-                                    </div>
-                                    <div class="mask" style=""></div>
-                                </div>
-                                <p class="t">英雄联盟八周年庆典</p>
-                                <p class="num">
-                                    网游 · 英雄联盟
-                                </p>
-                            </a>
-                        </div>
-                        <div class="card-live-module">
-                            <a>
-                                <div class="pic">
-                                    <div class="lazy-img">
-                                        <img src="images/main/直播1.jpg" />
-                                    </div>
-                                    <div class="snum">
-                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>
-                                        <span class="online"><i></i>1657.4万</span>
-                                    </div>
-                                    <div class="mask" style=""></div>
-                                </div>
-                                <p class="t">英雄联盟八周年庆典</p>
-                                <p class="num">
-                                    网游 · 英雄联盟
-                                </p>
-                            </a>
-                        </div>
-                        <div class="card-live-module">
-                            <a>
-                                <div class="pic">
-                                    <div class="lazy-img">
-                                        <img src="images/main/直播1.jpg" />
-                                    </div>
-                                    <div class="snum">
-                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>
-                                        <span class="online"><i></i>1657.4万</span>
-                                    </div>
-                                    <div class="mask" style=""></div>
-                                </div>
-                                <p class="t">英雄联盟八周年庆典</p>
-                                <p class="num">
-                                    网游 · 英雄联盟
-                                </p>
-                            </a>
-                        </div>
-                        <div class="card-live-module">
-                            <a>
-                                <div class="pic">
-                                    <div class="lazy-img">
-                                        <img src="images/main/直播1.jpg" />
-                                    </div>
-                                    <div class="snum">
-                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>
-                                        <span class="online"><i></i>1657.4万</span>
-                                    </div>
-                                    <div class="mask" style=""></div>
-                                </div>
-                                <p class="t">英雄联盟八周年庆典</p>
-                                <p class="num">
-                                    网游 · 英雄联盟
-                                </p>
-                            </a>
-                        </div>
-                    </div>
+        <%--        <div id="bili_live" class="zone-wrap-module report-scroll-module clearfix">--%>
+        <%--            <div class="live-module clearfix">--%>
+        <%--                <div class="gg-floor-module">--%>
+        <%--                    <div class="item" style="overflow: hidden; margin: 0px auto;">--%>
+        <%--                        <a>--%>
+        <%--                            <div class="lazy-img">--%>
+        <%--                                <img src="images/main/广告1.jpg" />--%>
+        <%--                            </div>--%>
+        <%--                            <img class="gg-pic" src="images/main/cm_2.png" />--%>
+        <%--                        </a>--%>
+        <%--                    </div>--%>
+        <%--                </div>--%>
+        <%--                <div class="l-con">--%>
+        <%--                    <div class="zone-title">--%>
+        <%--                        <div class="headline clearfix">--%>
+        <%--                            <i class="icon icon_t icon-live"></i>--%>
+        <%--                            <a class="name">正在直播</a>--%>
+        <%--                            <p class="online">--%>
+        <%--                                当前共有--%>
+        <%--                                <span>12354</span> 正在直播--%>
+        <%--                            </p>--%>
+        <%--                            <a class="fire">--%>
+        <%--                                <i class="icon pmt-icon"></i> 233秒居然能做这些！--%>
+        <%--                            </a>--%>
+        <%--                            <a class="link-more">--%>
+        <%--                                更多--%>
+        <%--                                <i class="icon"></i>--%>
+        <%--                            </a>--%>
+        <%--                            <div class="read-push">--%>
+        <%--                                <i class="icon icon_read"></i>--%>
+        <%--                                <span class="info">--%>
+        <%--											<b>141096</b>--%>
+        <%--											条新动态--%>
+        <%--										</span>--%>
+        <%--                            </div>--%>
+        <%--                        </div>--%>
+        <%--                    </div>--%>
+        <%--                    <div class="storey-box clearfix">--%>
+        <%--                        <div class="card-live-module">--%>
+        <%--                            <a>--%>
+        <%--                                <div class="pic">--%>
+        <%--                                    <div class="lazy-img">--%>
+        <%--                                        <img src="images/main/直播1.jpg" />--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="snum">--%>
+        <%--                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>--%>
+        <%--                                        <span class="online"><i></i>1657.4万</span>--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="mask" style=""></div>--%>
+        <%--                                </div>--%>
+        <%--                                <p class="t">英雄联盟八周年庆典</p>--%>
+        <%--                                <p class="num">--%>
+        <%--                                    网游 · 英雄联盟--%>
+        <%--                                </p>--%>
+        <%--                            </a>--%>
+        <%--                        </div>--%>
+        <%--                        <div class="card-live-module">--%>
+        <%--                            <a>--%>
+        <%--                                <div class="pic">--%>
+        <%--                                    <div class="lazy-img">--%>
+        <%--                                        <img src="images/main/直播1.jpg" />--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="snum">--%>
+        <%--                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>--%>
+        <%--                                        <span class="online"><i></i>1657.4万</span>--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="mask" style=""></div>--%>
+        <%--                                </div>--%>
+        <%--                                <p class="t">英雄联盟八周年庆典</p>--%>
+        <%--                                <p class="num">--%>
+        <%--                                    网游 · 英雄联盟--%>
+        <%--                                </p>--%>
+        <%--                            </a>--%>
+        <%--                        </div>--%>
+        <%--                        <div class="card-live-module">--%>
+        <%--                            <a>--%>
+        <%--                                <div class="pic">--%>
+        <%--                                    <div class="lazy-img">--%>
+        <%--                                        <img src="images/main/直播1.jpg" />--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="snum">--%>
+        <%--                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>--%>
+        <%--                                        <span class="online"><i></i>1657.4万</span>--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="mask" style=""></div>--%>
+        <%--                                </div>--%>
+        <%--                                <p class="t">英雄联盟八周年庆典</p>--%>
+        <%--                                <p class="num">--%>
+        <%--                                    网游 · 英雄联盟--%>
+        <%--                                </p>--%>
+        <%--                            </a>--%>
+        <%--                        </div>--%>
+        <%--                        <div class="card-live-module">--%>
+        <%--                            <a>--%>
+        <%--                                <div class="pic">--%>
+        <%--                                    <div class="lazy-img">--%>
+        <%--                                        <img src="images/main/直播1.jpg" />--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="snum">--%>
+        <%--                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>--%>
+        <%--                                        <span class="online"><i></i>1657.4万</span>--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="mask" style=""></div>--%>
+        <%--                                </div>--%>
+        <%--                                <p class="t">英雄联盟八周年庆典</p>--%>
+        <%--                                <p class="num">--%>
+        <%--                                    网游 · 英雄联盟--%>
+        <%--                                </p>--%>
+        <%--                            </a>--%>
+        <%--                        </div>--%>
+        <%--                        <div class="card-live-module">--%>
+        <%--                            <a>--%>
+        <%--                                <div class="pic">--%>
+        <%--                                    <div class="lazy-img">--%>
+        <%--                                        <img src="images/main/直播1.jpg" />--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="snum">--%>
+        <%--                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>--%>
+        <%--                                        <span class="online"><i></i>1657.4万</span>--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="mask" style=""></div>--%>
+        <%--                                </div>--%>
+        <%--                                <p class="t">英雄联盟八周年庆典</p>--%>
+        <%--                                <p class="num">--%>
+        <%--                                    网游 · 英雄联盟--%>
+        <%--                                </p>--%>
+        <%--                            </a>--%>
+        <%--                        </div>--%>
+        <%--                        <div class="card-live-module">--%>
+        <%--                            <a>--%>
+        <%--                                <div class="pic">--%>
+        <%--                                    <div class="lazy-img">--%>
+        <%--                                        <img src="images/main/直播1.jpg" />--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="snum">--%>
+        <%--                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>--%>
+        <%--                                        <span class="online"><i></i>1657.4万</span>--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="mask" style=""></div>--%>
+        <%--                                </div>--%>
+        <%--                                <p class="t">英雄联盟八周年庆典</p>--%>
+        <%--                                <p class="num">--%>
+        <%--                                    网游 · 英雄联盟--%>
+        <%--                                </p>--%>
+        <%--                            </a>--%>
+        <%--                        </div>--%>
+        <%--                        <div class="card-live-module">--%>
+        <%--                            <a>--%>
+        <%--                                <div class="pic">--%>
+        <%--                                    <div class="lazy-img">--%>
+        <%--                                        <img src="images/main/直播1.jpg" />--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="snum">--%>
+        <%--                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>--%>
+        <%--                                        <span class="online"><i></i>1657.4万</span>--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="mask" style=""></div>--%>
+        <%--                                </div>--%>
+        <%--                                <p class="t">英雄联盟八周年庆典</p>--%>
+        <%--                                <p class="num">--%>
+        <%--                                    网游 · 英雄联盟--%>
+        <%--                                </p>--%>
+        <%--                            </a>--%>
+        <%--                        </div>--%>
+        <%--                        <div class="card-live-module">--%>
+        <%--                            <a>--%>
+        <%--                                <div class="pic">--%>
+        <%--                                    <div class="lazy-img">--%>
+        <%--                                        <img src="images/main/直播1.jpg" />--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="snum">--%>
+        <%--                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>--%>
+        <%--                                        <span class="online"><i></i>1657.4万</span>--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="mask" style=""></div>--%>
+        <%--                                </div>--%>
+        <%--                                <p class="t">英雄联盟八周年庆典</p>--%>
+        <%--                                <p class="num">--%>
+        <%--                                    网游 · 英雄联盟--%>
+        <%--                                </p>--%>
+        <%--                            </a>--%>
+        <%--                        </div>--%>
+        <%--                        <div class="card-live-module">--%>
+        <%--                            <a>--%>
+        <%--                                <div class="pic">--%>
+        <%--                                    <div class="lazy-img">--%>
+        <%--                                        <img src="images/main/直播1.jpg" />--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="snum">--%>
+        <%--                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>--%>
+        <%--                                        <span class="online"><i></i>1657.4万</span>--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="mask" style=""></div>--%>
+        <%--                                </div>--%>
+        <%--                                <p class="t">英雄联盟八周年庆典</p>--%>
+        <%--                                <p class="num">--%>
+        <%--                                    网游 · 英雄联盟--%>
+        <%--                                </p>--%>
+        <%--                            </a>--%>
+        <%--                        </div>--%>
+        <%--                        <div class="card-live-module">--%>
+        <%--                            <a>--%>
+        <%--                                <div class="pic">--%>
+        <%--                                    <div class="lazy-img">--%>
+        <%--                                        <img src="images/main/直播1.jpg" />--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="snum">--%>
+        <%--                                        <span class="auther">哔哩哔哩英雄联盟赛事</span>--%>
+        <%--                                        <span class="online"><i></i>1657.4万</span>--%>
+        <%--                                    </div>--%>
+        <%--                                    <div class="mask" style=""></div>--%>
+        <%--                                </div>--%>
+        <%--                                <p class="t">英雄联盟八周年庆典</p>--%>
+        <%--                                <p class="num">--%>
+        <%--                                    网游 · 英雄联盟--%>
+        <%--                                </p>--%>
+        <%--                            </a>--%>
+        <%--                        </div>--%>
+        <%--                    </div>--%>
 
-                </div>
-                <div class="r-con">
-                    <div class="bili-tab bili-tab">
-                        <div class="bili-tab-item">直播排行</div>
-                        <div class="bili-tab-item">你关注的主播</div>
-                        <div class="bili-tab-item">为您推荐</div>
-                    </div>
-                    <div class="tab-box">
-                        <div class="tab-con clearfix">
-                            <div class="tab-item rank">
-                                <div class="r-item">
-                                    <span class="number">1</span>
-                                    <a class="preview">
-                                        <div class="lazy-img">
-                                            <img src="images/main/zhubo.jpg" />
-                                        </div>
-                                    </a>
-                                    <a>
-                                        <div class="r-i">
-                                            <p class="r-i-t">
-                                                <span class="u-name">哔哩哔哩英雄联盟赛事</span>
-                                                <span class="u-online">
-															<i></i>
-															<em>1657.4万</em>
-														</span>
-                                            </p>
-                                            <div title="英雄联盟八周年庆典" class="r-i-st">英雄联盟八周年庆典</div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <%--                </div>--%>
+        <%--                <div class="r-con">--%>
+        <%--                    <div class="bili-tab bili-tab">--%>
+        <%--                        <div class="bili-tab-item">直播排行</div>--%>
+        <%--                        <div class="bili-tab-item">你关注的主播</div>--%>
+        <%--                        <div class="bili-tab-item">为您推荐</div>--%>
+        <%--                    </div>--%>
+        <%--                    <div class="tab-box">--%>
+        <%--                        <div class="tab-con clearfix">--%>
+        <%--                            <div class="tab-item rank">--%>
+        <%--                                <div class="r-item">--%>
+        <%--                                    <span class="number">1</span>--%>
+        <%--                                    <a class="preview">--%>
+        <%--                                        <div class="lazy-img">--%>
+        <%--                                            <img src="images/main/zhubo.jpg" />--%>
+        <%--                                        </div>--%>
+        <%--                                    </a>--%>
+        <%--                                    <a>--%>
+        <%--                                        <div class="r-i">--%>
+        <%--                                            <p class="r-i-t">--%>
+        <%--                                                <span class="u-name">哔哩哔哩英雄联盟赛事</span>--%>
+        <%--                                                <span class="u-online">--%>
+        <%--															<i></i>--%>
+        <%--															<em>1657.4万</em>--%>
+        <%--														</span>--%>
+        <%--                                            </p>--%>
+        <%--                                            <div title="英雄联盟八周年庆典" class="r-i-st">英雄联盟八周年庆典</div>--%>
+        <%--                                        </div>--%>
+        <%--                                    </a>--%>
+        <%--                                </div>--%>
+        <%--                            </div>--%>
+        <%--                        </div>--%>
+        <%--                        <div></div>--%>
+        <%--                        <div></div>--%>
+        <%--                    </div>--%>
+        <%--                </div>--%>
+        <%--            </div>--%>
+        <%--        </div>--%>
 
     </div>
 
@@ -1296,9 +1441,22 @@
         el:'#nav-menu',
         data:{
             type1:{
-                num1:0,
-                num2:0,
-                num3:0,
+                num1:null,
+                num2:null,
+                num3:null,
+                num4:null,
+                num5:null,
+                num6:null,
+                num7:null,
+                num8:null,
+                num9:null,
+                num10:null,
+                num11:null,
+                num12:null,
+                num13:null,
+                num14:null,
+                num15:null,
+
             }
         }
     })

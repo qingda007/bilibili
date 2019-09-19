@@ -11,6 +11,9 @@
   Time: 19:46
   To change this template use File | Settings | File Templates.
 --%>
+<%
+    Object userInfo=session.getAttribute("userInfo");
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -148,10 +151,10 @@
             $.ajax({
                 url: "http://localhost:8888/getUserInfo",
                 type: "post",
-                data: {"id": 2},
+                data: {"id": ${sessionScope.userInfo.userId}},
                 datatype: "json",
                 success: function (data) {
-                    console.log(data);
+                    console.log( ${sessionScope.userinfo.userId});
                     $("#h-gender").before("<span id=\"h-name\">" + data.userName + "</span>");
                     $(".h-ava").prepend("<img src=\"" + data.userPicadress + "\" id=\"h-avatar\">");
                     $("#fav-name").append("<span class=\"fav-up-name\">创建者：" + data.userName + "</span>\n")
@@ -162,10 +165,17 @@
             $.ajax({
                 url: "http://localhost:8888/getFansCount",
                 type: "post",
-                data: {"userId": 1},
+                data: {"userId": ${sessionScope.userInfo.userId}},
                 datatype: "json",
                 success: function (data) {
+                    if(data==null){
+                        data=0;
+                    }
                     $(".n-gz").append("<p id=\"n-gz\" class=\"n-data-v spacing-attention\">" + data + "</p>");
+                },
+                error:function () {
+                    $(".n-gz").append("<p id=\"n-gz\" class=\"n-data-v spacing-attention\">0</p>");
+
                 }
             });
 
@@ -173,10 +183,14 @@
             $.ajax({
                 url: "http://localhost:8888/getBeFansCount",
                 type: "post",
-                data: {"fansId": 1},
+                data: {"fansId": ${sessionScope.userInfo.userId}},
                 datatype: "json",
                 success: function (data) {
                     $(".n-fs").append("<p id=\"n-fs\" class=\"n-data-v spacing-fans\">" + data + "</p>");
+                },
+                error:function () {
+                    $(".n-fs").append("<p id=\"n-fs\" class=\"n-data-v spacing-fans\">0</p>");
+
                 }
             });
 
@@ -184,7 +198,7 @@
             $.ajax({
                 url: "http://localhost:8888/getVideoUpload",
                 type: "post",
-                data: {"userId": 2},
+                data: {"userId": ${sessionScope.userInfo.userId}},
                 datatype: "json",
                 success: function (data) {
                     console.log(data);
@@ -287,7 +301,7 @@
             $.ajax({
                 url: "http://localhost:8888/getVideoCollection",
                 type: "post",
-                data: {"userId": 2},
+                data: {"userId": ${sessionScope.userInfo.userId}},
                 datatype: "json",
                 success: function (data) {
                     console.log(data);
@@ -435,9 +449,9 @@
             }
 
             $.ajax({
-                url: "http://localhost:8888/getFansList",
+                url: "http://localhost:8888/getFollowList",
                 type: "post",
-                data: {"userId": 1},
+                data: {"fansId": ${sessionScope.userInfo.userId}},
                 datatype: "json",
                 success:function (data) {
                     console.log(data);
@@ -460,9 +474,9 @@
                 }
             })
             $.ajax({
-                url: "http://localhost:8888/getFollowList",
+                url: "http://localhost:8888/getFansList",
                 type: "post",
-                data: {"fansId": 10},
+                data: {"userId": ${sessionScope.userInfo.userId}},
                 datatype: "json",
                 success: function (data) {
                     console.log(data);
@@ -495,7 +509,7 @@
         <div class="top-cont">
             <ul>
                 <li id="main">
-                    <a title="主站" class="t">
+                    <a title="主站" class="t" href="/toZhuye">
                         <dt id="tv"></dt>
                         主站
                     </a>

@@ -30,8 +30,8 @@
         <!-- 默认编码 -->
         <property name="defaultEncoding" value="utf-8"/>
     </bean>
-<!--    &lt;!&ndash; 配置登录验证拦截器 &ndash;&gt;-->
-<!--    <mvc:interceptors>-->
-<!--        <bean class="org.lanqiao.interceptor.LoginInterceptor"/>-->
-<!--    </mvc:interceptors>-->
+    <!-- 配置登录验证拦截器 -->
+    <mvc:interceptors>
+        <bean class="org.lanqiao.interceptor.LoginInterceptor"/>
+    </mvc:interceptors>
 </beans>
