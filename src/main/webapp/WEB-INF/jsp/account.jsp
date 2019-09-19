@@ -80,7 +80,7 @@
                 <div class="nav-con fl">
                     <ul>
                         <li class="nav-item home">
-                            <a class="t">
+                            <a class="t"href="/toZhuye">
                                 <i class="iconfont icon-bilibili" style="color: #00A1D6;"></i> 主站
                             </a>
                         </li>

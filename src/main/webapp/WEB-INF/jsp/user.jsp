@@ -156,7 +156,15 @@
                 success: function (data) {
                     console.log( ${sessionScope.userinfo.userId});
                     $("#h-gender").before("<span id=\"h-name\">" + data.userName + "</span>");
-                    $(".h-ava").prepend("<img src=\"" + data.userPicadress + "\" id=\"h-avatar\">");
+                    if(data.userPicadress!=null){
+                        $(".h-ava").prepend("<img src=\"" + data.userPicadress + "\" id=\"h-avatar\">");
+                        $("#header").prepend("<img src=\"" + data.userPicadress + "\" class=\"face\">\n");
+                    }else{
+                        $(".h-ava").prepend("<img src=\"images/main/akari.jpg\" id=\"h-avatar\">");
+                        $("#header").prepend("<img src=\"images/main/akari.jpg\" class=\"face\">\n");
+
+                    }
+
                     $("#fav-name").append("<span class=\"fav-up-name\">创建者：" + data.userName + "</span>\n")
                 }
             });
@@ -550,8 +558,7 @@
             <ul>
                 <li id="account" class="info">
                     <div class="i-face">
-                        <a href="/account/account">
-                            <img src="images/user/head.webp" class="face">
+                        <a id="header" href="/account/account">
                         </a>
                     </div>
                 </li>
