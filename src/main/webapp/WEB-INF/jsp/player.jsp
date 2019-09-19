@@ -1486,7 +1486,7 @@
         }
         .bili-icon, .icon {
             display: inline-block;
-            background-image: url("images/main/icons.png");
+            /*background-image: url("images/main/icons.png");*/
         }
         .coin-operated-m .coin-title {
             font-size: 16px;
@@ -1594,12 +1594,13 @@
     <script>
 
         $(function () {
-
+            var vid = $("#vId").val();
+            var uid = $("#uId").val();
             //视频信息
             $.ajax({
                 url: "/video/videoInfo",
                 data: {
-                    "videoId": 1,
+                    "videoId": vid,
                 },
                 type: "post",
                 datatype: "json",
@@ -1618,31 +1619,11 @@
                 }
             });
 
-            function showDanmu() {
-                //弹幕信息
-                $.ajax({
-                    url: "/video/danmuInfo",
-                    data: {
-                        "videoId": 1
-                    },
-                    type: "post",
-                    datatype: "json",
-                    success: function (data2) {
-                        for (var j = 0; j < data2.length; j++) {
-                            $("#danmusss").prepend("<li class=\"danmaku-info-row\">\n" +
-                                "                                                         <span class=\"danmaku-info-time\">" + data2[j].userInfo.userName + "</span>" +
-                                "                                                        <span class=\"danmaku-info-danmaku\">" + data2[j].danmu + "</span>\n" +
-                                "                                                        <span class=\"danmaku-info-date\">" + data2[j].sentTime + "</span>\n" +
-                                "                                                    </li>")
-                        }
-                    }
-                });
-            }
             function showComment(){
                 $.ajax({
                     url:"/video/commentInfo",
                     data:{
-                        "videoId":1
+                        "videoId":vid
                     },
                     type: "post",
                     datatype: "json",
@@ -1672,7 +1653,7 @@
             $.ajax({
                 url:"/video/commentInfo",
                 data:{
-                    "videoId":1
+                    "videoId":vid
                 },
                 type: "post",
                 datatype: "json",
@@ -1701,7 +1682,7 @@
             $.ajax({
                 url: "/video/danmuInfo",
                 data: {
-                    "videoId": 1
+                    "videoId": vid
                 },
                 type: "post",
                 datatype: "json",
@@ -1721,7 +1702,7 @@
             $.ajax({
                 url: "/video/upInfo",
                 data: {
-                    "videoId": 1
+                    "videoId": vid
                 },
                 type: "post",
                 datatype: "json",
@@ -1739,7 +1720,7 @@
             $.ajax({
                 url: "/video/commentCount",
                 data: {
-                    "videoId": 1
+                    "videoId": vid
                 },
                 type: "post",
                 datatype: "json",
@@ -1752,7 +1733,7 @@
             $.ajax({
                 url: "/video/danmuCount",
                 data: {
-                    "videoId": 1
+                    "videoId":vid
                 },
                 type: "post",
                 datatype: "json",
@@ -1771,7 +1752,7 @@
             $.ajax({
                 url: "/gerCollectionCount",
                 data: {
-                    "videoId": 1
+                    "videoId": vid
                 },
                 type: "post",
                 datatype: "json",
@@ -1784,7 +1765,9 @@
             $.ajax({
                 url: "http://localhost:8888/getUserInfo",
                 type: "post",
-                data: {"id": 2},
+                data: {
+                    "id": uid
+                },
                 datatype: "json",
                 success: function (data) {
                     console.log(data);
@@ -1792,6 +1775,8 @@
                     $("#firstface").prepend("<img class=\"user-head\" src=\"" + data.userPicadress + "\">");
                     $("#secondface").prepend("<img class=\"user-head\" src=\"" + data.userPicadress + "\">")
                     vm.likes.userCoinNum = data.userCoin;
+                    vm.likes.userName=data.userName;
+                    vm.likes.userPicadress=data.userPicadress;
                 }
             });
 
@@ -1805,19 +1790,31 @@
                     type: "post",
                     async: false,
                     data: {
-                        "userId": 2,
-                        "videoId": 1,
+                        "userId": uid,
+                        "videoId": vid,
                         "comment": tit,
                         "sendTime": time
                     },
                     datatype: "json",
                     success: function (data) {
-
-                        showComment();
+                        $(".comment-list").prepend(" <div class=\"list-item reply-wrap \">\n" +
+                            "                                        <div class=\"user-face\">\n" +
+                            "                                            <img src=\""+vm.likes.userPicadress+"\">\n" +
+                            "                                        </div>\n" +
+                            "                                        <div class=\"con\">\n" +
+                            "                                            <div class=\"user\">\n" +
+                            "                                                <span class=\"name\">"+vm.likes.userName+"</span>\n" +
+                            "                                            </div>\n" +
+                            "                                            <p class=\"text\">"+tit+"</p>\n" +
+                            "                                            <div class=\"info\">\n" +
+                            "                                                <span class=\"time\">"+time+"</span>\n" +
+                            "                                            </div>\n" +
+                            "                                        </div>\n" +
+                            "                                    </div>")
                         $.ajax({
                             url: "/video/commentCount",
                             data: {
-                                "videoId": 1
+                                "videoId": vid
                             },
                             async: false,
                             type: "post",
@@ -1843,14 +1840,18 @@
                     url: "/video/insertDanmu",
                     type: "post",
                     data: {
-                        "userId": 2,
-                        "videoId": 1,
+                        "userId": uid,
+                        "videoId": vid,
                         "danmu": tit,
                         "sentTime": time
                     },
                     datatype: "json",
                     success: function (data) {
-                        showDanmu();
+                        $("#danmusss").prepend("<li class=\"danmaku-info-row\">\n" +
+                            "                                                         <span class=\"danmaku-info-time\">" + vm.likes.userName + "</span>" +
+                            "                                                        <span class=\"danmaku-info-danmaku\">" + tit + "</span>\n" +
+                            "                                                        <span class=\"danmaku-info-date\">" + time + "</span>\n" +
+                            "                                                    </li>");
                     },
                     error: function () {
                         alert("失败")
@@ -1864,8 +1865,8 @@
                 url: "/getCollectionCount",
                 type: "post",
                 data: {
-                    "videoId": 1,
-                    "userId": 2
+                    "videoId": vid,
+                    "userId": uid
                 },
                 datatype: "text",
                 success: function (data) {
@@ -1894,8 +1895,8 @@
                     url: "/insertCollection",
                     type: "post",
                     data: {
-                        "videoId": 1,
-                        "userId": 2
+                        "videoId": vid,
+                        "userId": uid
                     },
                     datatype: "json",
                     success: function (data) {
@@ -1917,8 +1918,8 @@
                     url: "/deleteCollection",
                     type: "post",
                     data: {
-                        "videoId": 1,
-                        "userId": 2
+                        "videoId": vid,
+                        "userId": uid
                     },
                     datatype: "json",
                     success: function (data) {
@@ -1940,7 +1941,7 @@
                 type: "post",
                 data: {
                     "userId": userIds,
-                    "fansId": 2
+                    "fansId": uid
                 },
                 datatype: "text",
                 success: function (data) {
@@ -1975,7 +1976,7 @@
                         type: "post",
                         data: {
                             "userId": userIds,
-                            "fansId": 2
+                            "fansId": uid
                         },
                         datatype: "json",
                         success: function (data) {
@@ -2001,7 +2002,7 @@
                         type: "post",
                         data: {
                             "userId": userIds,
-                            "fansId": 2
+                            "fansId": uid
                         },
                         datatype: "json",
                         success: function (data) {
@@ -2029,7 +2030,7 @@
                     type: "post",
                     data: {
                         "coinNum": vm.likes.coinNum,
-                        "videoId": 1
+                        "videoId": vid
                     },
                     datatype: "json",
                     success: function (data) {
@@ -2047,7 +2048,7 @@
                     type: "post",
                     data: {
                         "userCoin": vm.likes.userCoinNum,
-                        "userId": 2
+                        "userId": uid
                     },
                     datatype: "json",
                     success: function (data) {
@@ -2075,7 +2076,7 @@
                     type: "post",
                     data: {
                         "likeNum": vm.likes.likeNum,
-                        "videoId": 1
+                        "videoId": vid
                     },
                     datatype: "json",
                     success: function (data) {
@@ -2094,7 +2095,7 @@
                     type: "post",
                     data: {
                         "likeNum": vm.likes.likeNum,
-                        "videoId": 1
+                        "videoId": vid
                     },
                     datatype: "json",
                     success: function (data) {
@@ -2111,7 +2112,7 @@
                 url: "/video/videoStatus",
                 type: "post",
                 data: {
-                    "videoId": 1
+                    "videoId": vid
                 },
                 datatype: "json",
                 success: function (data) {
@@ -2124,12 +2125,15 @@
                 }
             })
 
+
         });
 
 
     </script>
 </head>
 <body>
+<input type="hidden" value="${videoId}" id="vId">
+<input type="hidden" value="${userId}" id="uId">
 <!--顶部导航-->
 <div class="header">
     <div class="nav-wrapper">
@@ -2501,7 +2505,9 @@
                 coinNum:1,
                 collectionNum:1,
                 userId:1,
-                userCoinNum:1
+                userCoinNum:1,
+                userName:1,
+                userPicadress:1
             }
         }
 
