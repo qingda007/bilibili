@@ -16,4 +16,6 @@ public interface VideoService {
     public int updateByPrimaryKey(Video video);
 
     public Video selectStatus(Integer videoId);
+
+    public List<Video> getByKeyword(String videoTitle);
 }

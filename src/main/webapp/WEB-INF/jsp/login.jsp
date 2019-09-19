@@ -46,68 +46,93 @@
         <!--            头部header-->
         <div class="bili-header-m">
             <div class="nav-menu">
+                <div class="blur-bg" style="background-image: url(images/main/header.png);"></div>
                 <div class="nav-mask"></div>
-                <div class="nav-wrapper bili-wrapper">
-                    <!--          header左边      -->
-                    <div class="fl">
+                <div class="bili-wrapper clearfix nav-wraper">
+                    <div class="nav-con fl">
                         <ul>
-                            <li class="nav-item">
-                                <a title="主站" >
-                                    <i id="tv" ></i><span class="tc">主站</span>
+                            <li class="nav-item home">
+                                <a href="/bilibili" class="t">
+                                    <i class="iconfont icon-bilibili" style="color: #00A1D6;"></i> 主站
                                 </a>
                             </li>
                             <li class="nav-item mbili">
-                                <a title="来探索bilibili音乐的世界吧~" class="t">音频</a>
+                                <a class="t">音频</a>
                             </li>
-                            <li class="nav-item mbili">
-                                <a title="游戏中心" class="t">游戏中心
-                                </a>
+                            <li class="nav-item game">
+                                <a class="t">游戏中心</a>
                             </li>
-                            <li class="nav-item mbili">
-                                <a title="直播" class="t">直播
-                                </a>
+                            <li class="nav-item live">
+                                <a class="t">直播</a>
                             </li>
-                            <li class="nav-item mbili">
-                                <a title="会员购" class="t">会员购
-                                </a>
+                            <li class="nav-item buy">
+                                <a class="t">会员购</a>
                             </li>
-                            <li class="nav-item mbili">
-                                <a title="漫画" class="t">漫画
-                                </a>
+                            <li class="nav-item manga">
+                                <a class="t">漫画</a>
                             </li>
-                            <li class="nav-item mbili">
-                                <a title="BW" class="t">BW
-                                </a>
+                            <li class="nav-item loc-menu">
+                                <a class="t">BW</a>
                             </li>
-                            <li class="nav-item mbili">
-                                <a title="70年" class="t">70年
-                                </a>
+                            <li class="nav-item loc-menu">
+                                <a class="t">70年</a>
                             </li>
-                            <li class="nav-item ">
-                                <a title="下载APP">
-                                    <i id="ph"></i><span class="tc">下载APP</span>
+                            <li class="nav-item moblie">
+                                <a class="t">
+                                    <i class="iconfont icon-contextphone" style="color: #00A1D6;"></i>下载APP
                                 </a>
                             </li>
                         </ul>
                     </div>
-                    <!--          header右边      -->
                     <div class="up-load fr">
-                        <a class="u-link">投稿</a>
+                        <a class="u-link" href="/user/toLogin">投稿</a>
                     </div>
-                    <div class="fr">
-                        <ul>
-                            <li class="nav-item profile-info">
+                    <div class="nav-con fr">
+                        <ul class="fr">
+                            <li id="nipi" class="nav-item profile-info" >
                                 <a class="t">
-                                    <div class="i-face">
-                                        <img src="images/login/akari.jpg" class="face">
+                                    <i class="i-face">
+                                        <img id="face" class="face">
+                                        <img class="pendant"  />
+                                    </i>
+                                </a>
+                                <div id="i-login" class="i_menu i_menu_login" style="display: none;">
+                                    <p class="tip">登录后你可以：</p>
+                                    <div class="img">
+                                        <img id="d1" src="images/main/danmu1.png" />
+                                        <img id="d2" src="images/main/danmu1.png" style="left: 320px;" />
                                     </div>
+                                    <a class="login-btn" href="/user/toLogin">登录</a>
+                                    <p class="reg">首次使用？
+                                        <a href="/user/toRegister">点我去注册</a>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="nav-item nipi">
+                                <a class="t">
+                                    稍后再看
                                 </a>
                             </li>
-                            <li class="nav-item ">
-                                <a class="t">动态</a>
+                            <li class="nav-item nipi">
+                                <a class="t">
+                                    收藏
+                                </a>
+                            </li>
+                            <li class="nav-item nipi">
+                                <a class="t">
+                                    消息
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="t">历史</a>
+                                <a class="t">
+                                    动态
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="t">
+                                    历史
+                                </a>
                             </li>
                         </ul>
                     </div>

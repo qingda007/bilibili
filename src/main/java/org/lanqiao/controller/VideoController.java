@@ -1,12 +1,17 @@
 package org.lanqiao.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.lanqiao.entity.Video;
 import org.lanqiao.entity.VideoComment;
 import org.lanqiao.entity.VideoDanmu;
 import org.lanqiao.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -81,8 +86,16 @@ public class VideoController {
     }
 
     @RequestMapping("/videoStatus")
-    public  Video selectStatus(Integer videoId){
+    public Video selectStatus(Integer videoId){
         return videoService.selectStatus(videoId);
     }
 
+    @ResponseBody
+    @RequestMapping("/show")
+    public ModelAndView getByKeyword(@RequestParam(value="pageNo", defaultValue = "1") int pageNum, String videoTitle) {
+        PageHelper.startPage(pageNum,20);
+        List<Video> videoList= videoService.getByKeyword(videoTitle);
+        PageInfo<Video> p = new PageInfo<>(videoList);
+        return new ModelAndView("show", "pageInfo", p);
+    }
 }

@@ -28,7 +28,7 @@
         var up_num = 0;
         var coll_num = 0
         //每页数
-        var per_page = 5;
+        var per_page = 20;
         //当前页
         var up_cur_page = 1;
         var coll_cur_page = 1;

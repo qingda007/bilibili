@@ -66,6 +66,14 @@
     order by v.up_time
     desc
   </select>
+  <select id="getByKeyword" resultMap="VideoResultMap">
+    select *
+    from video
+    <if test="videoTitle != null and videoTitle != ''">
+      where video_title like concat(concat('%',#{videoTitle}),'%')
+    </if>
+    ORDER BY video_id
+  </select>
 
   <select id="countIsReview" resultType="java.lang.Integer">
     select count(*)

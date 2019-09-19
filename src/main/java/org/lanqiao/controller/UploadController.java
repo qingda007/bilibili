@@ -39,14 +39,20 @@ public class UploadController {
     @Autowired
     VideoService videoService;
     private String rootPath = "E:/bilibili/teporary";
-//    @ResponseBody
-//    @RequestMapping(value = "/test")//测试用
-//    public int test(@RequestParam("a") int a, @RequestParam("a") String b){
-//        VideoTag videoTag = new VideoTag();
-//        videoTag.setVideoId(a);
-//        videoTag.setTagName(b);
-//        return videoTagService.addVideoTag(videoTag);
-//    }
+    @ResponseBody
+    @RequestMapping(value = "/in")//测试用
+    public int testIn(@Param("userId")int userId, HttpServletRequest request){
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUserId(userId);
+        request.getSession().setAttribute("userInfo",userInfo);
+        return 1;
+    }
+    @ResponseBody
+    @RequestMapping(value = "/out")//测试用
+    public int testOut(@Param("userId")int userId, HttpServletRequest request){
+        request.getSession().setAttribute("userInfo",null);
+        return 1;
+    }
     @RequestMapping(value = "/uploadVideo")//打开投稿页面
     public ModelAndView uploadVideo() {
         return new ModelAndView("upload");
