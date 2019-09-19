@@ -169,7 +169,7 @@
                         <div class="input-box">
                             <ul style="list-style-type:none">
                                 <li class=" item status-box">
-                                    <input type="text" placeholder="你的手机号码/邮箱" id="userName" name="userName" maxlength="50" autocomplete="off">
+                                    <input type="text" placeholder="请输入用户名" id="userName" name="userName" maxlength="50" autocomplete="off">
                                     <span class="status"></span>
                                     <div class="text">
                                         <p class="tips"></p>

@@ -37,9 +37,9 @@
             if(videoTitle.length==0){
                 $('html,body').animate({scrollTop:$('#video_type_2').offset().top}, 400);
             }
-            // else if(videoTag.length==0){
-            //     $('html,body').animate({scrollTop:$('#upload-video-title').offset().top}, 400);
-            // }
+            else if(videoTag.length==0){
+                $('html,body').animate({scrollTop:$('#upload-video-title').offset().top}, 400);
+            }
             else {
                 if(videoDesc.length==0){
                     videoDesc="暂无简介";
@@ -338,8 +338,8 @@
                 </div>
                 <br>
                 <div class="section-title-container">
-                    <p class="section-title-deg"></p>
-                    <h3 class="section-title-content-main">&ensp;标签</h3>
+                    <p class="section-title-deg">*</p>
+                    <h3 class="section-title-content-main">标签</h3>
                     <p class="select-title-tips">（标签可自定义）</p>
                 </div>
                 <div class="content-title-container">
