@@ -162,46 +162,6 @@ function getType2(type1) {
     });
 }
 
-//提交video的所有信息
-function submitVideoInfo() {
-    var videoTitle = document.getElementById('upload-video-title').value;
-    $(".upload-success-hint-3").html("稿件名称: "+videoTitle);
-    var videoDesc = document.getElementById('upload-video-desc').value;
-    var videoPic = document.getElementById('cover').src;
-    var videoTag = document.getElementById("upload-video-tag").value;
-    var type1 = $('#video_type_1 option:selected').text();//选中的文本
-    var type2 = $('#video_type_2 option:selected').text();//选中的文本
-    if(videoTitle.length==0){
-        $('html,body').animate({scrollTop:$('#video_type_2').offset().top}, 400);
-    }
-    else if(videoTag.length==0){
-        $('html,body').animate({scrollTop:$('#upload-video-title').offset().top}, 400);
-    }
-    else {
-        if(videoDesc.length==0){
-            videoDesc="暂无简介";
-        }
-        if(videoPic.length>255){
-            videoPic = null;
-        }
-        $.ajax({
-            url : 'http://localhost:8888/video/uploadVideoInfo',//后台数据地址
-            data : {
-                userId : 1,
-                videoTitle: videoTitle,
-                videoPic: videoPic,
-                videoDesc: videoDesc,
-                statusAlias1: type1,
-                statusAlias2: type2,
-                tags: videoTag
-            },//请求type1的数据
-            success : function(data){
-                $("#upload-step2-container").css("display", "none");
-                $("#upload-step3-container").css("display","block");
-            }
-        });
-    }
-}
 
 function countWord() {
     var number = $('#upload-video-title').val().length;

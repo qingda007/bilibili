@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.ibatis.annotations.Param;
 import org.lanqiao.entity.Status;
+import org.lanqiao.entity.UserInfo;
 import org.lanqiao.entity.Video;
 import org.lanqiao.entity.VideoTag;
 import org.lanqiao.service.StatusService;
@@ -41,8 +42,8 @@ public class UploadController {
     private String rootPath = "E:/bilibili/teporary";
     @ResponseBody
     @RequestMapping(value = "/test")
-    public int test(@RequestParam("userId") int userId,@RequestParam("word") String word){
-        return uploadService.countByWord(userId,word);
+    public int test(@RequestParam("word") String type1){
+        return statusService.countVideoByType1(type1);
     }
     @ResponseBody
     @RequestMapping(value = "/upload")
@@ -138,36 +139,50 @@ public class UploadController {
     }
 
     @RequestMapping(value = "/uploadVideo")
-    public ModelAndView uploadVideo() {
+    public ModelAndView uploadVideo(HttpServletRequest request) {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUserId(2);
+        request.getSession().setAttribute("userInfo",userInfo);
         return new ModelAndView("upload");
     }
 
     @RequestMapping(value = "/homeVideo")
-    public ModelAndView homeVideo() {
-        return new ModelAndView("upload-home","videoInfo",uploadService.countVideoInfo(1));
+    public ModelAndView homeVideo(HttpServletRequest request) {
+        UserInfo userInfo = (UserInfo)request.getSession(false).getAttribute("userInfo");
+        return new ModelAndView("upload-home","videoInfo",uploadService.countVideoInfo(userInfo.getUserId()));
     }
 
     @RequestMapping(value = "/managerVideo")
-    public ModelAndView managerVideo(@RequestParam(value="pageNo", defaultValue = "1") int pageNum, @RequestParam(value="isReview", defaultValue = "-1") int isReview, @RequestParam(value="videoId", defaultValue = "-1") int videoId) {
+    public ModelAndView managerVideo(@RequestParam(value="pageNo", defaultValue = "1") int pageNum, @RequestParam(value="isReview", defaultValue = "-1") int isReview, @RequestParam(value="videoId", defaultValue = "-1") final int videoId, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
+        UserInfo userInfo = (UserInfo)request.getSession(false).getAttribute("userInfo");
+        int userId = userInfo.getUserId();
         if(videoId!=-1){
-            uploadService.delVideo(videoId);
+            new Thread() {
+                public void run() {
+                    Ffmpeg ffmpeg = new Ffmpeg();
+                    Video video = videoService.selectVideoInfo(videoId);
+                    ffmpeg.delDataFile(video.getVideoPic()); //删除该稿件的封面
+                    ffmpeg.delDataFile(video.getVideoUrl());  //删除该稿件的视频文件
+                }
+            }.start();
+            uploadService.delVideo(videoId); //删除该稿件的数据库记录
         }
         if(isReview==-1){
             PageHelper.startPage(pageNum, 5);
-            List<Video> videos = uploadService.selectUploadVideo(1);
+            List<Video> videos = uploadService.selectUploadVideo(userId);
             PageInfo<Video> p = new PageInfo<>(videos);
             modelAndView.addObject("pageInfo",p);
         }
         else {
             PageHelper.startPage(pageNum, 5);
-            List<Video> videos = uploadService.selectVideoByIsReview(1, isReview);
+            List<Video> videos = uploadService.selectVideoByIsReview(userId, isReview);
             PageInfo<Video> p = new PageInfo<>(videos);
             modelAndView.addObject("pageInfo",p);
         }
-        long waitReview = uploadService.countIsReview(1,0);
-        long isPass = uploadService.countIsReview(1,1);
-        long noPass = uploadService.countIsReview(1,2);
+        long waitReview = uploadService.countIsReview(userId,0);
+        long isPass = uploadService.countIsReview(userId,1);
+        long noPass = uploadService.countIsReview(userId,2);
         long length = waitReview + isPass + noPass;
         modelAndView.addObject("length",length);
         modelAndView.addObject("waitReview",waitReview);
