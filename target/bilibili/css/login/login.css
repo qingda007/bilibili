@@ -296,7 +296,7 @@ body{
     color: #aaaaaa;
     font-size: 14px;
     padding: 10px;
-    height: 18px;
+    height: 40px;
     vertical-align: middle;
     border-radius: 4px;
 }
@@ -372,6 +372,7 @@ input[type="checkbox" i] {
     -o-transition: all .3s;
     -moz-transition: all .3s;
     transition: all .3s;
+
 }
 .form-login .input-box .btn-box .btn-reg {
     margin-left: 34px;

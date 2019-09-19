@@ -8,16 +8,89 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>创作中心 - 哔哩哔哩弹幕视频网 - ( ゜- ゜)つロ 乾杯~</title>
-    <link rel="shortcut icon" href="/images/main/bilibili.ico">
+    <title>创作中心</title>
     <link rel="stylesheet" href="/css/upload/upload_home.css">
-    <link rel="stylesheet" href="/css/upload/header.css" />
+    <link rel="stylesheet" href="/css/main/header.css">
     <link rel="stylesheet" href="/css/main/bass.css"/>
     <link rel="stylesheet" href="/css/upload/upload_menu.css">
     <link rel="stylesheet" href="/css/main/iconfont.css">
     <script src="/js/jquery-3.4.1.js"></script>
     <script src="/js/upload/header.js"></script>
-    <script src="/js/upload/upload-home.js"></script>
+    <script>
+        $(function () {
+            var imgCount = 5;
+            var index = 1;
+            var intervalId;
+            var buttonSpan = $('.trig')[0].children; //htmlCollection 集合
+            //自动轮播功能 使用定时器
+            autoNextPage();
+
+
+            function autoNextPage() {
+                intervalId = setInterval(function() {
+                    nextPage(true);
+                }, 3000);
+            }
+            //当鼠标移入 停止轮播
+            $('.panel').hover(function() {
+                console.log('hah');
+                clearInterval(intervalId);
+            }, function() { // 当鼠标移出，开始轮播
+                autoNextPage();
+            });
+
+
+
+            //小圆点的相应功能 事件委托
+            clickButtons();
+
+            function clickButtons() {
+                var length = buttonSpan.length;
+                for(var i = 0; i < length; i++) {
+                    buttonSpan[i].onclick = function() {
+                        $(buttonSpan[index - 1]).removeClass('on');
+                        if($(this).attr('index') == 1) {
+                            index = 5;
+                        } else {
+                            index = $(this).attr('index') - 1;
+                        }
+                        nextPage(true);
+                    };
+                }
+            }
+
+            function nextPage(next) {
+                var targetLeft = 0;
+                //当前的圆点去掉on样式
+                $(buttonSpan[index - 1]).removeClass('on');
+                if(next) { //往后走
+                    if(index == 5) { //到最后一张，直接跳到第一张
+                        targetLeft = 0;
+                        index = 1;
+                    } else {
+                        index++;
+                        targetLeft = -620 * (index - 1);
+                    }
+
+                } else { //往前走
+                    if(index == 1) { //在第一张，直接跳到第五张
+                        index = 5;
+                        targetLeft = -620 * (imgCount - 1);
+                    } else {
+                        index--;
+                        targetLeft = -620 * (index - 1);
+                    }
+
+                }
+                $('.carousel-module .panel .pic').animate({
+                    left: targetLeft + 'px'
+                });
+                //更新后的圆点加上样式
+                $(buttonSpan[index - 1]).addClass('on');
+
+            }
+        })
+    </script>
 </head>
 <body>
     <div class="bili-header">
@@ -61,7 +134,7 @@
                     </ul>
                 </div>
                 <div class="up-load fr">
-                    <a href="/video/uploadVideo" class="u-link">投稿</a>
+                    <a class="u-link">投稿</a>
                 </div>
                 <div class="nav-con fr">
                     <ul class="fr">

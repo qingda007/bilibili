@@ -19,6 +19,8 @@ public class UserInfoServiceImpl implements UserInfoService{
         userInfoMapper.registerUser(userInfo);
         return userInfo;
     }
+
+
     //登录业务
     @Override
     public UserInfo checkLogin(String userName, String userPassw) {
@@ -56,8 +58,8 @@ return userInfoMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public int updateByPrimaryKeySelective(UserInfo record) {
-        return userInfoMapper.updateByPrimaryKeySelective(record);
+    public int updateByPrimaryKeySelective(UserInfo userInfo) {
+        return userInfoMapper.updateByPrimaryKeySelective(userInfo);
     }
 
 

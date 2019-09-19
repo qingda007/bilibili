@@ -70,4 +70,19 @@ public class VideoController {
         return statusService.countVideoByType1(type1);
     }
 
+    @RequestMapping("/like")
+    public int updateLike(Video video){
+        return videoService.updateByPrimaryKeySelective(video);
+    }
+
+    @RequestMapping("/coin")
+    public int updataVideoCoin(Video video){
+        return videoService.updateByPrimaryKey(video);
+    }
+
+    @RequestMapping("/videoStatus")
+    public  Video selectStatus(Integer videoId){
+        return videoService.selectStatus(videoId);
+    }
+
 }

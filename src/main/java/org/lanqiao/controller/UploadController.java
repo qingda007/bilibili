@@ -2,7 +2,6 @@ package org.lanqiao.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.ibatis.annotations.Param;
 import org.lanqiao.entity.Status;
 import org.lanqiao.entity.UserInfo;
@@ -42,8 +41,11 @@ public class UploadController {
     private String rootPath = "E:/bilibili/teporary";
     @ResponseBody
     @RequestMapping(value = "/test")
-    public int test(@RequestParam("word") String type1){
-        return statusService.countVideoByType1(type1);
+    public int test(@RequestParam("a") int a, @RequestParam("a") String b){
+        VideoTag videoTag = new VideoTag();
+        videoTag.setVideoId(a);
+        videoTag.setTagName(b);
+        return videoTagService.addVideoTag(videoTag);
     }
     @ResponseBody
     @RequestMapping(value = "/upload")
@@ -94,7 +96,7 @@ public class UploadController {
 
     @ResponseBody
     @RequestMapping(value = "/uploadVideoInfo")//投稿
-    public int uploadVideoInfo(Video video, Status status, String tags, HttpServletRequest request) {
+    public int uploadVideoInfo(final Video video, Status status, String tags, HttpServletRequest request) {
         //根据选择的一二级分区，设置视频的类型
         video.setClassType(statusService.selectIdByType(status));
         //设置当前时间为上传时间
@@ -102,10 +104,10 @@ public class UploadController {
         //获取session中的视频文件路径
         String videoUrl = (String)request.getSession(false).getAttribute("videoUrl");
         //设置视频路径
-        Ffmpeg ffmpeg = new Ffmpeg();
+        final Ffmpeg ffmpeg = new Ffmpeg();
         //获取视频和封面的物理路径
          String picUrl = video.getVideoPic();
-        String uuid = (String)request.getSession(false).getAttribute("Uuid");
+        final String uuid = (String)request.getSession(false).getAttribute("Uuid");
         if(picUrl.contains(uuid)){//选择截取的图片作为封面
             picUrl = ffmpeg.getPhyDir(picUrl);
         }
@@ -126,7 +128,7 @@ public class UploadController {
         //数据库新增video记录
         int flag = uploadService.uploadVideo(video);
         //获取新增video的id
-        int videoId = video.getVideoId();
+        final int videoId = video.getVideoId();
         //根据获取的videoId插入对应的VideoTag表
         VideoTag videoTag = new VideoTag();
         for (String tag : tagList) {
@@ -134,7 +136,12 @@ public class UploadController {
             videoTag.setVideoId(videoId);
             flag = flag*videoTagService.addVideoTag(videoTag);
         }
-        ffmpeg.delUuidFile(uuid);
+        new Thread() {
+            public void run() {
+                Ffmpeg ffmpeg = new Ffmpeg();
+                ffmpeg.delUuidFile(uuid);
+            }
+        }.start();
         return flag;
     }
 
@@ -157,7 +164,7 @@ public class UploadController {
         ModelAndView modelAndView = new ModelAndView();
         UserInfo userInfo = (UserInfo)request.getSession(false).getAttribute("userInfo");
         int userId = userInfo.getUserId();
-        if(videoId!=-1){
+        if(videoId!=-1){ //代表执行删除稿件的操作
             new Thread() {
                 public void run() {
                     Ffmpeg ffmpeg = new Ffmpeg();

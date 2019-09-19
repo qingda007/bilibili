@@ -9,8 +9,7 @@
                         ">
 	<!-- 自动扫描 -->
 	<context:component-scan base-package="org.lanqiao.mapper" />
-	<context:component-scan base-package="org.lanqiao.service" />
-	<context:component-scan base-package="org.lanqiao.util" />
+
 	<!-- <context:property-placeholder location="classpath:config.properties" 
 		/> -->
 	<!-- 引入配置文件 -->

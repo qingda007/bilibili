@@ -48,7 +48,10 @@
                     videoPic = null;
                 }
                 var userId= ${sessionScope.userInfo.userId};
-                alert(userId);
+                // if(userId==null){
+                //     alert("您尚未登录，无法投稿！");
+                //     window.history.back();
+                // }
                 $.ajax({
                     url : 'http://localhost:8888/video/uploadVideoInfo',//后台数据地址
                     data : {
@@ -63,6 +66,9 @@
                     success : function(data){
                         $("#upload-step2-container").css("display", "none");
                         $("#upload-step3-container").css("display","block");
+                    },
+                    error : function (data) {
+                        alert("连接服务器失败，请联系管理员");
                     }
                 });
             }

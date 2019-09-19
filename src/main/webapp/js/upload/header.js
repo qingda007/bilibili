@@ -1,7 +1,7 @@
 $(function () {
-    $("#face").attr("src","images/main/akari.jpg");
+    $("#face").attr("src","/images/main/akari.jpg");
     //用户信息显示
-    var id=1;
+ //   var id=1;
     if(id!=null){
         $.ajax({
             url:"http://localhost:8888/getUserInfo",

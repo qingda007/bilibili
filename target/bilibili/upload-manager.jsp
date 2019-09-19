@@ -13,10 +13,10 @@
 <html>
 <head>
     <title>创作中心 - 哔哩哔哩弹幕视频网 - ( ゜- ゜)つロ 乾杯~</title>
-    <link rel="shortcut icon" href="/images/main/bilibili.ico">
+
     <link rel="stylesheet" href="/css/main/bass.css"/>
     <link rel="stylesheet" href="/css/upload/upload_menu.css" type="text/css">
-    <link rel="stylesheet" href="/css/upload/header.css" />
+    <link rel="stylesheet" href="/css/main/header.css" />
     <link rel="stylesheet" href="/css/upload/upload_manager.css">
     <link rel="stylesheet" href="/css/main/iconfont.css">
     <script src="/js/jquery-3.4.1.js"></script>
@@ -63,6 +63,16 @@
                     $('#flushDIV').html($html.html());
                 }
             });
+        }
+        function getTime(d1) {
+            var d2=new Date("1970/01/01 08:00:00");
+            var d3=d1-d2;
+            var h=Math.floor(d3/3600000);
+            var m=Math.floor((d3-h*3600000)/60000);
+            var s=(d3-h*3600000-m*60000)/1000;
+            var time = "相差"+h+"小时"+m+"分"+s+"秒";
+            $(".duration").html(time);
+            return time;
         }
         function sureTotal(){
             var total = ${pageInfo.total};
@@ -127,7 +137,7 @@
                 </ul>
             </div>
             <div class="up-load fr">
-                <a href="/video/uploadVideo" class="u-link">投稿</a>
+                <a class="u-link">投稿</a>
             </div>
             <div class="nav-con fr">
                 <ul class="fr">

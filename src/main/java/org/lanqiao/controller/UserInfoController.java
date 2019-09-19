@@ -69,8 +69,12 @@ public class UserInfoController {
     }
 
     @RequestMapping("/index")
-    public ModelAndView index(HttpServletRequest request){
-        ModelAndView mv=new ModelAndView("user");
+    public ModelAndView index(HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView("user");
         return mv;
+    }
+    @RequestMapping("/userCoin")
+    public int updataUserCoin(UserInfo userInfo){
+        return userInfoService.updateByPrimaryKeySelective(userInfo);
     }
 }

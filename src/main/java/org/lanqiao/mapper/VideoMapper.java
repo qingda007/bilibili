@@ -32,7 +32,12 @@ public interface VideoMapper {
     //用来更新video
 
     Video selectUpInfo(Integer videoId);
-    int updateByPrimaryKeySelective(Video record);
 
+    //点赞功能
+    int updateByPrimaryKeySelective(Video record);
+    //投币功能
     int updateByPrimaryKey(Video record);
+
+    Video selectStatus(Integer videoId);
+
 }
