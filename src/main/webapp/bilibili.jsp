@@ -416,7 +416,7 @@
                     </ul>
                 </div>
                 <div class="up-load fr">
-                    <a class="u-link">投稿</a>
+                    <a class="u-link" href="/user/toLogin">投稿</a>
                 </div>
                 <div class="nav-con fr">
                     <ul class="fr">

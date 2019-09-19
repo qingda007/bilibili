@@ -56,8 +56,14 @@ public class UserInfoController {
         return user;
     }
 
-    @RequestMapping("/bilibili")
+    @RequestMapping("toZhuye")
     public ModelAndView zhuye(){
+        ModelAndView bilibili=new ModelAndView("zhuye");
+        return bilibili;
+    }
+
+    @RequestMapping("/bilibili")
+    public ModelAndView bilibili(){
         ModelAndView bilibili=new ModelAndView("bilibili");
         return bilibili;
     }
@@ -65,10 +71,6 @@ public class UserInfoController {
     @RequestMapping("/index")
     public ModelAndView index(HttpServletRequest request){
         ModelAndView mv=new ModelAndView("user");
-        HttpSession session=request.getSession();
-        UserInfo userInfo=new UserInfo();
-        userInfo=userInfoService.selectByPrimaryKey(1);
-        session.setAttribute("userinfo",userInfo);
         return mv;
     }
 }
