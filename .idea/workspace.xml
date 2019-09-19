@@ -8,118 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e3bf18da-ad0e-4e20-8eda-e51c241bb006" name="Default Changelist" comment="整合 9/19">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/account.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bilibili.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bilibili.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/player.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/player.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/show.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/show.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-manager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-manager.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/userInfo.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/zhuye.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/zhuye.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/search/serach.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/search/search.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/login/akari.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/login/bilibili-tv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/login/huakuai.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/login/phonemini.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/login/qrcode.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/login/qrcodegirl.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/login/rl_top.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/login/tvsmile.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/login/weiboqq.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/Up1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/Up2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/Up3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/akari.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/cm_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/danmu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/danmu1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/header-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/header.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/icons.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/icons2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/icons3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/indexdianshi.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/lunbo1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/lunbo2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/lunbo3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/lunbo4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/lunbo5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/rl_top.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/safe.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/tab2233.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/touxiang.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/up主.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/zhubo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/专栏.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/图标1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/广告1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/推广1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/推广2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/推广3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/推广4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/气泡箭头.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/直播1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/main/黄色感叹号.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/register/check-box-inner.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/register/check-box.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/upload/bilibili-create.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/upload/camera-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/upload/lunbo1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/upload/lunbo2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/upload/lunbo3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/upload/lunbo4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/upload/lunbo5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/upload/mrcover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/upload/small-tv-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/upload/success-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/upload/tangtangshow.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/upload/tranger.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/upload/upload-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/upload/upload-ok.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/upload/upload-progress.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/upload/upload-success.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/upload/weitougao.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/administer.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/arrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/bilibiliTV.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/bilibili_tv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/bofang.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/dbz-hint-22.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/dbz-hint-33.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/fangzi.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/h-icons.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/head.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/hua.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/icon-auth.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/icon_createCenters.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/icons.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/level.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/nodata02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/shipin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/shoucang.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/shouji.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/sousuo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/test.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/test10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/test11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/test2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/test3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/test4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/test5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/test6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/test7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/test8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/test9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/user-auth.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/video-placeholder.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/weibiaoti-.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/user/wrapper.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/video/22.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/video/akari.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/video/logo.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/video/tangtangshow.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/interceptor/LoginInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/interceptor/LoginInterceptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/log4j.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/UploadController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/classes/org/lanqiao/controller/UploadController$1.class" afterDir="false" />
@@ -147,6 +36,9 @@
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/jsp/userInfo.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/jsp/zhuye.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/jsp/zhuye.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/WEB-INF/page.tld" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/WEB-INF/page.tld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/account.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/account.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/bilibili.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/images/login/akari.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/images/login/bilibili-tv.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/images/login/huakuai.jpg" beforeDir="false" />
@@ -255,7 +147,14 @@
       <change beforePath="$PROJECT_DIR$/target/bilibili/js/upload/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/bilibili/js/upload/upload.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/login.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/player.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/register.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/sss.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/user.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/user.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/userInfo.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/video.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/bilibili/zhuye.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/bilibili/zhuye.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/log4j.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/UploadController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/lanqiao/controller/UploadController$1.class" afterDir="false" />
@@ -344,16 +243,16 @@
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bilibili.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="309">
-              <caret line="474" column="71" lean-forward="true" selection-start-line="474" selection-start-column="54" selection-end-line="474" selection-end-column="71" />
+              <caret line="474" column="71" selection-start-line="474" selection-start-column="54" selection-end-line="474" selection-end-column="71" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/player.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="2175" column="56" selection-start-line="2175" selection-start-column="56" selection-end-line="2175" selection-end-column="56" />
+            <state relative-caret-position="179">
+              <caret line="2179" column="18" selection-start-line="2179" selection-start-column="18" selection-end-line="2179" selection-end-column="18" />
               <folding>
                 <element signature="e#38#44#0" expanded="true" />
                 <element signature="e#44#50#0" expanded="true" />
@@ -363,19 +262,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-modify.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/playerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2907">
-              <caret line="282" column="29" selection-start-line="282" selection-start-column="29" selection-end-line="282" selection-end-column="29" />
+            <state relative-caret-position="145">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-home.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/VideoController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4550">
-              <caret line="224" column="14" selection-start-line="224" selection-start-column="14" selection-end-line="224" selection-end-column="14" />
+            <state relative-caret-position="177">
+              <caret line="52" column="35" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/interceptor/LoginInterceptor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="386">
+              <caret line="62" column="10" lean-forward="true" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -385,15 +293,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3266">
               <caret line="459" column="10" selection-start-line="459" selection-start-column="10" selection-end-line="459" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/RegisterController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -439,8 +338,8 @@
       <find>type avid</find>
       <find>cover-normal</find>
       <find>searchform</find>
-      <find>nav-search showSearch</find>
       <find>form</find>
+      <find>nav-search showSearch</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -471,6 +370,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-manager.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bilibili.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/player.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/interceptor/LoginInterceptor.java" />
       </list>
     </option>
   </component>
@@ -505,11 +405,6 @@
             <path>
               <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
               <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
@@ -553,127 +448,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="lanqiao" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lanqiao" type="462c0819:PsiDirectoryNode" />
               <item name="interceptor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lanqiao" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lanqiao" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="search" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="upload" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="upload" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bilibili" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="bilibili" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -831,7 +606,7 @@
       <workItem from="1568809103648" duration="5610000" />
       <workItem from="1568816130299" duration="7421000" />
       <workItem from="1568864519844" duration="3218000" />
-      <workItem from="1568901629128" duration="6150000" />
+      <workItem from="1568901629128" duration="6723000" />
     </task>
     <task id="LOCAL-00001" summary="增加了删除稿件的功能 9/18">
       <created>1568776560566</created>
@@ -952,11 +727,18 @@
       <option name="project" value="LOCAL" />
       <updated>1568902225554</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="最终整合 9/19">
+      <created>1568907987315</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1568907987315</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10716000" />
+    <option name="totallyTimeSpent" value="11289000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -973,7 +755,7 @@
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5794243" weight="0.28199565" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5794243" visible="true" weight="0.28199565" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1027,7 +809,8 @@
     <MESSAGE value="更改了video实体类和videoTag的xml文件 9/19" />
     <MESSAGE value="增加了页面拦截器v1 9/19" />
     <MESSAGE value="整合 9/19" />
-    <option name="LAST_COMMIT_MESSAGE" value="整合 9/19" />
+    <MESSAGE value="最终整合 9/19" />
+    <option name="LAST_COMMIT_MESSAGE" value="最终整合 9/19" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1083,9 +866,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/playerController.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/register.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
@@ -1097,13 +877,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/VideoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="97" column="54" lean-forward="true" selection-start-line="97" selection-start-column="54" selection-end-line="97" selection-end-column="54" />
         </state>
       </provider>
     </entry>
@@ -1244,18 +1017,39 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bilibili.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="309">
-          <caret line="474" column="71" lean-forward="true" selection-start-line="474" selection-start-column="54" selection-end-line="474" selection-end-column="71" />
+          <caret line="474" column="71" selection-start-line="474" selection-start-column="54" selection-end-line="474" selection-end-column="71" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/player.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="2175" column="56" selection-start-line="2175" selection-start-column="56" selection-end-line="2175" selection-end-column="56" />
+        <state relative-caret-position="179">
+          <caret line="2179" column="18" selection-start-line="2179" selection-start-column="18" selection-end-line="2179" selection-end-column="18" />
           <folding>
             <element signature="e#38#44#0" expanded="true" />
             <element signature="e#44#50#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/playerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/VideoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="52" column="35" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/interceptor/LoginInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="62" column="10" lean-forward="true" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="10" />
         </state>
       </provider>
     </entry>
