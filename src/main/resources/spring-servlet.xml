@@ -21,7 +21,7 @@
     <!-- 对静态资源文件的访问 支持访问WEB-INF目录 -->
     <mvc:default-servlet-handler />
     <!-- 对转向页面的路径解析。prefix:前缀,suffix:后缀 -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/" p:suffix=".jsp" />
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
     <!-- 文件上传的解析器 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- 上传图片的最大尺寸 10M-->
@@ -30,4 +30,8 @@
         <!-- 默认编码 -->
         <property name="defaultEncoding" value="utf-8"/>
     </bean>
+    <!-- 配置登录验证拦截器 -->
+    <mvc:interceptors>
+        <bean class="org.lanqiao.interceptor.LoginInterceptor"/>
+    </mvc:interceptors>
 </beans>

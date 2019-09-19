@@ -140,9 +140,9 @@ public class UploadController {
 
     @RequestMapping(value = "/uploadVideo")
     public ModelAndView uploadVideo(HttpServletRequest request) {
-        UserInfo userInfo = new UserInfo();
-        userInfo.setUserId(2);
-        request.getSession().setAttribute("userInfo",userInfo);
+//        UserInfo userInfo = new UserInfo();
+//        userInfo.setUserId(2);
+//        request.getSession().setAttribute("userInfo",userInfo);
         return new ModelAndView("upload");
     }
 

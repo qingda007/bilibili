@@ -31,7 +31,7 @@ public class Upload {
         file.transferTo(targetFile);
         request.getSession(true).setAttribute("videoUrl", targetFile.getAbsolutePath());
         request.getSession(true).setAttribute("Uuid", uuid);
-        return uuid;
+        return targetFile.getAbsolutePath();
     }
     public String uploadPic(MultipartFile file, String path, String fileName, HttpServletRequest request) throws IOException {
         String uuid = (String)request.getSession(false).getAttribute("Uuid");
