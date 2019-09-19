@@ -1,0 +1,110 @@
+#upload-step3-container{
+    display: none;
+    max-width: 850px;
+    padding: 0 10px;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+    text-align: center;
+}
+.step-controller-container {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#upload-ok{
+    width: 33px;
+    height: 33px;
+    background-image: url("/images/upload/upload-ok.png");
+    background-size: 100%;
+    display: inline-block;
+}
+.step-ctrl-complete-content {
+    color: #99a2aa;
+    line-height: 50px;
+}
+.step-ctrl-active-content, .step-ctrl-complete-content .step-ctrl-wait-content {
+    font-size: 16px;
+    line-height: 24px;
+    margin-left: 8px;
+    vertical-align: center;
+}
+.step-ctrl-active-icon {
+    background: #00a1d6;
+    line-height: 32px;
+    color: #fff;
+}
+.step-ctrl-wait-icon {
+    border: 1px solid rgba(0,0,0,.15);
+    line-height: 30px;
+    color: rgba(0,0,0,.25);
+}
+.step-ctrl-active-icon, step-ctrl-complete-icon, .step-ctrl-wait-icon {
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 16px;
+    vertical-align: center;
+}
+.step-ctrl-line {
+    flex: 1;
+    height: 1px;
+    margin: 0 16px;
+}
+.step-ctrl-line-active {
+    background-color: #00a1d6;
+}
+.step-ctrl-line-wait {
+    background-color: rgba(0,0,0,.15);
+}
+
+
+.upload-success-image {
+    margin-top: 32px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.upload-success-hint-1 {
+     margin-top: 16px;
+     text-align: center;
+     font-size: 24px;
+     color: rgba(0,0,0,.85);
+     line-height: 32px;
+ }
+.upload-success-url {
+    text-align: center;
+    margin-top: 35px;
+}
+.upload-success-url a {
+    display: inline-block;
+    padding: 0 10px;
+    min-width: 120px;
+    border: 1px solid #d9d9d9;
+    font-size: 14px;
+    color: rgba(0,0,0,.65);
+    text-align: center;
+    line-height: 38px;
+    border-radius: 4px;
+    margin-left: 16px;
+    outline: 0;
+    text-decoration: none;
+    cursor: pointer;
+}
+.upload-success-hint-2 {
+    font-size: 14px;
+    color: #99a2aa;
+    text-align: center;
+    line-height: 22px;
+    margin-top: 35px;
+}
+.upload-success-hint-3 {
+    font-size: 14px;
+    color: #99a2aa;
+    text-align: center;
+    line-height: 22px;
+    margin-top: 8px;
+}
