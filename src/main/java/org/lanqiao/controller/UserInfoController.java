@@ -15,20 +15,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
 @RestController
 public class UserInfoController {
-@Autowired
-UserInfoService userInfoService;
-@Autowired
-VideoServiceImpl videoService;
-@RequestMapping("/getUserInfo")
-    public UserInfo GetUserInfo(Integer id){
-return userInfoService.selectByPrimaryKey(id);
-}
+    @Autowired
+    UserInfoService userInfoService;
+    @Autowired
+    VideoServiceImpl videoService;
+
+    @RequestMapping("/getUserInfo")
+    public UserInfo GetUserInfo(Integer id) {
+        return userInfoService.selectByPrimaryKey(id);
+    }
+
     @RequestMapping("/getVideoUpload")
     public List<Video> GetVideoUpload(Integer userId) {
         return videoService.selectVideoUpload(userId);
@@ -53,12 +56,23 @@ return userInfoService.selectByPrimaryKey(id);
         return user;
     }
 
-    @RequestMapping("/bilibili")
+    @RequestMapping("toZhuye")
     public ModelAndView zhuye(){
+        ModelAndView bilibili=new ModelAndView("zhuye");
+        return bilibili;
+    }
+
+    @RequestMapping("/bilibili")
+    public ModelAndView bilibili(){
         ModelAndView bilibili=new ModelAndView("bilibili");
         return bilibili;
     }
 
+    @RequestMapping("/index")
+    public ModelAndView index(HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView("user");
+        return mv;
+    }
     @RequestMapping("/userCoin")
     public int updataUserCoin(UserInfo userInfo){
         return userInfoService.updateByPrimaryKeySelective(userInfo);

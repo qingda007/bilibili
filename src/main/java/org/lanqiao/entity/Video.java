@@ -36,9 +36,25 @@ public class Video {
 
     private Status status; //联合status表（一对一）
 
+    private Integer danmuNum; //弹幕属性，别删啊，我查询出数据要存在这里的
 
+    private Integer collectionNum; //收藏属性，和上面那个一样，查询出数据存在这
 
+    public Integer getDanmuNum() {
+        return danmuNum;
+    }
 
+    public void setDanmuNum(Integer danmuNum) {
+        this.danmuNum = danmuNum;
+    }
+
+    public Integer getCollectionNum() {
+        return collectionNum;
+    }
+
+    public void setCollectionNum(Integer collectionNum) {
+        this.collectionNum = collectionNum;
+    }
 
     public Integer getUserId() {
         return userId;
@@ -47,8 +63,6 @@ public class Video {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
-
-
 
     public Status getStatus() {
         return status;

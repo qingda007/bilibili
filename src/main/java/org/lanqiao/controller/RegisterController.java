@@ -38,7 +38,7 @@ public class RegisterController {
         return "login";
     }
 
-    @RequestMapping("toLogin")
+    @RequestMapping("/toLogin")
     public String login(){
         return "login";
     }
@@ -54,6 +54,7 @@ public class RegisterController {
         //若有user则添加到model里并且跳转到成功页面
         if(userInfo != null){
             HttpSession session = request.getSession();
+            userInfo.setUserPassw(null);
             session.setAttribute("userInfo", userInfo);
             return "zhuye";
         }else{

@@ -150,6 +150,7 @@
                 })
             });
 
+
             //  在线人数
             var str={"userType":'u87'};
 
@@ -1538,10 +1539,7 @@
     })
     var vNum=new Vue({
         el:'div.online',
-        data: {userNum:{
-                Num:null
-            }
-        },
+        data: {Num:null,},
     })
     var vType=new Vue({
         el:'#nav-menu',
