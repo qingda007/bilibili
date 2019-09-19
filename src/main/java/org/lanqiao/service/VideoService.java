@@ -10,4 +10,10 @@ public interface VideoService {
     public List<Video> selectVideoUpload(Integer userId);
 
     public Video selectUpInfo(Integer videoId);
+    //点赞
+    public int updateByPrimaryKeySelective(Video record);
+    //投币
+    public int updateByPrimaryKey(Video video);
+
+    public Video selectStatus(Integer videoId);
 }
