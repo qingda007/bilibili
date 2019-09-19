@@ -229,7 +229,7 @@
             <!--         昵称       -->
             <div class="form-group">
                 <div class="el-input">
-                    <input type="text"  autocomplete="off" id="userName" name="userName" placeholder="昵称" class="el-input_inner" >
+                    <input type="text"  autocomplete="off" id="userName" name="userName" placeholder="昵称" class="el-input_inner " >
                 </div>
 
             </div>
@@ -237,7 +237,7 @@
             <!--         密码    -->
             <div class="form-group">
                 <div class="el-input" >
-                    <input type="password" autocomplete="off" id="userPassw" name="userPassw" placeholder="密码（6-16个字符组成，区分大小写）" class="el-input_inner">
+                    <input type="password"  autocomplete="off" id="userPassw" name="userPassw" placeholder="密码（6-16个字符组成，区分大小写）" class="el-input_inner">
                 </div>
 
             </div>
@@ -245,7 +245,7 @@
             <!--       手机号码      -->
             <div class="form-group">
                 <div class="el-input">
-                    <input type="text" autocomplete="off" id="userTele" name="userTele" placeholder="填写常用手机号" class="el-input_inner">
+                    <input type="text"  autocomplete="off" id="userTele" name="userTele" placeholder="填写常用手机号" class="el-input_inner">
                 </div>
 
             </div>
@@ -263,9 +263,10 @@
                 <div class="el-input">
                     <input type="text" id="code" name="code" autocomplete="off" placeholder="请输入短信验证码" class="el-input_inner">
                 </div>
+                <input type="button" id="button" class="el-button yzm-buttom el-button--primary1"  value="点击获取">
                 <div id="captchCheck" class="check" style="display: none;">
                 </div>
-                <input type="button" id="button" class="el-button yzm-buttom el-button--primary1"  value="点击获取">
+
             </div>
             <!--      同意协议          -->
             <div class="form-group">
@@ -279,7 +280,7 @@
             </div>
             <!--        点击注册        -->
             <div class="form-group">
-                <input  type="submit"  id="submit" class="el-button btn-full el-button--primary " value="注册">
+                <input  type="submit"  id="submit" class="el-button btn-full el-button--primary " value="注册" >
             </div>
             <div class="register-hidden-group text-right">
                 <a href="/login.html" style="font-size: 12px" >已有账号，直接登录</a>

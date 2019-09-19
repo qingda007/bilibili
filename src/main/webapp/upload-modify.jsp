@@ -12,8 +12,9 @@
 %>
 <html lang="en">
 <head>
-    <title>上传视频</title>
-    <link rel="stylesheet" href="/css/main/header.css" type="text/css">
+    <title>创作中心 - 哔哩哔哩弹幕视频网 - ( ゜- ゜)つロ 乾杯~</title>
+    <link rel="shortcut icon" href="/images/main/bilibili.ico">
+    <link rel="stylesheet" href="/css/upload/header.css" />
     <link rel="stylesheet" href="/css/main/bass.css"/>
     <link rel="stylesheet" href="/css/upload/upload_step1.css" type="text/css">
     <link rel="stylesheet" href="/css/upload/upload_step2.css" type="text/css">
@@ -56,7 +57,6 @@
                     "height" : "126px",
                     "top" : "0"
                 });
-               // $("#cover").attr("src", "/teporary/" + data + "1.jpg");  //显示图片
             }
         }
     </script>
@@ -105,7 +105,7 @@
                     </ul>
                 </div>
                 <div class="up-load fr">
-                    <a class="u-link">投稿</a>
+                    <a href="/video/uploadVideo" class="u-link">投稿</a>
                 </div>
                 <div class="nav-con fr">
                     <ul class="fr">
@@ -228,7 +228,7 @@
     <div class="cc-body">
         <div id="upload-step2-container" style="display: block">
             <input id="video" value="${video.videoId}" type="hidden">
-            <div class="basic-info"><h1>基本信息</h1></div>
+            <div class="basic-info"><h1>基本信息</h1></div><br><br>
             <div class="select-cover">
                 <h3>视频封面设置</h3>
                 <p>（格式jpeg、png，文件大小≤5MB，建议尺寸≥1146*717，最低尺寸≥960*600）</p>
@@ -256,21 +256,21 @@
                 </div>
             </div>
             <br>
+<%--            <div class="section-title-container">--%>
+<%--                <p class="section-title-deg">*</p>--%>
+<%--                <h3 class="section-title-content-main">分区</h3>--%>
+<%--            </div>--%>
+<%--            <br>--%>
+<%--            <div class="type-select-box">--%>
+<%--                <div class="type-font">选择一级分区：</div>--%>
+<%--                <select id="video_type_1" onchange="change(this)"></select>--%>
+<%--                <i></i>--%>
+<%--                <div class="type-font">选择二级分区：</div>--%>
+<%--                <select id="video_type_2"></select>--%>
+<%--            </div>--%>
             <div class="section-title-container">
-                <p class="section-title-deg">*</p>
-                <h3 class="section-title-content-main">分区</h3>
-            </div>
-            <br>
-            <div class="type-select-box">
-                <div class="type-font">选择一级分区：</div>
-                <select id="video_type_1" onchange="change(this)"></select>
-                <i></i>
-                <div class="type-font">选择二级分区：</div>
-                <select id="video_type_2"></select>
-            </div>
-            <div class="section-title-container">
-                <p class="section-title-deg">*</p>
-                <h3 class="section-title-content-main">标题</h3>
+<%--                <p class="section-title-deg">*</p>--%>
+                <h3 class="section-title-content-main">&ensp;标题</h3>
             </div>
             <div class="content-title-container">
                 <div class="input-box-instance">
