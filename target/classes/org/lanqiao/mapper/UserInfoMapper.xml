@@ -40,8 +40,8 @@
   </delete>
 
     <!--记录在线人数-->
-    <select id="selectCountUserNum" resultType="java.lang.Integer" parameterType="java.lang.String">
-    select count(*) from user_info where user_type=#{userType}
+    <select id="selectCountUserNum" resultMap="UserInfoResultMap" parameterType="java.lang.String">
+    select * from user_info where user_type=#{userType}
   </select>
 
   <insert id="insertSelective" parameterType="org.lanqiao.entity.UserInfo" >

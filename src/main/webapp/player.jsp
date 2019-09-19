@@ -1611,15 +1611,6 @@
                     $("#videodata").prepend("<span title=\"总播放数\" class=\"view\">" + data.playNum + "播放&nbsp;&nbsp;</span>\n");
                     // $(".video_player").prepend("<video src=\""+data.videoUrl+"\" width=\"638px\" height=\"381px\"></video>")
                     $(".videos").prepend("<source src=\"" + data.videoUrl + "\" type=\"video/mp4\">")
-                    // $(".ops").prepend("<span title=\"点赞数\" class=\"like\">\n" +
-                    //     "                        <i class=\"iconfont icon-dianzan-copy\"></i>"+data.likeNum+"\n" +
-                    //     "                    </span>\n" +
-                    //     "                    <span title=\"硬币数\" class=\"coin\">\n" +
-                    //     "                        <i class=\"iconfont icon-toubi\"></i>"+data.coinNum+"\n" +
-                    //     "                    </span>\n" +
-                    //     "                    <span title=\"收藏数\" class=\"collect\"><i class=\"iconfont icon-shoucang\"></i>"+data.collectionNum+"</span>\n" +
-                    //     "                    <span title=\"分享\" class=\"share\"><i class=\"iconfont icon-zhuanfa\"></i>955</span>");
-
                     $("#v_desc").prepend("<div class=\"info open\">" + data.videoDesc + "</div>");
                     $(".tag-area").prepend("<li class=\"tag\">" + data.videoTitle + "</li>");
                     vm.likes.likeNum = data.likeNum;
@@ -1806,7 +1797,6 @@
 
             //发表评论
             $(".comment-submit").click(function () {
-
                 //插入评论
                 var tit = $(".ipt-txt").val();
                 var time = new Date();
@@ -2125,12 +2115,12 @@
                 },
                 datatype: "json",
                 success: function (data) {
-
-                    $("#video_status").prepend("<span class=\"a-crumbs\">\n" +
+                    $("#video_status").prepend(" <span class=\"a-crumbs\">\n" +
                         "                        <a target=\"_blank\" href=\"#\">"+data.status.statusAlias1+"</a>\n" +
                         "                        <i class=\"fuhao\">></i>\n" +
                         "                        <a target=\"_blank\" href=\"#\">"+data.status.statusAlias2+"</a>\n" +
-                        "                    </span>")
+                        "                    </span>\n" +
+                        "                    <span>"+data.upTime+"</span>")
                 }
             })
 

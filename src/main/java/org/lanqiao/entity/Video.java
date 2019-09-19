@@ -1,5 +1,7 @@
 package org.lanqiao.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class Video {
     private String videoDesc;
 
     private String videoUrl;
-
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date upTime;
 
     private Date videoTime;
@@ -34,17 +36,9 @@ public class Video {
 
     private Status status; //联合status表（一对一）
 
-    private Integer danmuNum; //使用子查询获取
 
-    private Integer collectionNum; //使用子查询获取
 
-    public Integer getCollectionNum() {
-        return collectionNum;
-    }
 
-    public void setCollectionNum(Integer collectionNum) {
-        this.collectionNum = collectionNum;
-    }
 
     public Integer getUserId() {
         return userId;
@@ -54,13 +48,7 @@ public class Video {
         this.userId = userId;
     }
 
-    public Integer getDanmuNum() {
-        return danmuNum;
-    }
 
-    public void setDanmuNum(Integer danmuNum) {
-        this.danmuNum = danmuNum;
-    }
 
     public Status getStatus() {
         return status;
