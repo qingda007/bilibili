@@ -72,8 +72,8 @@
     from video
     where is_review = #{isReview} and user_id = #{userId}
   </select>
-  <select id="selectVideoByIsReview" resultMap="VideoResultMap">
-    select *
+  <select id="selectVideoByIsReview" resultMap="UploadResultMap">
+    select v.*,s.*,(select count(*) from video_danmu d where d.video_id = v.video_id) as danmu_num,(select count(*) from video_collection c where c.video_id = v.video_id) as collection_num
     from video v, status s
     where v.user_id = #{userId} and v.is_review = #{isReview} and s.status_id = v.class_type
     order by v.up_time
