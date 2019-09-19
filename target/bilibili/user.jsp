@@ -485,7 +485,6 @@
                 }
             })
 
-            alert(${id});
         })
     </script>
 </head>

@@ -35,10 +35,26 @@
       </association>
     </association>
   </resultMap>
+
+  <select id="deletecollect" parameterType="java.lang.Integer">
+    delete from video_collection
+    where video_id=#{videoId} and user_id=#{userId}
+  </select>
+    <select id="selectIsCollection" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+        select count(*)
+        from video_collection
+        where video_id=#{videoId} and user_id=#{userId}
+    </select>
+    
   <select id="getVideoCollection" resultMap="CollectionResultMap" parameterType="java.lang.Integer" >
     select *
     from video_collection c,video v,user_info u
     where c.user_id = #{userId,jdbcType=INTEGER} and c.video_id=v.video_id and v.user_id=u.user_id
+  </select>
+  <select id="collectionCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    select count(*)
+    from video_collection
+    where video_id=#{videoId}
   </select>
   <select id="selectByPrimaryKey" resultMap="CollectionResultMap" parameterType="java.lang.Integer" >
     select *

@@ -31,12 +31,4 @@ public class UserFans {
         this.fansId = fansId;
     }
 
-    @Override
-    public String toString() {
-        return "UserFans{" +
-                "id=" + id +
-                ", userId=" + userId +
-                ", fansId=" + fansId +
-                '}';
-    }
 }

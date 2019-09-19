@@ -120,7 +120,7 @@
                     }
                 })
             })
-            
+
         // ajax将验证码传入后端
         });
 
@@ -133,9 +133,9 @@
         function terms(){
             if($("input[type='checkbox']").is(':checked'))
             {
-                $("#submit").attr("disabled",false).css("background-color","#00a1d6");
+                $("#submit").attr("disabled",false).css("background-color","#00a1d6").css("color","#fff").css("cursor","pointer");
             }else{
-                $("#submit").attr("disabled",true).css("background-color","#f5f5f5")
+                $("#submit").attr("disabled",true).css("background-color","#f5f5f5").css("color","#555555").css("cursor","not-allowed")
             }
         }
 
@@ -229,26 +229,25 @@
             <!--         昵称       -->
             <div class="form-group">
                 <div class="el-input">
-                    <input type="text"  autocomplete="off" id="userName" name="userName" placeholder="昵称" class="el-input_inner" >
+                    <input type="text"  autocomplete="off" id="userName" name="userName" placeholder="昵称" class="el-input_inner " >
                 </div>
-                <p class="error-message">请告诉我你的昵称吧</p>
+
             </div>
             <div class="register-hidden-group"></div>
             <!--         密码    -->
             <div class="form-group">
                 <div class="el-input" >
-                    <input type="password" autocomplete="off" id="userPassw" name="userPassw" placeholder="密码（6-16个字符组成，区分大小写）" class="el-input_inner">
-                    <lable class="error-message">密码不能小于6个字符</lable>
+                    <input type="password"  autocomplete="off" id="userPassw" name="userPassw" placeholder="密码（6-16个字符组成，区分大小写）" class="el-input_inner">
                 </div>
-                <lable class="error-message error" id="userPassw-error">密码不能小于6个字符</lable>
+
             </div>
             <div class="register-hidden-group"></div>
             <!--       手机号码      -->
             <div class="form-group">
                 <div class="el-input">
-                    <input type="text" autocomplete="off" id="userTele" name="userTele" placeholder="填写常用手机号" class="el-input_inner">
+                    <input type="text"  autocomplete="off" id="userTele" name="userTele" placeholder="填写常用手机号" class="el-input_inner">
                 </div>
-                <p class="error-message">手机号格式错误</p>
+
             </div>
             <div class="register-hidden-group"></div>
             <!--       邮箱      -->
@@ -256,7 +255,7 @@
                 <div class="el-input">
                     <input type="email" autocomplete="off" id="userEmail" name="userEmail" placeholder="填写常用邮箱" class="el-input_inner">
                 </div>
-                <p class="error-message">请填写正确的邮箱</p>
+
             </div>
             <div class="register-hidden-group"></div>
             <!--       短信验证      -->
@@ -264,9 +263,10 @@
                 <div class="el-input">
                     <input type="text" id="code" name="code" autocomplete="off" placeholder="请输入短信验证码" class="el-input_inner">
                 </div>
+                <input type="button" id="button" class="el-button yzm-buttom el-button--primary1"  value="点击获取">
                 <div id="captchCheck" class="check" style="display: none;">
                 </div>
-                <input type="button" id="button" class="el-button yzm-buttom el-button--primary1"  value="点击获取">
+
             </div>
             <!--      同意协议          -->
             <div class="form-group">
@@ -280,10 +280,10 @@
             </div>
             <!--        点击注册        -->
             <div class="form-group">
-                <input  type="submit"  id="submit" class="el-button btn-full el-button--primary " value="注册">
+                <input  type="submit"  id="submit" class="el-button btn-full el-button--primary " value="注册"style="cursor: not-allowed" >
             </div>
             <div class="register-hidden-group text-right">
-                <a href="/login.html" style="font-size: 12px" >已有账号，直接登录</a>
+                <a href="/user/toLogin" style="font-size: 12px" >已有账号，直接登录</a>
             </div>
         </form>
     </div>

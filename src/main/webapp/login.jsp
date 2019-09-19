@@ -134,7 +134,7 @@
                     <script>
                         jigsaw.init(document.getElementById('captcha'),function () {
                             document.getElementById('msg').innerHTML = '验证通过！';
-                            $("#submit").attr("disabled",false).css("background-color","#00a1d6").css("color","#fff");
+                            $("#submit").attr("disabled",false).css("background-color","#00a1d6").css("color","#fff").css("cursor","pointer");
                         },function () {
                             document.getElementById('msg').innerHTML = '验证失败！'
                             $("#submit").attr("disabled",true).css("background-color","#f5f5f5")
@@ -190,8 +190,8 @@
 
                                 </li>
                                 <li class="btn-box">
-                                    <input type="submit" id="submit" disabled="disabled" class="btn btn-login"  value="登录">
-                                    <a class="btn btn-reg" onclick="window.location.href='/user/regist'">注册</a>
+                                    <input type="submit" id="submit" disabled="disabled" class="btn btn-login"  value="登录" style="cursor: not-allowed">
+                                    <a class="btn btn-reg" href="/user/toRegister">注册</a>
                                 </li>
                                 <li class="sns">
                                     <a class="btn weibo" style="color: #717171">
