@@ -1,0 +1,431 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: PingFangSC-Medium;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+    tap-highlight-color: hsla(0,0%,100%,0);
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+div {
+    display: block;
+}
+a{
+    text-decoration: none;
+    border: none;
+    color: #00a1d6;
+}
+/*ul li{*/
+/*    list-sytle:none*/
+/*}*/
+input {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    -webkit-appearance: textfield;
+    background-color: white;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 0px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+
+body{
+    margin: 0px;
+}
+#login-app{
+
+}
+.login-app{
+
+}
+/*头部header*/
+.bili-header-m{
+    font: 12px 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif;
+    position: relative;
+    z-index: 10000;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    width: 1519.2px;
+    height: 42px;
+}
+.bili-header-m .nav-menu{
+    width: 1519.2px;
+    height: 42px;
+    color: #222222;
+    z-index: 200;
+    position: relative;
+
+}
+.bili-header-m .nav-menu .nav-mask{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px;
+}
+.bili-header-m .bili-wrapper{
+    margin: 0 auto;
+    width: 1160px;
+    height: 42px;
+}
+.bili-header-m .nav-wrapper{
+    min-width: 980px;
+    height: 42px;
+}
+.bili-header-m .fl{
+    float: left;
+    width: 435.96px;
+    height: 42px;
+}
+.bili-header-m ul {
+    list-style: none;
+    margin: 0px;
+
+}
+.nav-item{
+    text-align: center;
+    line-height: 42px;
+    position: relative;
+    background-color: rgba(255,255,255,0);
+    height: 42px;
+    float: left;
+
+}
+#tv{
+    background: url("/images/login/bilibili-tv.png");
+    width: 20px;
+    height: 20px;
+    background-size: 100%;
+    position: relative;
+    float: left;
+    margin: 10px 4px auto;
+}
+.tc{
+    color: #222222;
+}
+
+.bili-header-m .nav-menu .nav-item .t{
+    color: #222;
+    height: 100%;
+    display: block;
+    padding: 0 7px;
+    cursor: pointer;
+}
+.mbili{
+
+    height: 42px;
+}
+#ph{
+    background: url("/images/login/phonemini.png");
+    width: 20px;
+    height: 20px;
+    background-size: 100%;
+    float: left;
+    margin: 10px 4px auto;
+}
+/*header右边 */
+.bili-header-m .nav-menu .up-load{
+    position: relative;
+    width: 68px;
+    height: 42px;
+    margin-left: 8px;
+}
+.fr{
+    float: right;
+    display: inline;
+}
+.bili-header-m .nav-menu .up-load .u-link{
+    display: block;
+    width: 100%;
+    height: 46px;
+    line-height: 42px;
+    text-align: center;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #f45a8d;
+    border-radius: 0 0 6px 6px;
+    cursor: pointer;
+}
+.bili-header-m .profile-info {
+    width: 46px;
+}
+.bili-header-m .profile-info .i-face{
+    position: absolute;
+    z-index: 20;
+    height: 32px;
+    width: 32px;
+}
+.bili-header-m .profile-info .i-face .face {
+    border: 0 solid #fff;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+
+/*<!--            bilibili图标，登陆上边的-->*/
+.top-banner{
+    background: #00a0d8;
+    height: 86px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+/*登录两个字*/
+.title-line {
+    width: 980px;
+    height: 28px;
+    margin: 0 auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 28px;
+    text-align: center;
+}
+.title-line .tit {
+    height: 56px;
+    line-height: 56px;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-size: 40px;
+    background: #fff;
+    text-align: center;
+}
+/*登陆部分*/
+.login-box{
+    position: relative;
+    width: 980px;
+    height: 367px;
+    margin: 0 auto;
+}
+.login-box .login-left{
+    float: left;
+    width: 489px;
+    height: 367px;
+
+}
+.login-box .login-left .qrcode-login{
+    position: relative;
+    width: 480px;
+    height: 367px;
+}
+.login-box .login-left .qrcode-login .qrcode-con{
+    padding-top: 72px;
+    width: 480px;
+    height: 140px;
+
+}
+.qrcode-login .qrcode-con .tv-icon{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    left: 160px;
+    top: 10px;
+    background: url("/images/login/tvsmile.png") no-repeat;
+
+}
+.qrcode-login .qrcode-con .qrcode-box{
+    width: 140px;
+    height: 140px;
+    margin: 0 auto;
+    background: #dddddd;
+    position: relative;
+}
+.qrcode-login .qrcode-footer{
+    width: 480px;
+    height: 155px;
+    background: url("/images/login/qrcodegirl.png") 0 -7px no-repeat;
+}
+.qrcode-login .qrcode-footer .status-txt {
+    padding-top: 20px;
+    text-align: center;
+    color: #222;
+    font-size: 18px;
+    letter-spacing: 3px;
+    margin-bottom: 5px;
+}
+.qrcode-login .qrcode-footer .app-link{
+    text-align: center;
+    color: #717171;
+    font-size: 14px;
+}
+.login-box .line{
+    float: left;
+    border-right: 1px solid #ddd;
+    height: 300px;
+    margin-top: 28px;
+}
+/*右边登录*/
+.login-box .login-right{
+    float: left;
+    padding-left: 45px;
+    width: 490px;
+    height: 313px;
+    box-sizing: border-box;
+}
+.form-login{
+    position: relative;
+}
+.form-login .input-box{
+    margin-top: 50px;
+    width: 414px;
+    height: 263px;
+}
+.status-box{
+    position: relative;
+}
+.form-login .input-box .item input{
+    width: 388px;
+    border: 1px solid #dddddd;
+    color: #aaaaaa;
+    font-size: 14px;
+    padding: 10px;
+    height: 18px;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+.form-login .input-box .text{
+    margin: 6px 0;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+}
+.form-login .input-box .text .tips {
+    color: #f66495;
+    float: left;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.form-login .input-box .remember{
+    margin: 10px 0;
+    color: #717171;
+    width: 410px;
+    font-size: 12px;
+}
+label{
+    cursor: default;
+}
+input[type="checkbox" i] {
+    background-color: initial;
+    cursor: default;
+    -webkit-appearance: checkbox;
+    box-sizing: border-box;
+    margin: 3px 3px 3px 4px;
+    padding: initial;
+    border: initial;
+
+}
+
+.form-login .input-box .remember span {
+    color: #bbb;
+    margin-left: 10px;
+}
+.form-login .input-box .remember .forget-password {
+    float: right;
+    cursor:pointer;
+}
+.form-login .input-box .remember .not-checkout {
+    float: right;
+    margin-right: 10px;
+    cursor:pointer;
+}
+
+/*登录*/
+.form-login .input-box .btn-box .btn-login {
+    border: 1px solid #0381aa;
+    color: #222222;
+    background-color: #f5f5f5;
+}
+.form-login .input-box .btn-box .btn {
+    display: inline-block;
+    height: 36px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    width: 184px;
+    line-height: 38px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+.form-login .input-box .btn-box .btn-reg {
+    margin-left: 34px;
+    color: #555;
+}
+.sns{
+    width: 414px;
+    height: 21px;
+    padding: 12px  0px ;
+    font-size: 12px;
+}
+.form-login .input-box .sns .btn:before {
+    content: "";
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    background: url("/images/login/weiboqq.png");
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.form-login .input-box .sns .btn.weibo:before{
+    background-position: 0 0;
+}
+.form-login .input-box .sns .btn.qq:before{
+    background-position: 0 -41px;
+}
+.qq{
+    margin-left: 20px;
+}
+/*用户协议部分*/
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+p[data-v-3e357e28] {
+    margin: 24px auto 0;
+    width: 980px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #99a2aa;
+    text-align: center;
+    line-height: 16px;
+}
+p[data-v-3e357e28] a{
+    cursor: pointer;
+}
+.move{
+    float: left;
+}
+.error{
+    margin-right:5px ;
+    color: #f45d90;
+    font-size: 12px;
+}

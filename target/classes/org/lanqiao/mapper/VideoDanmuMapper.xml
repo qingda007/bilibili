@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.VideoDanmuMapper" >
+  <resultMap id="VideoDanmuResultMap" type="org.lanqiao.entity.VideoDanmu" >
+    <id column="danmu_id" property="danmuId" jdbcType="INTEGER" />
+    <result column="video_id" property="videoId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="danmu" property="danmu" jdbcType="VARCHAR" />
+    <result column="sent_time" property="sentTime" jdbcType="TIMESTAMP" />
+    <association property="userInfo" resultMap="UserInfoResultMap"></association>
+  </resultMap>
+  <resultMap id="UserInfoResultMap" type="org.lanqiao.entity.UserInfo" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_passw" property="userPassw" jdbcType="VARCHAR" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="user_birthday" property="userBirthday" jdbcType="DATE" />
+    <result column="user_sex" property="userSex" jdbcType="VARCHAR" />
+    <result column="user_regtime" property="userRegtime" jdbcType="TIMESTAMP" />
+    <result column="user_tele" property="userTele" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="VARCHAR" />
+    <result column="user_picadress" property="userPicadress" jdbcType="VARCHAR" />
+    <result column="user_coin" property="userCoin" jdbcType="INTEGER" />
+    <result column="user_role" property="userRole" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="selectDanmuCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    select count(*) from video_danmu where video_id=#{videoId}
+  </select>
+
+  <select id="selectAllDanmu" resultMap="VideoDanmuResultMap">
+    select d.*,i.*
+    from video_danmu d,user_info i
+    where d.user_id=i.user_id and video_id=#{videoId}
+  </select>
+  <sql id="Base_Column_List" >
+    danmu_id, video_id, user_id, danmu, sent_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="VideoDanmuResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from video_danmu
+    where danmu_id = #{danmuId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from video_danmu
+    where danmu_id = #{danmuId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.VideoDanmu" >
+    insert into video_danmu (danmu_id, video_id, user_id,
+      danmu, sent_time)
+    values (#{danmuId,jdbcType=INTEGER}, #{videoId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR},
+      #{danmu,jdbcType=VARCHAR}, #{sentTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.VideoDanmu" >
+    insert into video_danmu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="danmuId != null" >
+        danmu_id,
+      </if>
+      <if test="videoId != null" >
+        video_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="danmu != null" >
+        danmu,
+      </if>
+      <if test="sentTime != null" >
+        sent_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="danmuId != null" >
+        #{danmuId,jdbcType=INTEGER},
+      </if>
+      <if test="videoId != null" >
+        #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="danmu != null" >
+        #{danmu,jdbcType=VARCHAR},
+      </if>
+      <if test="sentTime != null" >
+        #{sentTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.VideoDanmu" >
+    update video_danmu
+    <set >
+      <if test="videoId != null" >
+        video_id = #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="danmu != null" >
+        danmu = #{danmu,jdbcType=VARCHAR},
+      </if>
+      <if test="sentTime != null" >
+        sent_time = #{sentTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where danmu_id = #{danmuId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.VideoDanmu" >
+    update video_danmu
+    set video_id = #{videoId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=VARCHAR},
+      danmu = #{danmu,jdbcType=VARCHAR},
+      sent_time = #{sentTime,jdbcType=TIMESTAMP}
+    where danmu_id = #{danmuId,jdbcType=INTEGER}
+  </update>
+</mapper>
