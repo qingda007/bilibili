@@ -552,7 +552,7 @@
             </ul>
         </div>
         <div class="up-load">
-            <a>投稿</a>
+            <a href="/video/uploadVideo">投稿</a>
         </div>
         <div class="nav-cont">
             <ul>

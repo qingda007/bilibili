@@ -2139,8 +2139,8 @@
     <div class="nav-wrapper">
         <div class="nav-con fl">
             <ul>
-                <li class="logo"><img src="/images/video/logo.PNG" rel="logo" width="80px" height="42px"></li>
-                <li class="nav-item home">主站</li>
+                <li class="logo"><a href="/toZhuye"><img src="/images/video/logo.PNG" rel="logo" width="80px" height="42px"></a></li>
+                <li class="nav-item home"><a href="/toZhuye">主站</a></li>
                 <li class="nav-item mbili">音频</li>
                 <li class="nav-item game">游戏中心</li>
                 <li class="nav-item live">直播</li>
@@ -2155,7 +2155,7 @@
             </ul>
         </div>
         <div class="up-load fr">
-            <a href="" class="u-link">投稿</a>
+            <a href="/video/uploadVideo" class="u-link">投稿</a>
         </div>
         <div class="nav-con fr">
             <ul>
@@ -2172,9 +2172,11 @@
         </div>
         <div class="nav-search">
             <div class="nav-search showSearch" >
-                <input type="text" class="nav-search-keyword">
-                <button type="submit" class="header-icon-general_search nav-search-submit iconfont icon-sousuo">
-                </button>
+                <form action="/video/show">
+                    <input type="text" name="videoTitle" class="nav-search-keyword">
+                    <button type="submit" class="header-icon-general_search nav-search-submit iconfont icon-sousuo">
+                    </button>
+                </form>
             </div>
         </div>
     </div>

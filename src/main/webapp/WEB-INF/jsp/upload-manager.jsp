@@ -10,17 +10,25 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"
+            +request.getServerName()+":"
+            +request.getServerPort()+path+"/";
+%>
+<!DOCTYPE html>
 <html>
 <head>
     <title>创作中心 - 哔哩哔哩弹幕视频网 - ( ゜- ゜)つロ 乾杯~</title>
-    <link rel="shortcut icon" href="/images/main/bilibili.ico">
-    <link rel="stylesheet" href="/css/main/bass.css"/>
-    <link rel="stylesheet" href="/css/upload/upload_menu.css" type="text/css">
-    <link rel="stylesheet" href="/css/upload/header.css" />
-    <link rel="stylesheet" href="/css/upload/upload_manager.css">
-    <link rel="stylesheet" href="/css/main/iconfont.css">
-    <script src="/js/jquery-3.4.1.js"></script>
-    <script src="/js/upload/manager.jsp"></script>
+    <base href="<%=basePath%>">
+    <link rel="shortcut icon" href="images/main/bilibili.ico">
+    <link rel="stylesheet" href="css/main/bass.css"/>
+    <link rel="stylesheet" href="css/upload/upload_menu.css" type="text/css">
+    <link rel="stylesheet" href="css/upload/header.css" />
+    <link rel="stylesheet" href="css/upload/upload_manager.css">
+    <link rel="stylesheet" href="css/main/iconfont.css">
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/upload/manager.jsp"></script>
     <script>
         $(function () {
             //从登录界面登录成功后，跳到主界面并给vm.user.uid赋值
@@ -338,7 +346,7 @@
                 <div id="flushDIV">
                     <c:forEach var="video" items="${pageInfo.list}">
                         <div class="article-card clearfix" id="${video.videoId}">
-                            <form name='play${video.videoId}' action='/video/player' method='post'>
+                            <form name='play${video.videoId}' action='/player' method='post'>
                                 <input type='hidden' name="videoId" value='${video.videoId}'/>
                                 <a href="javascript:document.play${video.videoId}.submit();" class="cover-wrp">
                                     <img src="${video.videoPic}">

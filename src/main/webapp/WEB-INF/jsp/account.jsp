@@ -75,12 +75,13 @@
 <div id="app">
     <div class="bili-header">
         <div class="nav-menu">
+            <div class="blur-bg" style="background-image: url(images/main/header.png);"></div>
             <div class="nav-mask"></div>
             <div class="bili-wrapper clearfix nav-wraper">
                 <div class="nav-con fl">
                     <ul>
                         <li class="nav-item home">
-                            <a class="t"href="/toZhuye">
+                            <a href="/toZhuye" class="t">
                                 <i class="iconfont icon-bilibili" style="color: #00A1D6;"></i> 主站
                             </a>
                         </li>
@@ -113,15 +114,15 @@
                     </ul>
                 </div>
                 <div class="up-load fr">
-                    <a class="u-link">投稿</a>
+                    <a class="u-link"href="/video/uploadVideo">投稿</a>
                 </div>
                 <div class="nav-con fr">
                     <ul class="fr">
-                        <li class="nav-item profile-info">
+                        <li id="nipi" class="nav-item profile-info" >
                             <a class="t">
                                 <i class="i-face">
-                                    <img src="images/main/akari.jpg" class="face">
-                                    <img class="pendant" />
+                                    <img id="face" class="face">
+                                    <img class="pendant"  />
                                 </i>
                             </a>
                             <div id="i-login" class="i_menu i_menu_login" style="display: none;">
@@ -130,58 +131,90 @@
                                     <img id="d1" src="images/main/danmu1.png" />
                                     <img id="d2" src="images/main/danmu1.png" style="left: 320px;" />
                                 </div>
-                                <a class="login-btn">登录</a>
+                                <a class="login-btn" href="/user/toLogin">登录</a>
                                 <p class="reg">首次使用？
-                                    <a>点我去注册</a>
+                                    <a href="/user/toRegister">点我去注册</a>
                                 </p>
                             </div>
+                            <div class="profile-m dd-bubble"style="display: none">
+                                <div class="header-u-info">
+                                    <div class="header-uname">
+                                        <b class="big-vip-red">{{user.uname}}</b>
+                                        <p class="vip-type">
+                                            <a>
+                                                <span class="big-vip-red">会员</span>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="btns-profile clearfix">
+                                        <div class="coin fl">
+                                            <a>
+                                                <i class="bili-icon bi"></i>
+                                                <span class="num">{{user.coin}}</span>
+                                            </a>
+                                        </div>
+                                        <div class="ver phone fr verified">
+                                            <a>
+                                                <i class="bili-icon"></i>
+                                                <span id="s1" class="tips"></span>
+                                            </a>
+                                        </div>
+                                        <div class="ver email fr verified">
+                                            <a>
+                                                <i class="bili-icon"></i>
+                                                <span id="s2" class="tips"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="member-menu">
+                                        <ul class="clearfix">
+                                            <li>
+                                                <a class="account"href="/user">
+                                                    <i class="bili-icon b-icon-p-account"></i>
+                                                    个人中心
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="number"href="/video/uploadVideo">
+                                                    <i class="bili-icon b-icon-p-member"></i>
+                                                    投稿管理
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="member-bottom">
+                                        <a class="logout"href="/bilibili">退出</a>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
-
-                        <li class="nav-item">
+                        <li class="nav-item nipi">
                             <a class="t">
-                                大会员
+                                稍后再看
                             </a>
                         </li>
-
-                        <li class="nav-item">
+                        <li class="nav-item nipi">
+                            <a class="t">
+                                收藏
+                            </a>
+                        </li>
+                        <li class="nav-item nipi">
                             <a class="t">
                                 消息
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a class="t">
                                 动态
                             </a>
                         </li>
 
-
-                        <li class="nav-item">
-                            <a class="t">
-                                稍后再看
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="t">
-                                收藏
-                            </a>
-                        </li>
                         <li class="nav-item">
                             <a class="t">
                                 历史
                             </a>
                         </li>
                     </ul>
-                    <div class="nav-search-box">
-                        <div class="nav-search showSearch-media"style="right: 0px;">
-                            <form id="nav_searchform">
-                                <input type="text" class="nav-search-keyword"value="sssssssssssssssssss"/>
-                                <button type="submit"class="iconfont icon-sousuo nav-search-submit">
-
-                                </button>
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

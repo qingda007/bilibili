@@ -5,7 +5,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <title>哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</title>
@@ -436,7 +435,7 @@
                 <div class="nav-con fl">
                     <ul>
                         <li class="nav-item home">
-                            <a class="t">
+                            <a href="/toZhuye" class="t">
                                 <i class="iconfont icon-bilibili" style="color: #00A1D6;"></i> 主站
                             </a>
                         </li>
@@ -576,8 +575,8 @@
         <div id="banner_link" class="head-banner report-scroll-module" style="background-image: url(images/main/header.png);" scrollshow="true">
             <div class="head-content bili-wrapper">
                 <div class="search">
-                    <form class="searchform">
-                        <input class="search-keyword" type="text" />
+                    <form class="searchform" action="/video/show">
+                        <input class="search-keyword" name="videoTitle" type="text" />
                         <button class="search-submit"></button>
                     </form>
                     <a class="link-ranking">

@@ -2,19 +2,76 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://page.lanqiao.org/tag"  prefix="pager" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-<% String path=request.getContextPath();
-    String basepath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <!DOCTYPE html>
 <html>
-<head><title data-vue-meta="true">
-</title>
-    <meta data-vue-meta="true" charset="UTF-8">
-    <base href="${pageContext.request.contextPath}/">
-    <link rel="shortcut icon" href="//static.hdslb.com/images/favicon.ico">
-    <link rel="stylesheet" href="css/serach/serach.css">
+<head>
+    <meta charset="UTF-8">
+    <title>哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</title>
+    <base href="/">
+    <link rel="stylesheet" href="css/search/search.css">
+    <link rel="stylesheet" href="css/main/bass.css" />
+    <link rel="stylesheet" href="css/main/header.css" />
+    <link rel="stylesheet" href="css/main/iconfont.css" />
     <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        $(function () {
+            //从登录界面登录成功后，跳到主界面并给vm.user.uid赋值
+            $("#face").attr("src","images/main/akari.jpg");
+            $node1=$("div.profile-m").detach();
+            $node2=$("li.nipi").detach();
+            var id= ${sessionScope.userInfo.userId};
+            //导入用户信息
+            if(id!=null){
+                $.ajax({
+                    url:"http://localhost:8888/getUserInfo",
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        "id":id,
+                    },
+                    success:function(data){
+                        var img=data.userPicadress;
+                        if(img!=null){
+                            $("#face").attr("src",img);
+                        }else{
+                            $("#face").attr("src","images/main/akari.jpg");
+                        }
+
+                        $("#i-login").remove();
+                        $("#fixed-app-download").remove();
+                        $("#nipi").prepend($node1);
+                        $("#nipi").after($node2);
+                        if (data.userTele!=null){
+                            $("#s1").text("已绑定");
+                        }else {
+                            $("#s1").text("未绑定");
+                        }
+                        if (data.userEmail!=null){
+                            $("#s2").text("已绑定");
+                        }else {
+                            $("#s2").text("未绑定");
+                        }
+                        //vue
+                        vm.user.uname=data.userName;
+                        vm.user.coin=data.userCoin;
+                    },
+                });
+                $("#nipi").hover(function () {
+                    $(this).addClass("on");
+                    $("div.profile-m").show();
+                },function () {
+                    $(this).removeClass("on");
+                    $("div.profile-m").hide();
+                });
+                $(".tips").siblings().hover(function () {
+                    $(this).siblings().show();
+                },function () {
+                    $(this).siblings().hide();
+                });
+                //登录退出按钮
+            }
+        })
+    </script>
     <script>
         //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
         $(function () {
@@ -40,7 +97,7 @@
 
             $("#search").click(function () {
                 var videoTitle=$("#search-keyword").val();
-                //  alert(typeof (videoTitle));
+
                 $.ajax({
                     url: "http://localhost:8888/video/show",
                     data : {"videoTitle":videoTitle},
@@ -48,7 +105,6 @@
                     dataType: "text",
                     success: function (r) {
                         window.location="http://localhost:8888/video/show?videoTitle="+videoTitle;
-                        window.title = videoTitle+'- 搜索结果 - 哔哩哔哩弹幕视频网 - ( ゜- ゜)つロ 乾杯~ - bilibili';
                         console.log(r)
                     },
                     error : function () {
@@ -60,6 +116,152 @@
     </script>
 </head>
 <body id="bili-search">
+<div class="bili-header">
+    <div class="nav-menu">
+        <div class="blur-bg" style="background-image: url(images/main/header.png);"></div>
+        <div class="nav-mask"></div>
+        <div class="bili-wrapper clearfix nav-wraper">
+            <div class="nav-con fl">
+                <ul>
+                    <li class="nav-item home">
+                        <a href="/toZhuye" class="t">
+                            <i class="iconfont icon-bilibili" style="color: #00A1D6;"></i> 主站
+                        </a>
+                    </li>
+                    <li class="nav-item mbili">
+                        <a class="t">音频</a>
+                    </li>
+                    <li class="nav-item game">
+                        <a class="t">游戏中心</a>
+                    </li>
+                    <li class="nav-item live">
+                        <a class="t">直播</a>
+                    </li>
+                    <li class="nav-item buy">
+                        <a class="t">会员购</a>
+                    </li>
+                    <li class="nav-item manga">
+                        <a class="t">漫画</a>
+                    </li>
+                    <li class="nav-item loc-menu">
+                        <a class="t">BW</a>
+                    </li>
+                    <li class="nav-item loc-menu">
+                        <a class="t">70年</a>
+                    </li>
+                    <li class="nav-item moblie">
+                        <a class="t">
+                            <i class="iconfont icon-contextphone" style="color: #00A1D6;"></i>下载APP
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="up-load fr">
+                <a class="u-link"href="/video/uploadVideo">投稿</a>
+            </div>
+            <div class="nav-con fr">
+                <ul class="fr">
+                    <li id="nipi" class="nav-item profile-info" >
+                        <a class="t">
+                            <i class="i-face">
+                                <img id="face" class="face">
+                                <img class="pendant"  />
+                            </i>
+                        </a>
+                        <div id="i-login" class="i_menu i_menu_login" style="display: none;">
+                            <p class="tip">登录后你可以：</p>
+                            <div class="img">
+                                <img id="d1" src="images/main/danmu1.png" />
+                                <img id="d2" src="images/main/danmu1.png" style="left: 320px;" />
+                            </div>
+                            <a class="login-btn" href="/user/toLogin">登录</a>
+                            <p class="reg">首次使用？
+                                <a href="/user/toRegister">点我去注册</a>
+                            </p>
+                        </div>
+                        <div class="profile-m dd-bubble"style="display: none">
+                            <div class="header-u-info">
+                                <div class="header-uname">
+                                    <b class="big-vip-red">{{user.uname}}</b>
+                                    <p class="vip-type">
+                                        <a>
+                                            <span class="big-vip-red">会员</span>
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="btns-profile clearfix">
+                                    <div class="coin fl">
+                                        <a>
+                                            <i class="bili-icon bi"></i>
+                                            <span class="num">{{user.coin}}</span>
+                                        </a>
+                                    </div>
+                                    <div class="ver phone fr verified">
+                                        <a>
+                                            <i class="bili-icon"></i>
+                                            <span id="s1" class="tips"></span>
+                                        </a>
+                                    </div>
+                                    <div class="ver email fr verified">
+                                        <a>
+                                            <i class="bili-icon"></i>
+                                            <span id="s2" class="tips"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="member-menu">
+                                    <ul class="clearfix">
+                                        <li>
+                                            <a class="account"href="/user">
+                                                <i class="bili-icon b-icon-p-account"></i>
+                                                个人中心
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="number"href="/video/uploadVideo">
+                                                <i class="bili-icon b-icon-p-member"></i>
+                                                投稿管理
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="member-bottom">
+                                    <a class="logout"href="/bilibili">退出</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item nipi">
+                        <a class="t">
+                            稍后再看
+                        </a>
+                    </li>
+                    <li class="nav-item nipi">
+                        <a class="t">
+                            收藏
+                        </a>
+                    </li>
+                    <li class="nav-item nipi">
+                        <a class="t">
+                            消息
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="t">
+                            动态
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="t">
+                            历史
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="z-top-container" style="height:56px"></div>
 <div id="search-app"></div>
 <div id="server-search-app" data-server-rendered="true" class="bili-search">
@@ -87,7 +289,7 @@
                         <div class="v-switcher-header-after"></div>
                         <div class="v-switcher-header-tabs">
                             <ul class="v-switcher-header v-switcher-header-around v-switcher-header-translate">
-                                <li class="v-switcher-header-item is-active"
+                                <li class="v-switcher-header-item is-active1"
                                     style="height:56px;line-height:56px;width:11.11111111111111%;"><a
                                         href="/video/show?videoTitle="+keyword
                                         class="router-link-exact-active router-link-active">
@@ -154,24 +356,21 @@
                         <ul type="video" class="video-list clearfix">
 
                             <c:forEach var="video" items="${pageInfo.list}">
-                                <li class="video-item matrix"><a href="${video.videoUrl}"
+                                <li class="video-item matrix"><a href="/player?videoId=${video.videoId}"
                                                                  title="${video.videoTitle}" target="_blank"
                                                                  class="img-anchor">
                                     <div class="img">
-                                        <div class="lazy-img"><img alt="" src="${video.videoPic}"></div>
+                                        <div class="lazy1-img"><img alt="" src="${video.videoPic}"></div>
                                         <span class="so-imgTag_rb">
                                          <fmt:formatDate value="${video.videoTime}" pattern="hh:mm：ss" />
                                     </span>
                                         <div class="watch-later-trigger watch-later"></div>
                                         <span class="mask-video"></span></div><!----></a>
                                     <div class="info">
-                                        <div class="headline clearfix"><span class="type avid">${video.videoId}</span><span
-                                                class="type hide">日常</span><a title="${video.videoTitle}"
-                                                                              href="${video.videoUrl}"
-                                                                              target="_blank" class="title">
-                                                ${video.videoTitle}
-
-                                        </a></div>
+                                        <div class="headline clearfix"><span class="type avid" style="display: none;">${video.videoId}</span><span
+                                                class="type hide">日常</span>
+                                            <a href="${video.videoUrl}" target="_blank" class="title">${video.videoTitle}</a>
+                                        </div>
                                         <div class="des hide">
                                                 ${video.videoDesc}
                                         </div>
@@ -200,7 +399,7 @@
                     <div class="v-info"><span class="name"></span><span class="line"></span><span class="time"></span>
                     </div>
                     <div class="v-preview clearfix">
-                        <div class="lazy-img"><img alt="" src=""></div>
+                        <div class="lazy1-img"><img alt="" src=""></div>
                         <p class="txt"></p></div>
                     <div class="v-data"><span class="play"><i class="icon"></i>--</span><span class="danmu"><i
                             class="icon"></i>--</span><span class="star"><i class="icon"></i>--</span><span
@@ -212,4 +411,24 @@
     </div>
 </div>
 </body>
+<script type="text/javascript" src="/js/vue.min.js"></script>
+<script>
+    var vm=new Vue({
+        el:'#nipi',
+        data:{
+            user:{
+                uid:null,
+                uname:null,
+                coin:null,
+            }
+        },
+    })
+    var vNum=new Vue({
+        el:'div.online',
+        data: {userNum:{
+                Num:null
+            }
+        },
+    })
+</script>
 </html>
