@@ -133,9 +133,9 @@
         function terms(){
             if($("input[type='checkbox']").is(':checked'))
             {
-                $("#submit").attr("disabled",false).css("background-color","#00a1d6");
+                $("#submit").attr("disabled",false).css("background-color","#00a1d6").css("color","#fff").css("cursor","pointer");
             }else{
-                $("#submit").attr("disabled",true).css("background-color","#f5f5f5")
+                $("#submit").attr("disabled",true).css("background-color","#f5f5f5").css("color","#555555").css("cursor","not-allowed")
             }
         }
 
@@ -280,10 +280,10 @@
             </div>
             <!--        点击注册        -->
             <div class="form-group">
-                <input  type="submit"  id="submit" class="el-button btn-full el-button--primary " value="注册" >
+                <input  type="submit"  id="submit" class="el-button btn-full el-button--primary " value="注册" style="cursor: not-allowed" >
             </div>
             <div class="register-hidden-group text-right">
-                <a href="/login.html" style="font-size: 12px" >已有账号，直接登录</a>
+                <a href="/user/toLogin" style="font-size: 12px" >已有账号，直接登录</a>
             </div>
         </form>
     </div>

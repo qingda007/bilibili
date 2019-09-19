@@ -56,7 +56,7 @@ public class UserInfoController {
         return user;
     }
 
-    @RequestMapping("toZhuye")
+    @RequestMapping("/toZhuye")
     public ModelAndView zhuye(){
         ModelAndView bilibili=new ModelAndView("zhuye");
         return bilibili;

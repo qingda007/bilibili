@@ -1,69 +1,25 @@
 <%--
   Created by IntelliJ IDEA.
   User: gosick39
-  Date: 2019/9/14
-  Time: 18:37
+  Date: 2019/9/18
+  Time: 14:58
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%
-    Object userInfo= session.getAttribute("userInfo");
-%>
-<html lang="en">
+<html>
 <head>
-    <title>上传视频</title>
-    <link rel="stylesheet" href="/css/main/header.css" type="text/css">
+    <title>创作中心 - 哔哩哔哩弹幕视频网 - ( ゜- ゜)つロ 乾杯~</title>
+    <link rel="shortcut icon" href="/images/main/bilibili.ico">
+    <link rel="stylesheet" href="/css/upload/upload_home.css">
+    <link rel="stylesheet" href="/css/upload/header.css" />
     <link rel="stylesheet" href="/css/main/bass.css"/>
-    <link rel="stylesheet" href="/css/upload/upload_step1.css" type="text/css">
-    <link rel="stylesheet" href="/css/upload/upload_step2.css" type="text/css">
-    <link rel="stylesheet" href="/css/upload/upload_step3.css" type="text/css">
-    <link rel="stylesheet" href="/css/upload/upload_menu.css" type="text/css">
-    <script src="/js/upload/upload.js"></script>
-    <script src="/js/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="/css/upload/upload_menu.css">
+    <link rel="stylesheet" href="/css/main/iconfont.css">
+    <script src="/js/jquery-3.4.1.js"></script>
     <script src="/js/upload/header.js"></script>
-    <script>
-        $(function () {
-            var videoExist = $("#videoExist").val();
-            if(videoExist==-1){
-                alert("该视频丢失，请联系管理员！");
-                window.history.back();
-            }
-            $(".other-cover-tip").html("正在为您截取可选封面");
-            $.ajax({
-                url : 'http://localhost:8888/video/getCover',//后台数据地址
-                type : "post",
-                dataType: "text",
-                success : function(data){
-                    modifyCover(data);
-                }
-            });
-        });
-        function modifyCover(data) {
-            $(".other-cover-tip").html("可选择以下封面(默认自动选择第一张)：");
-            $(".cover").find("img").each(function(i,v){
-                var src = "/teporary/" + data + (i+1) +".jpg";
-                $(this).attr("src",src);
-                $(this).css({
-                    "width" : "128px",
-                    "height" : "96px",
-                    "top" : "0"
-                });
-            });
-            if(!isSelectCover){
-                $("#cover").css({
-                    "width" : "168px",
-                    "height" : "126px",
-                    "top" : "0"
-                });
-               // $("#cover").attr("src", "/teporary/" + data + "1.jpg");  //显示图片
-            }
-        }
-    </script>
+    <script src="/js/upload/upload-home.js"></script>
 </head>
 <body>
-<div id=app>
-    <input id="videoExist" type="hidden" value="${video}">
     <div class="bili-header">
         <div class="nav-menu">
             <div class="blur-bg" style="background-image: url(/images/main/header.png);"></div>
@@ -105,7 +61,7 @@
                     </ul>
                 </div>
                 <div class="up-load fr">
-                    <a class="u-link">投稿</a>
+                    <a href="/video/uploadVideo" class="u-link">投稿</a>
                 </div>
                 <div class="nav-con fr">
                     <ul class="fr">
@@ -226,96 +182,144 @@
         </div>
     </div>
     <div class="cc-body">
-        <div id="upload-step2-container" style="display: block">
-            <input id="video" value="${video.videoId}" type="hidden">
-            <div class="basic-info"><h1>基本信息</h1></div>
-            <div class="select-cover">
-                <h3>视频封面设置</h3>
-                <p>（格式jpeg、png，文件大小≤5MB，建议尺寸≥1146*717，最低尺寸≥960*600）</p>
-            </div>
-            <div class="cover-preview">
-                <div class="cover-preview-default">
-                    <img id="cover" style="top: 0px; width: 168px; height: 126px;" src="${video.videoPic}" alt="bili_tv">
-                    <span class="cover-upload-tip">上传封面</span>
-                    <input type="file" id="upload-video-pic" onchange="uploadVideoPic('modifyVideoPic')" accept="image/jpeg, image/jpg, image/png">
-                </div>
-                <div class="other-cover">
-                    <div class="other-cover-tip">&ensp;</div>
-                    <div class="cover">
-                        <img class="cover-img" onclick="addCover(this)" src="/images/upload/small-tv-logo.png" alt="bili_tv">
+    <div class="home-wrap">
+        <div class="home-wrap cc-content-body">
+            <div class="row1">
+                <div class="chief-recommend-module report-scroll-module clearfix card">
+                    <div class="carousel-box"style="width: 620px">
+                        <div class="more_wrap">
+                            <div class="more_wrap__bg"></div>
+                            <a>更多活动</a>
+                        </div>
+                        <div id="scroll" class="carousel-module">
+                            <div class="panel">
+                                <ul id="ul" class="pic" style="width: 500%;">
+                                    <li class=" scrollx off ">
+                                        <img src="/images/upload/lunbo5.png"  />
+                                        <a class="more-text" style="z-index: 200;">更多</a>
+                                    </li>
+                                    <li class="scrollx off ">
+                                        <img src="/images/upload/lunbo1.jpg"  />
+                                        <a class="more-text" style="z-index: 200;">更多</a>
+                                    </li>
+                                    <li class="scrollx off ">
+                                        <img src="/images/upload/lunbo2.jpg"  />
+                                        <a class="more-text" style="z-index: 200;">更多</a>
+                                    </li>
+                                    <li class="scrollx off ">
+                                        <img src="/images/upload/lunbo3.png"  />
+                                        <a class="more-text" style="z-index: 200;">更多</a>
+                                    </li>
+                                    <li class="scrollx off ">
+                                        <img src="/images/upload/lunbo4.jpg"  />
+                                        <a class="more-text" style="z-index: 200;">更多</a>
+                                    </li>
+                                </ul>
+
+                                <ul class="trig ">
+                                    <span index="1" class="on"></span>
+                                    <span index="2" class=""></span>
+                                    <span index="3" class=""></span>
+                                    <span index="4" class=""></span>
+                                    <span index="5" class=""></span>
+                                </ul>
+
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="cover">
-                        <img class="cover-img" onclick="addCover(this)" src="/images/upload/small-tv-logo.png" alt="bili_tv">
+                </div>
+            </div>
+            <div class="high-wrapper funcDialog">
+                <div class="high-wrapper__body">
+
+                </div>
+            </div>
+            <div class="row2">
+                <div class="data-card card">
+                    <div class="data-wrp">
+                        <div class="tab clearfix"style="width: 100%;">
+                            <div class="videoFirst fl">
+                                <a class="data-tab current">视频数据</a>
+                            </div>
+                        </div>
+                        <div class="section video clearfix">
+                            <div class="section-item vedio fl">
+                                <div class="data-name">
+                                    播放总量
+                                </div>
+                                <div class="text-content">
+                                    <span>${videoInfo.get(0)}</span>
+                                </div>
+<%--                                <div class="diff-wrp">--%>
+<%--                                    <span class="improve">昨日增量</span>--%>
+<%--                                    <span class="no-improve"></span>--%>
+<%--                                </div>--%>
+                            </div>
+                            <div class="section-item vedio fl">
+                                <div class="data-name">
+                                    点赞总量
+                                </div>
+                                <div class="text-content">
+                                    <span>${videoInfo.get(1)}</span>
+                                </div>
+<%--                                <div class="diff-wrp">--%>
+<%--                                    <span class="improve">昨日增量</span>--%>
+<%--                                    <span class="no-improve"></span>--%>
+<%--                                </div>--%>
+                            </div>
+                            <div class="section-item vedio fl">
+                                <div class="data-name">
+                                    弹幕总量
+                                </div>
+                                <div class="text-content">
+                                    <span>${videoInfo.get(2)}</span>
+                                </div>
+<%--                                <div class="diff-wrp">--%>
+<%--                                    <span class="improve">昨日增量</span>--%>
+<%--                                    <span class="no-improve"></span>--%>
+<%--                                </div>--%>
+                            </div>
+                            <div class="section-item vedio fl">
+                                <div class="data-name">
+                                    收藏总量
+                                </div>
+                                <div class="text-content">
+                                    <span>${videoInfo.get(3)}</span>
+                                </div>
+<%--                                <div class="diff-wrp">--%>
+<%--                                    <span class="improve">昨日增量</span>--%>
+<%--                                    <span class="no-improve"></span>--%>
+<%--                                </div>--%>
+                            </div>
+                            <div class="section-item vedio fl">
+                                <div class="data-name">
+                                    硬币总量
+                                </div>
+                                <div class="text-content">
+                                    <span>${videoInfo.get(4)}</span>
+                                </div>
+<%--                                <div class="diff-wrp">--%>
+<%--                                    <span class="improve">昨日增量</span>--%>
+<%--                                    <span class="no-improve"></span>--%>
+<%--                                </div>--%>
+                            </div>
+                            <div class="section-item vedio fl">
+                                <div class="data-name">
+                                    粉丝数
+                                </div>
+                                <div class="text-content">
+                                    <span>${videoInfo.get(5)}</span>
+                                </div>
+<%--                                <div class="diff-wrp">--%>
+<%--                                    <span class="improve">昨日增量</span>--%>
+<%--                                    <span class="no-improve"></span>--%>
+<%--                                </div>--%>
+                            </div>
+                        </div>
                     </div>
-                    <div class="cover">
-                        <img class="cover-img" onclick="addCover(this)" src="/images/upload/small-tv-logo.png" alt="bili_tv">
-                    </div>
-                    <div class="cover">
-                        <img class="cover-img" onclick="addCover(this)" src="/images/upload/small-tv-logo.png" alt="bili_tv">
-                    </div>
                 </div>
             </div>
-            <br>
-            <div class="section-title-container">
-                <p class="section-title-deg">*</p>
-                <h3 class="section-title-content-main">分区</h3>
-            </div>
-            <br>
-            <div class="type-select-box">
-                <div class="type-font">选择一级分区：</div>
-                <select id="video_type_1" onchange="change(this)"></select>
-                <i></i>
-                <div class="type-font">选择二级分区：</div>
-                <select id="video_type_2"></select>
-            </div>
-            <div class="section-title-container">
-                <p class="section-title-deg">*</p>
-                <h3 class="section-title-content-main">标题</h3>
-            </div>
-            <div class="content-title-container">
-                <div class="input-box-instance">
-                    <input type="text" id="upload-video-title" oninput="countWord()" maxlength="80" placeholder="请输入稿件标题" value="${video.videoTitle}" class="input-box-val">
-                </div>
-                <p class="input-box-max-tip">0/80</p>
-            </div>
-            <br>
-            <div class="section-title-container">
-                <h3 class="section-title-content-main">&ensp;简介</h3>
-            </div>
-            <div class="content-desc-container">
-                <textarea id="upload-video-desc" maxlength="2000" placeholder="请输入该视频的简介">${video.videoDesc}</textarea>
-            </div>
-            <div class="upload-video">
-                <button id="upload-video-btn" onclick="modifyVideoInfo()">提交修改</button>
-            </div>
-        </div>
-        <div id="upload-step3-container">
-            <div class="step-controller-container">
-                <div id="upload-ok"></div>
-                <div class="step-ctrl-item">
-                    <span class="step-ctrl-complete-content">&ensp;填写投稿信息</span>
-                </div>
-                <div class="step-ctrl-line step-ctrl-line-active"></div>
-                <div class="step-ctrl-item">
-                    <span class="step-ctrl-active-icon">2</span>
-                    <span class="step-ctrl-active-content">投稿审核中</span>
-                </div>
-                <div class="step-ctrl-line step-ctrl-line-wait"></div>
-                <div class="step-ctrl-item">
-                    <span class="step-ctrl-wait-icon">3</span>
-                    <span class="step-ctrl-wait-content">&ensp;完成</span>
-                </div>
-            </div>
-            <div class="upload-success-image">
-                <img src="/images/upload/upload-success.png" alt="upload_success">
-            </div>
-            <h3 class="upload-success-hint-1">稿件投递成功</h3>
-            <div class="upload-success-url">
-                <a href="/video/managerVideo" target="_self" class="">查看稿件</a>
-                <a href="/video/uploadVideo" target="_self" class="">再投一个</a></div>
-            <p class="upload-success-hint-2">若稿件没有立刻显示在列表中，请稍候片刻</p>
-            <p class="upload-success-hint-3">稿件名称: </p>
-            <br>
         </div>
     </div>
 </div>

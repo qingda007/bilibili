@@ -12,16 +12,68 @@
 %>
 <html lang="en">
 <head>
-    <title>上传视频</title>
-    <link rel="stylesheet" href="/css/main/header.css" />
+    <title>创作中心 - 哔哩哔哩弹幕视频网 - ( ゜- ゜)つロ 乾杯~</title>
+    <link rel="shortcut icon" href="/images/main/bilibili.ico">
+    <link rel="stylesheet" href="/css/upload/header.css" />
     <link rel="stylesheet" href="/css/main/bass.css"/>
     <link rel="stylesheet" href="/css/upload/upload_step1.css" type="text/css">
     <link rel="stylesheet" href="/css/upload/upload_step2.css" type="text/css">
     <link rel="stylesheet" href="/css/upload/upload_step3.css" type="text/css">
     <link rel="stylesheet" href="/css/upload/upload_menu.css" type="text/css">
+    <link rel="stylesheet" href="/css/main/iconfont.css">
     <script src="/js/upload/upload.js"></script>
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/upload/header.js"></script>
+    <script>
+        //提交video的所有信息
+        function submitVideoInfo() {
+            var videoTitle = document.getElementById('upload-video-title').value;
+            $(".upload-success-hint-3").html("稿件名称: "+videoTitle);
+            var videoDesc = document.getElementById('upload-video-desc').value;
+            var videoPic = document.getElementById('cover').src;
+            var videoTag = document.getElementById("upload-video-tag").value;
+            var type1 = $('#video_type_1 option:selected').text();//选中的文本
+            var type2 = $('#video_type_2 option:selected').text();//选中的文本
+            if(videoTitle.length==0){
+                $('html,body').animate({scrollTop:$('#video_type_2').offset().top}, 400);
+            }
+            else if(videoTag.length==0){
+                $('html,body').animate({scrollTop:$('#upload-video-title').offset().top}, 400);
+            }
+            else {
+                if(videoDesc.length==0){
+                    videoDesc="暂无简介";
+                }
+                if(videoPic.length>255){
+                    videoPic = null;
+                }
+                var userId= ${sessionScope.userInfo.userId};
+                // if(userId==null){
+                //     alert("您尚未登录，无法投稿！");
+                //     window.history.back();
+                // }
+                $.ajax({
+                    url : 'http://localhost:8888/video/uploadVideoInfo',//后台数据地址
+                    data : {
+                        userId : userId,
+                        videoTitle: videoTitle,
+                        videoPic: videoPic,
+                        videoDesc: videoDesc,
+                        statusAlias1: type1,
+                        statusAlias2: type2,
+                        tags: videoTag
+                    },//请求type1的数据
+                    success : function(data){
+                        $("#upload-step2-container").css("display", "none");
+                        $("#upload-step3-container").css("display","block");
+                    },
+                    error : function (data) {
+                        alert("连接服务器失败，请联系管理员");
+                    }
+                });
+            }
+        }
+    </script>
 </head>
 <body>
     <div id=app>
@@ -66,7 +118,7 @@
                         </ul>
                     </div>
                     <div class="up-load fr">
-                        <a class="u-link">投稿</a>
+                        <a href="/video/uploadVideo" class="u-link">投稿</a>
                     </div>
                     <div class="nav-con fr">
                         <ul class="fr">
@@ -234,7 +286,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="basic-info"><h1>基本信息</h1></div>
+                <div class="basic-info"><h1>基本信息</h1></div><br>
                 <div class="select-cover">
                     <h3>视频封面设置</h3>
                     <p>（格式jpeg、png，文件大小≤5MB，建议尺寸≥1146*717，最低尺寸≥960*600）</p>

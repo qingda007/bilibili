@@ -280,7 +280,7 @@
             </div>
             <!--        点击注册        -->
             <div class="form-group">
-                <input  type="submit"  id="submit" class="el-button btn-full el-button--primary " value="注册"style="cursor: not-allowed" >
+                <input  type="submit"  id="submit" class="el-button btn-full el-button--primary " value="注册" style="cursor: not-allowed" >
             </div>
             <div class="register-hidden-group text-right">
                 <a href="/user/toLogin" style="font-size: 12px" >已有账号，直接登录</a>
