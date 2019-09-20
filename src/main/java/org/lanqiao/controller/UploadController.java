@@ -215,7 +215,10 @@ public class UploadController {
         String modifyPicUrl = (String)request.getSession(false).getAttribute("modifyPicUrl");
         if(picUrl.contains("/teporary/")){ //如果选择截取的图片
             picUrl = ffmpeg.getPhyDir(picUrl); //截取文件名
-            ffmpeg.delDataFile(videoService.selectVideoInfo(video.getVideoId()).getVideoPic());
+            String url = videoService.selectVideoInfo(video.getVideoId()).getVideoPic();
+            if(url!=null && !url.equals("")){
+                ffmpeg.delDataFile(url);
+            }
             video.setVideoPic(ffmpeg.getRelDir(ffmpeg.moveFile(picUrl)));
         }
         else if (picUrl.contains("/videoData/")){ //如果选择原有的图片

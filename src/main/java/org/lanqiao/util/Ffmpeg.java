@@ -143,7 +143,7 @@ public class Ffmpeg {
     public void delDataFile(String path){
         path = getDataDir(path);
         File file = new File(path);
-        delFile(file);
+        if(!file.isDirectory()) delFile(file);
     }
     public boolean delFile(File file) {
         if (!file.exists()) {

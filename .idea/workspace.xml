@@ -2,31 +2,14 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="bilibili" />
+      <artifact name="bilibili:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e3bf18da-ad0e-4e20-8eda-e51c241bb006" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UploadController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/util/Ffmpeg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/util/Ffmpeg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/lanqiao/util/Upload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lanqiao/util/Upload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/account.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/player.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/player.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/show.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/show.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-manager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-manager.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-modify.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-modify.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/zhuye.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/zhuye.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/search/search.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/search/search.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/upload/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/upload/upload.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,55 +38,70 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/show.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+            <state relative-caret-position="222">
+              <caret line="351" column="50" selection-start-line="351" selection-start-column="50" selection-end-line="351" selection-end-column="50" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-modify.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/util/Ffmpeg.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="235" column="70" selection-start-line="235" selection-start-column="70" selection-end-line="235" selection-end-column="70" />
+            <state relative-caret-position="348">
+              <caret line="137" column="43" selection-start-line="137" selection-start-column="43" selection-end-line="137" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-manager.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserInfoController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="356" column="50" selection-start-line="356" selection-start-column="50" selection-end-line="356" selection-end-column="50" />
+            <state relative-caret-position="528">
+              <caret line="57" column="28" lean-forward="true" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-home.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/AcountController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="191" column="70" selection-start-line="191" selection-start-column="70" selection-end-line="191" selection-end-column="70" />
+            <state relative-caret-position="64">
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserFansController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="248" column="74" selection-start-line="248" selection-start-column="74" selection-end-line="248" selection-end-column="74" />
+            <state relative-caret-position="-81">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/show.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UploadController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="366" column="43" selection-start-line="366" selection-start-column="43" selection-end-line="366" selection-end-column="43" />
+            <state relative-caret-position="-52">
+              <caret line="220" column="13" lean-forward="true" selection-start-line="220" selection-start-column="13" selection-end-line="220" selection-end-column="13" />
+              <folding>
+                <element signature="method#getCover#0;class#UploadController#0" />
+                <element signature="method#uploadVideoPic#0;class#UploadController#0" />
+                <element signature="method#getType2ByType1#0;class#UploadController#0" />
+                <element signature="method#uploadVideoInfo#0;class#UploadController#0" />
+                <element signature="method#homeVideo#0;class#UploadController#0" />
+                <element signature="method#managerVideo#0;class#UploadController#0" />
+                <element signature="method#selectVideo#0;class#UploadController#0" />
+                <element signature="e#8924#8937#0" />
+                <element signature="method#modifyVideoPic#0;class#UploadController#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -111,7 +109,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/register.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2">
+            <state relative-caret-position="3277">
               <caret line="96" column="25" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="25" />
               <caret line="113" column="25" selection-start-line="113" selection-start-column="25" selection-end-line="113" selection-end-column="25" />
             </state>
@@ -121,12 +119,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/player.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
+            <state relative-caret-position="67628">
               <caret line="2332" column="84" selection-start-line="2332" selection-start-column="84" selection-end-line="2332" selection-end-column="84" />
-              <folding>
-                <element signature="e#38#44#0" expanded="true" />
-                <element signature="e#44#50#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -134,7 +128,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
+            <state relative-caret-position="2581">
               <caret line="89" column="66" selection-start-line="89" selection-start-column="66" selection-end-line="89" selection-end-column="66" />
             </state>
           </provider>
@@ -143,12 +137,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/account.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
+            <state relative-caret-position="5481">
               <caret line="189" column="34" selection-start-line="189" selection-start-column="34" selection-end-line="189" selection-end-column="34" />
-              <folding>
-                <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -166,7 +156,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>iconfont</find>
       <find>head-contai</find>
       <find>type avid</find>
       <find>cover-normal</find>
@@ -196,6 +185,7 @@
       <find>logout</find>
       <find>HH</find>
       <find>hh</find>
+      <find>Data</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -227,11 +217,9 @@
         <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/RegisterController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/register.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/upload/upload.js" />
-        <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UploadController.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/util/Upload.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/search/search.css" />
-        <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/util/Ffmpeg.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserInfoController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/zhuye.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-modify.jsp" />
@@ -241,6 +229,8 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/account.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/player.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/show.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/util/Ffmpeg.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UploadController.java" />
       </list>
     </option>
   </component>
@@ -553,7 +543,8 @@
       <workItem from="1568901629128" duration="7361000" />
       <workItem from="1568942323463" duration="4056000" />
       <workItem from="1568964213407" duration="9714000" />
-      <workItem from="1568978164517" duration="8022000" />
+      <workItem from="1568978164517" duration="8187000" />
+      <workItem from="1568992001632" duration="1968000" />
     </task>
     <task id="LOCAL-00001" summary="增加了删除稿件的功能 9/18">
       <created>1568776560566</created>
@@ -709,17 +700,24 @@
       <option name="project" value="LOCAL" />
       <updated>1568969743281</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="整合 9/20">
+      <created>1568987887978</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1568987887978</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33719000" />
+    <option name="totallyTimeSpent" value="35852000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21162046" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21375267" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -730,7 +728,7 @@
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5794243" weight="0.24728851" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5794243" visible="true" weight="0.24728851" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -926,13 +924,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/AcountController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/playerController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="348">
@@ -940,23 +931,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserFansController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/util/FTPUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/util/FTPUtil.java" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/bilibili.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
@@ -1004,13 +979,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/util/Ffmpeg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="39" column="46" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="87">
@@ -1039,34 +1007,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UploadController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="142" column="32" selection-start-line="142" selection-start-column="32" selection-end-line="142" selection-end-column="32" />
-          <folding>
-            <element signature="method#getCover#0;class#UploadController#0" />
-            <element signature="method#getType2ByType1#0;class#UploadController#0" />
-            <element signature="method#uploadVideoInfo#0;class#UploadController#0" />
-            <element signature="method#homeVideo#0;class#UploadController#0" />
-            <element signature="method#managerVideo#0;class#UploadController#0" />
-            <element signature="method#selectVideo#0;class#UploadController#0" />
-            <element signature="method#modifyVideoPic#0;class#UploadController#0" />
-            <element signature="method#modifyVideo#0;class#UploadController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserInfoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="57" column="28" lean-forward="true" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="28" />
-          <folding>
-            <element signature="e#3054#3055#0" expanded="true" />
-            <element signature="e#3130#3131#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/zhuye.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-68">
@@ -1076,80 +1016,122 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
+        <state relative-caret-position="986">
           <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-modify.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
+        <state relative-caret-position="6815">
           <caret line="235" column="70" selection-start-line="235" selection-start-column="70" selection-end-line="235" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-manager.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10324">
+          <caret line="356" column="50" selection-start-line="356" selection-start-column="50" selection-end-line="356" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-home.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
+        <state relative-caret-position="5539">
           <caret line="191" column="70" selection-start-line="191" selection-start-column="70" selection-end-line="191" selection-end-column="70" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
+        <state relative-caret-position="7192">
           <caret line="248" column="74" selection-start-line="248" selection-start-column="74" selection-end-line="248" selection-end-column="74" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/register.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
+        <state relative-caret-position="3277">
           <caret line="96" column="25" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="25" />
           <caret line="113" column="25" selection-start-line="113" selection-start-column="25" selection-end-line="113" selection-end-column="25" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/player.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67628">
+          <caret line="2332" column="84" selection-start-line="2332" selection-start-column="84" selection-end-line="2332" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
+        <state relative-caret-position="2581">
           <caret line="89" column="66" selection-start-line="89" selection-start-column="66" selection-end-line="89" selection-end-column="66" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/account.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
+        <state relative-caret-position="5481">
           <caret line="189" column="34" selection-start-line="189" selection-start-column="34" selection-end-line="189" selection-end-column="34" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/player.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="2332" column="84" selection-start-line="2332" selection-start-column="84" selection-end-line="2332" selection-end-column="84" />
-          <folding>
-            <element signature="e#38#44#0" expanded="true" />
-            <element signature="e#44#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/upload-manager.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="356" column="50" selection-start-line="356" selection-start-column="50" selection-end-line="356" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/show.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="366" column="43" selection-start-line="366" selection-start-column="43" selection-end-line="366" selection-end-column="43" />
+        <state relative-caret-position="222">
+          <caret line="351" column="50" selection-start-line="351" selection-start-column="50" selection-end-line="351" selection-end-column="50" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/util/Ffmpeg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="137" column="43" selection-start-line="137" selection-start-column="43" selection-end-line="137" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/AcountController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserFansController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-81">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UserInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="57" column="28" lean-forward="true" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/lanqiao/controller/UploadController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-52">
+          <caret line="220" column="13" lean-forward="true" selection-start-line="220" selection-start-column="13" selection-end-line="220" selection-end-column="13" />
+          <folding>
+            <element signature="method#getCover#0;class#UploadController#0" />
+            <element signature="method#uploadVideoPic#0;class#UploadController#0" />
+            <element signature="method#getType2ByType1#0;class#UploadController#0" />
+            <element signature="method#uploadVideoInfo#0;class#UploadController#0" />
+            <element signature="method#homeVideo#0;class#UploadController#0" />
+            <element signature="method#managerVideo#0;class#UploadController#0" />
+            <element signature="method#selectVideo#0;class#UploadController#0" />
+            <element signature="e#8924#8937#0" />
+            <element signature="method#modifyVideoPic#0;class#UploadController#0" />
+          </folding>
         </state>
       </provider>
     </entry>
