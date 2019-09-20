@@ -12,11 +12,15 @@ public class playerController {
     @RequestMapping("/player")
     public ModelAndView player(Integer videoId, HttpServletRequest request){
         UserInfo userInfo = new UserInfo();
-        userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
         ModelAndView mv = new ModelAndView();
+        userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
+        if(userInfo==null){
+            mv.addObject("userId",0);
+        }
+        else mv.addObject("userId",userInfo.getUserId());
         mv.setViewName("player");
         mv.addObject("videoId",videoId);
-        mv.addObject("userId",userInfo.getUserId());
+
         return mv;
     }
 }

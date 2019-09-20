@@ -10,6 +10,7 @@
 <%
     Object userInfo= session.getAttribute("userInfo");
 %>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>创作中心 - 哔哩哔哩弹幕视频网 - ( ゜- ゜)つロ 乾杯~</title>

@@ -4,6 +4,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
@@ -187,7 +188,7 @@
                     </ul>
                 </div>
                 <div class="up-load fr">
-                    <a class="u-link" href="/user/toLogin">投稿</a>
+                    <a class="u-link" href="/video/uploadVideo">投稿</a>
                 </div>
                 <div class="nav-con fr">
                     <ul class="fr">
