@@ -1,7 +1,9 @@
 package org.lanqiao.util;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,13 +23,35 @@ public class Ffmpeg {
         imagePath = imagePath + "/"+ uuid + "_";
         for(int i=1; i<5; i++){
             String imageUrl = imagePath + i + ".jpg";
-            ffmpegToImage(videoPath,imageUrl,i*((second-1)/5));
+            transfer(videoPath,imageUrl,i*((second-1)/5));
         }
 //        String imageUrl = imagePath + "test.jpg";
 //        ffmpegToImage(videoPath,imageUrl,second-1);
         File file = new File(imagePath+"4.jpg");
         while(!file.exists());
         return uuid + "_";
+    }
+    // 视频缩略图截取
+    // inFile  输入文件(包括完整路径)
+    // outFile 输出文件(可包括完整路径)
+    public boolean transfer(String inFile, String outFile, int timePoint) {
+        String command = "ffmpeg -i " + inFile + " -y -f image2 -ss " + timePoint + " -t 00:00:01 -s 1920x1080 " + outFile;
+        try {
+            Runtime rt = Runtime.getRuntime();
+            Process proc = rt.exec(command);
+            InputStream stderr = proc.getErrorStream();
+            InputStreamReader isr = new InputStreamReader(stderr);
+            BufferedReader br = new BufferedReader(isr);
+            String line = null;
+            while ((line = br.readLine()) != null)
+                System.out.println(line);
+            isr.close();
+            br.close();
+        } catch (Throwable t) {
+            t.printStackTrace();
+            return false;
+        }
+        return true;
     }
     public boolean ffmpegToImage(String videoPath,String imagePath,int timePoint){
         List<String> commands = new ArrayList<String>();
