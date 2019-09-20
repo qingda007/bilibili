@@ -8,7 +8,7 @@ import java.util.List;
 public class Ffmpeg {
 
     //ffmpeg安装目录
-    public static String FFMPEG_PATH ="E:/bilibili/ffmpeg.exe";
+    public static String FFMPEG_PATH ="/home/bilibili/ffmpeg.exe";
 
     //设置图片大小
     private final static String IMG_SIZE = "1920x1080";
@@ -50,7 +50,7 @@ public class Ffmpeg {
         commands.add(imagePath);
         try {
             ProcessBuilder builder = new ProcessBuilder();
-        //    builder.directory(new File("E://"));//切换工作目录，不加这一句还真不行，此目录为你ffmpeg文件夹的存放目录
+        //    builder.directory(new File("/home//"));//切换工作目录，不加这一句还真不行，此目录为你ffmpeg文件夹的存放目录
             builder.command(commands);
 //            builder.start();
             builder.redirectErrorStream(true);
@@ -68,7 +68,7 @@ public class Ffmpeg {
         }
     }
     public boolean isExist(String dataPath){
-        File file = new File("E:/bilibili"+dataPath);
+        File file = new File("/home/bilibili"+dataPath);
         return file.exists();
     }
     public String getUuid(String fileName){
@@ -81,16 +81,16 @@ public class Ffmpeg {
         return relDir;
     }
     public String getDataDir(String relDir){
-        return "E:/bilibili" + relDir;
+        return "/home/bilibili" + relDir;
     }
     public String getPhyDir(String absDir){
         File file = new File(absDir);
-        String relDir = "E:/bilibili/teporary/" + file.getName();
+        String relDir = "/home/bilibili/teporary/" + file.getName();
         return relDir;
     }
     public String moveFile(String path1){
         File file = new File(path1);
-        String path2 = "E:/bilibili/videoData/";
+        String path2 = "/home/bilibili/videoData/";
         moveFile(path1, path2);
         return path2 + file.getName();
     }
@@ -108,7 +108,7 @@ public class Ffmpeg {
         }
     }
     public void delUuidFile(String uuid){
-        File file = new File("E:/bilibili/teporary");
+        File file = new File("/home/bilibili/teporary");
         File[] files = file.listFiles();
         for (File f : files) {
             if(f.getName().contains(uuid)){

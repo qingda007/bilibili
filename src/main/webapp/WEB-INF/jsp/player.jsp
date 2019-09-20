@@ -32,8 +32,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>播放</title>
-
+    <title>视频播放</title>
+    <link rel="shortcut icon" href="/images/main/bilibili.ico">
     <!--    顶部导航-->
     <style>
         /*全局*/

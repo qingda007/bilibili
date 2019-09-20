@@ -7,7 +7,8 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-    <title>哔哩哔哩</title>
+    <title>用户注册 - 哔哩哔哩</title>
+    <link rel="shortcut icon" href="/images/main/bilibili.ico">
     <base href="/">
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/register/jquery.validate.min.js"></script>

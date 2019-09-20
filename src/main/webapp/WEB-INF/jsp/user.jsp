@@ -19,7 +19,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>个人主页</title>
+    <link rel="shortcut icon" href="/images/main/bilibili.ico">
     <link href="css/user/user.css" rel="stylesheet">
     <script src="js/jquery-3.4.1.min.js" rel="script"></script>
     <script>

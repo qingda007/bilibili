@@ -4,7 +4,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>用户登录 - 哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</title>
+    <link rel="shortcut icon" href="/images/main/bilibili.ico">
     <base href="/">
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/login/jigsaw.js"></script>

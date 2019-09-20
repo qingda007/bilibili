@@ -8,6 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</title>
+    <link rel="shortcut icon" href="/images/main/bilibili.ico">
     <base href="/">
     <link rel="stylesheet" href="css/main/bass.css" />
     <link rel="stylesheet" href="css/main/header.css" />
