@@ -55,7 +55,7 @@
             }
             //用户信息
             $.ajax({
-                url: "http://localhost:8888/getUserInfo",
+                url: "/getUserInfo",
                 type: "post",
                 data: {"id":${sessionScope.userInfo.userId}},
                 datatype: "json",
@@ -184,7 +184,7 @@
                                         </ul>
                                     </div>
                                     <div class="member-bottom">
-                                        <a class="logout"href="/bilibili">退出</a>
+                                        <a class="logout"href="/logout">退出</a>
                                     </div>
                                 </div>
                             </div>

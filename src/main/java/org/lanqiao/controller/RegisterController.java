@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,7 +48,7 @@ public class RegisterController {
     //表单提交过来的路径
     @RequestMapping("/checkLogin")
 
-    public String checkLogin(UserInfo userInfo, HttpServletRequest request){
+    public ModelAndView checkLogin(UserInfo userInfo, HttpServletRequest request){
         //调用service方法
          userInfoService.checkLogin(userInfo.getUserName(), userInfo.getUserPassw());
          userInfo = userInfoService.updateStatus(userInfo.getUserName());
@@ -56,11 +57,13 @@ public class RegisterController {
             HttpSession session = request.getSession();
             userInfo.setUserPassw(null);
             session.setAttribute("userInfo", userInfo);
-            return "zhuye";
+            return new ModelAndView("zhuye");
         }else{
-            return "login";
+            return new ModelAndView("login");
         }
     }
+
+
 
 
     /**

@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public class Upload {
 
-  //  private String rootPath = "/home/bilibili/";
+  //  private String rootPath = "/usr/local/bilibili/";
 
     public String upload(MultipartFile file, String path, HttpServletRequest request) throws IOException {
         //上传到项目target路径

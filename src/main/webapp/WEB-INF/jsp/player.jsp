@@ -1763,7 +1763,7 @@
 
             //获取登录用户信息
             $.ajax({
-                url: "http://localhost:8888/getUserInfo",
+                url: "/getUserInfo",
                 type: "post",
                 data: {
                     "id": uid
@@ -2298,8 +2298,8 @@
                             </div>
                             <!--输入框-->
                             <div class="comment-send no-login">
-                                <div class="user-face" id="firstface">
-                                    <%--   <img class="user-head" src="/images/video/akari.jpg">--%>
+                                <div class="user-face" id="secondface">
+                                    <%--                                    <img class="user-head" src="/images/video/akari.jpg">--%>
                                 </div>
                                 <div class="textarea-container">
                                     <div class="baffle-wrap">
@@ -2310,10 +2310,29 @@
                                     <textarea cols="80" name="msg" rows="5" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="ipt-txt">
 
                                     </textarea>
-                                    <button type="submit" class="comment-submit" >发表评论</button>
+                                    <button type="submit" class="comment-submit">发表评论</button>
                                 </div>
-
+                                <div class="comment-emoji">
+                                    <i class="face"></i>
+                                    <span class="text">表情</span>
+                                </div>
                             </div>
+<%--                            <div class="comment-send no-login">--%>
+<%--                                <div class="user-face" id="firstface">--%>
+<%--                                    &lt;%&ndash;   <img class="user-head" src="/images/video/akari.jpg">&ndash;%&gt;--%>
+<%--                                </div>--%>
+<%--                                <div class="textarea-container">--%>
+<%--                                    <div class="baffle-wrap">--%>
+<%--                                        <div class="baffle">您的等级不足，升级至Lv2可参与评论--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                    <i class="ipt-arrow"></i>--%>
+<%--                                    <textarea cols="80" name="msg" rows="5" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="ipt-txt">--%>
+
+<%--                                    </textarea>--%>
+<%--                                    <button type="submit" class="comment-submit" disabled="disabled">发表评论</button>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
                             <!--评论信息-->
                             <div class="comment-list">
 <%--                                    <div class="list-item reply-wrap ">--%>
@@ -2356,26 +2375,6 @@
 <%--                                </ul>--%>
 <%--                            </div>--%>
                             <!--输入框-->
-                            <div class="comment-send no-login">
-                                <div class="user-face" id="secondface">
-<%--                                    <img class="user-head" src="/images/video/akari.jpg">--%>
-                                </div>
-                                <div class="textarea-container">
-                                    <div class="baffle-wrap">
-                                        <div class="baffle">您的等级不足，升级至Lv2可参与评论
-                                        </div>
-                                    </div>
-                                    <i class="ipt-arrow"></i>
-                                    <textarea cols="80" name="msg" rows="5" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="ipt-txt">
-
-                                    </textarea>
-                                    <button type="submit" class="comment-submit" disabled="disabled">发表评论</button>
-                                </div>
-                                <div class="comment-emoji">
-                                    <i class="face"></i>
-                                    <span class="text">表情</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

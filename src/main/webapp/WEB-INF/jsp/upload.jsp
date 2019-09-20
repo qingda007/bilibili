@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="/css/upload/upload_step3.css" type="text/css">
     <link rel="stylesheet" href="/css/upload/upload_menu.css" type="text/css">
     <link rel="stylesheet" href="/css/main/iconfont.css">
-    <script src="/js/upload/upload.js"></script>
+    <script src="/js/upload/upload.js?version=1"></script>
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script>
         $(function () {
@@ -34,7 +34,7 @@
             //导入用户信息
             if(id!=null){
                 $.ajax({
-                    url:"http://localhost:8888/getUserInfo",
+                    url:"/getUserInfo",
                     type:"post",
                     dataType:"json",
                     data:{
@@ -112,7 +112,7 @@
                 //     window.history.back();
                 // }
                 $.ajax({
-                    url : 'http://localhost:8888/video/uploadVideoInfo',//后台数据地址
+                    url : '/video/uploadVideoInfo',//后台数据地址
                     data : {
                         userId : userId,
                         videoTitle: videoTitle,
@@ -246,7 +246,7 @@
                                             </ul>
                                         </div>
                                         <div class="member-bottom">
-                                            <a class="logout"href="/bilibili">退出</a>
+                                            <a class="logout"href="/logout">退出</a>
                                         </div>
                                     </div>
                                 </div>

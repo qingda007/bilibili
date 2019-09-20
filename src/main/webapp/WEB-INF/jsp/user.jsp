@@ -27,9 +27,9 @@
         //全局变量
         //总数
         var up_num = 0;
-        var coll_num = 0
+        var coll_num = 0;
         //每页数
-        var per_page = 20;
+        var per_page = 10;
         //当前页
         var up_cur_page = 1;
         var coll_cur_page = 1;
@@ -150,7 +150,7 @@
 
             //用户信息
             $.ajax({
-                url: "http://localhost:8888/getUserInfo",
+                url: "/getUserInfo",
                 type: "post",
                 data: {"id": ${sessionScope.userInfo.userId}},
                 datatype: "json",
@@ -172,7 +172,7 @@
 
             //取关注数
             $.ajax({
-                url: "http://localhost:8888/getFansCount",
+                url: "/getFansCount",
                 type: "post",
                 data: {"userId": ${sessionScope.userInfo.userId}},
                 datatype: "json",
@@ -190,7 +190,7 @@
 
             //取粉丝数
             $.ajax({
-                url: "http://localhost:8888/getBeFansCount",
+                url: "/getBeFansCount",
                 type: "post",
                 data: {"fansId": ${sessionScope.userInfo.userId}},
                 datatype: "json",
@@ -205,7 +205,7 @@
 
             //取出上传视频
             $.ajax({
-                url: "http://localhost:8888/getVideoUpload",
+                url: "/getVideoUpload",
                 type: "post",
                 data: {"userId": ${sessionScope.userInfo.userId}},
                 datatype: "json",
@@ -308,7 +308,7 @@
 
             //取出收藏视频
             $.ajax({
-                url: "http://localhost:8888/getVideoCollection",
+                url: "/getVideoCollection",
                 type: "post",
                 data: {"userId": ${sessionScope.userInfo.userId}},
                 datatype: "json",
@@ -458,7 +458,7 @@
             }
 
             $.ajax({
-                url: "http://localhost:8888/getFollowList",
+                url: "/getFollowList",
                 type: "post",
                 data: {"fansId": ${sessionScope.userInfo.userId}},
                 datatype: "json",
@@ -483,7 +483,7 @@
                 }
             })
             $.ajax({
-                url: "http://localhost:8888/getFansList",
+                url: "/getFansList",
                 type: "post",
                 data: {"userId": ${sessionScope.userInfo.userId}},
                 datatype: "json",

@@ -9,7 +9,7 @@
     <title>哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</title>
     <link rel="shortcut icon" href="/images/main/bilibili.ico">
     <base href="/">
-    <link rel="stylesheet" href="css/search/search.css">
+    <link rel="stylesheet" href="css/search/search.css?v=1">
     <link rel="stylesheet" href="css/main/bass.css" />
     <link rel="stylesheet" href="css/main/header.css" />
     <link rel="stylesheet" href="css/main/iconfont.css" />
@@ -24,7 +24,7 @@
             //导入用户信息
             if(id!=null){
                 $.ajax({
-                    url:"http://localhost:8888/getUserInfo",
+                    url:"/getUserInfo",
                     type:"post",
                     dataType:"json",
                     data:{
@@ -100,12 +100,12 @@
                 var videoTitle=$("#search-keyword").val();
 
                 $.ajax({
-                    url: "http://localhost:8888/video/show",
+                    url: "/video/show",
                     data : {"videoTitle":videoTitle},
                     type : "post",
                     dataType: "text",
                     success: function (r) {
-                        window.location="http://localhost:8888/video/show?videoTitle="+videoTitle;
+                        window.location="/video/show?videoTitle="+videoTitle;
                         console.log(r)
                     },
                     error : function () {
@@ -227,7 +227,7 @@
                                     </ul>
                                 </div>
                                 <div class="member-bottom">
-                                    <a class="logout"href="/bilibili">退出</a>
+                                    <a class="logout"href="/logout">退出</a>
                                 </div>
                             </div>
                         </div>
@@ -363,7 +363,7 @@
                                     <div class="img">
                                         <div class="lazy1-img"><img alt="" src="${video.videoPic}"></div>
                                         <span class="so-imgTag_rb">
-                                         <fmt:formatDate value="${video.videoTime}" pattern="hh:mm：ss" />
+                                            <fmt:formatDate pattern="HH:mm:ss" value="${video.videoTime}"></fmt:formatDate>
                                     </span>
                                         <div class="watch-later-trigger watch-later"></div>
                                         <span class="mask-video"></span></div><!----></a>

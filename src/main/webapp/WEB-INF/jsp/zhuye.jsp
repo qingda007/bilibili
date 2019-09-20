@@ -175,7 +175,7 @@
 
             if(id!=null){
                 $.ajax({
-                    url:"http://localhost:8888/getUserInfo",
+                    url:"/getUserInfo",
                     type:"post",
                     dataType:"json",
                     data:{
@@ -538,7 +538,7 @@
                                         </ul>
                                     </div>
                                     <div class="member-bottom">
-                                        <a class="logout"href="/bilibili">退出</a>
+                                        <a class="logout"href="/logout">退出</a>
                                     </div>
                                 </div>
                             </div>

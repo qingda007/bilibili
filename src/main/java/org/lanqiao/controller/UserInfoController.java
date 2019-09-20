@@ -55,16 +55,32 @@ public class UserInfoController {
 //        user.addObject("id",uid);
         return user;
     }
-
+    @RequestMapping("/logout")
+    public ModelAndView logout(HttpServletRequest request){
+        ModelAndView bilibili = new ModelAndView();
+        request.getSession().setAttribute("userInfo",null);
+        bilibili.setViewName("bilibili");
+        return bilibili;
+    }
     @RequestMapping("/toZhuye")
-    public ModelAndView zhuye(){
-        ModelAndView bilibili=new ModelAndView("zhuye");
+    public ModelAndView zhuye(HttpServletRequest request){
+        ModelAndView bilibili = new ModelAndView();
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+        if(userInfo==null){
+            bilibili.setViewName("bilibili");
+        }
+        else bilibili.setViewName("zhuye");
         return bilibili;
     }
 
     @RequestMapping("/bilibili")
-    public ModelAndView bilibili(){
-        ModelAndView bilibili=new ModelAndView("bilibili");
+    public ModelAndView bilibili(HttpServletRequest request){
+        ModelAndView bilibili = new ModelAndView();
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+        if(userInfo==null){
+            bilibili.setViewName("bilibili");
+        }
+        else bilibili.setViewName("zhuye");
         return bilibili;
     }
 

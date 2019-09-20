@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="css/upload/upload_manager.css">
     <link rel="stylesheet" href="css/main/iconfont.css">
     <script src="js/jquery-3.4.1.js"></script>
-    <script src="js/upload/manager.jsp"></script>
+    <script src="js/upload/manager.jsp?v=1"></script>
     <script>
         $(function () {
             //从登录界面登录成功后，跳到主界面并给vm.user.uid赋值
@@ -39,7 +39,7 @@
             //导入用户信息
             if(id!=null){
                 $.ajax({
-                    url:"http://localhost:8888/getUserInfo",
+                    url:"/getUserInfo",
                     type:"post",
                     dataType:"json",
                     data:{
@@ -92,7 +92,7 @@
         function delVideo(videoId) {
             if(window.confirm("您确定要删除该稿件吗？")){
                 $.ajax({
-                    url: "http://localhost:8888/video/managerVideo",
+                    url: "/video/managerVideo",
                     type: "post",
                     data: {
                         "isReview": $("#isReview").val(),
@@ -115,7 +115,7 @@
             sureTotal();
             $("#isReview").val(isReview);
             $.ajax({
-                url: "http://localhost:8888/video/managerVideo",
+                url: "/video/managerVideo",
                 type: "post",
                 data: {"isReview": isReview},
                 dataType: "html",
@@ -262,7 +262,7 @@
                                     </ul>
                                 </div>
                                 <div class="member-bottom">
-                                    <a class="logout"href="/bilibili">退出</a>
+                                    <a class="logout"href="/logout">退出</a>
                                 </div>
                             </div>
                         </div>

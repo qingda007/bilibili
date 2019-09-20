@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="/css/upload/upload_step2.css" type="text/css">
     <link rel="stylesheet" href="/css/upload/upload_step3.css" type="text/css">
     <link rel="stylesheet" href="/css/upload/upload_menu.css" type="text/css">
-    <script src="/js/upload/upload.js"></script>
+    <script src="/js/upload/upload.js?version=1"></script>
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script>
         $(function () {
@@ -33,7 +33,7 @@
             //导入用户信息
             if(id!=null){
                 $.ajax({
-                    url:"http://localhost:8888/getUserInfo",
+                    url:"/getUserInfo",
                     type:"post",
                     dataType:"json",
                     data:{
@@ -91,7 +91,7 @@
             }
             $(".other-cover-tip").html("正在为您截取可选封面");
             $.ajax({
-                url : 'http://localhost:8888/video/getCover',//后台数据地址
+                url : '/video/getCover',//后台数据地址
                 type : "post",
                 dataType: "text",
                 success : function(data){
@@ -233,7 +233,7 @@
                                         </ul>
                                     </div>
                                     <div class="member-bottom">
-                                        <a class="logout"href="/bilibili">退出</a>
+                                        <a class="logout"href="/logout">退出</a>
                                     </div>
                                 </div>
                             </div>

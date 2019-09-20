@@ -94,7 +94,7 @@
                     }
                 }
                 $.ajax({
-                    url:"http://localhost:8888/user/getcode",
+                    url:"/user/getcode",
                     type:"post",
                     dataType:"json",
                     data:{"phone":$("#userTele").val()},
@@ -111,7 +111,7 @@
             //从验证码移开始检验
             $("#code").blur(function () {
                 $.ajax({
-                    url:"http://localhost:8888/user/comparecode",
+                    url:"/user/comparecode",
                     type:"post",
                     dataType:"json",
                     data:{"preauthcode":$("#code").val()},
