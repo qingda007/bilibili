@@ -35,6 +35,7 @@ public class Ffmpeg {
     // inFile  输入文件(包括完整路径)
     // outFile 输出文件(可包括完整路径)
     public boolean transfer(String inFile, String outFile, int timePoint) {
+       // inFile = inFile.replace("%20", " ");
         String command = "ffmpeg -ss "+ timePoint  + " -i " + inFile + " -y -f image2 -t 00:00:01 -s 1920x1080 " + outFile;
         try {
             Runtime rt = Runtime.getRuntime();
