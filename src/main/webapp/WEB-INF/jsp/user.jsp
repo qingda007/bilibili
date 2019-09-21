@@ -652,10 +652,10 @@
                     <span class="search-btn"></span>
                 </div>
                 <div class="n-static">
-                    <a class="n-data n-gz" id="follow">
+                    <a class="n-data n-fs" id="fan">
                         <p class="n-data-k">关注数</p>
                     </a>
-                    <a class="n-data n-fs" id="fan">
+                    <a class="n-data n-gz" id="follow">
                         <p class="n-data-k">粉丝数</p>
                     </a>
                 </div>

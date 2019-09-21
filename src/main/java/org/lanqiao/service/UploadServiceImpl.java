@@ -29,7 +29,7 @@ public class UploadServiceImpl implements UploadService {
     public List<Video> selectUploadVideo(int userId) { return videoMapper.selectUploadVideo(userId); }
 
     @Override
-    public int countIsReview(int userId, int isReview) {
+    public Integer countIsReview(int userId, int isReview) {
         return videoMapper.countIsReview(userId, isReview);
     }
 
@@ -56,12 +56,18 @@ public class UploadServiceImpl implements UploadService {
     @Override
     public List<Integer> countVideoInfo(int userId) {
         List<Integer> videoInfo = new ArrayList<>();
-        videoInfo.add(videoMapper.countByPlay(userId));
-        videoInfo.add(videoMapper.countByLike(userId));
-        videoInfo.add(videoMapper.countByDanmu(userId));
-        videoInfo.add(videoMapper.countByCollection(userId));
-        videoInfo.add(videoMapper.countByCoin(userId));
-        videoInfo.add(userFansMapper.fansCount(userId));
+        Integer play = videoMapper.countByPlay(userId);
+        Integer like = videoMapper.countByLike(userId);
+        Integer danmu = videoMapper.countByDanmu(userId);
+        Integer collection = videoMapper.countByCollection(userId);
+        Integer coin = videoMapper.countByCoin(userId);
+        Integer fans = userFansMapper.fansCount(userId);
+        videoInfo.add(play==null?0:play);
+        videoInfo.add(like==null?0:like);
+        videoInfo.add(danmu==null?0:danmu);
+        videoInfo.add(collection==null?0:collection);
+        videoInfo.add(coin==null?0:coin);
+        videoInfo.add(fans==null?0:fans);
         return videoInfo;
     }
 }

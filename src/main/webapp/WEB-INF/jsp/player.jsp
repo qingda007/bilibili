@@ -1592,7 +1592,14 @@
     </script>
 <%--总的方法--%>
     <script>
-
+        //转换日期
+        function getdate(t) {
+            var _time = new Date(t);
+            var year = _time.getFullYear();//2017
+            var month = _time.getMonth() + 1;//7
+            var date = _time.getDate();//10
+            return year + "-" + month + "-" + date;
+        }
         $(function () {
             var vid = $("#vId").val();
             var uid = $("#uId").val();
@@ -1619,35 +1626,7 @@
                 }
             });
 
-            function showComment(){
-                $.ajax({
-                    url:"/video/commentInfo",
-                    data:{
-                        "videoId":vid
-                    },
-                    type: "post",
-                    datatype: "json",
-                    success:function (data1) {
-                        for (var i=0;i<data1.length;i++){
-                            $(".comment-list").prepend(" <div class=\"list-item reply-wrap \">\n" +
-                                "                                        <div class=\"user-face\">\n" +
-                                "                                            <img src=\""+data1[i].userInfo.userPicadress+"\">\n" +
-                                "                                        </div>\n" +
-                                "                                        <div class=\"con\">\n" +
-                                "                                            <div class=\"user\">\n" +
-                                "                                                <span class=\"name\">"+data1[i].userInfo.userName+"</span>\n" +
-                                "                                            </div>\n" +
-                                "                                            <p class=\"text\">"+data1[i].comment+"</p>\n" +
-                                "                                            <div class=\"info\">\n" +
-                                "                                                <span class=\"time\">"+data1[i].sendTime+"</span>\n" +
-                                "                                            </div>\n" +
-                                "                                        </div>\n" +
-                                "                                    </div>")
-                        }
-                    }
 
-                });
-            }
 
             // 评论和评论人信息
             $.ajax({
@@ -1709,7 +1688,7 @@
                 success: function (data3) {
                     $("#upface").prepend("<img src=\"" + data3.userInfo.userPicadress + "\" width=\"48\" height=\"48\" class=\"up-face\">");
                     $("#upname").prepend("<a href=\"\" target=\"_blank\" class=\"username\">" + data3.userInfo.userName + "</a>")
-                    vm.likes.userId = data3.userId;
+                    vm.likes.userId = data3.userInfo.userId;
                 },
                 error: function () {
             //        alert("up主信息失败")
@@ -1807,7 +1786,7 @@
                             "                                            </div>\n" +
                             "                                            <p class=\"text\">"+tit+"</p>\n" +
                             "                                            <div class=\"info\">\n" +
-                            "                                                <span class=\"time\">"+time+"</span>\n" +
+                            "                                                <span class=\"time\">"+getdate(time)+"</span>\n" +
                             "                                            </div>\n" +
                             "                                        </div>\n" +
                             "                                    </div>")
@@ -1945,13 +1924,13 @@
                 },
                 datatype: "text",
                 success: function (data) {
-                    if (data == "1") {
+                    if (data == 1) {
                         flag = true;
                         $("#guanzhu").hide();
                         $("#quguan").show();
                         quxiaota();
                         guanzhuta();
-                    } else if (data == "0") {
+                    } else if (data == 0) {
                         flag = false;
                         $("#guanzhu").show();
                         $("#quguan").hide();
@@ -2312,10 +2291,10 @@
                                     </textarea>
                                     <button type="submit" class="comment-submit">发表评论</button>
                                 </div>
-                                <div class="comment-emoji">
-                                    <i class="face"></i>
-                                    <span class="text">表情</span>
-                                </div>
+<%--                                <div class="comment-emoji">--%>
+<%--                                    <i class="face"></i>--%>
+<%--                                    <span class="text">表情</span>--%>
+<%--                                </div>--%>
                             </div>
 <%--                            <div class="comment-send no-login">--%>
 <%--                                <div class="user-face" id="firstface">--%>
@@ -2567,7 +2546,7 @@
                 //设置文字初始位置颜色
                 $(this).css({left:_left,top:_top,color:getRandomColor()});
                 //每个时间不同
-                var time = Math.ceil(800+Math.random()*10000);
+                var time = Math.ceil(2000+Math.random()*10000);
                 //动起来
                 $(this).animate({left:"-"+_left+"px"},time,function () {
                     $(this).remove();

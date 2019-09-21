@@ -2,6 +2,7 @@ package org.lanqiao.mapper;
 
 import org.apache.ibatis.annotations.Param;
 import org.lanqiao.entity.Video;
+import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,15 +13,15 @@ public interface VideoMapper {
 
     List<Video> selectUploadVideo(Integer userId);
 
-    int countIsReview(@Param("userId")Integer userId, @Param("isReview") Integer isReview);
+    Integer countIsReview(@Param("userId")Integer userId, @Param("isReview") Integer isReview);
 
     List<Video> selectVideoByIsReview(@Param("userId")Integer userId, @Param("isReview")Integer isReview);
 
-    int countByPlay(@Param("userId")Integer userId);
-    int countByLike(@Param("userId")Integer userId);
-    int countByDanmu(@Param("userId")Integer userId);
-    int countByCollection(@Param("userId")Integer userId);
-    int countByCoin(@Param("userId")Integer userId);
+    Integer countByPlay(@Param("userId")Integer userId);
+    Integer countByLike(@Param("userId")Integer userId);
+    Integer countByDanmu(@Param("userId")Integer userId);
+    Integer countByCollection(@Param("userId")Integer userId);
+    Integer countByCoin(@Param("userId")Integer userId);
 
     int deleteByPrimaryKey(Integer videoId);
 
