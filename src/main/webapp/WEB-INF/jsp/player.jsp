@@ -2140,7 +2140,8 @@
         </div>
         <div class="nav-con fr">
             <ul>
-                <li class="nav-item profile-info" id="userface">
+                <li class="nav-item profile-info">
+                    <a href="/user"  id="userface"></a>
 <%--                    <img src="/images/video/akari.jpg" width="32px" height="32px">--%>
                 </li>
                 <li class="nav-item ">
@@ -2388,7 +2389,7 @@
                     <div class="default-btn follow-btn b-gz not-follow" id="guanzhu">
                         <span class="guanzhu" style="display: block">
                             <i class="van-icon-general_addto_s"></i>+关注
-                            <span>1.2万</span>
+<%--                            <span>1.2万</span>--%>
                         </span>
                     </div>
                     <div class="default-btn follow-btn b-gz following" style="display: none" id="quguan">

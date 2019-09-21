@@ -292,6 +292,7 @@
                 $(".be-page-now").css("background-color", "#fff");
                 $(".be-page-now").css("border-color", "#d7dde4");
                 for (var i = 0; i < up_last_page; i++) {
+                    console.log(up_cur_page);
                     if (up_cur_page == $(".be-page-click:eq(" + i + ")").html()) {
                         up_item_num = (up_cur_page - 1) * per_page;
                         $(".be-page-now:eq(" + i + ")").css("color", "#fff");
