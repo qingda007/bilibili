@@ -1685,10 +1685,12 @@
                 },
                 type: "post",
                 datatype: "json",
+                async: false,
                 success: function (data3) {
                     $("#upface").prepend("<img src=\"" + data3.userInfo.userPicadress + "\" width=\"48\" height=\"48\" class=\"up-face\">");
                     $("#upname").prepend("<a href=\"\" target=\"_blank\" class=\"username\">" + data3.userInfo.userName + "</a>")
-                    vm.likes.userId = data3.userInfo.userId;
+                    vm.likes.userId = data3.userId;
+                 //   alert(data3.userId);
                 },
                 error: function () {
             //        alert("up主信息失败")
@@ -2259,7 +2261,7 @@
                 <div class="common">
 <%--                    评论数--%>
                     <div class="b-head" id="commentcount">
-                        <span class="b-head results" id="commentNum">1350</span>
+                        <span class="b-head results" id="commentNum">0</span>
                         <span class="b-head-t">评论</span>
                     </div>
                     <div class="comment" style="position: relative">

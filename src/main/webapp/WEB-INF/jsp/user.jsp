@@ -475,7 +475,7 @@
                             "</div>\n" +
                             "<div class=\"fans-action\">\n" +
                             "<div class=\"be-drop-fans\">\n" +
-                            "<span class=\"fans-text\">回粉</span>\n" +
+                            "<span class=\"fans-text\">已关注</span>\n" +
                             "</div>\n" +
                             "</div>\n" +
                             "</li>\n")
@@ -500,7 +500,7 @@
                             "</div>\n" +
                             "<div class=\"fans-action\">\n" +
                             "<div class=\"be-drop-fans\">\n" +
-                            "<span class=\"fans-text\">已关注</span>\n" +
+                            "<span class=\"fans-text\">回粉</span>\n" +
                             "</div>\n" +
                             "</div>\n" +
                             "</li>")
