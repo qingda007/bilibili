@@ -1712,7 +1712,7 @@
                     vm.likes.userId = data3.userId;
                 },
                 error: function () {
-                    alert("up主信息失败")
+            //        alert("up主信息失败")
                 }
             });
 
@@ -1825,7 +1825,7 @@
                         });
                     },
                     error: function () {
-                        alert("失败")
+              //          alert("失败")
                     }
                 })
 
@@ -1854,7 +1854,7 @@
                             "                                                    </li>");
                     },
                     error: function () {
-                        alert("失败")
+                //        alert("失败")
                     }
                 })
             })
@@ -1877,7 +1877,7 @@
                     }
                 },
                 error: function () {
-                    alert("是否收藏失败")
+             //       alert("是否收藏失败")
                 }
             });
             $(".collect").click(function () {
@@ -1903,7 +1903,7 @@
                         collectd = true;
                     },
                     error: function () {
-                        alert("收藏失败");
+            //            alert("收藏失败");
                     }
 
                 })
@@ -1926,7 +1926,7 @@
                         collectd = false;
                     },
                     error: function () {
-                        alert("取消收藏失败");
+             //           alert("取消收藏失败");
                     }
 
                 })
@@ -1945,13 +1945,13 @@
                 },
                 datatype: "text",
                 success: function (data) {
-                    if (data == 1) {
+                    if (data == "1") {
                         flag = true;
                         $("#guanzhu").hide();
                         $("#quguan").show();
                         quxiaota();
                         guanzhuta();
-                    } else if (data == 0) {
+                    } else if (data == "0") {
                         flag = false;
                         $("#guanzhu").show();
                         $("#quguan").hide();
@@ -1960,7 +1960,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("粉丝失败")
+               //al     alert("粉丝失败")
 
                 }
             });
@@ -1984,7 +1984,7 @@
 
                         },
                         error: function () {
-                            alert("关注失败")
+                  //          alert("关注失败")
                         }
 
                     });
@@ -2009,7 +2009,7 @@
                             flag = false;
                         },
                         error: function () {
-                            alert("取消失败")
+                         //   alert("取消失败")
                         }
 
                     });
@@ -2036,7 +2036,7 @@
                     success: function (data) {
                     },
                     error: function () {
-                        alert("投币失败")
+                     //   alert("投币失败")
                     }
                 })
             }
@@ -2054,7 +2054,7 @@
                     success: function (data) {
                     },
                     error: function () {
-                        alert("减币失败")
+                //        alert("减币失败")
                     }
                 })
             }
@@ -2083,7 +2083,7 @@
                         likeStatus = true;
                     },
                     error: function () {
-                        alert("点赞失败")
+              //          alert("点赞失败")
                     }
                 })
             }
@@ -2102,7 +2102,7 @@
                         likeStatus = false;
                     },
                     error: function () {
-                        alert("取消点赞失败")
+               //         alert("取消点赞失败")
                     }
                 });
             }
