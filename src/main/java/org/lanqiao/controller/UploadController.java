@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -47,12 +48,12 @@ public class UploadController {
 //        request.getSession().setAttribute("userInfo",userInfo);
 //        return 1;
 //    }
-//    @ResponseBody
-//    @RequestMapping(value = "/out")//测试用
-//    public int testOut(@Param("userId")int userId, HttpServletRequest request){
-//        request.getSession().setAttribute("userInfo",null);
-//        return 1;
-//    }
+    @ResponseBody
+    @RequestMapping(value = "/test")//测试用
+    public int testOut(){
+        new Ffmpeg().testFun();
+        return 1;
+    }
     @RequestMapping(value = "/uploadVideo")//打开投稿页面
     public ModelAndView uploadVideo() {
         return new ModelAndView("upload");
@@ -111,6 +112,9 @@ public class UploadController {
         }
          //设置视频和封面路径
         video.setVideoUrl(ffmpeg.getRelDir(ffmpeg.moveFile(videoUrl)));
+       /* String outfile = "/usr/local/bilibili/videoData/" + new File(videoUrl).getName();
+        ffmpeg.transferMp4(videoUrl, outfile);
+        video.setVideoUrl(outfile);*/
         video.setVideoPic(ffmpeg.getRelDir(ffmpeg.moveFile(picUrl)));
         //设置视频文件的时长
         video.setVideoTime(new ReadVideo().readVideo(ffmpeg.getDataDir(video.getVideoUrl())));

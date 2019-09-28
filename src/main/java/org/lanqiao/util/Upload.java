@@ -19,7 +19,7 @@ public class Upload {
         String uuid = UUID.randomUUID().toString().replaceAll("-", "");
         String rootPath = path;
         // 获取原始图片的名字和扩展名
-        String originalFilename = file.getOriginalFilename();
+        String originalFilename = file.getOriginalFilename().replace("[","(").replace("]",")");
         // 生成文件新的名字
         String newFileName = uuid + "_" + originalFilename;
         // 封装上传文件位置的全路径
