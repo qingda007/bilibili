@@ -15,13 +15,21 @@ public class UserFansServiceImpl implements UserFansService {
     @Autowired
     UserFansMapper userFansMapper;
     @Override
-    public int fansCount(Integer userId) {
-        return userFansMapper.fansCount(userId);
+    public Integer fansCount(Integer userId) {
+        Integer count = userFansMapper.fansCount(userId);
+        if(count==null){
+            count = 0;
+        }
+        return count;
     }
 
     @Override
-    public int beFansCount(Integer fansId) {
-        return userFansMapper.beFansCount(fansId);
+    public Integer beFansCount(Integer fansId) {
+        Integer count = userFansMapper.beFansCount(fansId);
+        if(count==null){
+            count = 0;
+        }
+        return count;
     }
 
     @Override

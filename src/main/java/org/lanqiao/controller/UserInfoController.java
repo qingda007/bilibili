@@ -55,20 +55,42 @@ public class UserInfoController {
 //        user.addObject("id",uid);
         return user;
     }
+    @RequestMapping("/logout")
+    public ModelAndView logout(HttpServletRequest request){
+        ModelAndView bilibili = new ModelAndView();
+        request.getSession().setAttribute("userInfo",null);
+        bilibili.setViewName("bilibili");
+        return bilibili;
+    }
+    @RequestMapping("/toZhuye")
+    public ModelAndView zhuye(HttpServletRequest request){
+        ModelAndView bilibili = new ModelAndView();
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+        if(userInfo==null){
+            bilibili.setViewName("bilibili");
+        }
+        else bilibili.setViewName("zhuye");
+        return bilibili;
+    }
 
     @RequestMapping("/bilibili")
-    public ModelAndView zhuye(){
-        ModelAndView bilibili=new ModelAndView("bilibili");
+    public ModelAndView bilibili(HttpServletRequest request){
+        ModelAndView bilibili = new ModelAndView();
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+        if(userInfo==null){
+            bilibili.setViewName("bilibili");
+        }
+        else bilibili.setViewName("zhuye");
         return bilibili;
     }
 
     @RequestMapping("/index")
-    public ModelAndView index(HttpServletRequest request){
-        ModelAndView mv=new ModelAndView("user");
-        HttpSession session=request.getSession();
-        UserInfo userInfo=new UserInfo();
-        userInfo=userInfoService.selectByPrimaryKey(1);
-        session.setAttribute("userinfo",userInfo);
+    public ModelAndView index(HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView("user");
         return mv;
+    }
+    @RequestMapping("/userCoin")
+    public int updataUserCoin(UserInfo userInfo){
+        return userInfoService.updateByPrimaryKeySelective(userInfo);
     }
 }

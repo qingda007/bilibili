@@ -2,7 +2,6 @@ package org.lanqiao.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.ibatis.annotations.Param;
 import org.lanqiao.entity.Status;
 import org.lanqiao.entity.UserInfo;
@@ -25,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -39,29 +39,41 @@ public class UploadController {
     VideoTagService videoTagService;
     @Autowired
     VideoService videoService;
-    private String rootPath = "E:/bilibili/teporary";
+    private String rootPath = "/usr/local/bilibili/teporary";
+//    @ResponseBody
+//    @RequestMapping(value = "/in")//测试用
+//    public int testIn(@Param("userId")int userId, HttpServletRequest request){
+//        UserInfo userInfo = new UserInfo();
+//        userInfo.setUserId(userId);
+//        request.getSession().setAttribute("userInfo",userInfo);
+//        return 1;
+//    }
     @ResponseBody
-    @RequestMapping(value = "/test")
-    public int test(@RequestParam("word") String type1){
-        return statusService.countVideoByType1(type1);
+    @RequestMapping(value = "/test")//测试用
+    public int testOut(){
+        new Ffmpeg().testFun();
+        return 1;
+    }
+    @RequestMapping(value = "/uploadVideo")//打开投稿页面
+    public ModelAndView uploadVideo() {
+        return new ModelAndView("upload");
     }
     @ResponseBody
-    @RequestMapping(value = "/upload")
+    @RequestMapping(value = "/upload")//上传稿件的视频文件
     public void upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws IOException {
         //用户上传视频文件
         new Upload().upload(file, rootPath, request);
     }
     @ResponseBody
-    @RequestMapping(value = "/getCover")
+    @RequestMapping(value = "/getCover")//对上传的稿件视频用ffmpeg截图，生成四张图片供用户选择作为封面
     public String getCover(HttpServletRequest request) {
         String videoUrl = (String)request.getSession(false).getAttribute("videoUrl");
         String uuid = (String)request.getSession(false).getAttribute("Uuid");
         //生成随机四张封面cover
         return new Ffmpeg().getImages(videoUrl, rootPath, uuid); //生成四张视频截图
     }
-
     @ResponseBody
-    @RequestMapping(value = "/uploadVideoPic")
+    @RequestMapping(value = "/uploadVideoPic")//上传稿件的封面
     public String uploadVideoPic(@RequestParam("cover") MultipartFile file, HttpServletRequest request) throws IOException {
         //用户上传的封面文件image
         String imageUrl = new Upload().uploadPic(file, rootPath, "cover", request);
@@ -69,32 +81,18 @@ public class UploadController {
         return imageUrl;
     }
     @ResponseBody
-    @RequestMapping(value = "/modifyVideoPic")
-    public String modifyVideoPic(@RequestParam("cover") MultipartFile file, HttpServletRequest request) throws IOException {
-        //用户上传的封面文件image
-        String imageUrl = new Upload().uploadPic(file, rootPath, "cover", request);
-        request.getSession(true).setAttribute("modifyPicUrl", imageUrl);
-        return imageUrl;
-    }
-    @ResponseBody
-    @RequestMapping(value = "/getAllType1")
+    @RequestMapping(value = "/getAllType1")//查询所有的一级分区（用于投稿时的下拉框）
     public List<String> getAllType1() {
         return statusService.selectAllType1();
     }
     @ResponseBody
-    @RequestMapping(value = "/getType2ByType1")
+    @RequestMapping(value = "/getType2ByType1")//查询一级分区对应的二级分区（用于投稿时的下拉框）
     public List<String> getType2ByType1(@RequestParam("type1") String type1) {
         return statusService.selectType2ByType1(type1);
     }
     @ResponseBody
-    @RequestMapping(value = "/getIdByType")
-    public String getIdByType(Status status) {
-        return statusService.selectIdByType(status);
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/uploadVideoInfo")//投稿
-    public int uploadVideoInfo(Video video, Status status, String tags, HttpServletRequest request) {
+    @RequestMapping(value = "/uploadVideoInfo")//插入投稿的信息（*视频url、*封面url、*标题、简介、*一二级分区、标签）
+    public int uploadVideoInfo(final Video video, Status status, String tags, HttpServletRequest request) {
         //根据选择的一二级分区，设置视频的类型
         video.setClassType(statusService.selectIdByType(status));
         //设置当前时间为上传时间
@@ -102,10 +100,10 @@ public class UploadController {
         //获取session中的视频文件路径
         String videoUrl = (String)request.getSession(false).getAttribute("videoUrl");
         //设置视频路径
-        Ffmpeg ffmpeg = new Ffmpeg();
+        final Ffmpeg ffmpeg = new Ffmpeg();
         //获取视频和封面的物理路径
          String picUrl = video.getVideoPic();
-        String uuid = (String)request.getSession(false).getAttribute("Uuid");
+        final String uuid = (String)request.getSession(false).getAttribute("Uuid");
         if(picUrl.contains(uuid)){//选择截取的图片作为封面
             picUrl = ffmpeg.getPhyDir(picUrl);
         }
@@ -114,6 +112,9 @@ public class UploadController {
         }
          //设置视频和封面路径
         video.setVideoUrl(ffmpeg.getRelDir(ffmpeg.moveFile(videoUrl)));
+       /* String outfile = "/usr/local/bilibili/videoData/" + new File(videoUrl).getName();
+        ffmpeg.transferMp4(videoUrl, outfile);
+        video.setVideoUrl(outfile);*/
         video.setVideoPic(ffmpeg.getRelDir(ffmpeg.moveFile(picUrl)));
         //设置视频文件的时长
         video.setVideoTime(new ReadVideo().readVideo(ffmpeg.getDataDir(video.getVideoUrl())));
@@ -126,7 +127,7 @@ public class UploadController {
         //数据库新增video记录
         int flag = uploadService.uploadVideo(video);
         //获取新增video的id
-        int videoId = video.getVideoId();
+        final int videoId = video.getVideoId();
         //根据获取的videoId插入对应的VideoTag表
         VideoTag videoTag = new VideoTag();
         for (String tag : tagList) {
@@ -134,30 +135,25 @@ public class UploadController {
             videoTag.setVideoId(videoId);
             flag = flag*videoTagService.addVideoTag(videoTag);
         }
-        ffmpeg.delUuidFile(uuid);
+        new Thread() {
+            public void run() {
+                Ffmpeg ffmpeg = new Ffmpeg();
+                ffmpeg.delUuidFile(uuid);
+            }
+        }.start();
         return flag;
     }
-
-    @RequestMapping(value = "/uploadVideo")
-    public ModelAndView uploadVideo(HttpServletRequest request) {
-        UserInfo userInfo = new UserInfo();
-        userInfo.setUserId(2);
-        request.getSession().setAttribute("userInfo",userInfo);
-        return new ModelAndView("upload");
-    }
-
-    @RequestMapping(value = "/homeVideo")
+    @RequestMapping(value = "/homeVideo")//打开投稿主页
     public ModelAndView homeVideo(HttpServletRequest request) {
         UserInfo userInfo = (UserInfo)request.getSession(false).getAttribute("userInfo");
         return new ModelAndView("upload-home","videoInfo",uploadService.countVideoInfo(userInfo.getUserId()));
     }
-
-    @RequestMapping(value = "/managerVideo")
+    @RequestMapping(value = "/managerVideo")//打开投稿管理页面（可查询所有稿件、删除稿件）
     public ModelAndView managerVideo(@RequestParam(value="pageNo", defaultValue = "1") int pageNum, @RequestParam(value="isReview", defaultValue = "-1") int isReview, @RequestParam(value="videoId", defaultValue = "-1") final int videoId, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         UserInfo userInfo = (UserInfo)request.getSession(false).getAttribute("userInfo");
         int userId = userInfo.getUserId();
-        if(videoId!=-1){
+        if(videoId!=-1){ //代表执行删除稿件的操作
             new Thread() {
                 public void run() {
                     Ffmpeg ffmpeg = new Ffmpeg();
@@ -191,7 +187,7 @@ public class UploadController {
         modelAndView.setViewName("upload-manager");
         return modelAndView;
     }
-    @RequestMapping(value = "/selectVideo")
+    @RequestMapping(value = "/selectVideo")//打开修改稿件页面
     public ModelAndView selectVideo(@Param("videoId")int videoId, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         Video video = videoService.selectVideoInfo(videoId);
@@ -207,7 +203,15 @@ public class UploadController {
         return modelAndView;
     }
     @ResponseBody
-    @RequestMapping(value = "/modifyVideo")
+    @RequestMapping(value = "/modifyVideoPic")//修改稿件的封面
+    public String modifyVideoPic(@RequestParam("cover") MultipartFile file, HttpServletRequest request) throws IOException {
+        //用户上传的封面文件image
+        String imageUrl = new Upload().uploadPic(file, rootPath, "cover", request);
+        request.getSession(true).setAttribute("modifyPicUrl", imageUrl);
+        return imageUrl;
+    }
+    @ResponseBody
+    @RequestMapping(value = "/modifyVideo")//插入修改稿件的信息（封面、标题、简介）
     public int modifyVideo(Video video, HttpServletRequest request) {
         Ffmpeg ffmpeg = new Ffmpeg();
         String uuid = (String)request.getSession(false).getAttribute("Uuid");
@@ -215,7 +219,10 @@ public class UploadController {
         String modifyPicUrl = (String)request.getSession(false).getAttribute("modifyPicUrl");
         if(picUrl.contains("/teporary/")){ //如果选择截取的图片
             picUrl = ffmpeg.getPhyDir(picUrl); //截取文件名
-            ffmpeg.delDataFile(videoService.selectVideoInfo(video.getVideoId()).getVideoPic());
+            String url = videoService.selectVideoInfo(video.getVideoId()).getVideoPic();
+            if(url!=null && !url.equals("")){
+                ffmpeg.delDataFile(url);
+            }
             video.setVideoPic(ffmpeg.getRelDir(ffmpeg.moveFile(picUrl)));
         }
         else if (picUrl.contains("/videoData/")){ //如果选择原有的图片

@@ -1,0 +1,398 @@
+.contain {
+    width: 980px;
+    margin: 0 auto;
+}
+.head-contain {
+    padding-top: 10px;
+}
+.search-wrap {
+    height: 44px;
+    margin: 0 auto;
+    position: relative;
+    width: 587px;
+}
+.search-wrap .search-logo {
+    background-image: url(//s1.hdslb.com/bfs/static/jinkela/search/asserts/sprite-690be8a6ea.png);
+    background-position: -261px -72px;
+    width: 131px;
+    height: 35px;
+    float: left;
+    margin-top: 7px;
+}
+#navigator {
+    overflow: hidden;
+    margin-top: 18px;
+}
+
+.search-wrap .search-block {
+    width: 430px;
+    float: left;
+    margin-left: 26px;
+}
+#navigator .v-switcher {
+    margin-left: -37px;
+    margin-right: -9px;
+}
+.v-switcher {
+    overflow: hidden;
+    position: relative;
+}
+.v-switcher-header-wrap {
+    box-sizing: border-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    align-items: center;
+    overflow: hidden;
+}
+.search-wrap .search-block .input-wrap {
+    position: relative;
+    background: #fff;
+    border-radius: 4px;
+    float: left;
+    width: 330px;
+    margin-right: 10px;
+}
+.search-wrap .search-block .input-wrap input {
+    height: 18px;
+    box-shadow: none;
+    padding: 11px 15px;
+    background: transparent;
+    width: 296px;
+    border: 2px solid #ccd0d7;
+    border-radius: 4px;
+    color: #222;
+}
+.suggest-wrap {
+    border: 1px solid #e5e9ef;
+    position: absolute;
+    width: 327px;
+    border-radius: 4px;
+    text-align: center;
+    padding: 10px 0;
+    color: #222;
+    background: #fff;
+    z-index: 100;
+    overflow: hidden;
+    margin-top: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.16);
+}
+.search-wrap .search-block .search-button {
+    cursor: pointer;
+    float: left;
+    color: #fff;
+    background: #00a1d6;
+    font-size: 16px;
+    letter-spacing: 2px;
+    line-height: 42px;
+    text-align: center;
+    width: 90px;
+    border-radius: 4px;
+}
+.search-wrap .search-block .search-button .icon-search-white {
+    background-image: url(//s1.hdslb.com/bfs/static/jinkela/search/asserts/sprite-690be8a6ea.png);
+    background-position: -148px -327px;
+    width: 18px;
+    vertical-align: middle;
+    margin-top: -2px;
+    height: 19px;
+    display: inline-block;
+}
+.search-wrap .search-block .search-text {
+    margin-left: 7px;
+}
+.clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    overflow: hidden;
+}
+.v-switcher-header-before {
+    float: left;
+    -ms-flex-order: 0;
+    order: 0;
+}
+
+.v-switcher-header-after, .v-switcher-header-before {
+    position: relative;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    z-index: 1;
+}
+.v-switcher-header-after {
+    float: right;
+    -ms-flex-order: 3;
+    order: 3;
+}
+.v-switcher-header-after, .v-switcher-header-before {
+    position: relative;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    z-index: 1;
+}
+.v-switcher-header-tabs {
+    overflow: hidden;
+    height: 100%;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-order: 1;
+    order: 1;
+}
+.v-switcher-header {
+    position: relative;
+    font-size: 0;
+    z-index: 1;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+#navigator .v-switcher-header-item {
+    border-bottom: 1px solid #ccd0d7;
+    box-sizing: border-box;
+}
+.v-switcher-header-item {
+    display: inline-block;
+    text-align: center;
+    font-size: 15px;
+    color: #657786;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+li, ol, ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#navigator .v-switcher-header-item .router-link-active {
+    color: #00a1d6;
+}
+#navigator .v-switcher-header-item a span {
+    position: absolute;
+    margin-left: 6px;
+    font-size: 12px;
+    color: #6d757a;
+}
+#navigator .v-switcher-header-item a {
+    color: #000;
+    font-size: 16px;
+    display: block;
+}
+a {
+    text-decoration: none;
+    outline: 0;
+    color: #00a1d6;
+    cursor: pointer;
+}
+#navigator .v-switcher-header-item a:hover{
+    color: #00a1d6;
+}
+.filter-wrap {
+    height: auto;
+    padding: 20px 0 10px;
+    position: relative;
+    border-bottom: 1px solid #e5e9ef;
+    display: table;
+    width: 100%;
+}
+.video-item.matrix {
+    position: relative;
+    height: 208px;
+    width: 168px;
+    border: 1px solid #e5e9ef;
+    border-radius: 4px;
+}
+.video-item.matrix .img {
+    height: 100px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+.lazy1-img {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+.lazy1-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.video-item .so-imgTag_rb {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    line-height: 18px;
+    padding: 0 5px;
+    color: #fff;
+    background-color: #333;
+    background-color: rgba(0,0,0,.5);
+    border-top-left-radius: 4px;
+}
+.video-item .img .watch-later {
+    display: block;
+    transition: opacity .3s;
+    z-index: 1;
+    opacity: 0;
+}
+.watch-later-trigger {
+    display: none;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    right: 6px;
+    bottom: 4px;
+    cursor: pointer;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAABT0lEQ…HyYYxBKXU9+p5Grybg4m1Hk9Bar4Ee4JC0JWeixOhprdffE/1yRW/TLMYAAAAASUVORK5CYII=);
+}
+.video-item .img .mask-video, .video-item .img .van-danmu, .video-item .img .van-framepreview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.video-item .img .mask-video {
+    opacity: 0;
+    background: rgba(0,0,0,.2);
+    transition: opacity .3s;
+    pointer-events: none;
+}
+.video-item.matrix .info {
+    padding: 8px 10px 0;
+}
+.video-item.matrix .headline {
+    margin-bottom: 12px;
+    height: 40px;
+    overflow: hidden;
+}
+.video-item.matrix .hide {
+    display: none;
+}
+.video-item.matrix .info .so-icon.watch-num {
+    width: 41px;
+    overflow: inherit;
+}
+
+.video-item.matrix .info .so-icon {
+    margin-right: 8px;
+    margin-bottom: 12px;
+    float: left;
+}
+.video-item .so-icon.watch-num {
+    white-space: nowrap;
+}
+.so-icon {
+    display: inline-block;
+    font-size: 12px;
+    height: 12px;
+    vertical-align: text-top;
+    line-height: 12px;
+    padding-left: 16px;
+    position: relative;
+    color: #99a2aa;
+}
+.video-item.matrix .info {
+    padding: 8px 10px 0;
+}
+.video-item.matrix .info .so-icon {
+    margin-right: 8px;
+    margin-bottom: 12px;
+    float: left;
+}
+.video-item.matrix .title {
+    font-size: 12px;
+    line-height: 20px;
+    color: #222;
+}
+html {
+    background-color: #fff;
+    font: 12px Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
+}
+.so-icon i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: url(//s1.hdslb.com/bfs/static/jinkela/search/asserts/sprite-690be8a6ea.png);
+    width: 11px;
+    height: 11px;
+}
+i {
+    display: inline-block;
+}
+em, i {
+    font-style: normal;
+    font-weight: 400;
+}
+
+.so-icon {
+    display: inline-block;
+    font-size: 12px;
+    height: 12px;
+    vertical-align: text-top;
+    line-height: 12px;
+    padding-left: 16px;
+    position: relative;
+    color: #99a2aa;
+}
+.so-icon i.icon-playtime {
+    background-position: -485px -543px;
+}
+.so-icon i.icon-date {
+    background-position: -442px -165px;
+}
+.so-icon i.icon-uper {
+    background-position: -442px -83px;
+}
+.video-item.matrix .info .so-icon.watch-num {
+    width: 25px;
+    overflow: inherit;
+}
+.video-item.matrix .info .time {
+    margin-right: 0;
+    width: 67px;
+}
+.video-item.matrix .info .so-icon {
+    margin-right: 8px;
+    margin-bottom: 12px;
+    float: left;
+}
+.video-item .so-icon.watch-num {
+    white-space: nowrap;
+}
+.video-item.matrix .hide {
+    display: none;
+}
+.video-list .video-item.matrix {
+    float: left;
+    margin-right: 32px;
+    margin-top: 20px;
+}
+.video-item.matrix {
+    position: relative;
+    height: 208px;
+    width: 168px;
+    border: 1px solid #e5e9ef;
+    border-radius: 4px;
+}
+.video-list .video-item.matrix:nth-child(5n) {
+    margin-right: 0;
+}
+.rocket-con {
+    position: fixed;
+    background: url(//static.hdslb.com/bl2se/images/rocket_top.png);
+    width: 150px;
+    height: 175px;
+    cursor: pointer;
+    z-index: 99;
+    bottom: 0;
+    left: 50%;
+    margin-left: 490px;
+}

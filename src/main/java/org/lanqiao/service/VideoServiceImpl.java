@@ -1,5 +1,6 @@
 package org.lanqiao.service;
 
+import org.apache.ibatis.annotations.Param;
 import org.lanqiao.entity.UserInfo;
 import org.lanqiao.entity.Video;
 import org.lanqiao.mapper.VideoMapper;
@@ -27,5 +28,23 @@ public class VideoServiceImpl implements VideoService {
         return videoMapper.selectUpInfo(videoId);
     }
 
+    @Override
+    public int updateByPrimaryKeySelective(Video video) {
+        return videoMapper.updateByPrimaryKeySelective(video);
+    }
 
+    @Override
+    public int updateByPrimaryKey(Video video) {
+        return videoMapper.updateByPrimaryKey(video);
+    }
+
+    @Override
+    public Video selectStatus(Integer videoId) {
+        return videoMapper.selectStatus(videoId);
+    }
+
+    @Override
+    public List<Video> getByKeyword(@Param("videoTitle")String videoTitle) {
+        return videoMapper.getByKeyword(videoTitle);
+    }
 }

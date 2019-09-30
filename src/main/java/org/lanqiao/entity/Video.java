@@ -1,5 +1,7 @@
 package org.lanqiao.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class Video {
     private String videoDesc;
 
     private String videoUrl;
-
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date upTime;
 
     private Date videoTime;
@@ -34,9 +36,17 @@ public class Video {
 
     private Status status; //联合status表（一对一）
 
-    private Integer danmuNum; //使用子查询获取
+    private Integer danmuNum; //弹幕属性，别删啊，我查询出数据要存在这里的
 
-    private Integer collectionNum; //使用子查询获取
+    private Integer collectionNum; //收藏属性，和上面那个一样，查询出数据存在这
+
+    public Integer getDanmuNum() {
+        return danmuNum;
+    }
+
+    public void setDanmuNum(Integer danmuNum) {
+        this.danmuNum = danmuNum;
+    }
 
     public Integer getCollectionNum() {
         return collectionNum;
@@ -52,14 +62,6 @@ public class Video {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public Integer getDanmuNum() {
-        return danmuNum;
-    }
-
-    public void setDanmuNum(Integer danmuNum) {
-        this.danmuNum = danmuNum;
     }
 
     public Status getStatus() {

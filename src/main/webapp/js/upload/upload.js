@@ -9,7 +9,7 @@ function upload() {
     $("#progress-percent").html(0+"%");
     $("#progress-length").css("width", 0 + "%");
     var form = new FormData(),
-        url = 'http://localhost:8888/video/upload', //服务器上传地址
+        url = '/video/upload', //服务器上传地址
         file = files[0];
     form.append('file', file);
     $("#upload-video-title").val(file.name.substring(0,file.name.indexOf(".")));
@@ -43,7 +43,7 @@ function upload() {
             console.log('上传成功', result);
             $(".other-cover-tip").html("正在为您截取可选封面");
             $.ajax({
-                url : 'http://localhost:8888/video/getCover',//后台数据地址
+                url : '/video/getCover',//后台数据地址
                 type : "post",
                 dataType: "text",
                 success : function(data){
@@ -85,7 +85,7 @@ function uploadVideoPic(op){
     if(files.length == 0) return;
 
     var form = new FormData();
-    var url = 'http://localhost:8888/video/'+op; //服务器上传地址
+    var url = '/video/'+op; //服务器上传地址
     var file = files[0];
     form.append('cover', file);
 
@@ -130,7 +130,7 @@ window.onload=function()//用window的onload事件，窗体加载完毕的时候
     var video_type_1 = $('#video_type_1');//一级分区的select
     video_type_1.empty();
     $.ajax({//请求一级分区的数据
-        url : 'http://localhost:8888/video/getAllType1',//后台数据地址
+        url : '/video/getAllType1',//后台数据地址
         success : function(result){
             $.each(result , function(i , item){
                 var obj=document.getElementById('video_type_1');
@@ -151,7 +151,7 @@ function change(el){//当一级分区变化的时候
 }
 function getType2(type1) {
     $.ajax({
-        url : 'http://localhost:8888/video/getType2ByType1',//后台数据地址
+        url : '/video/getType2ByType1',//后台数据地址
         data : {type1 : type1},//请求type1的数据
         success : function(result){
             $.each(result , function(i , item){
@@ -188,7 +188,7 @@ function modifyVideoInfo() {
             videoPic = null;
         }
         $.ajax({
-            url : 'http://localhost:8888/video/modifyVideo',//后台数据地址
+            url : '/video/modifyVideo',//后台数据地址
             data : {
                 videoId: videoId,
                 videoTitle: videoTitle,
@@ -209,7 +209,7 @@ function modifyVideoInfo() {
         var id=1;
         if(id!=null){
             $.ajax({
-                url:"http://localhost:8888/getUserInfo",
+                url:"/getUserInfo",
                 type:"post",
                 dataType:"json",
                 data:{

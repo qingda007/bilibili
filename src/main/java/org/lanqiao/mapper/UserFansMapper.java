@@ -10,9 +10,9 @@ public interface UserFansMapper {
 
     List<UserFans> fansList(Integer userId);
 
-    int fansCount(Integer userId);
+    Integer fansCount(Integer userId);
 
-    int beFansCount(Integer fansId);
+    Integer beFansCount(Integer fansId);
 
     int deleteByPrimaryKey(Integer id);
 
