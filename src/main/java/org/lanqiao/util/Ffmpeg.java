@@ -40,7 +40,7 @@ public class Ffmpeg {
         return createCommand(command);
     }
     public void transferMp4(String infile) {
-        String outfile = "/usr/local/bilibili/(转码)"+new File(infile).getName();
+        String outfile = rootPath + "/(转码)"+new File(infile).getName();
         final String videoCommand = "ffmpeg -i " + infile + " -vcodec libx264 -vprofile baseline " + outfile;
         new Thread(){
             public void run(){
@@ -146,7 +146,7 @@ public class Ffmpeg {
         }
     }
     public void testFun() {
-        File file = new File("/usr/local/bilibili/videoData");
+        File file = new File(rootPath + "/videoData");
         File[] files = file.listFiles();
         for (File f : files) {
             if(f.getName().contains(".mp4")){

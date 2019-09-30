@@ -59,7 +59,9 @@ public class LoginInterceptor implements HandlerInterceptor  {
                 "uploadVideoInfo",
                 "selectVideo",
                 "insertComment",
-                "insertDanmu"
+                "insertDanmu",
+                "insertFans",
+                "deleteFans"
         };
 
         //拦截需要登录才可打开的页面

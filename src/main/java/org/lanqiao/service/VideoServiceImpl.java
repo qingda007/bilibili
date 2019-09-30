@@ -47,4 +47,9 @@ public class VideoServiceImpl implements VideoService {
     public List<Video> getByKeyword(@Param("videoTitle")String videoTitle) {
         return videoMapper.getByKeyword(videoTitle);
     }
+
+    @Override
+    public List<Video> selectAllVideo() {
+        return videoMapper.selectAllVideo();
+    }
 }

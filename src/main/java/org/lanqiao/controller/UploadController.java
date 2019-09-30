@@ -11,10 +11,7 @@ import org.lanqiao.service.StatusService;
 import org.lanqiao.service.UploadService;
 import org.lanqiao.service.VideoService;
 import org.lanqiao.service.VideoTagService;
-import org.lanqiao.util.Ffmpeg;
-import org.lanqiao.util.ReadVideo;
-import org.lanqiao.util.StringOp;
-import org.lanqiao.util.Upload;
+import org.lanqiao.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,6 +51,22 @@ public class UploadController {
         new Ffmpeg().testFun();
         return 1;
     }
+    @ResponseBody
+    @RequestMapping(value = "/test1")//测试用
+    public List<Video> test1(){
+        return videoService.selectAllVideo();
+    }
+    @ResponseBody
+    @RequestMapping(value = "/test2")//测试用
+    public List<String> test2(){
+        return new FileManager().delSpareFile(videoService.selectAllVideo());
+    }
+    @ResponseBody
+    @RequestMapping(value = "/test3")//测试用
+    public List<String> test3(){
+        return new FileManager().getFileName("/usr/local/bilibili/videoData");
+    }
+
     @RequestMapping(value = "/uploadVideo")//打开投稿页面
     public ModelAndView uploadVideo() {
         return new ModelAndView("upload");
