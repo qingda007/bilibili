@@ -11,16 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 public class playerController {
     @RequestMapping("/player")
     public ModelAndView player(Integer videoId, HttpServletRequest request){
-        UserInfo userInfo = new UserInfo();
         ModelAndView mv = new ModelAndView();
-        userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
+        UserInfo userInfo = userInfo = (UserInfo)request.getSession().getAttribute("userInfo");
         if(userInfo==null){
             mv.addObject("userId",0);
         }
         else mv.addObject("userId",userInfo.getUserId());
         mv.setViewName("player");
         mv.addObject("videoId",videoId);
-
         return mv;
     }
 }

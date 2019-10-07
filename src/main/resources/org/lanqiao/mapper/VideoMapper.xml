@@ -53,7 +53,10 @@
     <result column="user_coin" property="userCoin" jdbcType="INTEGER" />
     <result column="user_role" property="userRole" jdbcType="VARCHAR" />
   </resultMap>
-
+  <select id="selectAllVideo" resultMap="BaseResultMap">
+    select *
+    from video
+  </select>
   <select id="selectStatus" resultMap="VideoResultMap" parameterType="java.lang.Integer">
     select s.*,v.up_time
     from video v,status s

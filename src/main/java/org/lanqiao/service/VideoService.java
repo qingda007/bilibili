@@ -18,4 +18,6 @@ public interface VideoService {
     public Video selectStatus(Integer videoId);
 
     public List<Video> getByKeyword(String videoTitle);
+
+    public List<Video> selectAllVideo();
 }

@@ -42,4 +42,6 @@ public interface VideoMapper {
     Video selectStatus(Integer videoId);
 
     List<Video> getByKeyword(@Param(value="videoTitle")String videoTitle);
+
+    List<Video> selectAllVideo();
 }
