@@ -26,6 +26,9 @@
     <link rel="stylesheet" href="css/main/header.css" />
     <link rel="stylesheet" href="css/main/iconfont.css" />
     <script type="text/javascript" src="js/jquery-3.4.1.js" ></script>
+    <script type="text/javascript" src="laydate/laydate.js"></script>
+    <script type="text/javascript">
+    </script>
     <style type="text/css">
     </style>
     <script>
@@ -53,6 +56,7 @@
                 var date = _time.getDate();//10
                 return year + "-" + month + "-" + date;
             }
+
             //用户信息
             $.ajax({
                 url: "/getUserInfo",
@@ -65,14 +69,19 @@
                     $("#el-id").prepend("<input name=\"userId\"style='border: none' readonly=\"readonly\" value='"+data.userId+"'/>\n");
                     $("#el-phone").append("<input class=\"el-input__inner\" type=\"text\"autocomplete=\"off\" name='userTele' placeholder=\""+data.userTele+"\"/>\n");
                     $("#el-email").append("<input class=\"el-input__inner\" type=\"text\"autocomplete=\"off\" name='userEmail' placeholder=\""+data.userEmail+"\"/>\n");
-                    $("#date").append("<input readonly=\"readonly\"style='border: none' class=\"el-input__inner\"value=\""+getdate(data.userBirthday)+"\">\n")
+                    $("#date").append("<input id=\"date1\" class=\"el-input__inner\"value=\""+getdate(data.userBirthday)+"\">\n");
+                    laydate.render({
+                        elem: '#date1'
+                    });
                 }
             });
+
         })
     </script>
 </head>
 
 <body>
+
 <div id="app">
     <div class="bili-header">
         <div class="nav-menu">
@@ -285,6 +294,7 @@
                                 <label class="el-form-item__label">出生日期：</label>
                                 <div class="el-form-item__content">
                                     <div class="el-date-editor el-input el-date-editor--date"id="date">
+
                                     </div>
                                 </div>
                             </div>
