@@ -52,7 +52,7 @@
             function getdate(t) {
                 var _time = new Date(t);
                 var year = _time.getFullYear();//2017
-                var month = _time.getMonth() + 1;//7
+                var month =_time.getMonth() + 1;//7
                 var date = _time.getDate();//10
                 return year + "-" + month + "-" + date;
             }
@@ -69,7 +69,7 @@
                     $("#el-id").prepend("<input name=\"userId\"style='border: none' readonly=\"readonly\" value='"+data.userId+"'/>\n");
                     $("#el-phone").append("<input class=\"el-input__inner\" type=\"text\"autocomplete=\"off\" name='userTele' placeholder=\""+data.userTele+"\"/>\n");
                     $("#el-email").append("<input class=\"el-input__inner\" type=\"text\"autocomplete=\"off\" name='userEmail' placeholder=\""+data.userEmail+"\"/>\n");
-                    $("#date").append("<input id=\"date1\" class=\"el-input__inner\"value=\""+getdate(data.userBirthday)+"\">\n");
+                    $("#date").append("<input id=\"date1\" type=\"text\" name=\"userBirthday\" class=\"el-input__inner\"value=\""+data.userBirthday+"\">\n");
                     laydate.render({
                         elem: '#date1'
                     });

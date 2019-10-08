@@ -1,6 +1,8 @@
 package org.lanqiao.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.Email;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Repository;
 
 import javax.validation.constraints.NotNull;
@@ -22,6 +24,8 @@ public class UserInfo {
 
     private String userEmail;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date userBirthday;
 
     private String userSex;
