@@ -67,12 +67,25 @@
 
                     $("#el-name").append("<input class=\"el-input__inner\" type=\"text\"autocomplete=\"off\" placeholder=\"你的昵称\"value=\""+data.userName+"\" name=\"userName\"/>\n");
                     $("#el-id").prepend("<input name=\"userId\"style='border: none' readonly=\"readonly\" value='"+data.userId+"'/>\n");
-                    $("#el-phone").append("<input class=\"el-input__inner\" type=\"text\"autocomplete=\"off\" name='userTele' placeholder=\""+data.userTele+"\"/>\n");
-                    $("#el-email").append("<input class=\"el-input__inner\" type=\"text\"autocomplete=\"off\" name='userEmail' placeholder=\""+data.userEmail+"\"/>\n");
+                    $("#el-phone").append("<input class=\"el-input__inner\" type=\"text\"autocomplete=\"off\" name='userTele'value=\""+data.userTele+"\"/>\n");
+                    $("#el-email").append("<input class=\"el-input__inner\" type=\"text\"autocomplete=\"off\" name='userEmail' value=\""+data.userEmail+"\"/>\n");
                     $("#date").append("<input id=\"date1\" type=\"text\" name=\"userBirthday\" class=\"el-input__inner\"value=\""+data.userBirthday+"\">\n");
                     laydate.render({
                         elem: '#date1'
                     });
+                    if(data.userSex=='男'){
+                        $("input[value='男']").attr("checked",true);
+                        $("span.el-radio-button__inner").eq(0).addClass("is-active");
+                        $("span.el-radio-button__inner").eq(0).siblings().removeClass("is-active");
+                    }else if(data.userSex=='女'){
+                        $("input[value='女']").attr("checked",true);
+                        $("span.el-radio-button__inner").eq(1).addClass("is-active");
+                        $("span.el-radio-button__inner").eq(1).siblings().removeClass("is-active");
+                    }else{
+                        $("input[value='']").attr("checked",true);
+                        $("span.el-radio-button__inner").eq(2).addClass("is-active");
+                        $("span.el-radio-button__inner").eq(2).siblings().removeClass("is-active");
+                    }
                 }
             });
 
@@ -276,15 +289,15 @@
                                 <div class="el-form-item__content">
                                     <div class="el-radio-group">
                                         <label class="el-radio-button">
-                                            <input type="radio" class="el-radio-button__orig-radio" value="男">
-                                            <span  class="el-radio-button__inner is-active">男</span>
+                                            <input type="radio" class="el-radio-button__orig-radio" value="男"name="userSex">
+                                            <span  class="el-radio-button__inner">男</span>
                                         </label>
                                         <label class="el-radio-button ">
-                                            <input type="radio" class="el-radio-button__orig-radio" value="女">
+                                            <input type="radio" class="el-radio-button__orig-radio" value="女"name="userSex">
                                             <span class="el-radio-button__inner">女</span>
                                         </label>
                                         <label class="el-radio-button">
-                                            <input type="radio" class="el-radio-button__orig-radio" value="保密">
+                                            <input type="radio" class="el-radio-button__orig-radio" value=""name="userSex">
                                             <span class="el-radio-button__inner">保密</span>
                                         </label>
                                     </div>
