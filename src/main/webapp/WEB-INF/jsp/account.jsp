@@ -25,13 +25,22 @@
     <link rel="stylesheet" href="css/main/bass.css" />
     <link rel="stylesheet" href="css/main/header.css" />
     <link rel="stylesheet" href="css/main/iconfont.css" />
+    <link href="css/register/register.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery-3.4.1.js" ></script>
     <script type="text/javascript" src="laydate/laydate.js"></script>
+    <script src="js/register/jquery.validate.min.js"></script>
+    <script src="js/register/jquery-validation-1.14.0-min.js"></script>
     <script type="text/javascript">
     </script>
     <style type="text/css">
     </style>
     <script>
+        jQuery.validator.addMethod("mobile", function(value, element) {
+            var length = value.length;
+            var mobile =  /^1(3|4|5|7|8)\d{9}$/;
+            return this.optional(element) || (length == 11 && mobile.test(value));
+        }, "手机号码格式错误");
+
         $(function () {
             $("div.el-radio-group label.el-radio-button").click(function () {
                 // $(this).addClass("is-active");
@@ -57,7 +66,49 @@
                 return year + "-" + month + "-" + date;
             }
 
-            //用户信息
+
+            $("#form").validate({
+                //失去焦点时才触发请求
+                rules:{
+                    userName:{
+                        //必填，如果u安正方法不需要参数，则配置为true
+                        required:true,
+                        rangelength:[6,12]
+                    },
+                    userPassw:{
+                        required:true,
+                        minlength: 5
+                    },
+                    userTele:{
+                        required:true,
+                        mobile:true
+                    },
+                    userEmail:{
+                        required:true,
+                        email:true
+                    },
+                },
+                messages:{
+                    userName:{
+                        required:"请输入用户名",
+                        rangelength:$.validator.format("用户名长度在必须为：6-12 之间"),
+                    },
+                    userPassw:{
+                        required:"请输入密码",
+                        minlength: "密码长度不能小于 5 个字母"
+
+                    },
+                    userTele:{
+                        required:"请输入电话号码"
+
+                    },
+                    userEmail:{
+                        required:"请填写邮件",
+                        email:"邮箱格式不正确"
+                    },
+                }
+            });
+                //用户信息
             $.ajax({
                 url: "/getUserInfo",
                 type: "post",
@@ -70,6 +121,7 @@
                     $("#el-phone").append("<input class=\"el-input__inner\" type=\"text\"autocomplete=\"off\" name='userTele'value=\""+data.userTele+"\"/>\n");
                     $("#el-email").append("<input class=\"el-input__inner\" type=\"text\"autocomplete=\"off\" name='userEmail' value=\""+data.userEmail+"\"/>\n");
                     $("#date").append("<input id=\"date1\" type=\"text\" name=\"userBirthday\" class=\"el-input__inner\"value=\""+data.userBirthday+"\">\n");
+                    $("#password").append("<input class=\"el-input__inner\" type=\"text\" name=\"userPassw\" value=\""+ data.userPassw+"\"+autocomplete=\"off\"/>");
                     laydate.render({
                         elem: '#date1'
                     });
@@ -271,7 +323,7 @@
                 </div>
                 <div class="user-setting-warp">
                     <div>
-                        <form class="el-form clearfix" action="/account/changeuserinfo">
+                        <form id="form" method="post"  class="el-form clearfix" action="/account/changeuserinfo">
                             <div class="el-form-item user-nick-name">
                                 <label class="el-form-item__label">昵称：</label>
                                 <div class="el-form-item__content">
@@ -314,8 +366,8 @@
                             <div class="el-form-item user-nick-name">
                                 <label class="el-form-item__label">更换密码：</label>
                                 <div class="el-form-item__content">
-                                    <div class="el-input">
-                                        <input class="el-input__inner" type="text" name="userPassw" autocomplete="off"/>
+                                    <div class="el-input" id="password">
+
                                     </div>
                                 </div>
                             </div>
